@@ -61,6 +61,7 @@ private:
 	int _recoveryPoints;
 	int _armor;
 	int _turretType;
+	int  _tuLoad, _tuUnload;
 	bool _recover, _liveAlien;
 	int _blastRadius, _attraction;
 	bool _flatRate, _arcingShot;
@@ -229,6 +230,10 @@ public:
 	const int getVaporDensity() const;
 	/// Gets the vapor cloud probability.
 	const int getVaporProbability() const;
+	/// Gets the item's load TU cost.
+	int getTULoad() const;
+	/// Gets the item's unload TU cost.
+	int getTUUnload() const;
 
 };
 

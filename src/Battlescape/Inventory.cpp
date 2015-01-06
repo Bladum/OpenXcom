@@ -682,11 +682,17 @@ void Inventory::mouseClick(Action *action, State *state)
 					}
 					else
 					{
+						int tuCost = item->getRules()->getTULoad();
+
+						if (_selItem->getSlot()->getType() != INV_HAND)
+						{
+							tuCost += _selItem->getSlot()->getCost(_game->getRuleset()->getInventory("STR_RIGHT_HAND"));
+						}
 						if (item->getAmmoItem() != 0)
 						{
 							_warning->showMessage(_game->getLanguage()->getString("STR_WEAPON_IS_ALREADY_LOADED"));
 						}
-						else if (!_tu || _selUnit->spendTimeUnits(15))
+						else if (!_tu || _selUnit->spendTimeUnits(tuCost))
 						{
 							moveItem(_selItem, 0, 0, 0);
 							item->setAmmoItem(_selItem);
@@ -811,14 +817,29 @@ bool Inventory::unload()
 	}
 
 	// Item must be loaded
-	if (_selItem->getAmmoItem() == 0 && !_selItem->getRules()->getCompatibleAmmo()->empty())
-	{
-		_warning->showMessage(_game->getLanguage()->getString("STR_NO_AMMUNITION_LOADED"));
-	}
-	if (_selItem->getAmmoItem() == 0 || !_selItem->needsAmmo())
-	{
-		return false;
-	}
+	const bool grenade = _selItem->getRules()->getBattleType() == BT_GRENADE || _selItem->getRules()->getBattleType() == BT_PROXIMITYGRENADE;
+
+	// Item should be able to unload or unprimed.
+	if (grenade)
+ 	{
+		// Item must be primed
+		if (_selItem->getFuseTimer() == -1)
+		{
+			return false;
+		}
+ 	}
+	else
+ 	{
+		// Item must be loaded
+		if (_selItem->getAmmoItem() == 0 && !_selItem->getRules()->getCompatibleAmmo()->empty())
+		{
+			_warning->showMessage(_game->getLanguage()->getString("STR_NO_AMMUNITION_LOADED"));
+		}
+		if (_selItem->getAmmoItem() == 0 || !_selItem->needsAmmo() || !_selItem->getRules()->getTUUnload())
+		{
+			return false;
+		}
+ 	}
 
 	// Hands must be free
 	for (std::vector<BattleItem*>::iterator i = _selUnit->getInventory()->begin(); i != _selUnit->getInventory()->end(); ++i)
@@ -830,14 +851,37 @@ bool Inventory::unload()
 		}
 	}
 
-	if (!_tu || _selUnit->spendTimeUnits(8))
+	int tuCost = 0;
+	if (grenade)
 	{
-		moveItem(_selItem->getAmmoItem(), _game->getRuleset()->getInventory("STR_LEFT_HAND"), 0, 0);
-		_selItem->getAmmoItem()->moveToOwner(_selUnit);
-		moveItem(_selItem, _game->getRuleset()->getInventory("STR_RIGHT_HAND"), 0, 0);
-		_selItem->moveToOwner(_selUnit);
-		_selItem->setAmmoItem(0);
-		setSelectedItem(0);
+		tuCost += _selUnit->getActionTUs(BA_PRIME, _selItem) / 2;
+	}
+	else
+	{
+		tuCost += _selItem->getRules()->getTUUnload();
+	}
+
+	if (_selItem->getSlot()->getType() != INV_HAND)
+	{
+		tuCost += _selItem->getSlot()->getCost(_game->getRuleset()->getInventory("STR_RIGHT_HAND"));
+	}
+
+	if (!_tu || _selUnit->spendTimeUnits(tuCost))
+ 	{
+ 		moveItem(_selItem, _game->getRuleset()->getInventory("STR_RIGHT_HAND"), 0, 0);
+ 		_selItem->moveToOwner(_selUnit);
+		if (grenade)
+		{
+			_selItem->setFuseTimer(-1);
+			_warning->showMessage(_game->getLanguage()->getString("STR_GRENADE_IS_DEACTIVATED"));
+		}
+		else
+		{
+			moveItem(_selItem->getAmmoItem(), _game->getRuleset()->getInventory("STR_LEFT_HAND"), 0, 0);
+			_selItem->getAmmoItem()->moveToOwner(_selUnit);
+			_selItem->setAmmoItem(0);
+		}
+ 		setSelectedItem(0);
 	}
 	else
 	{
