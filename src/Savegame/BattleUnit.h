@@ -264,6 +264,9 @@ public:
 	bool reselectAllowed() const;
 	/// Set fire.
 	void setFire(int fire);
+	/// Get Personal Light power from units armour
+	int getPersonalLightPower() const;
+
 	/// Get fire.
 	int getFire() const;
 	/// Get the list of items in the inventory.

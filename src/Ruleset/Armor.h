@@ -51,6 +51,7 @@ private:
 	bool _constantAnimation;
 	bool _canHoldWeapon;
 	ForcedTorso _forcedTorso;
+	int _personalLightPower;
 public:
 	/// Creates a blank armor ruleset.
 	Armor(const std::string &type);
@@ -102,6 +103,9 @@ public:
 	bool getCanHoldWeapon();
 	/// Checks if this armor ignores gender (power suit/flying suit).
 	ForcedTorso getForcedTorso();
+	/// Get Personal Light power
+	int getPersonalLightPower() const;
+	
 };
 
 }

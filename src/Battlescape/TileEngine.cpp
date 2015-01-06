@@ -169,7 +169,7 @@ void TileEngine::calculateTerrainLighting()
 void TileEngine::calculateUnitLighting()
 {
 	const int layer = 2; // Dynamic lighting layer.
-	const int personalLightPower = 15; // amount of light a unit generates
+	const int personalLightPower = 15; // amount of light a unit generates, NOT USED NOW
 	const int fireLightPower = 15; // amount of light a fire generates
 
 	// reset all light to 0 first
@@ -183,7 +183,7 @@ void TileEngine::calculateUnitLighting()
 		// add lighting of soldiers
 		if (_personalLighting && (*i)->getFaction() == FACTION_PLAYER && !(*i)->isOut())
 		{
-			addLight((*i)->getPosition(), personalLightPower, layer);
+			addLight((*i)->getPosition(), (*i)->getPersonalLightPower(), layer);
 		}
 		// add lighting of units on fire
 		if ((*i)->getFire())

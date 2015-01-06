@@ -26,7 +26,7 @@ namespace OpenXcom
  * type of armor.
  * @param type String defining the type.
  */
-Armor::Armor(const std::string &type) : _type(type), _frontArmor(0), _sideArmor(0), _rearArmor(0), _underArmor(0), _drawingRoutine(0), _movementType(MT_WALK), _size(1), _weight(0), _deathFrames(3), _constantAnimation(false), _canHoldWeapon(false), _forcedTorso(TORSO_USE_GENDER)
+Armor::Armor(const std::string &type) : _type(type), _frontArmor(0), _sideArmor(0), _rearArmor(0), _underArmor(0), _drawingRoutine(0), _movementType(MT_WALK), _size(1), _weight(0), _deathFrames(3), _constantAnimation(false), _canHoldWeapon(false), _forcedTorso(TORSO_USE_GENDER), _personalLightPower(15)
 {
 	for (int i=0; i < DAMAGE_TYPES; i++)
 		_damageModifier[i] = 1.0f;
@@ -68,6 +68,7 @@ void Armor::load(const YAML::Node &node)
 	_rearArmor = node["rearArmor"].as<int>(_rearArmor);
 	_underArmor = node["underArmor"].as<int>(_underArmor);
 	_drawingRoutine = node["drawingRoutine"].as<int>(_drawingRoutine);
+	_personalLightPower = node["lightPower"].as<int>(_personalLightPower);
 	_movementType = (MovementType)node["movementType"].as<int>(_movementType);
 	_size = node["size"].as<int>(_size);
 	_weight = node["weight"].as<int>(_weight);
@@ -83,6 +84,7 @@ void Armor::load(const YAML::Node &node)
 	if (node["loftemps"])
 		_loftempsSet.push_back(node["loftemps"].as<int>());
 	_deathFrames = node["deathFrames"].as<int>(_deathFrames);
+
 	_constantAnimation = node["constantAnimation"].as<bool>(_constantAnimation);
 	_forcedTorso = (ForcedTorso)node["forcedTorso"].as<int>(_forcedTorso);
 	if (_drawingRoutine == 0 ||
@@ -168,6 +170,14 @@ int Armor::getUnderArmor() const
 	return _underArmor;
 }
 
+/**
+ * Get the amount of light that units generates
+ * @return power : amount of light added to near tiles.
+ */
+int Armor::getPersonalLightPower() const
+{
+	return _personalLightPower;
+}
 
 /**
  * Gets the corpse item used in the Geoscape.

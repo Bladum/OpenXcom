@@ -279,6 +279,7 @@ void BattleUnit::load(const YAML::Node &node)
 	_spawnUnit = node["spawnUnit"].as<std::string>(_spawnUnit);
 	_motionPoints = node["motionPoints"].as<int>(0);
 	_respawn = node["respawn"].as<bool>(_respawn);
+	
 }
 
 /**
@@ -336,7 +337,7 @@ YAML::Node BattleUnit::save() const
 		node["spawnUnit"] = _spawnUnit;
 	node["motionPoints"] = _motionPoints;
 	node["respawn"] = _respawn;
-
+	
 	return node;
 }
 
@@ -2335,6 +2336,15 @@ int BattleUnit::getAggression() const
 int BattleUnit::getSpecialAbility() const
 {
 	return _specab;
+}
+
+/**
+ * Get the amount of light that units' armour generates
+ * @return power : amount of light added to near tiles.
+ */
+int BattleUnit::getPersonalLightPower() const
+{
+	return _armor->getPersonalLightPower();
 }
 
 /**
