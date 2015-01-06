@@ -1515,16 +1515,23 @@ void BattleUnit::prepareNewTurn()
 			_energy = getBaseStats()->stamina;
 	}
 
+	int healthChange = 0;
+
 	// suffer from fatal wounds
-	_health -= getFatalWounds();
+	healthChange -= getFatalWounds();
+
+	//basic regeneration
+	healthChange += _armor->getRegeneration();
 
 	// suffer from fire
 	if (!_hitByFire && _fire > 0)
 	{
-		_health -= _armor->getDamageModifier(DT_IN) * RNG::generate(5, 10);
+		healthChange -= _armor->getDamageModifier(DT_IN) * RNG::generate(5, 10);
 		_fire--;
 	}
 
+	// change of health	
+	_health += healthChange;
 	if (_health < 0)
 		_health = 0;
 
@@ -1536,10 +1543,10 @@ void BattleUnit::prepareNewTurn()
 		_currentAIState = 0;
 	}
 
-	// recover stun 1pt/turn
+	// recover stun 1pt/turn + armour regeneration
 	if (_stunlevel > 0 &&
 		(_armor->getSize() == 1 || !isOut()))
-		healStun(1);
+		healStun(1 + _armor->getRegeneration() );
 
 	if (!isOut())
 	{
@@ -1992,6 +1999,15 @@ bool BattleUnit::postMissionProcedures(SavedGame *geoscape)
 	UnitStats *stats = s->getCurrentStats();
 	const UnitStats caps = s->getRules()->getStatCaps();
 	int healthLoss = stats->health - _health;
+
+	if (_armor->getRegeneration() > 0)
+	{
+		healthLoss -= _armor->getRegeneration() * 20;
+	}
+	if (healthLoss < 0)
+	{
+		healthLoss = 0;
+	}
 
 	s->setWoundRecovery(RNG::generate((healthLoss*0.5),(healthLoss*1.5)));
 

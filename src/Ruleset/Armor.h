@@ -52,6 +52,7 @@ private:
 	bool _canHoldWeapon;
 	ForcedTorso _forcedTorso;
 	int _personalLightPower;
+	int _regeneration;
 public:
 	/// Creates a blank armor ruleset.
 	Armor(const std::string &type);
@@ -105,7 +106,8 @@ public:
 	ForcedTorso getForcedTorso();
 	/// Get Personal Light power
 	int getPersonalLightPower() const;
-	
+	/// How many health points unit grain per turn.
+	int getRegeneration() const;	
 };
 
 }

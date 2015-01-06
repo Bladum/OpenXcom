@@ -26,7 +26,7 @@ namespace OpenXcom
  * type of armor.
  * @param type String defining the type.
  */
-Armor::Armor(const std::string &type) : _type(type), _frontArmor(0), _sideArmor(0), _rearArmor(0), _underArmor(0), _drawingRoutine(0), _movementType(MT_WALK), _size(1), _weight(0), _deathFrames(3), _constantAnimation(false), _canHoldWeapon(false), _forcedTorso(TORSO_USE_GENDER), _personalLightPower(15)
+Armor::Armor(const std::string &type) : _type(type), _frontArmor(0), _sideArmor(0), _rearArmor(0), _underArmor(0), _drawingRoutine(0), _movementType(MT_WALK), _size(1), _weight(0), _deathFrames(3), _constantAnimation(false), _canHoldWeapon(false), _forcedTorso(TORSO_USE_GENDER), _personalLightPower(15), _regeneration(0)
 {
 	for (int i=0; i < DAMAGE_TYPES; i++)
 		_damageModifier[i] = 1.0f;
@@ -80,6 +80,7 @@ void Armor::load(const YAML::Node &node)
 			_damageModifier[i] = dmg[i].as<float>();
 		}
 	}
+	_regeneration = node["regeneration"].as<int>(_regeneration);
 	_loftempsSet = node["loftempsSet"].as< std::vector<int> >(_loftempsSet);
 	if (node["loftemps"])
 		_loftempsSet.push_back(node["loftemps"].as<int>());
@@ -223,6 +224,14 @@ std::string Armor::getSpecialWeapon() const
 int Armor::getDrawingRoutine() const
 {
 	return _drawingRoutine;
+}
+
+/* Get basic regeneration of unit in armor.
+* @return Number of hp change.
+*/
+int Armor::getRegeneration() const
+{
+	return _regeneration;
 }
 
 /**
