@@ -72,20 +72,27 @@ namespace OpenXcom
 		}
 		_game->getResourcePack()->getSurface(look)->blit(_image);
 
-
-		_lstInfo = new TextList(150, 96, 150, 46);
+		_lstInfo = new TextList(150, 128, 150, 24);
 		add(_lstInfo);
 
 		_lstInfo->setColor(Palette::blockOffset(14)+15);
 		_lstInfo->setColumns(2, 125, 25);
 		_lstInfo->setDot(true);
 
-		_txtInfo = new Text(300, 56, 8, 150);
+		_txtInfo = new Text(300, 32, 8, 160);
 		add(_txtInfo);
 
 		_txtInfo->setColor(Palette::blockOffset(14)+15);
 		_txtInfo->setWordWrap(true);
 		_txtInfo->setText(tr(defs->text));
+
+		// add armor weight
+		if(armor->getWeight() > 0) 
+		{
+			addStat("STR_WEIGHT_PEDIA", armor->getWeight());
+			_lstInfo->addRow(0);
+			++_row;
+		}
 
 		// Add armor values
 		addStat("STR_FRONT_ARMOR", armor->getFrontArmor());
@@ -124,6 +131,15 @@ namespace OpenXcom
 		addStat("STR_STRENGTH", armor->getStats()->strength, true);
 		addStat("STR_PSIONIC_STRENGTH", armor->getStats()->psiStrength, true);
 		addStat("STR_PSIONIC_SKILL", armor->getStats()->psiSkill, true);
+
+		// add personal light from armour
+		if(armor->getPersonalLightPower() != 15) 
+		{
+		    _lstInfo->addRow(0);
+			++_row;
+			addStat("STR_PERSONAL_LIGHT", Text::formatPercentage( armor->getPersonalLightPower() * 100 / 15) );		
+		}
+
 
 		centerAllSurfaces();
 	}
