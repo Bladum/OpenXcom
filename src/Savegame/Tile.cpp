@@ -799,6 +799,30 @@ int Tile::getTopItemSprite()
 }
 
 /**
+* Apply environment damage to unit.
+* @param unit affected unit.
+* @param smoke amount of smoke.
+* @param fire amount of file.
+*/
+static inline void applyEnvi(BattleUnit* unit, int smoke, int fire)
+{
+	if (unit)
+	{
+		if (fire)
+		{
+			// _smoke becomes our damage value
+			unit->setEnviFire(smoke);
+		}
+		// no fire: must be smoke
+		else
+		{
+			// try to knock this guy out.
+			unit->setEnviSmoke(smoke / 4 + 1);
+		}
+	}
+}
+
+/**
  * New turn preparations.
  * average out any smoke added by the number of overlaps.
  * apply fire/smoke damage to units as applicable.
@@ -813,36 +837,10 @@ void Tile::prepareNewTurn()
 	// if we still have smoke/fire
 	if (_smoke)
 	{
-		if (_unit && !_unit->isOut())
+		applyEnvi(_unit, _smoke, _fire);
+		for (std::vector<BattleItem*>::iterator i = _inventory.begin(); i != _inventory.end(); ++i)
 		{
-			if (_fire)
-			{
-				// this is how we avoid hitting the same unit multiple times.
-				if (_unit->getArmor()->getSize() == 1 || !_unit->tookFireDamage())
-				{
-					_unit->toggleFireDamage();
-					// _smoke becomes our damage value
-					_unit->damage(Position(0, 0, 0), _smoke, DT_IN, true);
-					// try to set the unit on fire.
-					if (RNG::percent(40 * _unit->getArmor()->getDamageModifier(DT_IN)))
-					{
-						int burnTime = RNG::generate(0, int(5 * _unit->getArmor()->getDamageModifier(DT_IN)));
-						if (_unit->getFire() < burnTime)
-						{
-							_unit->setFire(burnTime);
-						}
-					}
-				}
-			}
-			// no fire: must be smoke
-			else
-			{
-				// try to knock this guy out.
-				if (_unit->getArmor()->getDamageModifier(DT_SMOKE) > 0.0 && _unit->getArmor()->getSize() == 1)
-				{
-					_unit->damage(Position(0,0,0), (_smoke / 4) + 1, DT_SMOKE, true);
-				}
-			}
+			applyEnvi((*i)->getUnit(), _smoke, _fire);
 		}
 	}
 	_overlaps = 0;

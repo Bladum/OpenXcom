@@ -56,7 +56,8 @@ BattleUnit::BattleUnit(Soldier *soldier, int depth) :
 	_dontReselect(false), _fire(0), _currentAIState(0), _visible(false), _cacheInvalid(true),
 	_expBravery(0), _expReactions(0), _expFiring(0), _expThrowing(0), _expPsiSkill(0), _expPsiStrength(0), _expMelee(0),
 	_motionPoints(0), _kills(0), _hitByFire(false), _moraleRestored(0), _coverReserve(0), _charging(0),
-	_turnsSinceSpotted(255), _geoscapeSoldier(soldier), _unitRules(0), _rankInt(-1), _turretType(-1), _hidingForTurn(false), _respawn(false)
+	_turnsSinceSpotted(255), _geoscapeSoldier(soldier), _unitRules(0), _rankInt(-1), _turretType(-1), _hidingForTurn(false), _respawn(false),
+	_fireMaxHit(0), _smokeMaxHit(0)
 {
 	_name = soldier->getName(true);
 	_id = soldier->getId();
@@ -146,7 +147,7 @@ BattleUnit::BattleUnit(Unit *unit, UnitFaction faction, int id, Armor *armor, in
 	_expThrowing(0), _expPsiSkill(0), _expPsiStrength(0), _expMelee(0), _motionPoints(0), _kills(0), _hitByFire(false),
 	_moraleRestored(0), _coverReserve(0), _charging(0), _turnsSinceSpotted(255),
 	_armor(armor), _geoscapeSoldier(0),  _unitRules(unit), _rankInt(-1),
-	_turretType(-1), _hidingForTurn(false), _respawn(false)
+	_turretType(-1), _hidingForTurn(false), _respawn(false), _fireMaxHit(0), _smokeMaxHit(0) 
 {
 	_type = unit->getType();
 	_rank = unit->getRank();
@@ -2914,6 +2915,53 @@ void BattleUnit::setSpecialWeapon(SavedBattleGame *save, const Ruleset *rule)
 }
 
 /**
+ * Set fire damage from environment.
+ * @param damage
+ */
+void BattleUnit::setEnviFire(int damage)
+{
+	if (_fireMaxHit < damage) _fireMaxHit = damage;
+}
+
+/**
+ * Set smoke damage from environment.
+ * @param damage
+ */
+void BattleUnit::setEnviSmoke(int damage)
+{
+	if (_smokeMaxHit < damage) _smokeMaxHit = damage;
+}
+
+/**
+ * Calculate smoke and fire damage from environment.
+ */
+void BattleUnit::calculateEnviDamage()
+{
+	if (_fireMaxHit)
+	{
+		_hitByFire = true;
+		damage(Position(0, 0, 0), _fireMaxHit, DT_IN );
+		// try to set the unit on fire.
+		if (RNG::percent(40 * getArmor()->getDamageModifier(DT_IN)))
+		{
+			int burnTime = RNG::generate(0, int(5 * getArmor()->getDamageModifier(DT_IN)));
+			if (getFire() < burnTime)
+			{
+				setFire(burnTime);
+			}
+		}
+	}
+
+	if (_smokeMaxHit)
+	{
+		damage(Position(0,0,0), _smokeMaxHit, DT_SMOKE );
+	}
+
+	_fireMaxHit = 0;
+	_smokeMaxHit = 0;
+}
+
+/**
  * Get special weapon.
  */
 BattleItem *BattleUnit::getSpecialWeapon(BattleType type) const
@@ -2927,5 +2975,7 @@ BattleItem *BattleUnit::getSpecialWeapon(BattleType type) const
 	}
 	return 0;
 }
+
+
 
 }

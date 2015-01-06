@@ -85,6 +85,8 @@ private:
 	BattleItem* _specWeapon[SPEC_WEAPON_MAX];
 	BattleAIState *_currentAIState;
 	bool _visible;
+	int _fireMaxHit;
+	int _smokeMaxHit;
 	Surface *_cache[5];
 	bool _cacheInvalid;
 	int _expBravery, _expReactions, _expFiring, _expThrowing, _expPsiSkill, _expPsiStrength, _expMelee;
@@ -455,6 +457,14 @@ public:
 	void goToTimeOut();
 	/// Create special weapon for unit.
 	void setSpecialWeapon(SavedBattleGame *save, const Ruleset *rule);
+
+	/// Set fire damage form environment.
+	void setEnviFire(int damage);
+	/// Set smoke damage form environment.
+	void setEnviSmoke(int damage);
+	/// Calculate smoke and fire damage form environment.
+	void calculateEnviDamage();
+
 	/// Get special weapon.
 	BattleItem *getSpecialWeapon(BattleType type) const;
 };

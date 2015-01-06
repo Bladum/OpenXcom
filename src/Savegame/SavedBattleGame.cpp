@@ -1367,6 +1367,12 @@ void SavedBattleGame::prepareNewTurn()
 		getTileEngine()->calculateTerrainLighting();
 	}
 
+	// enviromental damage to units
+	for (std::vector<BattleUnit*>::iterator i = getUnits()->begin(); i != getUnits()->end(); ++i)
+	{
+		(*i)->calculateEnviDamage();
+	}
+
 	reviveUnconsciousUnits();
 }
 
