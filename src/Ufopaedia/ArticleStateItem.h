@@ -47,6 +47,8 @@ namespace OpenXcom
 		Text *_txtInfo;
 		TextList *_lstInfo;
 		Text *_txtShotType;
+		Text *_txtRange;
+		Text *_txtWeight;
 		Text *_txtAccuracy;
 		Text *_txtTuCost;
 		Text *_txtDamage;

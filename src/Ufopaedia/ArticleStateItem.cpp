@@ -67,12 +67,21 @@ namespace OpenXcom
 		_image = new Surface(32, 48, 157, 5);
 		add(_image);
 
+		// ITEM WEIGHT
+		_txtWeight = new Text(40, 17, 117, 8);
+		add(_txtWeight);
+		_txtWeight->setColor(Palette::blockOffset(14)+15);
+		_txtWeight->setWordWrap(true);
+		std::wstring wgh = Text::formatNumber(item->getWeight());
+		wgh += L"kg";
+		_txtWeight->setText( wgh.c_str() );
+
 		item->drawHandSprite(_game->getResourcePack()->getSurfaceSet("BIGOBS.PCK"), _image);
 
 		std::vector<std::string> *ammo_data = item->getCompatibleAmmo();
 
-		// SHOT STATS TABLE (for firearms only)
-		if (item->getBattleType() == BT_FIREARM)
+		// SHOT STATS TABLE (for firearms AND melee only)
+		if (item->getBattleType() == BT_FIREARM || item->getBattleType() == BT_MELEE)
 		{
 			_txtShotType = new Text(100, 17, 8, 66);
 			add(_txtShotType);
@@ -80,13 +89,19 @@ namespace OpenXcom
 			_txtShotType->setWordWrap(true);
 			_txtShotType->setText(tr("STR_SHOT_TYPE"));
 
-			_txtAccuracy = new Text(50, 17, 104, 66);
+			_txtRange = new Text(50, 17, 80, 66);
+			add(_txtRange);
+			_txtRange->setColor(Palette::blockOffset(14)+15);
+			_txtRange->setWordWrap(true);
+			_txtRange->setText(tr("STR_RANGE_UC"));
+
+			_txtAccuracy = new Text(50, 17, 122, 66);
 			add(_txtAccuracy);
 			_txtAccuracy->setColor(Palette::blockOffset(14)+15);
 			_txtAccuracy->setWordWrap(true);
 			_txtAccuracy->setText(tr("STR_ACCURACY_UC"));
 
-			_txtTuCost = new Text(60, 17, 158, 66);
+			_txtTuCost = new Text(50, 17, 160, 66);
 			add(_txtTuCost);
 			_txtTuCost->setColor(Palette::blockOffset(14)+15);
 			_txtTuCost->setWordWrap(true);
@@ -96,20 +111,34 @@ namespace OpenXcom
 			add(_lstInfo);
 
 			_lstInfo->setColor(Palette::blockOffset(15)+4); // color for %-data!
-			_lstInfo->setColumns(3, 100, 52, 52);
+			_lstInfo->setColumns(4, 72, 42, 40, 40);
 			_lstInfo->setBig();
 
 			int current_row = 0;
 			if (item->getTUAuto()>0)
 			{
 				std::wstring tu = Text::formatPercentage(item->getTUAuto());
+				std::wstring acc = Text::formatPercentage(item->getAccuracyAuto());
+				std::wstring txt = tr("STR_SHOT_TYPE_AUTO");
+				int rngMin = item->getMinRange();
+				int rngMax = item->getAutoRange();
+				std::wstring rng = Text::formatNumber(rngMin);
+				rng += L"-";
+				rng += Text::formatNumber(rngMax);
+
 				if (item->getFlatRate())
 				{
 					tu.erase(tu.end() - 1);
 				}
-				_lstInfo->addRow(3,
-								 tr("STR_SHOT_TYPE_AUTO").c_str(),
-								 Text::formatPercentage(item->getAccuracyAuto()).c_str(),
+				if( item->getAutoShots() )
+				{
+					txt += L" x";
+					txt += Text::formatNumber(item->getAutoShots()); 
+				}
+				_lstInfo->addRow(4,
+								 txt.c_str(),
+								 rng.c_str(),
+								 acc.c_str(),
 								 tu.c_str());
 				_lstInfo->setCellColor(current_row, 0, Palette::blockOffset(14)+15);
 				current_row++;
@@ -118,13 +147,22 @@ namespace OpenXcom
 			if (item->getTUSnap()>0)
 			{
 				std::wstring tu = Text::formatPercentage(item->getTUSnap());
+				std::wstring acc = Text::formatPercentage(item->getAccuracySnap());
+				std::wstring txt = tr("STR_SHOT_TYPE_SNAP");
+				int rngMin = item->getMinRange();
+				int rngMax = item->getSnapRange();
+				std::wstring rng = Text::formatNumber(rngMin);
+				rng += L"-";
+				rng += Text::formatNumber(rngMax);
+
 				if (item->getFlatRate())
 				{
 					tu.erase(tu.end() - 1);
 				}
-				_lstInfo->addRow(3,
-								 tr("STR_SHOT_TYPE_SNAP").c_str(),
-								 Text::formatPercentage(item->getAccuracySnap()).c_str(),
+				_lstInfo->addRow(4,
+								 txt.c_str(),
+								 rng.c_str(),
+								 acc.c_str(),
 								 tu.c_str());
 				_lstInfo->setCellColor(current_row, 0, Palette::blockOffset(14)+15);
 				current_row++;
@@ -133,13 +171,45 @@ namespace OpenXcom
 			if (item->getTUAimed()>0)
 			{
 				std::wstring tu = Text::formatPercentage(item->getTUAimed());
+				std::wstring acc = Text::formatPercentage(item->getAccuracyAimed());
+				std::wstring txt = tr("STR_SHOT_TYPE_AIMED");
+				int rngMin = item->getMinRange();
+				int rngMax = item->getAimRange();
+				std::wstring rng = Text::formatNumber(rngMin);
+				rng += L"-";
+				rng += Text::formatNumber(rngMax);
+
 				if (item->getFlatRate())
 				{
 					tu.erase(tu.end() - 1);
 				}
-				_lstInfo->addRow(3,
-								 tr("STR_SHOT_TYPE_AIMED").c_str(),
-								 Text::formatPercentage(item->getAccuracyAimed()).c_str(),
+				_lstInfo->addRow(4,
+								 txt.c_str(),
+								 rng.c_str(),
+								 acc.c_str(),
+								 tu.c_str());
+				_lstInfo->setCellColor(current_row, 0, Palette::blockOffset(14)+15);
+				current_row++;
+			}
+			if (item->getTUMelee()>0)
+			{
+				std::wstring tu = Text::formatPercentage(item->getTUMelee());
+				std::wstring acc = Text::formatPercentage(item->getAccuracyMelee());
+				std::wstring txt = tr("STR_SHOT_TYPE_MELEE");
+				int rngMin = 1;
+				int rngMax = 1;
+				std::wstring rng = Text::formatNumber(rngMin);
+				rng += L"-";
+				rng += Text::formatNumber(rngMax);
+
+				if (item->getFlatRate())
+				{
+					tu.erase(tu.end() - 1);
+				}
+				_lstInfo->addRow(4,
+								 txt.c_str(),
+								 rng.c_str(),
+								 acc.c_str(),
 								 tu.c_str());
 				_lstInfo->setCellColor(current_row, 0, Palette::blockOffset(14)+15);
 				current_row++;
@@ -208,6 +278,16 @@ namespace OpenXcom
 					{
 						ss << L"x" << item->getShotgunPellets();
 					}
+					// display ammo clip size
+					if (item->getClipSize() > 1)
+					{
+						ss << L" C" << item->getClipSize() ;
+					}
+					// display explosion radius 
+					if (item->getExplosionRadius())
+					{
+						ss << L" R" << item->getExplosionRadius();
+					}
 					_txtAmmoDamage[0]->setText(ss.str());
 				}
 				else
@@ -226,6 +306,16 @@ namespace OpenXcom
 							{
 								ss << L"x" << ammo_rule->getShotgunPellets();
 							}
+							// display ammo clip size
+							if (ammo_rule->getClipSize() > 1)
+							{
+								ss << L" C" << ammo_rule->getClipSize();
+							}
+							// display explosion radius
+							if (ammo_rule->getExplosionRadius())
+							{
+								ss << L" R" << ammo_rule->getExplosionRadius();
+							}
 							_txtAmmoDamage[i]->setText(ss.str());
 
 							ammo_rule->drawHandSprite(_game->getResourcePack()->getSurfaceSet("BIGOBS.PCK"), _imageAmmo[i]);
@@ -242,11 +332,21 @@ namespace OpenXcom
 				_txtDamage->setColor(Palette::blockOffset(14)+15);
 				_txtDamage->setAlign(ALIGN_CENTER);
 				_txtDamage->setText(tr("STR_DAMAGE_UC"));
-
 				_txtAmmoType[0]->setText(tr(getDamageTypeText(item->getDamageType())));
 
 				ss.str(L"");ss.clear();
 				ss << item->getPower();
+				
+				// display ammo clip size
+				if (item->getClipSize() > 1)
+				{
+					ss << L" C" << item->getClipSize();
+				}
+				// display explosion radius for grenades
+				if (item->getExplosionRadius())
+				{
+					ss << L" R" << item->getExplosionRadius();
+				}
 				_txtAmmoDamage[0]->setText(ss.str());
 				break;
 			default: break;
