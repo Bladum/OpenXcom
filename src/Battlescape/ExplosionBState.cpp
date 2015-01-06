@@ -266,7 +266,7 @@ void ExplosionBState::explode()
 			// check if this unit turns others into zombies
 			if (!_item->getRules()->getZombieUnit().empty()
 				&& victim
-				&& victim->getArmor()->getSize() == 1
+				&& victim->getArmor()->getZombiImmune() == false
 				&& (victim->getGeoscapeSoldier() || victim->getUnitRules()->getRace() == "STR_CIVILIAN")
 				&& victim->getSpawnUnit().empty()
 				&& victim->getOriginalFaction() != FACTION_HOSTILE)

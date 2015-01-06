@@ -52,7 +52,8 @@ private:
 	bool _canHoldWeapon;
 	ForcedTorso _forcedTorso;
 	int _personalLightPower;
-	int _regeneration;
+	int _regeneration;	
+	int _fearImmune, _bleedImmune, _painImmune, _zombiImmune;
 public:
 	/// Creates a blank armor ruleset.
 	Armor(const std::string &type);
@@ -89,25 +90,34 @@ public:
 	/// Gets whether this is a normal or big unit.
 	int getSize() const;
 	/// Gets damage modifier.
-	float getDamageModifier(ItemDamageType dt);
+	float getDamageModifier(ItemDamageType dt) const;
 	/// Gets loftempSet
-	std::vector<int> getLoftempsSet() const;
+	const std::vector<int> &getLoftempsSet() const;
 	/// Gets the armor's stats.
-	UnitStats *getStats();
+	const UnitStats *getStats() const;
 	/// Gets the armor's weight.
-	int getWeight();
+	int getWeight()const;
 	/// Gets number of death frames.
-	int getDeathFrames();
+	int getDeathFrames()const;
 	/// Gets if armor uses constant animation.
-	bool getConstantAnimation();
+	bool getConstantAnimation()const;
 	/// Gets if armor can hold weapon.
-	bool getCanHoldWeapon();
+	bool getCanHoldWeapon()const;
 	/// Checks if this armor ignores gender (power suit/flying suit).
-	ForcedTorso getForcedTorso();
+	ForcedTorso getForcedTorso()const;
 	/// Get Personal Light power
 	int getPersonalLightPower() const;
 	/// How many health points unit grain per turn.
 	int getRegeneration() const;	
+
+	/// Gets how armor react to fear.
+	bool getFearImmune(bool def = false) const;
+	/// Gets how armor react to bleeding.
+	bool getBleedImmune(bool def = false) const;
+	/// Gets how armor react to inflicted pain.
+	bool getPainImmune(bool def = false) const;
+	/// Gets how armor react to zombification.
+	bool getZombiImmune(bool def = false) const;
 };
 
 }
