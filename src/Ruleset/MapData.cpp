@@ -28,7 +28,7 @@ namespace OpenXcom
 MapData::MapData(MapDataSet *dataset) : _dataset(dataset), _specialType(TILE), 
 				_isUfoDoor(false), _stopLOS(false), _isNoFloor(false), _isGravLift(false), _isDoor(false), _blockFire(false), _blockSmoke(false), _baseModule(false),
 				_yOffset(0), _TUWalk(0), _TUFly(0), _TUSlide(0), _terrainLevel(0), _footstepSound(0), _dieMCD(0), _altMCD(0), _objectType(0), _lightSource(0),
-				_armor(0), _flammable(0), _fuel(0), _explosive(0), _explosiveType(0), _bigWall(0), _miniMapIndex(0)
+				_armor(0), _flammable(0), _fuel(0), _explosive(0), _explosiveType(0), _bigWall(0), _miniMapIndex(0), _windAnimation(3)
 {
 	std::fill_n(_sprite, 8, 0);
 	std::fill_n(_block, 6, 0);
@@ -580,6 +580,24 @@ void MapData::setStopLOS(bool stopLOS)
 {
 	_stopLOS = stopLOS;
 	_block[1] = stopLOS ? 255 : 0;
+}
+
+/**
+ * Gets the wind animation frame
+ * @return The wind frame number. 3 default to turn wind effect off, other to turn it on
+ */
+int MapData::getWindAnimation() const
+{
+	return _windAnimation;
+}
+
+/**
+ * Sets the wind Animation frame
+ * @param The wind frame number. 3 default to turn wind effect off, other to turn it on
+ */
+void MapData::setWindAnimation(int windAnimation)
+{
+	_windAnimation = windAnimation;
 }
 
 }

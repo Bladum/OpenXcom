@@ -220,6 +220,16 @@ void Tile::setMapData(MapData *dat, int mapDataID, int mapDataSetID, int part)
 	_objects[part] = dat;
 	_mapDataID[part] = mapDataID;
 	_mapDataSetID[part] = mapDataSetID;
+
+	// if wind animation exist it overwrites actual currentFrame
+	// in vanila MCD file all objects has default value of 3 so it is a matter of 3 or not 3
+	if(_objects[part])
+	{
+		if(_objects[part]->getWindAnimation() != 3) 
+		{
+			_currentFrame[part] = RNG::generateEx(7);
+		}
+	}
 }
 
 /**

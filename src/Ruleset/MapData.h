@@ -57,6 +57,7 @@ private:
 	bool _isUfoDoor, _stopLOS, _isNoFloor, _isGravLift, _isDoor, _blockFire, _blockSmoke, _baseModule;
 	int _yOffset, _TUWalk, _TUFly, _TUSlide, _terrainLevel, _footstepSound, _dieMCD, _altMCD, _objectType, _lightSource;
 	int _armor, _flammable, _fuel, _explosive, _explosiveType, _bigWall;
+	int _windAnimation;
 	int _sprite[8];
 	int _block[6];
 	int _loftID[12];
@@ -168,6 +169,10 @@ public:
 	void setNoFloor(bool isNoFloor);
 	/// Sets this tile as not stopping LOS.
 	void setStopLOS(bool stopLOS);
+	/// Gets wind animation
+	int getWindAnimation() const;
+	/// Sets the wind animation
+	void setWindAnimation(int windAnimation);
 };
 
 }

@@ -129,7 +129,7 @@ void MapDataSet::loadData()
 	unsigned char Door;
 	unsigned char Block_Fire;
 	unsigned char Block_Smoke;
-	unsigned char u39;
+	unsigned char Wind_Animation;
 	unsigned char TU_Walk;
 	unsigned char TU_Slide;
 	unsigned char TU_Fly;
@@ -191,6 +191,7 @@ void MapDataSet::loadData()
 		to->setLightSource((int)mcd.Light_Source);
 		to->setArmor((int)mcd.Armor);
 		to->setFlammable((int)mcd.Flammable);
+		to->setWindAnimation((int)mcd.Wind_Animation);
 		to->setFuel((int)mcd.Fuel);
 		to->setExplosiveType((int)mcd.HE_Type);
 		to->setExplosive((int)mcd.HE_Strength);
