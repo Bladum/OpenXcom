@@ -28,7 +28,7 @@ namespace OpenXcom
  * Creates a blank ruleset for a certain type of item.
  * @param type String defining the type.
  */
-RuleItem::RuleItem(const std::string &type) : _type(type), _name(type), _size(0.0), _costBuy(0), _costSell(0), _transferTime(24), _weight(3), _bigSprite(0), _floorSprite(-1), _handSprite(120), _bulletSprite(-1), _fireSound(-1), _hitSound(-1), _hitAnimation(0), _power(0), _damageType(DT_NONE),
+RuleItem::RuleItem(const std::string &type) : _type(type), _name(type), _size(0.0), _costBuy(0), _costSell(0), _transferTime(24), _weight(3), _bigSprite(0), _bigSpriteAlt(0), _floorSprite(-1), _floorSpriteAlt(-1), _handSprite(120), _bulletSprite(-1), _fireSound(-1), _hitSound(-1), _hitAnimation(0), _power(0), _damageType(DT_NONE),
 											_accuracyAuto(0), _accuracySnap(0), _accuracyAimed(0), _tuAuto(0), _tuSnap(0), _tuAimed(0), _clipSize(0), _accuracyMelee(0), _tuMelee(0), _battleType(BT_NONE), _twoHanded(false), _waypoint(false), _fixedWeapon(false), _invWidth(1), _invHeight(1),
 											_painKiller(0), _heal(0), _stimulant(0), _woundRecovery(0), _healthRecovery(0), _stunRecovery(0), _energyRecovery(0), _tuUse(0), _recoveryPoints(0), _armor(20), _turretType(-1), _recover(true), _liveAlien(false), _blastRadius(-1), _attraction(0),
 											_flatRate(false), _arcingShot(false), _listOrder(0), _maxRange(200), _aimRange(200), _snapRange(15), _autoRange(7), _minRange(0), _dropoff(2), _bulletSpeed(0), _explosionSpeed(0), _autoShots(3), _shotgunPellets(0),  _tuLoad(15), _tuUnload(8),
@@ -67,12 +67,34 @@ void RuleItem::load(const YAML::Node &node, int modIndex, int listOrder)
 		if (_bigSprite > 56)
 			_bigSprite += modIndex;
 	}
+	if (node["bigSpriteAlt"])
+	{
+		_bigSpriteAlt = node["bigSpriteAlt"].as<int>(_bigSpriteAlt);
+		// BIGOBS.PCK: 57 entries
+		if (_bigSpriteAlt > 56)
+			_bigSpriteAlt += modIndex;
+	}
+	else
+	{
+		_bigSpriteAlt = _bigSprite;
+	}
 	if (node["floorSprite"])
 	{
 		_floorSprite = node["floorSprite"].as<int>(_floorSprite);
 		// FLOOROB.PCK: 73 entries
 		if (_floorSprite > 72)
 			_floorSprite += modIndex;
+	}
+	if (node["floorSpriteAlt"])
+	{
+		_floorSpriteAlt = node["floorSpriteAlt"].as<int>(_floorSpriteAlt);
+		// FLOOROB.PCK: 73 entries
+		if (_floorSpriteAlt > 72)
+			_floorSpriteAlt += modIndex;
+	}
+	else
+	{
+		_floorSpriteAlt = _floorSprite;
 	}
 	if (node["handSprite"])
 	{
@@ -284,13 +306,31 @@ int RuleItem::getBigSprite() const
 	return _bigSprite;
 }
 
-/**
- * Gets the reference in FLOOROB.PCK for use in inventory.
+ /**
+ * Gets the alternative reference in BIGOBS.PCK for use in inventory.
  * @return The sprite reference.
  */
+int RuleItem::getBigSpriteAlt() const
+{
+	return _bigSpriteAlt;
+}
+
+/**
+ * Gets the reference in FLOOROB.PCK for use in battlescape.
+ * @return The sprite reference.
+*/
 int RuleItem::getFloorSprite() const
 {
 	return _floorSprite;
+}
+
+/**
+ * Gets the alternative reference in FLOOROB.PCK for use in battlescape.
+ * @return The sprite reference.
+*/
+int RuleItem::getFloorSpriteAlt() const
+{
+	return _floorSpriteAlt;
 }
 
 /**
@@ -507,13 +547,13 @@ int RuleItem::getClipSize() const
  * @param texture Pointer to the surface set to get the sprite from.
  * @param surface Pointer to the surface to draw to.
  */
-void RuleItem::drawHandSprite(SurfaceSet *texture, Surface *surface) const
-{
-	Surface *frame = texture->getFrame(this->getBigSprite());
-	frame->setX((RuleInventory::HAND_W - this->getInventoryWidth()) * RuleInventory::SLOT_W/2);
-	frame->setY((RuleInventory::HAND_H - this->getInventoryHeight()) * RuleInventory::SLOT_H/2);
-	texture->getFrame(this->getBigSprite())->blit(surface);
-}
+void RuleItem::drawHandSprite(SurfaceSet *texture, Surface *surface, bool alt) const
+ {
+	Surface *frame = texture->getFrame(alt ? this->getBigSpriteAlt() : this->getBigSprite());
+ 	frame->setX((RuleInventory::HAND_W - this->getInventoryWidth()) * RuleInventory::SLOT_W/2);
+ 	frame->setY((RuleInventory::HAND_H - this->getInventoryHeight()) * RuleInventory::SLOT_H/2);
+	frame->blit(surface);
+ }
 
 /**
  * Gets the heal quantity of the item.

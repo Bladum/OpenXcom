@@ -134,6 +134,12 @@ public:
 	/// Sets the item's ruleset.
 	void convertToCorpse(RuleItem *rules);
 
+	/// Is item using alternative graphic.
+	bool isSpriteAlt() const;
+	/// Gets the item's floor sprite.
+	int getFloorSprite() const;
+	/// Gets the item's inventory sprite.
+	int getBigSprite() const;
 };
 
 }

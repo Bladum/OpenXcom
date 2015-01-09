@@ -45,7 +45,9 @@ private:
 	std::vector<std::string> _requires;
 	double _size;
 	int _costBuy, _costSell, _transferTime, _weight;
-	int _bigSprite, _floorSprite, _handSprite, _bulletSprite;
+	int _bigSprite, _bigSpriteAlt;
+	int _floorSprite, _floorSpriteAlt;
+	int _handSprite, _bulletSprite;
 	int _fireSound, _hitSound, _hitAnimation;
 	int _power;
 	std::vector<std::string> _compatibleAmmo;
@@ -95,8 +97,12 @@ public:
 	int getWeight() const;
 	/// Gets the item's reference in BIGOBS.PCK for use in inventory.
 	int getBigSprite() const;
-	/// Gets the item's reference in FLOOROB.PCK for use in inventory.
+	/// Gets the item's alternative reference in BIGOBS.PCK for use in inventory.
+	int getBigSpriteAlt() const;
+	/// Gets the item's reference in FLOOROB.PCK for use in battlescape.
 	int getFloorSprite() const;
+	/// Gets the item's alternative reference in FLOOROB.PCK for use in battlescape.
+	int getFloorSpriteAlt() const;
 	/// Gets the item's reference in HANDOB.PCK for use in inventory.
 	int getHandSprite() const;
 	/// Gets if the item is two-handed.
@@ -144,7 +150,7 @@ public:
 	/// Gets the ammo amount.
 	int getClipSize() const;
 	/// Draws the item's hand sprite onto a surface.
-	void drawHandSprite(SurfaceSet *texture, Surface *surface) const;
+	void drawHandSprite(SurfaceSet *texture, Surface *surface, bool alt = false) const;
 	/// Gets the medikit heal quantity.
 	int getHealQuantity() const;
 	/// Gets the medikit pain killer quantity.
