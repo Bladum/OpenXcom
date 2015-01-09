@@ -20,10 +20,87 @@
 #define OPENXCOM_RULEUFO_H
 
 #include <string>
+#include <map>
 #include <yaml-cpp/yaml.h>
 
 namespace OpenXcom
 {
+
+/**
+ * Battle statistic of craft type and bonus form craft weapons.
+ */
+struct RuleUfoStats
+{
+	int damageMax, speedMax, accel, radarRange, radarChance, 
+		sightRange, hitBonus, avoidBonus, power, 
+		range, reload;
+
+	/// Default constructor.
+	RuleUfoStats() :
+		damageMax(0), speedMax(0), accel(0),
+		radarRange(0), radarChance(0), sightRange(0),
+		hitBonus(0), avoidBonus(0), power(0), 
+		range(0), reload(0)
+	{
+
+	}
+	/// Add different stats.
+	RuleUfoStats& operator+=(const RuleUfoStats& r)
+	{
+		damageMax += r.damageMax;
+		speedMax += r.speedMax;
+		accel += r.accel;
+		radarRange += r.radarRange;
+		radarChance += r.radarChance;
+		sightRange += r.sightRange;
+		hitBonus += r.hitBonus;
+		avoidBonus += r.avoidBonus;
+		power += r.power;
+		range += r.range;
+		reload += r.reload;
+		return *this;
+	}
+	/// Subtract different stats.
+	RuleUfoStats& operator-=(const RuleUfoStats& r)
+	{
+		damageMax -= r.damageMax;
+		speedMax -= r.speedMax;
+		accel -= r.accel;
+		radarRange -= r.radarRange;
+		radarChance -= r.radarChance;
+		sightRange -= r.sightRange;
+		hitBonus -= r.hitBonus;
+		avoidBonus -= r.avoidBonus;
+		power -= r.power;
+		range -= r.range;
+		reload -= r.reload;
+		return *this;
+	}
+	/// Gets negative values of stats.
+	RuleUfoStats operator-() const
+	{
+		RuleUfoStats s;
+		s -= *this;
+		return s;
+	}
+	/// Loads stats form YAML.
+	void load(const YAML::Node &node)
+	{
+		damageMax = node["damageMax"].as<int>(damageMax);
+		speedMax = node["speedMax"].as<int>(speedMax);
+		accel = node["accel"].as<int>(accel);
+		sightRange = node["sightRange"].as<int>(sightRange);
+		power = node["power"].as<int>(power);
+		range = node["range"].as<int>(range);
+		reload = node["reload"].as<int>(reload);
+		
+		avoidBonus = node["avoidBonus"].as<int>(avoidBonus);
+		hitBonus = node["hitBonus"].as<int>(hitBonus);		
+		radarRange = node["radarRange"].as<int>(radarRange);
+		radarChance = node["radarChance"].as<int>(radarChance);
+		
+	}
+};
 
 class RuleTerrain;
 class Ruleset;
@@ -42,6 +119,8 @@ private:
 	int _damageMax, _speedMax, _accel, _power, _range, _score, _reload, _breakOffTime, _sightRange;
 	RuleTerrain *_battlescapeTerrainData;
 	std::string _modSprite;
+	RuleUfoStats _stats;
+	std::map<std::string, RuleUfoStats> _statsRaceBonus;
 public:
 	/// Creates a blank UFO ruleset.
 	RuleUfo(const std::string &type);
@@ -79,6 +158,15 @@ public:
 	std::string getModSprite() const;
 	/// Gets the UFO's radar range.
 	int getSightRange() const;
+
+	/// Gets the UFO's weapon chance to hit.
+	int getWeaponAccuracy() const;	
+	/// Get basic statistic of UFO.
+	const RuleUfoStats& getStats() const;
+	/// Get race bonus of statistic of UFO.
+	const RuleUfoStats& getRaceBonus(const std::string& s) const;
+	/// Get avoid chance of UFO
+	int getAvoidChance() const;
 };
 
 }

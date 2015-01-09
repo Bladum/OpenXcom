@@ -27,8 +27,11 @@ namespace OpenXcom
  * type of UFO.
  * @param type String defining the type.
  */
-RuleUfo::RuleUfo(const std::string &type) : _type(type), _size("STR_VERY_SMALL"), _sprite(-1), _damageMax(0), _speedMax(0), _accel(0), _power(0), _range(0), _score(0), _reload(0), _breakOffTime(0), _sightRange(268), _battlescapeTerrainData(0)
+RuleUfo::RuleUfo(const std::string &type) : _type(type), _size("STR_VERY_SMALL"), _sprite(-1), _damageMax(0), _speedMax(0), 
+	_accel(0), _power(0), _range(0), _score(0), _reload(0), _breakOffTime(0), _sightRange(268), _battlescapeTerrainData(0),
+	_modSprite(""), _stats(), _statsRaceBonus()
 {
+	_statsRaceBonus[""] = RuleUfoStats();
 }
 
 /**
@@ -49,15 +52,19 @@ void RuleUfo::load(const YAML::Node &node, Ruleset *ruleset)
 	_type = node["type"].as<std::string>(_type);
 	_size = node["size"].as<std::string>(_size);
 	_sprite = node["sprite"].as<int>(_sprite);
+
 	_damageMax = node["damageMax"].as<int>(_damageMax);
 	_speedMax = node["speedMax"].as<int>(_speedMax);
 	_accel = node["accel"].as<int>(_accel);
+	_sightRange = node["sightRange"].as<int>(_sightRange);
 	_power = node["power"].as<int>(_power);
 	_range = node["range"].as<int>(_range);
-	_score = node["score"].as<int>(_score);
 	_reload = node["reload"].as<int>(_reload);
+	
+	_score = node["score"].as<int>(_score);
 	_breakOffTime = node["breakOffTime"].as<int>(_breakOffTime);
-	_sightRange = node["sightRange"].as<int>(_sightRange);
+	
+	_stats.load(node);
 	if (const YAML::Node &terrain = node["battlescapeTerrainData"])
 	{
 		RuleTerrain *rule = new RuleTerrain(terrain["name"].as<std::string>());
@@ -65,6 +72,13 @@ void RuleUfo::load(const YAML::Node &node, Ruleset *ruleset)
 		_battlescapeTerrainData = rule;
 	}
 	_modSprite = node["modSprite"].as<std::string>(_modSprite);
+	if (const YAML::Node &raceBonus = node["raceBonus"])
+	{
+		for (YAML::const_iterator i = raceBonus.begin(); i != raceBonus.end(); ++i)
+		{
+			_statsRaceBonus[i->first.as<std::string>()].load(i->second);
+		}
+	}
 }
 
 /**
@@ -133,7 +147,7 @@ int RuleUfo::getSprite() const
  */
 int RuleUfo::getMaxDamage() const
 {
-	return _damageMax;
+	return _stats.damageMax;
 }
 
 /**
@@ -143,7 +157,7 @@ int RuleUfo::getMaxDamage() const
  */
 int RuleUfo::getMaxSpeed() const
 {
-	return _speedMax;
+	return _stats.speedMax;
 }
 
 /**
@@ -153,7 +167,7 @@ int RuleUfo::getMaxSpeed() const
  */
 int RuleUfo::getAcceleration() const
 {
-	return _accel;
+	return _stats.accel;
 }
 
 /**
@@ -163,7 +177,7 @@ int RuleUfo::getAcceleration() const
  */
 int RuleUfo::getWeaponPower() const
 {
-	return _power;
+	return _stats.power;
 }
 
 /**
@@ -173,7 +187,7 @@ int RuleUfo::getWeaponPower() const
  */
 int RuleUfo::getWeaponRange() const
 {
-	return _range;
+	return _stats.range;
 }
 
 /**
@@ -201,7 +215,7 @@ RuleTerrain *RuleUfo::getBattlescapeTerrainData()
  */
 int RuleUfo::getWeaponReload() const
 {
-	return _reload;
+	return _stats.reload;
 }
 
 /**
@@ -229,6 +243,48 @@ std::string RuleUfo::getModSprite() const
  */
 int RuleUfo::getSightRange() const
 {
-	return _sightRange;
+	return _stats.sightRange;
 }
+
+/**
+ * Gets the UFO's stats
+ * @return Ufo stats (with races bonus).
+ */
+const RuleUfoStats& RuleUfo::getStats() const
+{
+	return _stats;
+}
+
+/**
+ * Gets the UFO's weapon chance to hit.
+ * @return The chance to hit in percantage.
+*/ 
+int RuleUfo::getWeaponAccuracy() const	
+{
+	return 60 + _stats.hitBonus;
+}
+
+/**
+ * Gets the UFO's avoid chance
+ * @return The chance to hit in percantage.
+*/
+int RuleUfo::getAvoidChance() const
+{
+	return -_stats.avoidBonus + 100 - 40 + getRadius()*10;
+}
+
+/**
+ * Gets bonus statistic of UFO based on race.
+ * @param s Race name.
+ * @return Bonus stats.
+ */
+const RuleUfoStats& RuleUfo::getRaceBonus(const std::string& s) const
+{
+	std::map<std::string, RuleUfoStats>::const_iterator i = _statsRaceBonus.find(s);
+	if (i != _statsRaceBonus.end())
+		return i->second;
+	else
+		return _statsRaceBonus.find("")->second;
+}
+
 }

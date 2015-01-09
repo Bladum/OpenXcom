@@ -741,6 +741,14 @@ void DogfightState::move()
 		return;
 	}
 	
+	// acceleration difference makes UFO flys slower / faster
+	int accelDif = _craft->getRules()->getAcceleration() - _ufo->getRules()->getAcceleration();
+	int dogfightSpeed = 4;
+	if(accelDif > 2) accelDif = 5;
+	if(accelDif > 5) accelDif = 6;
+	if(accelDif < -2) accelDif = 3;
+	if(accelDif < -5) accelDif = 2;
+
 	if (_minimized && _ufo->getSpeed() > _craft->getSpeed())
 	{
 		_craft->setSpeed(_craft->getRules()->getMaxSpeed());
@@ -776,7 +784,7 @@ void DogfightState::move()
 		{
 			if (_currentDist < _targetDist && !_ufo->isCrashed() && !_craft->isDestroyed())
 			{
-				distanceChange = 4;
+				distanceChange = dogfightSpeed;
 				if (_currentDist + distanceChange >_targetDist)
 				{
 					distanceChange = _targetDist - _currentDist;
@@ -784,7 +792,7 @@ void DogfightState::move()
 			}
 			else if (_currentDist > _targetDist && !_ufo->isCrashed() && !_craft->isDestroyed())
 			{
-				distanceChange = -2;
+				distanceChange = -dogfightSpeed/2;
 			}
 
 			// don't let the interceptor mystically push or pull its fired projectiles
@@ -795,7 +803,7 @@ void DogfightState::move()
 		}
 		else
 		{
-			distanceChange = 4;
+			distanceChange = dogfightSpeed;
 
 			// UFOs can try to outrun our missiles, don't adjust projectile positions here
 			// If UFOs ever fire anything but beams, those positions need to be adjust here though.
@@ -819,7 +827,7 @@ void DogfightState::move()
 				if (((p->getPosition() >= _currentDist) || (p->getGlobalType() == CWPGT_BEAM && p->toBeRemoved())) && !_ufo->isCrashed() && !p->getMissed())
 				{
 					// UFO hit.
-					if (RNG::percent((p->getAccuracy() * (100 + 300 / (5 - _ufoSize)) + 100) / 200))
+					if (RNG::percent( p->getAccuracy() * _ufo->getRules()->getAvoidChance() ) )
 					{
 						// Formula delivered by Volutar
 						int damage = RNG::generate(p->getDamage() / 2, p->getDamage());
@@ -1196,7 +1204,7 @@ void DogfightState::ufoFireWeapon()
 	setStatus("STR_UFO_RETURN_FIRE");
 	CraftWeaponProjectile *p = new CraftWeaponProjectile();
 	p->setType(CWPT_PLASMA_BEAM);
-	p->setAccuracy(60);
+	p->setAccuracy( _ufo->getRules()->getWeaponAccuracy());
 	p->setDamage(_ufo->getRules()->getWeaponPower());
 	p->setDirection(D_DOWN);
 	p->setHorizontalPosition(HP_CENTER);

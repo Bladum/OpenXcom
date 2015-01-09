@@ -29,6 +29,8 @@ namespace OpenXcom
 class RuleTerrain;
 class Ruleset;
 
+
+
 /**
  * Represents a specific type of craft.
  * Contains constant info about a craft like
