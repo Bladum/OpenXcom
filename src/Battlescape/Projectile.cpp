@@ -244,11 +244,7 @@ int Projectile::calculateThrow(double accuracy)
 			_trajectory.clear();
 			test = _save->getTileEngine()->calculateParabola(originVoxel, targetVoxel, true, &_trajectory, _action.actor, curvature, deltas);
 
-			Position endPoint = _trajectory.back();
-			endPoint.x /= 16;
-			endPoint.y /= 16;
-			endPoint.z /= 24;
-			Tile *endTile = _save->getTile(endPoint);
+			Tile *endTile = _save->getTile(_trajectory.back().toTile());
 			// check if the item would land on a tile with a blocking object
 			if (_action.type == BA_THROW
 				&& endTile
@@ -437,12 +433,12 @@ void Projectile::skipTrajectory()
  * Gets the Position of origin for the projectile
  * @return origin as a tile position.
  */
-Position Projectile::getOrigin()
-{
-	// instead of using the actor's position, we'll use the voxel origin translated to a tile position
-	// this is a workaround for large units.
-	return _trajectory.front() / Position(16,16,24);
-}
+Position Projectile::getOrigin() const
+ {
+ 	// instead of using the actor's position, we'll use the voxel origin translated to a tile position
+ 	// this is a workaround for large units.
+	return _trajectory.front().toTile();
+ }
 
 /**
  * Gets the INTENDED target for this projectile
@@ -450,7 +446,7 @@ Position Projectile::getOrigin()
  * but rather the targetted tile
  * @return target as a tile position.
  */
-Position Projectile::getTarget()
+Position Projectile::getTarget() const
 {
 	return _action.target;
 }

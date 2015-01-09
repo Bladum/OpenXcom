@@ -45,6 +45,21 @@ namespace OpenXcom
 {
 
 /**
+ * Helper function for setting value with max bound.
+ * @param value
+ * @param max
+ * @param diff
+ */
+static inline void setValueMax(int& value, int max, int diff)
+{
+	value += diff;
+	if (value < 0)
+		value = 0;
+	else if (value > max)
+		value = max;
+}
+
+/**
  * Initializes a BattleUnit from a Soldier
  * @param soldier Pointer to the Soldier.
  * @param depth the depth of the battlefield (used to determine movement type in case of MT_FLOAT).
@@ -933,21 +948,19 @@ int BattleUnit::getMorale() const
  * @param ignoreArmor Should the damage ignore armor resistance?
  * @return damage done after adjustment
  */
-int BattleUnit::damage(const Position &relative, int power, ItemDamageType type, bool ignoreArmor)
+int BattleUnit::damage(const Position &relative, int power, const RuleDamageType *type)
 {
 	UnitSide side = SIDE_FRONT;
 	UnitBodyPart bodypart = BODYPART_TORSO;
 
-	if (power <= 0)
+	if (power <= 0 || !_health)
 	{
 		return 0;
 	}
 
-	power = (int)floor(power * _armor->getDamageModifier(type));
+	power = (int)floor(power * _armor->getDamageModifier(type->ResistType));
 
-	if (type == DT_SMOKE) type = DT_STUN; // smoke doesn't do real damage, but stun damage
-
-	if (!ignoreArmor)
+	if (!type->IgnoreDirection)
 	{
 		if (relative == Position(0, 0, 0))
 		{
@@ -1018,49 +1031,49 @@ int BattleUnit::damage(const Position &relative, int power, ItemDamageType type,
 		power -= getArmor(side);
 	}
 
-	if (power > 0)
+	if (type->ArmorEffectiveness > 0.0f)
 	{
-		if (type == DT_STUN)
-		{
-			_stunlevel += power;
-		}
-		else
-		{
-			// health damage
-			_health -= power;
-			if (_health < 0)
-			{
-				_health = 0;
-			}
-
-			if (type != DT_IN)
-			{
-				if (!_armor->getPainImmune() )
-				{
-					// conventional weapons can cause additional stun damage
-					_stunlevel += RNG::generate(0, power / 4);
-					if(_stunlevel < 0)
-					{
-						_stunlevel = 0;
-					}
-				}
-				// fatal wounds
-				if (isWoundable())
-				{
-					if (RNG::generate(0, 10) < power)
-						_fatalWounds[bodypart] += RNG::generate(1,3);
-
-					if (_fatalWounds[bodypart])
-						moraleChange(-_fatalWounds[bodypart]);
-				}
-
-				// armor damage
-				setArmor(getArmor(side) - (power/10) - 1, side);
-			}
-		}
+		power -= getArmor(side) * type->ArmorEffectiveness;
 	}
 
-	return power < 0 ? 0:power;
+	if (power > 0)
+	{
+		if (!_armor->getPainImmune() || type->IgnorePainImmunity)
+		{
+			// conventional weapons can cause additional stun damage
+			_stunlevel += int(RNG::generate(0, power) * type->ToStun);
+			if(_stunlevel < 0)
+			{
+				_stunlevel = 0;
+			}
+		}
+
+		moraleChange(-(110 - _stats.bravery) * power * type->ToMorale / 100);
+
+		setValueMax(_tu, _stats.tu, - power * type->ToTime);
+		setValueMax(_health, _stats.health, - power * type->ToHealth);
+		setValueMax(_energy, _stats.stamina, - power * type->ToEnergy);
+
+		// fatal wounds
+		if (isWoundable())
+		{
+			if (RNG::generate(0, 10) < int(power * type->ToWound))
+			{
+				const int wound = RNG::generate(1,3);
+				_fatalWounds[bodypart] += wound;
+				moraleChange(-wound);
+			}
+		}
+
+		// armor damage
+		if(type->ToArmor > 0.0f)
+		{
+			setArmor(getArmor(side) - int(power * type->ToArmor) - 1, side);
+		}
+	}
+//	}
+
+	return power < 0 ? 0 : power * type->ToHealth;
 }
 
 /**
@@ -2940,12 +2953,12 @@ void BattleUnit::setEnviSmoke(int damage)
 /**
  * Calculate smoke and fire damage from environment.
  */
-void BattleUnit::calculateEnviDamage()
+void BattleUnit::calculateEnviDamage(Ruleset *ruleset)
 {
 	if (_fireMaxHit)
 	{
 		_hitByFire = true;
-		damage(Position(0, 0, 0), _fireMaxHit, DT_IN );
+		damage(Position(0, 0, 0), _fireMaxHit, ruleset->getDamageType(DT_IN) );
 		// try to set the unit on fire.
 		if (RNG::percent(40 * getArmor()->getDamageModifier(DT_IN)))
 		{
@@ -2959,7 +2972,7 @@ void BattleUnit::calculateEnviDamage()
 
 	if (_smokeMaxHit)
 	{
-		damage(Position(0,0,0), _smokeMaxHit, DT_SMOKE );
+		damage(Position(0,0,0), _smokeMaxHit, ruleset->getDamageType(DT_SMOKE)  );
 	}
 
 	_fireMaxHit = 0;
@@ -2989,6 +3002,8 @@ const UnitStats *BattleUnit::getStats() const
 {
 	return &_stats;
 }
+
+
 
 
 }

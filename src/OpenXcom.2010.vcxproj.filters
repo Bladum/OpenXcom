@@ -907,6 +907,7 @@
     <ClCompile Include="Ruleset\RuleVideo.cpp">
       <Filter>Ruleset</Filter>
     </ClCompile>
+    <ClCompile Include="Ruleset\RuleDamageType.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Basescape\ManufactureState.h">
@@ -1841,6 +1842,7 @@
     <ClInclude Include="Ruleset\RuleVideo.h">
       <Filter>Ruleset</Filter>
     </ClInclude>
+    <ClInclude Include="Ruleset\RuleDamageType.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Geoscape">

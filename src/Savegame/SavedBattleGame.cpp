@@ -210,12 +210,6 @@ void SavedBattleGame::load(const YAML::Node &node, Ruleset *rule, SavedGame* sav
 			if ((unit->getId() == selectedUnit) || (_selectedUnit == 0 && !unit->isOut()))
 				_selectedUnit = unit;
 			
-			// silly hack to fix mind controlled aliens
-			// TODO: save stats instead? maybe some kind of weapon will affect them at some point.
-			if (unit->getOriginalFaction() == FACTION_HOSTILE)
-			{
-				unit->adjustStats(savedGame->getDifficulty());
-			}
 		}
 		if (unit->getStatus() != STATUS_DEAD)
 		{
@@ -1355,6 +1349,7 @@ void SavedBattleGame::prepareNewTurn()
 		}
 	}
 
+	Ruleset *ruleset = getBattleState()->getGame()->getRuleset();
 	if (!tilesOnFire.empty() || !tilesOnSmoke.empty())
 	{
 		// do damage to units, average out the smoke, etc.
@@ -1370,7 +1365,7 @@ void SavedBattleGame::prepareNewTurn()
 	// enviromental damage to units
 	for (std::vector<BattleUnit*>::iterator i = getUnits()->begin(); i != getUnits()->end(); ++i)
 	{
-		(*i)->calculateEnviDamage();
+		(*i)->calculateEnviDamage(ruleset);
 	}
 
 	reviveUnconsciousUnits();

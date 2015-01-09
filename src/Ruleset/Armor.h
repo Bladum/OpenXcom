@@ -24,6 +24,7 @@
 #include <yaml-cpp/yaml.h>
 #include "MapData.h"
 #include "Unit.h"
+#include "RuleDamageType.h"
 
 namespace OpenXcom
 {
@@ -36,8 +37,7 @@ enum ForcedTorso{ TORSO_USE_GENDER, TORSO_ALWAYS_MALE, TORSO_ALWAYS_FEMALE };
  */
 class Armor
 {
-public:	
-	static const int DAMAGE_TYPES = 10;
+
 private:
 	std::string _type, _spriteSheet, _spriteInv, _corpseGeo, _storeItem, _specWeapon;
 	std::vector<std::string> _corpseBattle;

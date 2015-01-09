@@ -455,10 +455,7 @@ void ProjectileFlyBState::think()
 			if (_action.type == BA_THROW)
 			{
 				_parent->getMap()->resetCameraSmoothing();
-				Position pos = _parent->getMap()->getProjectile()->getPosition(-1);
-				pos.x /= 16;
-				pos.y /= 16;
-				pos.z /= 24;
+				Position pos = _parent->getMap()->getProjectile()->getPosition(-1).toTile();
 				if (pos.y > _parent->getSave()->getMapSizeY())
 				{
 					pos.y--;
@@ -519,8 +516,8 @@ void ProjectileFlyBState::think()
 					_parent->statePushFront(new ExplosionBState(_parent, _parent->getMap()->getProjectile()->getPosition(offset), _ammo, _action.actor, 0, (_action.type != BA_AUTOSHOT || _action.autoShotCounter == _action.weapon->getRules()->getAutoShots() || !_action.weapon->getAmmoItem())));
 
 					// special shotgun behaviour: trace extra projectile paths, and add bullet hits at their termination points.
-					if (_ammo && _ammo->getRules()->getShotgunPellets()  != 0)
-					{
+					if (_ammo && _ammo->getRules()->getShotgunPellets() != 0 && _ammo->getRules()->getDamageType()->isDirect())
+ 					{
 						int i = 1;
 						while (i != _ammo->getRules()->getShotgunPellets())
 						{
@@ -582,9 +579,9 @@ void ProjectileFlyBState::cancel()
 	if (_parent->getMap()->getProjectile())
 	{
 		_parent->getMap()->getProjectile()->skipTrajectory();
-		Position p = _parent->getMap()->getProjectile()->getPosition();
-		if (!_parent->getMap()->getCamera()->isOnScreen(Position(p.x/16, p.y/16, p.z/24), false))
-			_parent->getMap()->getCamera()->centerOnPosition(Position(p.x/16, p.y/16, p.z/24));
+		Position p = _parent->getMap()->getProjectile()->getPosition().toTile();
+		if (!_parent->getMap()->getCamera()->isOnScreen(p, false))
+			_parent->getMap()->getCamera()->centerOnPosition(p);
 	}
 }
 
@@ -674,7 +671,7 @@ void ProjectileFlyBState::performMeleeAttack()
 	int height = target->getFloatHeight() + (target->getHeight() / 2);
 	Position voxel;
 	_parent->getSave()->getPathfinding()->directionToVector(_unit->getDirection(), &voxel);
-	voxel = _action.target * Position(16, 16, 24) + Position(8,8,height - _parent->getSave()->getTile(_action.target)->getTerrainLevel()) - voxel;
+	voxel = _action.target.toVexel() + Position(8,8,height - _parent->getSave()->getTile(_action.target)->getTerrainLevel()) - voxel;
 	// set the soldier in an aiming position
 	_unit->aim(true);
 	_unit->setCache(0);

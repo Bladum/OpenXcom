@@ -49,7 +49,10 @@ namespace OpenXcom
  * @param tile Tile the explosion is on.
  * @param lowerWeapon Whether the unit causing this explosion should now lower their weapon.
  */
-ExplosionBState::ExplosionBState(BattlescapeGame *parent, Position center, BattleItem *item, BattleUnit *unit, Tile *tile, bool lowerWeapon) : BattleState(parent), _unit(unit), _center(center), _item(item), _tile(tile), _power(0), _areaOfEffect(false), _lowerWeapon(lowerWeapon), _pistolWhip(false), _hit(false)
+ExplosionBState::ExplosionBState(BattlescapeGame *parent, Position center, BattleItem *item, BattleUnit *unit, Tile *tile, bool lowerWeapon) : BattleState(parent), 
+		_unit(unit), _center(center), _item(item), _damageType(), 
+		_tile(tile), _power(0), _radius(6), _areaOfEffect(false), 
+		_lowerWeapon(lowerWeapon), _pistolWhip(false), _hit(false)
 {
 
 }
@@ -72,12 +75,16 @@ void ExplosionBState::init()
 	if (_item)
 	{
 		_power = _item->getRules()->getPower();
+		_damageType = _item->getRules()->getDamageType();
+		_radius = _item->getRules()->getExplosionRadius();
 		// getCurrentAction() only works for player actions: aliens cannot melee attack with rifle butts.
 		_pistolWhip = (_item->getRules()->getBattleType() != BT_MELEE &&
 			_parent->getCurrentAction()->type == BA_HIT);
 		if (_pistolWhip)
 		{
 			_power = _item->getRules()->getMeleePower();
+			_damageType = _parent->getRuleset()->getDamageType(DT_MELEE);
+			_radius = 0;
 		}
 		// since melee aliens don't use a conventional weapon type, we use their strength instead.
 		if (_item->getRules()->isStrengthApplied())
@@ -93,19 +100,26 @@ void ExplosionBState::init()
 	{
 		_power = _tile->getExplosive();
 		_areaOfEffect = true;
+		_tile->setExplosive(0, true);
+		_damageType = _parent->getRuleset()->getDamageType(DT_HE);
+		_radius = _power /10;
 	}
 	else if (_unit && (_unit->getSpecialAbility() == SPECAB_EXPLODEONDEATH || _unit->getSpecialAbility() == SPECAB_BURN_AND_EXPLODE))
 	{
-		_power = _parent->getRuleset()->getItem(_unit->getArmor()->getCorpseGeoscape())->getPower();
+		RuleItem* corpse = _parent->getRuleset()->getItem(_unit->getArmor()->getCorpseGeoscape());
+		_power = corpse->getPower();
+		_damageType = corpse->getDamageType();
+		_radius = corpse->getExplosionRadius();		
 		_areaOfEffect = true;
 	}
 	else
 	{
 		_power = 120;
+		_damageType = _parent->getRuleset()->getDamageType(DT_HE);
 		_areaOfEffect = true;
 	}
 
-	Tile *t = _parent->getSave()->getTile(Position(_center.x/16, _center.y/16, _center.z/24));
+	Tile *t = _parent->getSave()->getTile(_center.toTile());
 	if (_areaOfEffect)
 	{
 		if (_power)
@@ -221,7 +235,7 @@ void ExplosionBState::explode()
 	if (_hit)
 	{
 		save->getBattleGame()->getCurrentAction()->type = BA_NONE;
-		BattleUnit *targetUnit = save->getTile(_center / Position(16, 16, 24))->getUnit();
+		BattleUnit *targetUnit = save->getTile(_center.toTile())->getUnit();
 		if (_unit && !_unit->isOut())
 		{
 			_unit->aim(false);
@@ -250,67 +264,32 @@ void ExplosionBState::explode()
 		{
 			_unit = _item->getPreviousOwner();
 		}
-
-		if (_areaOfEffect)
+	}
+	if (_areaOfEffect)
+	{
+		save->getTileEngine()->explode(_center, _power, _damageType, _radius, _unit);
+	}
+	else
+	{
+		BattleUnit *victim = save->getTileEngine()->hit(_center, _power, _damageType, _unit);
+		// check if this unit turns others into zombies
+		if (!_item->getRules()->getZombieUnit().empty()
+			&& victim
+			&& victim->getArmor()->getSize() == 1
+			&& victim->getSpawnUnit().empty()
+			&& victim->getOriginalFaction() != FACTION_HOSTILE)
 		{
-			save->getTileEngine()->explode(_center, _power, _item->getRules()->getDamageType(), _item->getRules()->getExplosionRadius(), _unit);
-		}
-		else
-		{
-			ItemDamageType type = _item->getRules()->getDamageType();
-			if (_pistolWhip)
-			{
-				type = DT_STUN;
-			}
-			BattleUnit *victim = save->getTileEngine()->hit(_center, _power, type, _unit);
-			// check if this unit turns others into zombies
-			if (!_item->getRules()->getZombieUnit().empty()
-				&& victim
-				&& victim->getArmor()->getZombiImmune() == false
-				&& (victim->getGeoscapeSoldier() || victim->getUnitRules()->getRace() == "STR_CIVILIAN")
-				&& victim->getSpawnUnit().empty()
-				&& victim->getOriginalFaction() != FACTION_HOSTILE)
-			{
-				// converts the victim to a zombie on death
-				victim->setRespawn(true);
-				victim->setSpawnUnit(_item->getRules()->getZombieUnit());
-			}
+			// converts the victim to a zombie on death
+			victim->setRespawn(true);
+			victim->setSpawnUnit(_item->getRules()->getZombieUnit());
 		}
 	}
 	if (_tile)
 	{
-		ItemDamageType DT;
-		switch (_tile->getExplosiveType())
-		{
-		case 0:
-			DT = DT_HE;
-			break;
-		case 5:
-			DT = DT_IN;
-			break;
-		case 6:
-			DT = DT_STUN;
-			break;
-		default:
-			DT = DT_SMOKE;
-			break;
-		}
-		if (DT != DT_HE)
-		{
-			_tile->setExplosive(0,0,true);
-		}
-		save->getTileEngine()->explode(_center, _power, DT, _power/10);
 		terrainExplosion = true;
 	}
 	if (!_tile && !_item)
 	{
-		int radius = 6;
-		// explosion not caused by terrain or an item, must be by a unit (cyberdisc)
-		if (_unit && (_unit->getSpecialAbility() == SPECAB_EXPLODEONDEATH || _unit->getSpecialAbility() == SPECAB_BURN_AND_EXPLODE))
-		{
-			radius = _parent->getRuleset()->getItem(_unit->getArmor()->getCorpseGeoscape())->getExplosionRadius();
-		}
-		save->getTileEngine()->explode(_center, _power, DT_HE, radius);
 		terrainExplosion = true;
 	}
 
@@ -330,7 +309,7 @@ void ExplosionBState::explode()
 	Tile *t = save->getTileEngine()->checkForTerrainExplosions();
 	if (t)
 	{
-		Position p = Position(t->getPosition().x * 16, t->getPosition().y * 16, t->getPosition().z * 24);
+		Position p = t->getPosition().toVexel();
 		p += Position(8,8,0);
 		_parent->statePushFront(new ExplosionBState(_parent, p, 0, _unit, t));
 	}

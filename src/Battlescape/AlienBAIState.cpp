@@ -459,8 +459,8 @@ void AlienBAIState::setupPatrol()
 		{
 			node = *i;
 			int d = _save->getTileEngine()->distanceSq(_unit->getPosition(), node->getPosition());
-			if (_unit->getPosition().z == node->getPosition().z 
-				&& d < closest 
+			if (_unit->getPosition().z == node->getPosition().z
+				&& d < closest
 				&& (!(node->getType() & Node::TYPE_SMALL) || _unit->getArmor()->getSize() == 1))
 			{
 				_fromNode = node;
@@ -496,7 +496,7 @@ void AlienBAIState::setupPatrol()
 			// can i shoot an object?
 			if (_fromNode->isTarget() &&
 				_unit->getMainHandWeapon() &&
-				_unit->getMainHandWeapon()->getAmmoItem()->getRules()->getDamageType() != DT_HE &&
+				_unit->getMainHandWeapon()->getAmmoItem()->getRules()->getDamageType()->isDirect() &&
 				_save->getModuleMap()[_fromNode->getPosition().x / 10][_fromNode->getPosition().y / 10].second > 0)
 			{
 				// scan this room for objects to destroy
@@ -2006,7 +2006,7 @@ void AlienBAIState::selectMeleeOrRanged()
 	{
 		dmg += _unit->getBaseStats()->strength;
 	}
-	dmg *= _aggroTarget->getArmor()->getDamageModifier(meleeWeapon->getDamageType());
+	dmg *= _aggroTarget->getArmor()->getDamageModifier(meleeWeapon->getDamageType()->ResistType);
 
 	if (dmg > 50)
 	{

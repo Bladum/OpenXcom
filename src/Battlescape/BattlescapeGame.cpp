@@ -374,8 +374,6 @@ bool BattlescapeGame::kneel(BattleUnit *bu)
 void BattlescapeGame::endTurn()
 {
 
-	Position p;
-
 	_debugPlay = false;
 	_currentAction.type = BA_NONE;
 	getMap()->getWaypoints()->clear();
@@ -396,9 +394,7 @@ void BattlescapeGame::endTurn()
 		{
 			if ((*it)->getRules()->getBattleType() == BT_GRENADE && (*it)->getFuseTimer() == 0)  // it's a grenade to explode now
 			{
-				p.x = _save->getTiles()[i]->getPosition().x*16 + 8;
-				p.y = _save->getTiles()[i]->getPosition().y*16 + 8;
-				p.z = _save->getTiles()[i]->getPosition().z*24 - _save->getTiles()[i]->getTerrainLevel();
+				Position p = _save->getTiles()[i]->getPosition().toVexel() + Position(8, 8, - _save->getTiles()[i]->getTerrainLevel());
 				statePushNext(new ExplosionBState(this, p, (*it), (*it)->getPreviousOwner()));
 				_save->removeItem((*it));
 				statePushBack(0);
@@ -411,7 +407,7 @@ void BattlescapeGame::endTurn()
 	Tile *t = _save->getTileEngine()->checkForTerrainExplosions();
 	if (t)
 	{
-		Position p = Position(t->getPosition().x * 16, t->getPosition().y * 16, t->getPosition().z * 24);
+		Position p = t->getPosition().toVexel();
 		statePushNext(new ExplosionBState(this, p, 0, 0, t));
 		statePushBack(0);
 		return;
@@ -563,26 +559,26 @@ void BattlescapeGame::checkForCasualties(BattleItem *murderweapon, BattleUnit *m
 				if (hiddenExplosion)
 				{
 					// this is instant death from UFO powersources, without screaming sounds
-					statePushNext(new UnitDieBState(this, (*j), DT_HE, true));
+					statePushNext(new UnitDieBState(this, (*j), getRuleset()->getDamageType(DT_HE), true));
 				}
 				else
 				{
 					if (terrainExplosion)
 					{
 						// terrain explosion
-						statePushNext(new UnitDieBState(this, (*j), DT_HE, false));
+						statePushNext(new UnitDieBState(this, (*j), getRuleset()->getDamageType(DT_HE), false));
 					}
 					else
 					{
 						// no murderer, and no terrain explosion, must be fatal wounds
-						statePushNext(new UnitDieBState(this, (*j), DT_NONE, false));  // DT_NONE = STR_HAS_DIED_FROM_A_FATAL_WOUND
+						statePushNext(new UnitDieBState(this, (*j), getRuleset()->getDamageType(DT_NONE), false)); // DT_NONE = STR_HAS_DIED_FROM_A_FATAL_WOUND
 					}
 				}
 			}
 		}
 		else if ((*j)->getStunlevel() >= (*j)->getHealth() && (*j)->getStatus() != STATUS_DEAD && (*j)->getStatus() != STATUS_UNCONSCIOUS && (*j)->getStatus() != STATUS_COLLAPSING && (*j)->getStatus() != STATUS_TURNING)
 		{
-			statePushNext(new UnitDieBState(this, (*j), DT_STUN, true));
+			statePushNext(new UnitDieBState(this, (*j), getRuleset()->getDamageType(DT_NONE), true)); // no damage type used there
 		}
 	}
 	BattleUnit *bu = _save->getSelectedUnit();
@@ -2061,10 +2057,7 @@ bool BattlescapeGame::checkForProximityGrenades(BattleUnit *unit)
 						{
 							if ((*i)->getRules()->getBattleType() == BT_PROXIMITYGRENADE && (*i)->getFuseTimer() == 0)
 							{
-								Position p;
-								p.x = t->getPosition().x*16 + 8;
-								p.y = t->getPosition().y*16 + 8;
-								p.z = t->getPosition().z*24 + t->getTerrainLevel();
+								Position p = t->getPosition().toVexel() + Position(8, 8, t->getTerrainLevel());
 								statePushNext(new ExplosionBState(this, p, (*i), (*i)->getPreviousOwner()));
 								getSave()->removeItem(*i);
 								unit->setCache(0);

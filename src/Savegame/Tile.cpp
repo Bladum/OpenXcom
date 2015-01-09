@@ -28,6 +28,7 @@
 #include "BattleItem.h"
 #include "../Ruleset/RuleItem.h"
 #include "../Ruleset/Armor.h"
+#include "../Ruleset/Ruleset.h"
 #include "SerializationHelper.h"
 #include "../Battlescape/Particle.h"
 

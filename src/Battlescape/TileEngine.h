@@ -40,16 +40,20 @@ struct BattleAction;
 class TileEngine
 {
 private:
+	SavedBattleGame *_save;
+	std::vector<Uint16> *_voxelData;
+	static const int heightFromCenter[11];
+	bool _personalLighting;
 	static const int MAX_VIEW_DISTANCE = 20;
 	static const int MAX_VIEW_DISTANCE_SQR = MAX_VIEW_DISTANCE * MAX_VIEW_DISTANCE;
 	static const int MAX_VOXEL_VIEW_DISTANCE = MAX_VIEW_DISTANCE * 16;
 	static const int MAX_DARKNESS_TO_SEE_UNITS = 9;
-	SavedBattleGame *_save;
-	std::vector<Uint16> *_voxelData;
-	static const int heightFromCenter[11];
+
+	/// Add light source.
 	void addLight(const Position &center, int power, int layer);
+	/// Calculate blockage amount.
 	int blockage(Tile *tile, const int part, ItemDamageType type, int direction = -1, bool checkingFromOrigin = false);
-	bool _personalLighting;
+
 public:
 	/// Creates a new TileEngine class.
 	TileEngine(SavedBattleGame *save, std::vector<Uint16> *voxelData);
@@ -70,9 +74,9 @@ public:
 	/// Recalculates lighting of the battlescape for units.
 	void calculateUnitLighting();
 	/// Handles bullet/weapon hits.
-	BattleUnit *hit(const Position &center, int power, ItemDamageType type, BattleUnit *unit);
+	BattleUnit *hit(const Position &center, int power, const RuleDamageType *type, BattleUnit *unit);
 	/// Handles explosions.
-	void explode(const Position &center, int power, ItemDamageType type, int maxRadius, BattleUnit *unit = 0);
+	void explode(const Position &center, int power, const RuleDamageType *type, int maxRadius, BattleUnit *unit = 0);
 	/// Checks if a destroyed tile starts an explosion.
 	Tile *checkForTerrainExplosions();
 	/// Unit opens door?
@@ -120,7 +124,7 @@ public:
 	/// Checks what type of voxel occupies this space.
 	int voxelCheck(const Position& voxel, BattleUnit *excludeUnit, bool excludeAllUnits = false, bool onlyVisible = false, BattleUnit *excludeAllBut = 0);
 	/// Blows this tile up.
-	bool detonate(Tile* tile);
+	bool detonate(Tile* tile, int power);
 	/// Validates a throwing action.
 	bool validateThrow(BattleAction &action, Position originVoxel, Position targetVoxel, double *curve = 0, int *voxelType = 0);
 	/// Opens any doors this door is connected to.
@@ -141,7 +145,10 @@ public:
 	Position getOriginVoxel(BattleAction &action, Tile *tile);
 	/// mark a region of the map as "dangerous" for a turn.
 	void setDangerZone(Position pos, int radius, BattleUnit *unit);
-
+	/// Handles tile hit.
+	void hitTile(Tile *tile, int damage, const RuleDamageType* type);
+	/// Handles unit hit.
+	bool hitUnit(BattleUnit *unit, BattleUnit *target, const Position &relative, int damage, const RuleDamageType* type);
 };
 
 }
