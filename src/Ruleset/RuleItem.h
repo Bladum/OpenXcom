@@ -61,6 +61,7 @@ private:
 	int _recoveryPoints;
 	int _armor;
 	int _turretType;
+	int  _tuPrime, _tuThrow;
 	int  _tuLoad, _tuUnload;
 	bool _recover, _liveAlien;
 	int _blastRadius, _attraction;
@@ -234,6 +235,10 @@ public:
 	int getTULoad() const;
 	/// Gets the item's unload TU cost.
 	int getTUUnload() const;
+	/// Gets the item's prime TU cost.
+	int getTUPrime() const;
+	/// Gets the item's throw TU cost.
+	int getTUThrow() const;
 
 };
 

@@ -1158,7 +1158,7 @@ bool BattleUnit::isOut() const
  * @param item
  * @return TUs
  */
-int BattleUnit::getActionTUs(BattleActionType actionType, BattleItem *item)
+int BattleUnit::getActionTUs(BattleActionType actionType, BattleItem *item) const
 {
 	if (item == 0)
 	{
@@ -1167,7 +1167,7 @@ int BattleUnit::getActionTUs(BattleActionType actionType, BattleItem *item)
 	return getActionTUs(actionType, item->getRules());
 }
 
-int BattleUnit::getActionTUs(BattleActionType actionType, RuleItem *item)
+int BattleUnit::getActionTUs(BattleActionType actionType, RuleItem *item) const
 {
 	if (item == 0)
 	{
@@ -1178,10 +1178,10 @@ int BattleUnit::getActionTUs(BattleActionType actionType, RuleItem *item)
 	switch (actionType)
 	{
 		case BA_PRIME:
-			cost = 50; // maybe this should go in the ruleset
+			cost = item->getTUPrime();
 			break;
 		case BA_THROW:
-			cost = 25;
+			cost = item->getTUThrow();
 			break;
 		case BA_AUTOSHOT:
 			cost = item->getTUAuto();
@@ -1209,7 +1209,7 @@ int BattleUnit::getActionTUs(BattleActionType actionType, RuleItem *item)
 	// if it's a percentage, apply it to unit TUs
 	if (!item->getFlatRate() || actionType == BA_THROW || actionType == BA_PRIME)
 	{
-		cost = (int)floor(getBaseStats()->tu * cost / 100.0f);
+		cost = (int)floor(getStats()->tu * cost / 100.0f);
 	}
 
 	return cost;
@@ -1839,8 +1839,8 @@ BattleItem *BattleUnit::getMainHandWeapon(bool quickest) const
 		return 0;
 
 	// otherwise pick the one with the least snapshot TUs
-	int tuRightHand = weaponRightHand->getRules()->getTUSnap();
-	int tuLeftHand = weaponLeftHand->getRules()->getTUSnap();
+	int tuRightHand = getActionTUs(BA_SNAPSHOT, weaponRightHand);
+	int tuLeftHand = getActionTUs(BA_SNAPSHOT, weaponLeftHand);
 	// if only one weapon has snapshot, pick that one
 	if (tuLeftHand <= 0 && tuRightHand > 0)
 		return weaponRightHand;
@@ -2981,6 +2981,14 @@ BattleItem *BattleUnit::getSpecialWeapon(BattleType type) const
 	return 0;
 }
 
+/**
+ * Gets pointer to the unit's stats.
+ * @return stats Pointer to the unit's stats.
+*/
+const UnitStats *BattleUnit::getStats() const
+{
+	return &_stats;
+}
 
 
 }

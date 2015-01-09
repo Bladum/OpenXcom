@@ -220,8 +220,9 @@ public:
 	/// The unit is out - either dead or unconscious.
 	bool isOut() const;
 	/// Get the number of time units a certain action takes.
-	int getActionTUs(BattleActionType actionType, BattleItem *item);
-	int getActionTUs(BattleActionType actionType, RuleItem *item);
+	int getActionTUs(BattleActionType actionType, BattleItem *item) const;
+	/// Get the number of time units a certain action takes.
+	int getActionTUs(BattleActionType actionType, RuleItem *item) const;
 	/// Spend time units if it can.
 	bool spendTimeUnits(int tu);
 	/// Spend energy if it can.
@@ -467,6 +468,9 @@ public:
 
 	/// Get special weapon.
 	BattleItem *getSpecialWeapon(BattleType type) const;
+
+	/// Gets the unit's stats.
+	const UnitStats *getStats() const;
 };
 
 }
