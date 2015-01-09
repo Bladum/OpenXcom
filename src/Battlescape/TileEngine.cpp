@@ -1074,7 +1074,7 @@ BattleUnit *TileEngine::hit(const Position &center, int power, ItemDamageType ty
 				bu->killedBy(unit->getFaction());
 			}
 			const int bravery = (110 - bu->getBaseStats()->bravery) / 10;
-			const int modifier = bu->getFaction() == FACTION_PLAYER ? _save->getMoraleModifier() : 100;
+			const int modifier = bu->getFaction() == FACTION_PLAYER ? _save->getFactionMoraleModifier(true) : 100;
 			const int morale_loss = 100 * (adjustedDamage * bravery / 10) / modifier;
 
 			bu->moraleChange(-morale_loss);
