@@ -1,0 +1,21 @@
+MANUFACTURING
+light vest      10K 4kg  20A tylko front
+alloy vest      -   6kg  40A tylko front 
+leather suit    25K 8kg  30A
+combat suit     -   10kg 60A 
+jump suit       -   12kg 50A
+metal armour    60K 30kg 80A
+power armour    -   20kg 120A
+flying armour   -   24kg 100A
+gravity module  -   2kg  0A
+
+RESEARCH
+light vest      - 
+alloy vest      alien alloys 
+gravity module  UFO navigation 
+leather suit    armour contract
+combat suit     alloy vest + armour contract
+jump suit       gravity module + combat suit
+metal armour    armour contract 
+power armour    combat suit + ufo power source
+flying armour   jump suit + power armour 

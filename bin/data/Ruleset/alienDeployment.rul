@@ -1,0 +1,1523 @@
+valueA5: &STR_SOLDIER_SET
+  - 
+    - STR_PLASMA_PISTOL
+    - STR_PLASMA_PISTOL_CLIP
+    - STR_PLASMA_PISTOL_CLIP
+  - 
+    - STR_PLASMA_ASSULTER
+    - STR_PLASMA_ASSULTER_CLIP
+    - STR_ALIEN_GRENADE  
+  -  
+    - STR_PLASMA_RIFLE
+    - STR_PLASMA_RIFLE_CLIP
+    - STR_PLASMA_RIFLE_CLIP 
+  -  
+    - STR_PLASMA_ASSULTER
+    - STR_PLASMA_ASSULTER_CLIP
+    - STR_ALIEN_GRENADE 
+  -  
+    - STR_HEAVY_PLASMA
+    - STR_HEAVY_PLASMA_CLIP   
+    - STR_HEAVY_PLASMA_CLIP_ADV
+  -  
+    - STR_PLASMA_BLASTER
+    - STR_PLASMA_BLASTER_CLIP   
+    - STR_PLASMA_BLASTER_CLIP_ADV 
+    - STR_ALIEN_GRENADE    
+  -  
+    - STR_PLASMA_MINIGUN
+    - STR_PLASMA_MINIGUN_CLIP 
+    - STR_PLASMA_MINIGUN_CLIP_ADV      
+  -  
+    - STR_PLASMA_SNIPER_RIFLE
+    - STR_PLASMA_SNIPER_RIFLE_CLIP
+    - STR_PLASMA_SNIPER_RIFLE_CLIP_ADV
+
+valueA4: &STR_NAVIGATOR_SET
+  - 
+    - STR_PLASMA_PISTOL
+    - STR_PLASMA_PISTOL_CLIP
+    - STR_PLASMA_PISTOL_CLIP  
+  - 
+    - STR_PLASMA_PISTOL
+    - STR_ALLOY_BLADE     
+    - STR_PLASMA_PISTOL_CLIP
+    - STR_ALIEN_GRENADE      
+    - STR_MIND_PROBE 
+  -  
+    - STR_PLASMA_BLASTER 
+    - STR_PLASMA_BLASTER_CLIP
+    - STR_PLASMA_BLASTER_CLIP   
+  -  
+    - STR_PLASMA_BLASTER
+    - STR_ALLOY_BLADE      
+    - STR_PLASMA_BLASTER_CLIP
+    - STR_ALIEN_GRENADE         
+    - STR_MIND_PROBE      
+  -  
+    - STR_PLASMA_BLASTER  
+    - STR_PLASMA_BLASTER_CLIP
+    - STR_PLASMA_BLASTER_CLIP
+    - STR_PLASMA_BLASTER_CLIP      
+  -  
+    - STR_PLASMA_BLASTER  
+    - STR_ALLOY_BLADE     
+    - STR_PLASMA_BLASTER_CLIP
+    - STR_PLASMA_BLASTER_CLIP_ADV 
+    - STR_ALIEN_GRENADE    
+    - STR_MIND_PROBE      
+  -  
+    - STR_PLASMA_BLASTER  
+    - STR_PLASMA_BLASTER_CLIP    
+    - STR_PLASMA_BLASTER_CLIP
+    - STR_PLASMA_BLASTER_CLIP_ADV  
+    - STR_PLASMA_BLASTER_CLIP_ADV       
+  -  
+    - STR_PLASMA_BLASTER         
+    - STR_ALLOY_BLADE     
+    - STR_PLASMA_BLASTER_CLIP_ADV     
+    - STR_PLASMA_BLASTER_CLIP_ADV 
+    - STR_PLASMA_BLASTER_CLIP_ADV 
+    - STR_ALIEN_MINE      
+    - STR_MIND_PROBE   
+    
+valueA3: &STR_MEDIC_SET
+  - 
+    - STR_PLASMA_PISTOL   
+    - STR_PLASMA_PISTOL_CLIP
+    - STR_STUN_GRENADE    
+  - 
+    - STR_SMALL_LAUNCHER
+    - STR_ALLOY_BLADE     
+    - STR_STUN_BOMB
+    - STR_STUN_BOMB       
+  - 
+    - STR_PLASMA_ASSULTER   
+    - STR_PLASMA_ASSULTER_CLIP
+    - STR_STUN_GRENADE 
+    - STR_STUN_GRENADE
+  -  
+    - STR_SMALL_LAUNCHER
+    - STR_ALLOY_BLADE     
+    - STR_STUN_BOMB      
+    - STR_STUN_BOMB   
+    - STR_STUN_BOMB       
+    - STR_NAPALM_BOMB     
+  - 
+    - STR_PLASMA_RIFLE    
+    - STR_PLASMA_RIFLE_CLIP
+    - STR_STUN_GRENADE 
+    - STR_STUN_GRENADE   
+    - STR_STUN_GRENADE      
+  -  
+    - STR_SMALL_LAUNCHER
+    - STR_ALLOY_BLADE     
+    - STR_STUN_BOMB      
+    - STR_STUN_BOMB   
+    - STR_STUN_BOMB    
+    - STR_STUN_BOMB     
+    - STR_NAPALM_BOMB 
+    - STR_NAPALM_BOMB
+  - 
+    - STR_PLASMA_SNIPER_RIFLE
+    - STR_PLASMA_SNIPER_RIFLE_CLIP_ADV 
+    - STR_STUN_GRENADE 
+    - STR_STUN_GRENADE   
+    - STR_STUN_GRENADE    
+    - STR_STUN_GRENADE   
+    - STR_STUN_GRENADE       
+  -  
+    - STR_SMALL_LAUNCHER
+    - STR_ALLOY_BLADE     
+    - STR_STUN_BOMB
+    - STR_STUN_BOMB   
+    - STR_STUN_BOMB    
+    - STR_STUN_BOMB     
+    - STR_NAPALM_BOMB 
+    - STR_NAPALM_BOMB 
+    - STR_NAPALM_BOMB     
+    - STR_BIO_BOMB      
+
+valueA2: &STR_ENGINEER_SET
+  - 
+    - STR_ALLOY_BLADE    
+    - STR_ALIEN_GRENADE
+    - STR_ALIEN_GRENADE
+  - 
+    - STR_PLASMA_PISTOL      
+    - STR_PLASMA_PISTOL_CLIP
+    - STR_ALIEN_GRENADE
+  - 
+    - STR_ALIEN_MINE
+    - STR_ALLOY_BLADE      
+    - STR_ALIEN_GRENADE
+    - STR_ALIEN_GRENADE
+    - STR_ALIEN_GRENADE 
+  -  
+    - STR_PLASMA_ASSULTER
+    - STR_PLASMA_ASSULTER_CLIP
+    - STR_ALIEN_GRENADE
+    - STR_ALIEN_GRENADE    
+  -  
+    - STR_HEAVY_LAUNCHER   
+    - STR_ALLOY_BLADE      
+    - STR_HEAVY_LAUNCHER_AMMO
+    - STR_HEAVY_LAUNCHER_AMMO  
+    - STR_ALIEN_GRENADE     
+  -  
+    - STR_PLASMA_RIFLE
+    - STR_PLASMA_RIFLE_CLIP_ADV 
+    - STR_ALIEN_GRENADE
+    - STR_ALIEN_GRENADE   
+    - STR_ALIEN_MINE           
+  -  
+    - STR_HEAVY_LAUNCHER
+    - STR_ALLOY_BLADE      
+    - STR_HEAVY_LAUNCHER_AMMO
+    - STR_HEAVY_LAUNCHER_AMMO
+    - STR_HEAVY_LAUNCHER_AMMO 
+    - STR_ALIEN_MINE    
+  -      
+    - STR_PLASMA_RIFLE
+    - STR_PLASMA_RIFLE_CLIP_ADV 
+    - STR_ALIEN_MINE
+    - STR_ALIEN_MINE    
+    - STR_ALIEN_MINE        
+    - STR_ALIEN_MINE    
+valueA1: &STR_LEADER_SET
+  - 
+    - STR_PLASMA_RIFLE
+    - STR_PLASMA_BLADE    
+    - STR_PLASMA_RIFLE_CLIP
+    - STR_PLASMA_RIFLE_CLIP  
+    - STR_ALIEN_GRENADE
+  -  
+    - STR_PLASMA_BLASTER    
+    - STR_PLASMA_BLASTER_CLIP
+    - STR_PLASMA_BLASTER_CLIP    
+    - STR_ALIEN_GRENADE        
+  -   
+    - STR_PLASMA_SNIPER_RIFLE
+    - STR_PLASMA_BLADE    
+    - STR_PLASMA_SNIPER_RIFLE_CLIP
+    - STR_PLASMA_SNIPER_RIFLE_CLIP    
+    - STR_ALIEN_GRENADE  
+  -  
+    - STR_HEAVY_PLASMA
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_HEAVY_PLASMA_CLIP    
+    - STR_ALIEN_GRENADE     
+  -   
+    - STR_PLASMA_SNIPER_RIFLE
+    - STR_PLASMA_BLADE    
+    - STR_PLASMA_SNIPER_RIFLE_CLIP
+    - STR_PLASMA_SNIPER_RIFLE_CLIP  
+    - STR_PLASMA_SNIPER_RIFLE_CLIP      
+    - STR_ALIEN_MINE
+  -  
+    - STR_PLASMA_MINIGUN
+    - STR_PLASMA_MINIGUN_CLIP 
+    - STR_PLASMA_MINIGUN_CLIP
+    - STR_PLASMA_MINIGUN_CLIP_ADV 
+    - STR_ALIEN_MINE    
+  -   
+    - STR_TOXIC_GUN     
+    - STR_PLASMA_BLADE
+    - STR_TOXIC_GUN_CLIP
+    - STR_TOXIC_GUN_CLIP    
+    - STR_ALIEN_MINE  
+  -   
+    - STR_BLASTER_LAUNCHER 
+    - STR_BLASTER_BOMB
+    - STR_BLASTER_BOMB 
+    - STR_ALIEN_MINE      
+    
+valueA6: &STR_EMPTY_SET
+  - []
+  - []
+  - []
+  - []
+  - []
+  - []
+  - []
+  - []       
+  
+valueA0: &STR_COMANDER_SET
+  -  
+    - STR_PLASMA_MINIGUN
+    - STR_PLASMA_BLADE    
+    - STR_PLASMA_MINIGUN_CLIP 
+    - STR_PLASMA_MINIGUN_CLIP_ADV
+    - STR_ALIEN_GRENADE
+    - STR_ALIEN_GRENADE    
+  - 
+    - STR_HEAVY_PLASMA
+    - STR_PLASMA_BLADE    
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_HEAVY_PLASMA_CLIP_ADV    
+    - STR_ALIEN_GRENADE 
+    - STR_ALIEN_GRENADE        
+  - 
+    - STR_BLASTER_LAUNCHER 
+    - STR_PLASMA_BLADE    
+    - STR_BLASTER_BOMB
+    - STR_BLASTER_BOMB      
+    - STR_BLASTER_BOMB  
+  - 
+    - STR_BLASTER_LAUNCHER 
+    - STR_PLASMA_BLADE    
+    - STR_BLASTER_BOMB
+    - STR_BLASTER_BOMB      
+    - STR_ALIEN_GRENADE      
+  -   
+    - STR_TOXIC_GUN
+    - STR_PLASMA_BLADE    
+    - STR_TOXIC_GUN_CLIP
+    - STR_TOXIC_GUN_CLIP 
+    - STR_ALIEN_MINE  
+  - 
+    - STR_BLASTER_LAUNCHER 
+    - STR_PLASMA_BLADE    
+    - STR_BLASTER_BOMB
+    - STR_BLASTER_BOMB
+    - STR_BLASTER_BOMB    
+    - STR_ELERIUM_BOMB     
+    - STR_ALIEN_MINE 
+  -   
+    - STR_TOXIC_GUN
+    - STR_PLASMA_BLADE    
+    - STR_TOXIC_GUN_CLIP
+    - STR_TOXIC_GUN_CLIP 
+    - STR_TOXIC_GUN_CLIP     
+    - STR_ALIEN_MINE     
+    - STR_ALIEN_MINE         
+  - 
+    - STR_BLASTER_LAUNCHER 
+    - STR_PLASMA_BLADE    
+    - STR_BLASTER_BOMB    
+    - STR_BLASTER_BOMB
+    - STR_BLASTER_BOMB    
+    - STR_BLASTER_BOMB     
+    - STR_ELERIUM_BOMB    
+    - STR_ELERIUM_BOMB     
+    - STR_ALIEN_MINE     
+    - STR_ALIEN_MINE    
+
+valueMiB0: &STR_MIB_COMANDER_SET
+  -
+    - STR_HEAVY_PLASMA
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_ALIEN_GRENADE
+    - STR_MIND_PROBE
+  -
+    - STR_HEAVY_PLASMA
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_ALIEN_GRENADE
+    - STR_MIND_PROBE
+  -
+    - STR_HEAVY_PLASMA
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_ALIEN_GRENADE
+    - STR_MIND_PROBE
+  -
+    - STR_HEAVY_PLASMA
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_ALIEN_GRENADE
+    - STR_MIND_PROBE
+  -
+    - STR_HEAVY_PLASMA
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_ALIEN_GRENADE
+    - STR_MIND_PROBE
+  -
+    - STR_HEAVY_PLASMA
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_ALIEN_GRENADE
+    - STR_MIND_PROBE  
+  -
+    - STR_HEAVY_PLASMA
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_ALIEN_GRENADE
+    - STR_MIND_PROBE
+  -
+    - STR_HEAVY_PLASMA
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_ALIEN_GRENADE
+    - STR_MIND_PROBE        
+valueMiB1: &STR_MIB_LEADER_SET    
+  -
+    - STR_SNIPER_RIFLE
+    - STR_SNIPER_RIFLE_CLIP
+    - STR_SNIPER_RIFLE_CLIP
+    - STR_SNIPER_RIFLE_CLIP
+    - STR_GRENADE
+    - STR_MIND_PROBE
+  -
+    - STR_HEAVY_LASER
+    - STR_ALIEN_GRENADE
+    - STR_MIND_PROBE
+  -
+    - STR_HEAVY_PLASMA
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_ALIEN_GRENADE
+    - STR_MIND_PROBE
+  -
+    - STR_HEAVY_PLASMA
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_ALIEN_GRENADE
+    - STR_MIND_PROBE
+  -
+    - STR_HEAVY_PLASMA
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_ALIEN_GRENADE
+    - STR_MIND_PROBE
+  -
+    - STR_HEAVY_PLASMA
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_ALIEN_GRENADE
+    - STR_MIND_PROBE
+  -
+    - STR_HEAVY_PLASMA
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_ALIEN_GRENADE
+    - STR_MIND_PROBE
+  -
+    - STR_HEAVY_PLASMA
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_ALIEN_GRENADE
+    - STR_MIND_PROBE   
+valueMiB3: &STR_MIB_MEDIC_SET
+  -
+    - STR_RIFLE
+    - STR_RIFLE_CLIP
+    - STR_RIFLE_CLIP
+  -
+    - STR_RIFLE
+    - STR_RIFLE_CLIP
+    - STR_RIFLE_CLIP
+  -
+    - STR_DMR
+    - STR_DMR_AMMO
+    - STR_DMR_AMMO 
+  -
+    - STR_DMR
+    - STR_DMR_AMMO
+    - STR_DMR_AMMO              
+  -
+    - STR_LASER_RIFLE
+  -
+    - STR_LASER_RIFLE            
+  -
+    - STR_PLASMA_SNIPER_RIFLE
+    - STR_PLASMA_SNIPER_RIFLE_CLIP
+    - STR_PLASMA_SNIPER_RIFLE_CLIP            
+  -
+    - STR_PLASMA_SNIPER_RIFLE
+    - STR_PLASMA_SNIPER_RIFLE_CLIP
+    - STR_PLASMA_SNIPER_RIFLE_CLIP      
+valueMiB2: &STR_MIB_ENGINEER_SET
+  -
+    - STR_HEAVY_CANNON
+    - STR_HC_AP_AMMO
+    - STR_HC_HE_AMMO
+    - STR_HC_IC_AMMO
+  -
+    - STR_HEAVY_CANNON
+    - STR_HC_AP_AMMO
+    - STR_HC_HE_AMMO
+    - STR_HC_IC_AMMO            
+  -
+    - STR_ROCKET_LAUNCHER
+    - STR_SMALL_ROCKET
+    - STR_LARGE_ROCKET
+    - STR_INCENDIARY_ROCKET
+  -
+    - STR_ROCKET_LAUNCHER
+    - STR_SMALL_ROCKET
+    - STR_LARGE_ROCKET
+    - STR_INCENDIARY_ROCKET
+  - 
+    - STR_HEAVY_LASER
+  - 
+    - STR_HEAVY_LASER            
+  -
+    - STR_HEAVY_PLASMA
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_ALIEN_GRENADE
+  -
+    - STR_HEAVY_PLASMA
+    - STR_HEAVY_PLASMA_CLIP
+    - STR_ALIEN_GRENADE    
+valueMiB4: &STR_MIB_NAVIGATOR_SET
+  -
+    - STR_PISTOL
+    - STR_PISTOL_CLIP
+    - STR_GRENADE
+    - STR_SMOKE_GRENADE
+  -
+    - STR_PISTOL
+    - STR_PISTOL_CLIP
+    - STR_GRENADE         
+    - STR_SMOKE_GRENADE   
+    - STR_KNIFE    
+  -
+    - STR_LASER_PISTOL
+    - STR_ALIEN_GRENADE
+    - STR_SMOKE_GRENADE     
+  -
+    - STR_LASER_PISTOL 
+    - STR_ALIEN_GRENADE 
+    - STR_KNIFE    
+  -
+    - STR_LASER_RIFLE
+    - STR_ALIEN_GRENADE       
+  -
+    - STR_LASER_BLASTER          
+    - STR_KNIFE    
+  -
+    - STR_PLASMA_RIFLE
+    - STR_PLASMA_RIFLE_CLIP
+    - STR_PLASMA_RIFLE_CLIP
+    - STR_KNIFE    
+  -
+    - STR_PLASMA_RIFLE
+    - STR_PLASMA_RIFLE_CLIP
+    - STR_ALIEN_GRENADE
+    
+valueMiB5: &STR_MIB_SOLDIER_SET
+  -
+    - STR_PISTOL
+    - STR_PISTOL_CLIP
+    - STR_PISTOL_CLIP
+    - STR_KNIFE
+  -
+    - STR_PISTOL
+    - STR_PISTOL_CLIP
+    - STR_FRAGE_GRENADE 
+    - STR_FRAGE_GRENADE     
+  -
+    - STR_SHOTGUN
+    - STR_SHOTGUN_SHELLS
+    - STR_SHOTGUN_SHELLS
+    - STR_KNIFE    
+  -
+    - STR_SHOTGUN
+    - STR_SHOTGUN_SHELLS
+    - STR_GRENADE            
+    - STR_GRENADE      
+  -
+    - STR_LASER_PISTOL
+    - STR_GRENADE      
+  -
+    - STR_LASER_MSG            
+  -
+    - STR_PLASMA_PISTOL
+    - STR_PLASMA_PISTOL_CLIP
+    - STR_PLASMA_PISTOL_CLIP    
+  -
+    - STR_PLASMA_PISTOL
+    - STR_PLASMA_PISTOL_CLIP
+    - STR_ALIEN_GRENADE
+    - STR_ALIEN_GRENADE    
+    
+
+alienDeployments:
+  - type: STR_UFO_PROBE # max 1 alien 
+    width: 40
+    length: 40
+    height: 6
+    data:
+      - alienRank: 4
+        lowQty: 1
+        highQty: 1
+        dQty: 0
+        percentageOutsideUfo: 30
+        itemSets:  *STR_NAVIGATOR_SET
+  - type: STR_UFO_SCOUT # max 1-2 alien 
+    width: 40
+    length: 40
+    height: 6
+    data:
+      - alienRank: 4
+        lowQty: 1
+        highQty: 2
+        dQty: 0
+        percentageOutsideUfo: 30
+        itemSets:  *STR_NAVIGATOR_SET
+  - type: STR_UFO_FIGHTER # max 4 aliens
+    width: 50
+    length: 50
+    height: 6  
+    data:
+      - alienRank: 4 
+        lowQty: 1
+        highQty: 3
+        dQty: 1
+        percentageOutsideUfo: 30
+        itemSets: *STR_NAVIGATOR_SET
+  - type: STR_UFO_ESCORT # max 8 aliens 
+    width: 50
+    length: 50
+    height: 6
+    data:
+      - alienRank: 5
+        lowQty: 2
+        highQty: 3
+        dQty: 2
+        percentageOutsideUfo: 75
+        itemSets: *STR_SOLDIER_SET 
+      - alienRank: 4
+        lowQty: 1
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 30
+        itemSets: *STR_NAVIGATOR_SET
+  - type: STR_UFO_ESCORT_HEAVY # max 8 aliens 
+    width: 50
+    length: 50
+    height: 6
+    data:
+      - alienRank: 5
+        lowQty: 2
+        highQty: 4
+        dQty: 3
+        percentageOutsideUfo: 75
+        itemSets: *STR_SOLDIER_SET 
+      - alienRank: 4
+        lowQty: 1
+        highQty: 2
+        dQty: 2
+        percentageOutsideUfo: 30
+        itemSets: *STR_NAVIGATOR_SET        
+  - type: STR_UFO_HUNTER # max 18 aliens 
+    width: 50
+    length: 50
+    height: 6  
+    data:
+      - alienRank: 5
+        lowQty: 3
+        highQty: 5
+        dQty: 2
+        percentageOutsideUfo: 75
+        itemSets: *STR_SOLDIER_SET 
+      - alienRank: 4
+        lowQty: 2
+        highQty: 4
+        dQty: 1
+        percentageOutsideUfo: 30
+        itemSets: *STR_NAVIGATOR_SET   
+      - alienRank: 2
+        lowQty: 3
+        highQty: 5
+        dQty: 1
+        percentageOutsideUfo: 45
+        itemSets: *STR_ENGINEER_SET  
+  - type: STR_UFO_BOMBER # max 8 aliens 
+    width: 50
+    length: 50
+    height: 6  
+    data:
+      - alienRank: 5
+        lowQty: 1
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 75
+        itemSets: *STR_SOLDIER_SET 
+      - alienRank: 4
+        lowQty: 1
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 30
+        itemSets: *STR_NAVIGATOR_SET          
+      - alienRank: 2
+        lowQty: 1
+        highQty: 1
+        dQty: 1
+        percentageOutsideUfo: 45
+        itemSets: *STR_ENGINEER_SET  
+  - type: STR_UFO_CRUISER # max 12 aliens 
+    width: 50
+    length: 50
+    height: 6
+    data:
+      - alienRank: 5
+        lowQty: 1
+        highQty: 3
+        dQty: 3
+        percentageOutsideUfo: 75
+        itemSets: *STR_SOLDIER_SET   
+      - alienRank: 4
+        lowQty: 1
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 30
+        itemSets: *STR_NAVIGATOR_SET 
+      - alienRank: 2
+        lowQty: 1
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 45
+        itemSets: *STR_ENGINEER_SET  
+  - type: STR_UFO_CRUISER_HEAVY # max 12 aliens 
+    width: 50
+    length: 50
+    height: 6
+    data:
+      - alienRank: 5
+        lowQty: 2
+        highQty: 4
+        dQty: 3
+        percentageOutsideUfo: 75
+        itemSets: *STR_SOLDIER_SET   
+      - alienRank: 4
+        lowQty: 1
+        highQty: 2
+        dQty: 2
+        percentageOutsideUfo: 30
+        itemSets: *STR_NAVIGATOR_SET 
+      - alienRank: 2
+        lowQty: 1
+        highQty: 2
+        dQty: 2
+        percentageOutsideUfo: 45
+        itemSets: *STR_ENGINEER_SET            
+  - type: STR_UFO_TRANSPORTER # max 15 aliens 
+    width: 50
+    length: 50
+    height: 6  
+    data:
+      - alienRank: 5
+        lowQty: 2
+        highQty: 4
+        dQty: 3
+        percentageOutsideUfo: 75
+        itemSets: *STR_SOLDIER_SET
+      - alienRank: 4
+        lowQty: 1
+        highQty: 3
+        dQty: 1
+        percentageOutsideUfo: 30
+        itemSets: *STR_NAVIGATOR_SET 
+      - alienRank: 2
+        lowQty: 1
+        highQty: 3
+        dQty: 1
+        percentageOutsideUfo: 45
+        itemSets: *STR_ENGINEER_SET       
+  - type: STR_UFO_DESTROYER # max 10 aliens 
+    width: 50
+    length: 50
+    height: 6  
+    data:
+      - alienRank: 5
+        lowQty: 1
+        highQty: 3
+        dQty: 2
+        percentageOutsideUfo: 75
+        itemSets: *STR_SOLDIER_SET 
+      - alienRank: 4
+        lowQty: 1
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 30
+        itemSets: *STR_NAVIGATOR_SET   
+      - alienRank: 2
+        lowQty: 1
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 45
+        itemSets: *STR_ENGINEER_SET    
+  - type: STR_UFO_HARVESTER  # max 22 aliens
+    width: 50
+    length: 50
+    height: 6
+    data:
+      - alienRank: 5
+        lowQty: 5
+        highQty: 9
+        dQty: 4
+        percentageOutsideUfo: 75
+        itemSets: *STR_SOLDIER_SET   
+      - alienRank: 4
+        lowQty: 1
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 30
+        itemSets: *STR_NAVIGATOR_SET     
+      - alienRank: 3
+        lowQty: 1
+        highQty: 2
+        dQty: 0
+        percentageOutsideUfo: 60
+        itemSets: *STR_MEDIC_SET
+      - alienRank: 2
+        lowQty: 2
+        highQty: 2
+        dQty: 0
+        percentageOutsideUfo: 45
+        itemSets: *STR_ENGINEER_SET
+      - alienRank: 1
+        lowQty: 1
+        highQty: 1
+        dQty: 1
+        percentageOutsideUfo: 15
+        itemSets: *STR_LEADER_SET
+
+  - type: STR_UFO_ABDUCTOR # max 21 aliens 
+    width: 50
+    length: 50
+    height: 6
+    data:
+      - alienRank: 5
+        lowQty: 3
+        highQty: 5
+        dQty: 5
+        percentageOutsideUfo: 75
+        itemSets: *STR_SOLDIER_SET 
+      - alienRank: 4
+        lowQty: 1
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 15
+        itemSets: *STR_NAVIGATOR_SET  
+      - alienRank: 3
+        lowQty: 2
+        highQty: 4
+        dQty: 0
+        percentageOutsideUfo: 60
+        itemSets: *STR_MEDIC_SET     
+      - alienRank: 2
+        lowQty: 2
+        highQty: 2
+        dQty: 0
+        percentageOutsideUfo: 45
+        itemSets: *STR_ENGINEER_SET
+      - alienRank: 1
+        lowQty: 1
+        highQty: 1
+        dQty: 1
+        percentageOutsideUfo: 15
+        itemSets: *STR_LEADER_SET
+  - type: STR_UFO_DREADNOUGHT # max 14 aliens 
+    width: 50
+    length: 50
+    height: 6  
+    data:
+      - alienRank: 5
+        lowQty: 2
+        highQty: 3
+        dQty: 2
+        percentageOutsideUfo: 75
+        itemSets: *STR_SOLDIER_SET 
+      - alienRank: 4
+        lowQty: 2
+        highQty: 3
+        dQty: 1
+        percentageOutsideUfo: 30
+        itemSets: *STR_NAVIGATOR_SET   
+      - alienRank: 2
+        lowQty: 2
+        highQty: 3
+        dQty: 1
+        percentageOutsideUfo: 45
+        itemSets: *STR_ENGINEER_SET          
+  - type: STR_TERROR_SHIP # 28 aliens 
+    width: 60
+    length: 60
+    height: 6
+    data:
+      - alienRank: 5
+        lowQty: 4
+        highQty: 6
+        dQty: 2
+        percentageOutsideUfo: 75
+        itemSets: *STR_SOLDIER_SET  
+      - alienRank: 4
+        lowQty: 1
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 30
+        itemSets: *STR_NAVIGATOR_SET 
+      - alienRank: 3
+        lowQty: 1
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 60
+        itemSets: *STR_MEDIC_SET        
+      - alienRank: 2
+        lowQty: 1
+        highQty: 2
+        dQty: 0
+        percentageOutsideUfo: 45
+        itemSets: *STR_ENGINEER_SET
+      - alienRank: 1
+        lowQty: 1
+        highQty: 2
+        dQty: 0
+        percentageOutsideUfo: 15
+        itemSets: *STR_LEADER_SET
+      - alienRank: 6
+        lowQty: 1
+        highQty: 3
+        dQty: 2
+        percentageOutsideUfo: 50
+        itemSets: *STR_EMPTY_SET
+      - alienRank: 7
+        lowQty: 1
+        highQty: 3
+        dQty: 2
+        percentageOutsideUfo: 50
+        itemSets: *STR_EMPTY_SET          
+  - type: STR_SUPPLY_SHIP # max 29 aliens
+    width: 60
+    length: 60
+    height: 6
+    data:
+      - alienRank: 5
+        lowQty: 5
+        highQty: 7
+        dQty: 6
+        percentageOutsideUfo: 75
+        itemSets: *STR_SOLDIER_SET   
+      - alienRank: 4
+        lowQty: 1
+        highQty: 3
+        dQty: 1
+        percentageOutsideUfo: 30
+        itemSets: *STR_NAVIGATOR_SET
+      - alienRank: 3
+        lowQty: 1
+        highQty: 4
+        dQty: 2
+        percentageOutsideUfo: 60
+        itemSets: *STR_MEDIC_SET      
+      - alienRank: 2
+        lowQty: 1
+        highQty: 3
+        dQty: 1
+        percentageOutsideUfo: 45
+        itemSets: *STR_ENGINEER_SET   
+      - alienRank: 1
+        lowQty: 1
+        highQty: 2
+        dQty: 0
+        percentageOutsideUfo: 15
+        itemSets: *STR_LEADER_SET 
+  - type: STR_UFO_CARRIER # max 28 aliens
+    width: 60
+    length: 60
+    height: 6  
+    data:
+      - alienRank: 5
+        lowQty: 3
+        highQty: 6
+        dQty: 4
+        percentageOutsideUfo: 75
+        itemSets: *STR_SOLDIER_SET    
+      - alienRank: 4
+        lowQty: 1
+        highQty: 3
+        dQty: 1
+        percentageOutsideUfo: 30
+        itemSets: *STR_NAVIGATOR_SET
+      - alienRank: 3
+        lowQty: 1
+        highQty: 4
+        dQty: 2
+        percentageOutsideUfo: 60
+        itemSets: *STR_MEDIC_SET  
+      - alienRank: 2
+        lowQty: 1
+        highQty: 3
+        dQty: 1
+        percentageOutsideUfo: 45
+        itemSets: *STR_ENGINEER_SET     
+      - alienRank: 1
+        lowQty: 1
+        highQty: 2
+        dQty: 0
+        percentageOutsideUfo: 15
+        itemSets: *STR_LEADER_SET  
+      - alienRank: 0
+        lowQty: 0
+        highQty: 1
+        dQty: 0
+        percentageOutsideUfo: 0
+        itemSets: *STR_COMANDER_SET
+
+  - type: STR_BATTLESHIP  #max 35 aliens
+    width: 60
+    length: 60
+    height: 6
+    data:
+      - alienRank: 5
+        lowQty: 4
+        highQty: 8
+        dQty: 4
+        percentageOutsideUfo: 75
+        itemSets: *STR_SOLDIER_SET      
+      - alienRank: 4
+        lowQty: 1
+        highQty: 3
+        dQty: 1
+        percentageOutsideUfo: 30
+        itemSets: *STR_NAVIGATOR_SET
+      - alienRank: 3
+        lowQty: 1
+        highQty: 3
+        dQty: 1
+        percentageOutsideUfo: 60
+        itemSets: *STR_MEDIC_SET       
+      - alienRank: 2
+        lowQty: 1
+        highQty: 3
+        dQty: 1
+        percentageOutsideUfo: 45
+        itemSets: *STR_ENGINEER_SET     
+      - alienRank: 1
+        lowQty: 1
+        highQty: 3
+        dQty: 1
+        percentageOutsideUfo: 15
+        itemSets: *STR_LEADER_SET
+      - alienRank: 0
+        lowQty: 1
+        highQty: 1
+        dQty: 0
+        percentageOutsideUfo: 0
+        itemSets: *STR_COMANDER_SET 
+      - alienRank: 6
+        lowQty: 0
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 50
+        itemSets: *STR_EMPTY_SET  
+      - alienRank: 7
+        lowQty: 0
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 50
+        itemSets: *STR_EMPTY_SET  
+  - type: STR_TERROR_MISSION # max 24 alien units
+    width: 50
+    length: 50
+    height: 6
+    civilians: 16
+    data:
+      - alienRank: 5
+        lowQty: 4
+        highQty: 6
+        dQty: 1
+        percentageOutsideUfo: 75
+        itemSets: *STR_SOLDIER_SET 
+      - alienRank: 4
+        lowQty: 1
+        highQty: 2
+        dQty: 0
+        percentageOutsideUfo: 30
+        itemSets: *STR_NAVIGATOR_SET 
+      - alienRank: 3
+        lowQty: 1
+        highQty: 1
+        dQty: 1
+        percentageOutsideUfo: 60
+        itemSets: *STR_MEDIC_SET    
+      - alienRank: 2
+        lowQty: 1
+        highQty: 2
+        dQty: 0
+        percentageOutsideUfo: 45
+        itemSets: *STR_ENGINEER_SET
+      - alienRank: 1
+        lowQty: 1
+        highQty: 1
+        dQty: 0
+        percentageOutsideUfo: 15
+        itemSets: *STR_LEADER_SET
+      - alienRank: 6
+        lowQty: 1
+        highQty: 3
+        dQty: 2
+        percentageOutsideUfo: 50
+        itemSets: *STR_EMPTY_SET  
+      - alienRank: 7
+        lowQty: 1
+        highQty: 3
+        dQty: 2
+        percentageOutsideUfo: 50
+        itemSets: *STR_EMPTY_SET  
+    terrains:
+      - URBAN_TERROR
+    briefing:
+      palette: 2
+      music: GMENBASE      
+  - type: STR_ALIEN_BASE_ASSAULT # max aliens 33
+    width: 60
+    length: 60
+    height: 2
+    data:
+      - alienRank: 6
+        lowQty: 1
+        highQty: 3
+        dQty: 1
+        percentageOutsideUfo: 0
+        itemSets: *STR_EMPTY_SET  
+      - alienRank: 7
+        lowQty: 1
+        highQty: 3
+        dQty: 1
+        percentageOutsideUfo: 0
+        itemSets: *STR_EMPTY_SET  
+      - alienRank: 5
+        lowQty: 5
+        highQty: 7
+        dQty: 4
+        percentageOutsideUfo: 0
+        itemSets: *STR_SOLDIER_SET  
+      - alienRank: 4
+        lowQty: 1
+        highQty: 3
+        dQty: 1
+        percentageOutsideUfo: 0
+        itemSets: *STR_NAVIGATOR_SET 
+      - alienRank: 3
+        lowQty: 1
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 0
+        itemSets: *STR_MEDIC_SET      
+      - alienRank: 2
+        lowQty: 1
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 0
+        itemSets: *STR_ENGINEER_SET  
+      - alienRank: 1
+        lowQty: 2
+        highQty: 4
+        dQty: 0
+        percentageOutsideUfo: 0
+        itemSets: *STR_LEADER_SET 
+      - alienRank: 0
+        lowQty: 1
+        highQty: 1
+        dQty: 0
+        percentageOutsideUfo: 0
+        itemSets: *STR_COMANDER_SET   
+    terrains:
+      - UBASE
+    shade: 15
+    script: ALIENBASE
+    briefing:
+      textOffset: -16
+      background: BACK01.SCR
+      showTarget: false    
+      
+  - type: STR_BASE_DEFENSE # max 29 aliens
+    width: 60
+    length: 60
+    civilians: 4    
+    height: 2
+    data:
+      - alienRank: 5
+        lowQty: 4
+        highQty: 8
+        dQty: 4
+        percentageOutsideUfo: 75
+        itemSets: *STR_SOLDIER_SET     
+      - alienRank: 4
+        lowQty: 1
+        highQty: 2
+        dQty: 0
+        percentageOutsideUfo: 30
+        itemSets: *STR_NAVIGATOR_SET 
+      - alienRank: 3
+        lowQty: 1
+        highQty: 2
+        dQty: 0
+        percentageOutsideUfo: 60
+        itemSets: *STR_MEDIC_SET   
+      - alienRank: 2
+        lowQty: 1
+        highQty: 2
+        dQty: 0
+        percentageOutsideUfo: 45
+        itemSets: *STR_ENGINEER_SET    
+      - alienRank: 1
+        lowQty: 2
+        highQty: 4
+        dQty: 0
+        percentageOutsideUfo: 15
+        itemSets: *STR_LEADER_SET 
+      - alienRank: 0
+        lowQty: 1
+        highQty: 1
+        dQty: 0
+        percentageOutsideUfo: 0
+        itemSets: *STR_COMANDER_SET  
+      - alienRank: 6
+        lowQty: 0
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 50
+        itemSets: *STR_EMPTY_SET 
+      - alienRank: 7
+        lowQty: 0
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 50
+        itemSets: *STR_EMPTY_SET 
+    terrains:
+      - XBASE
+    shade: 5
+    script: XBASE
+    briefing:
+      palette: 2
+      music: GMENBASE    
+  - type: STR_MARS_CYDONIA_LANDING # max 28 aliens
+    width: 60
+    length: 60
+    height: 6
+    data:
+      - alienRank: 5
+        lowQty: 6
+        highQty: 10
+        dQty: 0
+        percentageOutsideUfo: 75
+        itemSets: *STR_SOLDIER_SET     
+      - alienRank: 1
+        lowQty: 4
+        highQty: 6
+        dQty: 0
+        percentageOutsideUfo: 0
+        itemSets: *STR_LEADER_SET 
+      - alienRank: 0
+        lowQty: 4
+        highQty: 6
+        dQty: 0
+        percentageOutsideUfo: 0
+        itemSets: *STR_COMANDER_SET  
+      - alienRank: 6
+        lowQty: 2
+        highQty: 3
+        dQty: 0
+        percentageOutsideUfo: 100
+        itemSets: *STR_EMPTY_SET 
+      - alienRank: 7
+        lowQty: 2
+        highQty: 3
+        dQty: 0
+        percentageOutsideUfo: 100
+        itemSets: *STR_EMPTY_SET         
+    terrains:
+      - MARS
+    shade: 15
+    race: STR_SECTOID
+    nextStage: STR_MARS_THE_FINAL_ASSAULT
+    noRetreat: true
+    finalDestination: true
+    briefing:
+      textOffset: -16
+      palette: 6
+      music: GMNEWMAR
+  - type: STR_MARS_THE_FINAL_ASSAULT #max 42 aliens 
+    width: 70
+    length: 70
+    height: 2
+    data:
+      - alienRank: 0
+        lowQty: 1
+        highQty: 3
+        dQty: 1
+        percentageOutsideUfo: 0
+        itemSets: *STR_COMANDER_SET 
+      - alienRank: 1
+        lowQty: 2
+        highQty: 4
+        dQty: 1
+        percentageOutsideUfo: 0
+        itemSets: *STR_LEADER_SET 
+      - alienRank: 2
+        lowQty: 3
+        highQty: 5
+        dQty: 1
+        percentageOutsideUfo: 0
+        itemSets: *STR_ENGINEER_SET    
+      - alienRank: 3
+        lowQty: 3
+        highQty: 5
+        dQty: 1
+        percentageOutsideUfo: 0
+        itemSets: *STR_MEDIC_SET      
+      - alienRank: 4
+        lowQty: 3
+        highQty: 5
+        dQty: 1
+        percentageOutsideUfo: 0
+        itemSets: *STR_NAVIGATOR_SET 
+      - alienRank: 5
+        lowQty: 4
+        highQty: 6
+        dQty: 2
+        percentageOutsideUfo: 0
+        itemSets: *STR_SOLDIER_SET   
+      - alienRank: 6
+        lowQty: 1
+        highQty: 3
+        dQty: 1
+        percentageOutsideUfo: 0
+        itemSets: *STR_EMPTY_SET 
+      - alienRank: 7
+        lowQty: 1
+        highQty: 3
+        dQty: 1
+        percentageOutsideUfo: 0
+        itemSets: *STR_EMPTY_SET        
+    terrains:
+      - UBASE
+    shade: 15
+    race: STR_MIXED
+    noRetreat: true
+    finalMission: true
+    briefing:
+      textOffset: -16
+      palette: 6
+      music: GMNEWMAR
+      showTarget: false
+      showCraft: false
+      background: BACK01.SCR 
+    script: BOSSBATTLE
+  - type: STR_MIB_CRAFT_A
+    data:
+      - alienRank: 5
+        lowQty: 2
+        highQty: 4
+        dQty: 2
+        percentageOutsideUfo: 75
+        itemSets: *STR_MIB_SOLDIER_SET
+             
+      - alienRank: 4
+        lowQty: 1
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 30
+        itemSets: *STR_MIB_NAVIGATOR_SET
+    width: 40
+    length: 40
+    height: 6
+  - type: STR_MIB_CRAFT_B
+    data:
+      - alienRank: 5
+        lowQty: 1
+        highQty: 3
+        dQty: 5
+        percentageOutsideUfo: 75
+        itemSets: *STR_MIB_SOLDIER_SET
+               
+      - alienRank: 4
+        lowQty: 1
+        highQty: 1
+        dQty: 1
+        percentageOutsideUfo: 30
+        itemSets: *STR_MIB_NAVIGATOR_SET
+      - alienRank: 2
+        lowQty: 1
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 45
+        itemSets: *STR_MIB_ENGINEER_SET
+    width: 50
+    length: 50
+    height: 6
+  - type: STR_MIB_CRAFT_C
+    data:
+      - alienRank: 5
+        lowQty: 3
+        highQty: 5
+        dQty: 4
+        percentageOutsideUfo: 75
+        itemSets: *STR_MIB_SOLDIER_SET
+      - alienRank: 4
+        lowQty: 1
+        highQty: 1
+        dQty: 1
+        percentageOutsideUfo: 30
+        itemSets: *STR_MIB_NAVIGATOR_SET
+      - alienRank: 3
+        lowQty: 2
+        highQty: 4
+        dQty: 0
+        percentageOutsideUfo: 60
+        itemSets: *STR_MIB_MEDIC_SET
+      - alienRank: 2
+        lowQty: 2
+        highQty: 2
+        dQty: 0
+        percentageOutsideUfo: 45
+        itemSets: *STR_MIB_ENGINEER_SET
+      - alienRank: 1
+        lowQty: 1
+        highQty: 1
+        dQty: 0
+        percentageOutsideUfo: 15
+        itemSets: *STR_MIB_LEADER_SET
+
+    width: 60
+    length: 60
+    height: 6
+  - type: STR_MIB_TERROR_SHIP
+    data:
+      - alienRank: 5
+        lowQty: 4
+        highQty: 6
+        dQty: 1
+        percentageOutsideUfo: 75
+        itemSets: *STR_MIB_SOLDIER_SET
+      - alienRank: 4
+        lowQty: 1
+        highQty: 2
+        dQty: 0
+        percentageOutsideUfo: 30
+        itemSets: *STR_MIB_NAVIGATOR_SET
+      - alienRank: 3
+        lowQty: 1
+        highQty: 1
+        dQty: 1
+        percentageOutsideUfo: 60
+        itemSets: *STR_MIB_MEDIC_SET
+      - alienRank: 2
+        lowQty: 1
+        highQty: 2
+        dQty: 0
+        percentageOutsideUfo: 60
+        itemSets: *STR_MIB_ENGINEER_SET
+      - alienRank: 1
+        lowQty: 1
+        highQty: 1
+        dQty: 0
+        percentageOutsideUfo: 15
+        itemSets: *STR_MIB_ENGINEER_SET
+      - alienRank: 6
+        lowQty: 1
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 50
+        itemSets: *STR_EMPTY_SET
+      - alienRank: 7
+        lowQty: 1
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 50
+        itemSets: *STR_EMPTY_SET        
+    width: 50
+    length: 50
+    height: 6
+    civilians: 16
+  - type: STR_MIB_OUTPOST_SHIP
+    data:
+      - alienRank: 5
+        lowQty: 3
+        highQty: 7
+        dQty: 3
+        percentageOutsideUfo: 75
+        itemSets: *STR_MIB_SOLDIER_SET
+      - alienRank: 4
+        lowQty: 2
+        highQty: 3
+        dQty: 1
+        percentageOutsideUfo: 30
+        itemSets: *STR_MIB_NAVIGATOR_SET
+      - alienRank: 3
+        lowQty: 1
+        highQty: 2
+        dQty: 0
+        percentageOutsideUfo: 60
+        itemSets: *STR_MIB_MEDIC_SET    
+      - alienRank: 2
+        lowQty: 1
+        highQty: 2
+        dQty: 0
+        percentageOutsideUfo: 45
+        itemSets: *STR_MIB_ENGINEER_SET
+      - alienRank: 1
+        lowQty: 1
+        highQty: 3
+        dQty: 0
+        percentageOutsideUfo: 15
+        itemSets: *STR_MIB_LEADER_SET          
+      - alienRank: 0
+        lowQty: 1
+        highQty: 1
+        dQty: 0
+        percentageOutsideUfo: 0
+        itemSets: *STR_MIB_COMANDER_SET          
+      - alienRank: 6
+        lowQty: 2
+        highQty: 4
+        dQty: 2
+        percentageOutsideUfo: 50
+        itemSets: *STR_EMPTY_SET
+    width: 60
+    length: 60
+    height: 6
+  - type: STR_MIB_HQ_SHIP
+    data:
+      - alienRank: 5
+        lowQty: 2
+        highQty: 4
+        dQty: 2
+        percentageOutsideUfo: 75
+        itemSets: *STR_MIB_SOLDIER_SET
+      - alienRank: 4
+        lowQty: 1
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 30
+        itemSets: *STR_MIB_NAVIGATOR_SET
+      - alienRank: 3
+        lowQty: 1
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 60
+        itemSets: *STR_MIB_MEDIC_SET    
+      - alienRank: 2
+        lowQty: 1
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 45
+        itemSets: *STR_MIB_ENGINEER_SET
+      - alienRank: 1
+        lowQty: 2
+        highQty: 4
+        dQty: 2
+        percentageOutsideUfo: 15
+        itemSets: *STR_MIB_LEADER_SET          
+      - alienRank: 0
+        lowQty: 1
+        highQty: 2
+        dQty: 1
+        percentageOutsideUfo: 0
+        itemSets: *STR_MIB_COMANDER_SET          
+      - alienRank: 7
+        lowQty: 2
+        highQty: 4
+        dQty: 2
+        percentageOutsideUfo: 50
+        itemSets: *STR_EMPTY_SET
+    width: 60
+    length: 60
+    height: 6

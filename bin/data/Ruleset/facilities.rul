@@ -1,0 +1,316 @@
+facilities:
+  - type: STR_ACCESS_LIFT
+    spriteShape: 2
+    spriteFacility: 17
+    lift: true
+    buildCost: 200000
+    buildTime: 1
+    monthlyCost: 5000
+    mapName: XBASE_00
+  - type: STR_CORRIDOR
+    spriteShape: 3
+    spriteFacility: 103
+    buildCost: 10000
+    buildTime: 3
+    monthlyCost: 1000
+    mapName: XOPSXBASE01    
+  - type: STR_LIVING_QUARTERS
+    spriteShape: 1
+    spriteFacility: 18
+    buildCost: 400000
+    buildTime: 15
+    monthlyCost: 10000
+    personnel: 50
+    mapName: XBASS_01
+  - type: STR_LIVING_QUARTERS_LARGE
+    spriteShape: 301
+    spriteFacility: 301
+    size: 2
+    requires:
+      - STR_HUMAN_LARGE_FACILITIES_CONTRACT    
+    buildCost: 1200000
+    buildTime: 45
+    monthlyCost: 30000
+    personnel: 250
+    mapName: XBASS_02 
+  - type: STR_GENERAL_STORES
+    spriteShape: 1
+    spriteFacility: 24
+    buildCost: 150000
+    buildTime: 10
+    monthlyCost: 5000
+    storage: 50 
+    mapName: XBASE_07
+  - type: STR_GENERAL_STORES_LARGE
+    spriteShape: 309
+    spriteFacility: 309
+    size: 2
+    requires:
+      - STR_HUMAN_LARGE_FACILITIES_CONTRACT   
+    buildCost: 450000
+    buildTime: 30
+    monthlyCost: 15000
+    storage: 250
+    mapName: XBASS_06        
+  - type: STR_LABORATORY
+    spriteShape: 1
+    spriteFacility: 19
+    buildCost: 1000000
+    buildTime: 30
+    monthlyCost: 50000
+    labs: 50
+    mapName: XBASE_02
+  - type: STR_LARGE_LAB
+    spriteShape: 114
+    spriteFacility: 114
+    size: 2
+    requires:
+      - STR_HUMAN_LARGE_FACILITIES_CONTRACT       
+    buildCost: 3000000
+    buildTime: 90
+    monthlyCost: 150000
+    labs: 250
+    mapName: XOPSXBASE02      
+  - type: STR_WORKSHOP
+    spriteShape: 1
+    spriteFacility: 20
+    buildCost: 800000
+    buildTime: 27
+    monthlyCost: 40000
+    workshops: 50
+    mapName: XBASE_03
+  - type: STR_LARGE_WORKSHOP
+    spriteShape: 105
+    spriteFacility: 105
+    size: 2
+    requires:
+      - STR_HUMAN_LARGE_FACILITIES_CONTRACT
+    buildCost: 2400000
+    buildTime: 81
+    monthlyCost: 120000
+    workshops: 250
+    mapName: XOPSXBASE07  
+  - type: STR_SMALL_RADAR_SYSTEM
+    spriteShape: 2
+    spriteFacility: 21
+    buildCost: 400000
+    buildTime: 12  
+    monthlyCost: 5000
+    radarRange: 1600
+    radarChance: 10
+    mapName: XBASE_04
+  - type: STR_LARGE_RADAR_SYSTEM
+    requires:
+      - STR_LARGE_RADAR_SYSTEM  
+    spriteShape: 1
+    spriteFacility: 22
+    buildCost: 800000
+    buildTime: 24
+    monthlyCost: 15000
+    radarRange: 2000
+    radarChance: 20
+    mapName: XBASE_05
+  - type: STR_HYPER_WAVE_DECODER
+    requires:
+      - STR_HYPER_WAVE_DECODER
+    spriteShape: 2
+    spriteFacility: 32
+    hyper: true
+    buildCost: 1600000
+    buildTime: 27
+    monthlyCost: 40000
+    radarRange: 2400
+    radarChance: 50
+    mapName: XBASE_15
+  - type: STR_HYP_UP_NET
+    requires:
+      - STR_HYP_UP_NET
+      - STR_HUMAN_LARGE_FACILITIES_CONTRACT      
+    hyper: true
+    spriteShape: 122
+    spriteFacility: 122
+    size: 2
+    buildCost: 8000000
+    buildTime: 90
+    monthlyCost: 150000
+    radarRange: 3600
+    radarChance: 100
+    mapName: XOPSXBASE16       
+  - type: STR_MISSILE_DEFENSES
+    spriteShape: 2
+    spriteFacility: 23
+    buildCost: 200000
+    buildTime: 18
+    monthlyCost: 5000
+    defense: 200
+    hitRatio: 75
+    fireSound: 5
+    hitSound: 10
+    mapName: XBASE_06
+  - type: STR_LASER_DEFENSES
+    requires:
+      - STR_LASER_DEFENSE
+    spriteShape: 3
+    spriteFacility: 26
+    buildCost: 400000
+    buildTime: 24
+    monthlyCost: 10000
+    defense: 600
+    hitRatio: 50
+    fireSound: 8
+    hitSound: 10
+    mapName: XBASE_09
+  - type: STR_PLASMA_DEFENSES
+    requires:
+      - STR_PLASMA_DEFENSE
+    spriteShape: 3
+    spriteFacility: 27
+    buildCost: 600000
+    buildTime: 30
+    monthlyCost: 15000
+    defense: 1200
+    hitRatio: 50
+    fireSound: 9
+    hitSound: 10
+    mapName: XBASE_10
+  - type: STR_GAUSS_DEFENSES
+    requires:
+      - STR_GAUSS_DEFENSE
+    spriteShape: 3
+    spriteFacility: 28
+    buildCost: 800000
+    buildTime: 36
+    monthlyCost: 20000
+    defense: 1800
+    hitRatio: 25
+    fireSound: 5
+    hitSound: 10
+    mapName: XBASE_11    
+  - type: STR_FUSION_BALL_DEFENSES
+    requires:
+      - STR_FUSION_DEFENSE
+    spriteShape: 3
+    spriteFacility: 28
+    buildCost: 800000
+    buildTime: 36
+    monthlyCost: 20000
+    defense: 900
+    hitRatio: 100
+    fireSound: 7
+    hitSound: 10
+    mapName: XBASE_11
+  - type: STR_ALIEN_CONTAINMENT
+    requires:
+      - STR_ALIEN_CONTAINMENT
+    spriteShape: 1
+    spriteFacility: 25
+    buildCost: 400000
+    buildTime: 18
+    monthlyCost: 15000
+    aliens: 10
+    mapName: XBASE_08    
+  - type: STR_GRAV_SHIELD
+    requires:
+      - STR_GRAV_SHIELD
+    spriteShape: 2
+    spriteFacility: 29
+    grav: true
+    buildCost: 1400000
+    buildTime: 42
+    monthlyCost: 25000
+    mapName: XBASE_12
+  - type: STR_MIND_SHIELD
+    requires:
+      - STR_MIND_SHIELD
+    spriteShape: 2
+    spriteFacility: 30
+    mind: true
+    buildCost: 1200000
+    buildTime: 33
+    monthlyCost: 15000
+    mapName: XBASE_13
+  - type: STR_PSIONIC_LABORATORY
+    requires:
+      - STR_PSI_LAB
+    spriteShape: 1
+    spriteFacility: 31
+    buildCost: 900000
+    buildTime: 24
+    monthlyCost: 20000
+    psiLabs: 10
+    mapName: XBASE_14
+  - type: STR_PSIONIC_LABORATORY_LARGE
+    requires:
+      - STR_PSI_LAB
+      - STR_HUMAN_LARGE_FACILITIES_CONTRACT
+    spriteShape: 138
+    spriteFacility: 138
+    size: 2
+    buildCost: 2700000
+    buildTime: 72
+    monthlyCost: 30000
+    psiLabs: 50
+    mapName: XOPSXBASE20    
+ 
+  - type: STR_HANGAR
+    spriteShape: 9
+    spriteFacility: 9
+    size: 2
+    buildCost: 250000
+    buildTime: 25
+    monthlyCost: 25000
+    crafts: 1
+    mapName: XBASE_16
+
+extraSprites:
+  - type: BASEBITS.PCK
+    files:
+      103: Resources/facilities/Corridor.gif
+      105: Resources/facilities/LargeWorkshopP1.png
+      106: Resources/facilities/LargeWorkshopP2.png
+      107: Resources/facilities/LargeWorkshopP3.png
+      108: Resources/facilities/LargeWorkshopP4.png
+      109: Resources/facilities/LargeWorkshopPC1.png
+      110: Resources/facilities/LargeWorkshopPC2.png
+      111: Resources/facilities/LargeWorkshopPC3.png
+      112: Resources/facilities/LargeWorkshopPC4.png  
+      114: Resources/facilities/LargeLabP1.png
+      115: Resources/facilities/LargeLabP2.png
+      116: Resources/facilities/LargeLabP3.png
+      117: Resources/facilities/LargeLabP4.png
+      118: Resources/facilities/LargeLabPC1.png
+      119: Resources/facilities/LargeLabPC2.png
+      120: Resources/facilities/LargeLabPC3.png
+      121: Resources/facilities/LargeLabPC4.png 
+      122: Resources/facilities/LargeHyperP1.png
+      123: Resources/facilities/LargeHyperP2.png
+      124: Resources/facilities/LargeHyperP3.png
+      125: Resources/facilities/LargeHyperP4.png
+      126: Resources/facilities/LargeHyperPC1.png
+      127: Resources/facilities/LargeHyperPC2.png
+      128: Resources/facilities/LargeHyperPC3.png
+      129: Resources/facilities/LargeHyperPC4.png      
+      138: Resources/facilities/LargePsiP1.png
+      139: Resources/facilities/LargePsiP2.png
+      140: Resources/facilities/LargePsiP3.png
+      141: Resources/facilities/LargePsiP4.png
+      142: Resources/facilities/LargePsiPC1.png
+      143: Resources/facilities/LargePsiPC2.png
+      144: Resources/facilities/LargePsiPC3.png
+      145: Resources/facilities/LargePsiPC4.png      
+      301: Resources/facilities/LQ2_1.png
+      302: Resources/facilities/LQ2_2.png
+      303: Resources/facilities/LQ2_3.png
+      304: Resources/facilities/LQ2_4.png
+      305: Resources/facilities/LQ2_b_1.png
+      306: Resources/facilities/LQ2_b_2.png
+      307: Resources/facilities/LQ2_b_3.png
+      308: Resources/facilities/LQ2_b_4.png
+      309: Resources/facilities/GS2_1.png
+      310: Resources/facilities/GS2_2.png
+      311: Resources/facilities/GS2_3.png
+      312: Resources/facilities/GS2_4.png
+      313: Resources/facilities/LQ2_b_1.png
+      314: Resources/facilities/LQ2_b_2.png
+      315: Resources/facilities/LQ2_b_3.png
+      316: Resources/facilities/LQ2_b_4.png

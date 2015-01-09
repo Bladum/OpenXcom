@@ -1,0 +1,2662 @@
+#
+# bronie EMP 
+#   EMP grenade 
+#   EMP 
+#
+# EMP    - STUN dla sprzetu ??
+# AP     - bronie kinetyczne, pochyły pancerz
+# INC    - odpornosc na ogien 
+# HE     - odpornosc na fale uderzeniową 
+# LASER  - bronie energetyczne oparte na swiatlo wiec lustro 
+# PLASMA - bronie energetyce
+# STUN   - stun dla organicznych 
+# MELEE  - pancerz uwzglednia zastosowanie do walki wrecz
+# ACID   - kill dla organicznych 
+# SMOKE  - dla unitow oddychajacych powietrzem duzo, dla AI 0, dla czesciowych pancerzy mało
+
+armors:
+# NEUTRALS
+  - type: CIVM_ARMOR
+    spriteSheet: CIV_MALE.PCK
+    spriteInv: inventory_Male
+    corpseBattle:
+      - CIVM_CORPSE
+    frontArmor: 0
+    sideArmor: 0
+    rearArmor: 0
+    underArmor: 0
+    drawingRoutine: 4
+    loftempsSet: [3]
+    damageModifier:
+      - 0.00 # EMP 
+      - 1.00 # AP
+      - 1.25 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 1.00 # STUN
+      - 1.00 # MELEE
+      - 1.25 # ACID
+      - 2.00 # SMOKE
+  - type: CIVF_ARMOR
+    spriteSheet: CIV_FEMALE.PCK
+    spriteInv: inventory_FeMale
+    corpseBattle:
+      - CIVF_CORPSE
+    frontArmor: 0
+    sideArmor: 0
+    rearArmor: 0
+    underArmor: 0
+    drawingRoutine: 4
+    loftempsSet: [3]
+    damageModifier:
+      - 0.00 # EMP 
+      - 1.00 # AP
+      - 1.25 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 1.00 # STUN
+      - 1.00 # MELEE
+      - 1.25 # ACID
+      - 2.00 # SMOKE
+      
+  - type: CIV_ACADEMY_ARMOR
+    spriteSheet: CIV_ACADEMY.PCK
+    spriteInv: inventory_Academy
+    corpseBattle:
+      - CIV_ACADEMY_CORPSE
+    frontArmor: 0
+    sideArmor: 0
+    rearArmor: 0
+    underArmor: 0
+    drawingRoutine: 0
+    loftempsSet: [3]
+    damageModifier:
+      - 0.00 # EMP 
+      - 1.00 # AP
+      - 1.25 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 1.00 # STUN
+      - 1.00 # MELEE
+      - 1.25 # ACID
+      - 2.00 # SMOKE      
+  - type: CIV_ENGINEER_ARMOR
+    spriteSheet: CIV_ENGINEER.PCK
+    spriteInv: inventory_Engineer
+    corpseBattle:
+      - CIV_ENGINEER_CORPSE
+    frontArmor: 0
+    sideArmor: 0
+    rearArmor: 0
+    underArmor: 0
+    drawingRoutine: 0
+    loftempsSet: [3]
+    damageModifier:
+      - 0.00 # EMP 
+      - 1.00 # AP
+      - 1.25 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 1.00 # STUN
+      - 1.00 # MELEE
+      - 1.25 # ACID
+      - 2.00 # SMOKE  
+  - type: CIV_POLICEMAN_ARMOR
+    spriteSheet: CIV_POLICEMAN.PCK
+    spriteInv: inventory_Policeman
+    corpseBattle:
+      - CIV_POLICEMAN_CORPSE
+    frontArmor: 0
+    sideArmor: 0
+    rearArmor: 0
+    underArmor: 0
+    drawingRoutine: 0
+    loftempsSet: [3]
+    damageModifier:
+      - 0.00 # EMP 
+      - 1.00 # AP
+      - 1.25 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 1.00 # STUN
+      - 1.00 # MELEE
+      - 1.25 # ACID
+      - 2.00 # SMOKE       
+  - type: CIV_MANAGER_ARMOR
+    spriteSheet: CIV_MANAGER.PCK
+    spriteInv: inventory_Manager
+    corpseBattle:
+      - CIV_MANAGER_CORPSE
+    frontArmor: 0
+    sideArmor: 0
+    rearArmor: 0
+    underArmor: 0
+    drawingRoutine: 0
+    loftempsSet: [3]
+    damageModifier:
+      - 0.00 # EMP 
+      - 1.00 # AP
+      - 1.25 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 1.00 # STUN
+      - 1.00 # MELEE
+      - 1.25 # ACID
+      - 2.00 # SMOKE      
+
+############# XCOM ARMOURS ####### 
+# COVERALS
+  - type: STR_NONE_UC
+    spriteSheet: XCOM_NONE.PCK
+    spriteInv: XCOM_NONE
+    corpseBattle:
+      - STR_CORPSE_XCOM_NONE
+    storeItem: STR_NONE
+    frontArmor: 5
+    sideArmor: 0
+    rearArmor: 0
+    underArmor: 0
+    weight: 1
+    lightPower: 15
+    loftempsSet: [3]
+    damageModifier:
+      - 0.00 # EMP 
+      - 1.00 # AP
+      - 1.00 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 1.00 # STUN
+      - 1.00 # MELEE
+      - 1.00 # ACID
+      - 1.50 # SMOKE
+# JETPACK      
+  - type: STR_JETPACK_UC
+    spriteSheet: XCOM_JETPACK.PCK
+    spriteInv: XCOM_JETPACK
+    corpseBattle:
+      - STR_CORPSE_XCOM_JETPACK
+    storeItem: STR_XCOM_JETPACK
+    frontArmor: 5
+    sideArmor: 0
+    rearArmor: 0
+    underArmor: 0
+    weight: 4
+    stats: 
+      reactions: -20     
+    loftempsSet: [3]
+    movementType: 1    
+    forcedTorso: 2      
+    damageModifier:
+      - 0.00 # EMP 
+      - 1.00 # AP
+      - 1.00 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 1.00 # STUN
+      - 1.00 # MELEE
+      - 1.00 # ACID
+      - 1.50 # SMOKE     
+      
+# LIGHT VEST       
+  - type: STR_LIGHT_VEST_UC
+    spriteSheet: XCOM_LIGHT_VEST.PCK
+    spriteInv: XCOM_LIGHT_VEST
+    corpseBattle:
+      - STR_CORPSE_XCOM_LIGHT_VEST
+    storeItem: STR_XCOM_LIGHT_VEST
+    frontArmor: 20
+    sideArmor: 0
+    rearArmor: 0
+    underArmor: 0
+    weight: 6    
+    movementType: 0
+    loftempsSet: [ 3 ]
+    damageModifier:
+      - 0.00 # EMP 
+      - 1.00 # AP
+      - 1.00 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 1.00 # STUN
+      - 1.00 # MELEE
+      - 1.00 # ACID
+      - 1.50 # SMOKE    
+    
+# ALIEN ALLOY VEST    
+  - type: STR_ALLOY_VEST_UC
+    spriteSheet: XCOM_ALLOY_VEST.PCK
+    spriteInv: XCOM_ALLOY_VEST
+    corpseBattle:
+      - STR_CORPSE_XCOM_ALLOY_VEST
+    storeItem: STR_XCOM_ALLOY_VEST
+    frontArmor: 40
+    sideArmor: 0
+    rearArmor: 0
+    underArmor: 0
+    weight: 4    
+    movementType: 0
+    loftempsSet: [ 3 ]    
+    damageModifier:
+      - 0.00 # EMP 
+      - 1.00 # AP
+      - 1.00 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 1.00 # STUN
+      - 1.00 # MELEE
+      - 1.00 # ACID
+      - 1.50 # SMOKE  
+    
+# LEATHER SUIT 
+  - type: STR_LEATHER_SUIT_UC
+    spriteSheet: XCOM_LEATHER_SUIT.PCK
+    spriteInv: XCOM_LEATHER_SUIT
+    corpseBattle:
+      - STR_CORPSE_XCOM_LEATHER_SUIT
+    storeItem: STR_XCOM_LEATHER_SUIT
+    frontArmor: 30
+    sideArmor: 15
+    rearArmor: 15
+    underArmor: 0
+    weight: 10  
+    loftempsSet: [4]
+    damageModifier:
+      - 0.00 # EMP 
+      - 1.00 # AP
+      - 0.75 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 1.00 # STUN
+      - 1.00 # MELEE
+      - 1.25 # ACID
+      - 1.00 # SMOKE  
+# COMBAT SUIT       
+  - type: STR_COMBAT_SUIT_UC
+    spriteSheet: XCOM_COMBAT_SUIT.PCK
+    spriteInv: XCOM_COMBAT_SUIT
+    corpseBattle:
+      - STR_CORPSE_XCOM_COMBAT_SUIT
+    storeItem: STR_XCOM_COMBAT_SUIT
+    frontArmor: 60
+    sideArmor: 30
+    rearArmor: 30
+    underArmor: 0
+    weight: 8
+    stats: 
+      melee: 10    
+    loftempsSet: [4]
+    damageModifier:
+      - 0.00 # EMP 
+      - 1.00 # AP
+      - 0.75 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 1.00 # STUN
+      - 1.00 # MELEE
+      - 1.25 # ACID
+      - 1.00 # SMOKE    
+# COMBAT SUIT FLYING = JUMP SUIT       
+  - type: STR_JUMP_SUIT_UC
+    spriteSheet: XCOM_JUMP_SUIT.PCK
+    spriteInv: XCOM_JUMP_SUIT
+    corpseBattle:
+      - STR_CORPSE_XCOM_JUMP_SUIT
+    storeItem: STR_XCOM_JUMP_SUIT
+    frontArmor: 50
+    sideArmor: 25
+    rearArmor: 25
+    underArmor: 0
+    weight: 12
+    lightPower: 22    
+    stats: 
+      reactions: -20  
+      melee: 10 
+    loftempsSet: [4]
+    movementType: 1    
+    forcedTorso: 2    
+    damageModifier:
+      - 0.00 # EMP 
+      - 1.00 # AP
+      - 0.75 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 1.00 # STUN
+      - 1.00 # MELEE
+      - 1.25 # ACID
+      - 1.00 # SMOKE     
+# METAL HEAVY ARMOUR       
+  - type: STR_METAL_ARMOUR_UC
+    spriteSheet: XCOM_METAL_ARMOUR.PCK
+    spriteInv: XCOM_METAL_ARMOUR
+    corpseBattle:
+      - STR_CORPSE_XCOM_METAL_ARMOUR
+    storeItem: STR_XCOM_METAL_ARMOUR
+    frontArmor: 80
+    sideArmor: 60
+    rearArmor: 40
+    underArmor: 20
+    weight: 30
+    stats: 
+      throwing: -20 
+    loftempsSet: [5]
+    forcedTorso: 1
+    damageModifier:
+      - 0.25 # EMP 
+      - 1.00 # AP
+      - 0.50 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 0.75 # STUN
+      - 1.25 # MELEE
+      - 1.50 # ACID
+      - 0.75 # SMOKE   
+# POWER HEAVY ARMOUR      
+  - type: STR_POWER_ARMOUR_UC
+    spriteSheet: XCOM_POWER_ARMOUR.PCK
+    spriteInv: XCOM_POWER_ARMOUR
+    corpseBattle:
+      - STR_CORPSE_XCOM_POWER_ARMOUR
+    storeItem: STR_XCOM_POWER_ARMOUR
+    frontArmor: 120
+    sideArmor: 90
+    rearArmor: 60
+    underArmor: 30
+    weight: 20
+    stats: 
+      reactions: 10
+      firing: 10 
+      throwing: -20
+      strength: 10
+    loftempsSet: [5]
+    forcedTorso: 1
+    damageModifier:
+      - 0.25 # EMP 
+      - 1.00 # AP
+      - 0.50 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 0.75 # STUN
+      - 1.25 # MELEE
+      - 1.50 # ACID
+      - 0.25 # SMOKE 
+# POWER HEAVY ARMOUR FLYING      
+  - type: STR_FLYING_ARMOUR_UC
+    spriteSheet: XCOM_FLYING_ARMOUR.PCK
+    spriteInv: XCOM_FLYING_ARMOUR
+    corpseBattle:
+      - STR_CORPSE_XCOM_FLYING_ARMOUR
+    storeItem: STR_XCOM_FLYING_ARMOUR
+    frontArmor: 100
+    sideArmor: 75
+    rearArmor: 50
+    underArmor: 25
+    weight: 24
+    stats: 
+      reactions: -10
+      firing: 10 
+      throwing: -20
+      strength: 10
+    loftempsSet: [5]
+    forcedTorso: 2
+    movementType: 1    
+    damageModifier:
+      - 0.25 # EMP 
+      - 1.00 # AP
+      - 0.50 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 0.75 # STUN
+      - 1.25 # MELEE
+      - 1.50 # ACID
+      - 0.25 # SMOKE     
+# XCOM FORCES
+  - type: TANK_ARMOR
+    spriteSheet: TANK.PCK
+    corpseBattle:
+      - TANK_CORPSE_1
+      - TANK_CORPSE_2
+      - TANK_CORPSE_3
+      - TANK_CORPSE_4
+    corpseGeo: STR_TANK_CORPSE      
+    frontArmor: 80
+    sideArmor: 60
+    rearArmor: 40
+    underArmor: 40
+    drawingRoutine: 2
+    size: 2
+    loftempsSet: [ 92, 89, 90, 91 ]
+    damageModifier:
+      - 1.00 # EMP 
+      - 1.00 # AP
+      - 0.50 # INC
+      - 0.75 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 0.00 # STUN
+      - 0.75 # MELEE
+      - 0.50 # ACID
+      - 0.00 # SMOKE 
+  - type: TANK_ARMOR_ALLOY
+    spriteSheet: ALLOY_TANK.PCK
+    corpseBattle:
+      - TANK_ALLOY_CORPSE_1
+      - TANK_ALLOY_CORPSE_2
+      - TANK_ALLOY_CORPSE_3
+      - TANK_ALLOY_CORPSE_4
+    corpseGeo: STR_TANK_ALLOY_CORPSE      
+    frontArmor: 100
+    sideArmor: 75
+    rearArmor: 50
+    underArmor: 50
+    drawingRoutine: 2
+    size: 2
+    loftempsSet: [ 92, 89, 90, 91 ]
+    damageModifier:
+      - 1.00 # EMP 
+      - 1.00 # AP
+      - 0.50 # INC
+      - 0.75 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 0.00 # STUN
+      - 0.75 # MELEE
+      - 0.50 # ACID
+      - 0.00 # SMOKE 
+  - type: HOVERTANK_ARMOR
+    spriteSheet: TANK.PCK
+    corpseBattle:
+      - HOVERTANK_CORPSE_1
+      - HOVERTANK_CORPSE_2
+      - HOVERTANK_CORPSE_3
+      - HOVERTANK_CORPSE_4
+    corpseGeo: STR_HOVERTANK_CORPSE      
+    frontArmor: 90
+    sideArmor: 90
+    rearArmor: 90
+    underArmor: 30
+    drawingRoutine: 2
+    size: 2
+    loftempsSet: [92, 89, 90, 91]
+    constantAnimation: true
+    movementType: 1      
+    damageModifier:
+      - 1.00 # EMP 
+      - 1.00 # AP
+      - 0.50 # INC
+      - 0.75 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 0.00 # STUN
+      - 0.75 # MELEE
+      - 0.50 # ACID
+      - 0.00 # SMOKE 
+  - type: HOVERTANK_ARMOR_ALLOY 
+    spriteSheet: ALLOY_TANK.PCK
+    corpseBattle:
+      - HOVERTANK_ALLOY_CORPSE_1
+      - HOVERTANK_ALLOY_CORPSE_2
+      - HOVERTANK_ALLOY_CORPSE_3
+      - HOVERTANK_ALLOY_CORPSE_4
+    corpseGeo: STR_HOVERTANK_ALLOY_CORPSE      
+    frontArmor: 120
+    sideArmor: 120
+    rearArmor: 120
+    underArmor: 40
+    drawingRoutine: 2
+    size: 2
+    constantAnimation: true    
+    movementType: 1      
+    loftempsSet: [92, 89, 90, 91]
+    damageModifier:
+      - 1.00 # EMP 
+      - 1.00 # AP
+      - 0.50 # INC
+      - 0.75 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 0.00 # STUN
+      - 0.75 # MELEE
+      - 0.50 # ACID
+      - 0.00 # SMOKE 
+     
+  - type: SECTOTANK_ARMOR_1
+    spriteSheet: SECTOTANK_1.PCK
+    corpseBattle:
+      - SECTOTANK_CORPSE_1
+      - SECTOTANK_CORPSE_2
+      - SECTOTANK_CORPSE_3
+      - SECTOTANK_CORPSE_4
+    corpseGeo: STR_SECTOTANK_CORPSE
+    frontArmor: 140
+    sideArmor: 100
+    rearArmor: 60
+    underArmor: 40
+    drawingRoutine: 5
+    size: 2
+    damageModifier:
+      - 1.00 # EMP 
+      - 1.00 # AP
+      - 0.75 # INC
+      - 1.00 # HE
+      - 1.25 # LASER
+      - 0.75 # PLASMA
+      - 0.00 # STUN
+      - 1.00 # MELEE
+      - 0.50 # ACID
+      - 0.00 # SMOKE 
+    loftempsSet: [ 92, 89, 90, 91 ]
+
+  - type: SECTOTANK_ARMOR_2
+    spriteSheet: SECTOTANK_2.PCK
+    corpseBattle:
+      - SECTOTANK_CORPSE_1
+      - SECTOTANK_CORPSE_2
+      - SECTOTANK_CORPSE_3
+      - SECTOTANK_CORPSE_4
+    corpseGeo: STR_SECTOTANK_CORPSE
+    frontArmor: 140
+    sideArmor: 100
+    rearArmor: 60
+    underArmor: 40
+    drawingRoutine: 5
+    size: 2
+    damageModifier:
+      - 1.00 # EMP 
+      - 1.00 # AP
+      - 0.75 # INC
+      - 1.00 # HE
+      - 1.25 # LASER
+      - 0.75 # PLASMA
+      - 0.00 # STUN
+      - 1.00 # MELEE
+      - 0.50 # ACID
+      - 0.00 # SMOKE 
+    loftempsSet: [ 92, 89, 90, 91 ]
+    
+  - type: SECTOTANK_ARMOR_3
+    spriteSheet: SECTOTANK_3.PCK
+    corpseBattle:
+      - SECTOTANK_CORPSE_1
+      - SECTOTANK_CORPSE_2
+      - SECTOTANK_CORPSE_3
+      - SECTOTANK_CORPSE_4
+    corpseGeo: STR_SECTOTANK_CORPSE
+    frontArmor: 140
+    sideArmor: 100
+    rearArmor: 60
+    underArmor: 40
+    drawingRoutine: 5
+    size: 2
+    damageModifier:
+      - 1.00 # EMP 
+      - 1.00 # AP
+      - 0.75 # INC
+      - 1.00 # HE
+      - 1.25 # LASER
+      - 0.75 # PLASMA
+      - 0.00 # STUN
+      - 1.00 # MELEE
+      - 0.50 # ACID
+      - 0.00 # SMOKE
+    loftempsSet: [ 92, 89, 90, 91 ]    
+    
+# X-COM DRONES
+  - type: WAR_DRONE_ARMOUR
+    spriteSheet: WAR_DRONE.PCK
+    corpseBattle:
+      - STR_WAR_DRONE_CORPSE 
+    corpseGeo: STR_WAR_DRONE_CORPSE      
+    frontArmor: 15
+    sideArmor: 15
+    rearArmor: 15
+    underArmor: 10
+    drawingRoutine: 4
+    size: 1
+    loftempsSet: [ 63 ]    
+    damageModifier:
+      - 1.00 # EMP 
+      - 1.00 # AP
+      - 0.50 # INC
+      - 0.75 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 0.00 # STUN
+      - 1.00 # MELEE
+      - 1.50 # ACID
+      - 0.00 # SMOKE
+
+  - type: SCOUT_DRONE_ARMOUR
+    spriteSheet: SCOUT_DRONE.PCK
+    corpseBattle:
+      - STR_SCOUT_DRONE_CORPSE 
+    corpseGeo: STR_SCOUT_DRONE_CORPSE      
+    frontArmor: 10
+    sideArmor: 10
+    rearArmor: 10
+    underArmor: 5
+    drawingRoutine: 4
+    size: 1
+    loftempsSet: [ 63 ]    
+    damageModifier:
+      - 1.00 # EMP 
+      - 1.00 # AP
+      - 0.50 # INC
+      - 0.75 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 0.00 # STUN
+      - 1.00 # MELEE
+      - 1.50 # ACID
+      - 0.00 # SMOKE
+    
+  - type: STR_ENFORCER_UC
+    spriteSheet: ENFORCER.PCK
+    spriteInv: inventory_Enforcer
+    corpseItem: STR_CORPSE_ENFORCER
+    frontArmor: 90
+    sideArmor: 75
+    rearArmor: 60
+    underArmor: 45
+    #weight: 12
+    size: 1 
+    loftempsSet: [ 5 ]    
+    damageModifier:
+      - 1.00 # EMP 
+      - 1.00 # AP
+      - 0.50 # INC
+      - 0.75 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 0.00 # STUN
+      - 1.00 # MELEE
+      - 1.50 # ACID
+      - 0.00 # SMOKE
+    
+############# ALIEN ARMOURS ############
+  - type: OVERLORD_ARMOR0
+    spriteSheet: OVERLORD.PCK
+    spriteInv: inventory_Overlord
+    corpseBattle:
+      - STR_OVERLORD_CORPSE
+    frontArmor: 5
+    sideArmor: 0
+    rearArmor: 0
+    underArmor: 0
+    loftempsSet: [4]
+    drawingRoutine: 19    
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 1.00  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 0.75  # PLASMA
+      - 1.00  # STUN
+      - 1.25  # MELEE
+      - 1.50  # ACID
+      - 0.00  # SMOKE
+
+  - type: SECTOID_ARMOR0
+    spriteSheet: SECTOID.PCK
+    spriteInv: inventory_Sectoid
+    corpseBattle:
+      - STR_SECTOID_CORPSE
+    frontArmor: 5
+    sideArmor: 0
+    rearArmor: 0
+    underArmor: 0
+    loftempsSet: [2]
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 1.00  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 0.75  # PLASMA
+      - 1.00  # STUN
+      - 1.25  # MELEE
+      - 1.50  # ACID
+      - 0.00  # SMOKE
+  - type: SECTOID_ARMOR2
+    spriteSheet: SECTOID.PCK
+    spriteInv: inventory_Sectoid
+    corpseBattle:
+      - STR_SECTOID_CORPSE
+    frontArmor: 10
+    sideArmor: 5
+    rearArmor: 5
+    underArmor: 5
+    loftempsSet: [ 2 ]     
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 1.00  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 0.75  # PLASMA
+      - 1.00  # STUN
+      - 1.25  # MELEE
+      - 1.50  # ACID
+      - 0.00  # SMOKE
+     
+  - type: FLOATER_ARMOR0
+    spriteSheet: FLOATER.PCK
+    spriteInv: inventory_Floater
+    corpseBattle:
+      - STR_FLOATER_CORPSE
+    frontArmor: 10
+    sideArmor: 5
+    rearArmor: 0
+    underArmor: 15
+    drawingRoutine: 1
+    loftempsSet: [4]
+    movementType: 1    
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 1.00  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 0.75  # PLASMA
+      - 1.00  # STUN
+      - 1.25  # MELEE
+      - 1.50  # ACID
+      - 0.00  # SMOKE
+
+  - type: FLOATER_ARMOR1
+    spriteSheet: FLOATER.PCK
+    spriteInv: inventory_Floater
+    corpseBattle:
+      - STR_FLOATER_CORPSE
+    frontArmor: 15
+    sideArmor: 10
+    rearArmor: 5
+    underArmor: 15
+    drawingRoutine: 1
+    loftempsSet: [4]
+    movementType: 1    
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 1.00  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 0.75  # PLASMA
+      - 1.00  # STUN
+      - 1.25  # MELEE
+      - 1.50  # ACID
+      - 0.00  # SMOKE
+
+  - type: FLOATER_ARMOR2
+    spriteSheet: FLOATER.PCK
+    spriteInv: inventory_Floater
+    corpseBattle:
+      - STR_FLOATER_CORPSE
+    frontArmor: 20
+    sideArmor: 15
+    rearArmor: 10
+    underArmor: 15
+    drawingRoutine: 1
+    loftempsSet: [4]
+    movementType: 1    
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 1.00  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 0.75  # PLASMA
+      - 1.00  # STUN
+      - 1.25  # MELEE
+      - 1.50  # ACID
+      - 0.00  # SMOKE
+
+  - type: CYBERDISC_ARMOR
+    spriteSheet: CYBER.PCK
+    spriteInv: inventory_Cyberdisc
+    corpseBattle:
+      - CYBERDISC_CORPSE_1
+      - CYBERDISC_CORPSE_2
+      - CYBERDISC_CORPSE_3
+      - CYBERDISC_CORPSE_4
+    corpseGeo: STR_CYBERDISC_CORPSE
+    frontArmor: 30
+    sideArmor: 30
+    rearArmor: 30
+    underArmor: 5
+    drawingRoutine: 3
+    size: 2
+    loftempsSet: [92, 89, 90, 91]
+    constantAnimation: true
+    movementType: 1    
+    damageModifier:
+      - 1.00  # EMP 
+      - 0.75  # AP
+      - 1.00  # INC
+      - 0.50  # HE
+      - 1.00  # LASER
+      - 1.00  # PLASMA
+      - 0.50  # STUN
+      - 0.75  # MELEE
+      - 1.00  # ACID
+      - 0.00  # SMOKE
+
+  - type: REAPER_ARMOR
+    spriteSheet: REPEAR.PCK
+    spriteInv: inventory_Repear
+    corpseBattle:
+      - REAPER_CORPSE_1
+      - REAPER_CORPSE_2
+      - REAPER_CORPSE_3
+      - REAPER_CORPSE_4
+    corpseGeo: STR_REAPER_CORPSE
+    frontArmor: 20
+    sideArmor: 20
+    rearArmor: 20
+    underArmor: 20
+    drawingRoutine: 5
+    size: 2
+    loftempsSet: [92, 89, 90, 91]
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 1.75  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 1.00  # PLASMA
+      - 1.00  # STUN
+      - 1.00  # MELEE
+      - 1.00  # ACID
+      - 0.00  # SMOKE       
+     
+  - type: SECTOPOD_ARMOR
+    spriteSheet: SECTOPOD.PCK
+    spriteInv: inventory_Sectopod
+    corpseBattle:
+      - SECTOPOD_CORPSE_1
+      - SECTOPOD_CORPSE_2
+      - SECTOPOD_CORPSE_3
+      - SECTOPOD_CORPSE_4
+    corpseGeo: STR_SECTOPOD_CORPSE
+    frontArmor: 140
+    sideArmor: 100
+    rearArmor: 60
+    underArmor: 40
+    drawingRoutine: 5
+    size: 2
+    loftempsSet: [92, 89, 90, 91]
+    damageModifier:
+      - 1.00  # EMP 
+      - 1.00  # AP
+      - 1.00  # INC
+      - 0.75  # HE
+      - 1.25  # LASER
+      - 0.75  # PLASMA
+      - 0.50  # STUN
+      - 1.00  # MELEE
+      - 1.00  # ACID
+      - 0.00  # SMOKE      
+      
+  - type: SNAKEMAN_ARMOR0
+    spriteSheet: SNAKEMAN.PCK
+    spriteInv: inventory_Snakeman
+    corpseBattle:
+      - STR_SNAKEMAN_CORPSE
+    frontArmor: 20
+    sideArmor: 20
+    rearArmor: 15
+    underArmor: 10
+    drawingRoutine: 6
+    loftempsSet: [3]
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 0.75  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 0.75  # PLASMA
+      - 1.00  # STUN
+      - 1.00  # MELEE
+      - 1.00  # ACID
+      - 0.00  # SMOKE 
+      
+  - type: SNAKEMAN_ARMOR1
+    spriteSheet: SNAKEMAN.PCK
+    spriteInv: inventory_Snakeman
+    corpseBattle:
+      - STR_SNAKEMAN_CORPSE
+    frontArmor: 25
+    sideArmor: 25
+    rearArmor: 20
+    underArmor: 15
+    drawingRoutine: 6
+    loftempsSet: [3]
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 0.75  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 0.75  # PLASMA
+      - 1.00  # STUN
+      - 1.00  # MELEE
+      - 1.00  # ACID
+      - 0.00  # SMOKE 
+  - type: SNAKEMAN_ARMOR2
+    spriteSheet: SNAKEMAN.PCK
+    spriteInv: inventory_Snakeman
+    corpseBattle:
+      - STR_SNAKEMAN_CORPSE
+    frontArmor: 30
+    sideArmor: 30
+    rearArmor: 25
+    underArmor: 20
+    drawingRoutine: 6
+    loftempsSet: [3]
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 0.75  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 0.75  # PLASMA
+      - 1.00  # STUN
+      - 1.00  # MELEE
+      - 1.00  # ACID
+      - 0.00  # SMOKE 
+  - type: MUTON_ARMOR0
+    spriteSheet: MUTON.PCK
+    spriteInv: inventory_Muton
+    corpseBattle:
+      - STR_MUTON_CORPSE
+    frontArmor: 20
+    sideArmor: 20
+    rearArmor: 20
+    underArmor: 10
+    drawingRoutine: 10
+    loftempsSet: [4]
+    damageModifier:
+      - 0.00  # EMP  
+      - 0.50  # AP
+      - 1.00  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 0.75  # PLASMA
+      - 1.25  # STUN
+      - 1.00  # MELEE
+      - 1.00  # ACID
+      - 0.00  # SMOKE       
+      
+  - type: MUTON_ARMOR1
+    spriteSheet: MUTON.PCK
+    spriteInv: inventory_Muton
+    corpseBattle:
+      - STR_MUTON_CORPSE
+    frontArmor: 25
+    sideArmor: 25
+    rearArmor: 25
+    underArmor: 15
+    drawingRoutine: 10
+    loftempsSet: [4]
+    damageModifier:
+      - 0.00  # EMP  
+      - 0.50  # AP
+      - 1.00  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 0.75  # PLASMA
+      - 1.25  # STUN
+      - 1.00  # MELEE
+      - 1.00  # ACID
+      - 0.00  # SMOKE
+  - type: MUTON_ARMOR2
+    spriteSheet: MUTON.PCK
+    spriteInv: inventory_Muton
+    corpseBattle:
+      - STR_MUTON_CORPSE
+    frontArmor: 30
+    sideArmor: 30
+    rearArmor: 30
+    underArmor: 20
+    drawingRoutine: 10
+    loftempsSet: [4]
+    damageModifier:
+      - 0.00  # EMP  
+      - 0.50  # AP
+      - 1.00  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 0.75  # PLASMA
+      - 1.25  # STUN
+      - 1.00  # MELEE
+      - 1.00  # ACID
+      - 0.00  # SMOKE
+  - type: MUTON_ARMOR_COM
+    spriteSheet: MUTONCOM.PCK
+    spriteInv: inventory_MutonCom
+    corpseBattle:
+      - STR_MUTONCOM_CORPSE
+    frontArmor: 35
+    sideArmor: 35
+    rearArmor: 35
+    underArmor: 25
+    drawingRoutine: 10
+    loftempsSet: [4]
+    damageModifier:
+      - 0.00  # EMP  
+      - 0.50  # AP
+      - 1.00  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 0.75  # PLASMA
+      - 1.25  # STUN
+      - 1.00  # MELEE
+      - 1.00  # ACID
+      - 0.00  # SMOKE
+  - type: ETHEREAL_ARMOR0
+    spriteSheet: ETHEREAL.PCK
+    spriteInv: inventory_Etheral
+    corpseBattle:
+      - STR_ETHEREAL_CORPSE
+    frontArmor: 35
+    sideArmor: 35
+    rearArmor: 35
+    underArmor: 35
+    drawingRoutine: 4
+    loftempsSet: [5]
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 0.75  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 0.75  # PLASMA
+      - 0.50  # STUN
+      - 1.25  # MELEE
+      - 1.00  # ACID
+      - 0.00  # SMOKE      
+    movementType: 1
+  - type: ETHEREAL_ARMOR1
+    spriteSheet: ETHEREAL.PCK
+    spriteInv: inventory_Etheral
+    corpseBattle:
+      - STR_ETHEREAL_CORPSE
+    frontArmor: 40
+    sideArmor: 40
+    rearArmor: 40
+    underArmor: 40
+    drawingRoutine: 4
+    loftempsSet: [5]
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 0.75  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 0.75  # PLASMA
+      - 0.50  # STUN
+      - 1.25  # MELEE
+      - 1.00  # ACID
+      - 0.00  # SMOKE 
+    movementType: 1
+  - type: ETHEREAL_ARMOR2
+    spriteSheet: ETHEREAL.PCK
+    spriteInv: inventory_Etheral
+    corpseBattle:
+      - STR_ETHEREAL_CORPSE
+    frontArmor: 45
+    sideArmor: 45
+    rearArmor: 45
+    underArmor: 45
+    drawingRoutine: 4
+    loftempsSet: [5]
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 0.75  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 0.75  # PLASMA
+      - 0.50  # STUN
+      - 1.25  # MELEE
+      - 1.00  # ACID
+      - 0.00  # SMOKE 
+    movementType: 1
+  - type: CHRYSSALID_ARMOR
+    spriteSheet: CHRYSSALID.PCK
+    spriteInv: inventory_Chryssalid
+    corpseBattle:
+      - STR_CHRYSSALID_CORPSE
+    frontArmor: 30
+    sideArmor: 30
+    rearArmor: 30
+    underArmor: 30
+    drawingRoutine: 7
+    loftempsSet: [3]
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 0.75  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 0.75  # PLASMA
+      - 1.00  # STUN
+      - 0.75  # MELEE
+      - 1.00  # ACID
+      - 0.00  # SMOKE     
+       
+  - type: ZOMBIE_ARMOR
+    spriteSheet: ZOMBIE.PCK
+    spriteInv: inventory_Zombie
+    corpseBattle:
+      - STR_ZOMBIE_CORPSE
+    frontArmor: 5
+    sideArmor: 5
+    rearArmor: 5
+    underArmor: 5
+    drawingRoutine: 4
+    loftempsSet: [3]
+    deathFrames: 18
+    damageModifier:
+      - 0.00  # EMP  
+      - 0.50  # AP
+      - 1.50  # INC
+      - 0.75  # HE
+      - 0.75  # LASER
+      - 0.50  # PLASMA
+      - 0.00  # STUN
+      - 1.25  # MELEE
+      - 1.00  # ACID
+      - 0.00  # SMOKE 
+      
+  - type: SILACOID_ARMOR
+    spriteSheet: SILACOID.PCK
+    spriteInv: inventory_Silacoid
+    corpseBattle:
+      - STR_SILACOID_CORPSE
+    frontArmor: 50
+    sideArmor: 50
+    rearArmor: 50
+    underArmor: 10
+    drawingRoutine: 8
+    loftempsSet: [5]
+    constantAnimation: true
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 0.00  # INC
+      - 1.25  # HE
+      - 1.00  # LASER
+      - 0.75  # PLASMA
+      - 1.00  # STUN
+      - 1.00  # MELEE
+      - 1.00  # ACID
+      - 0.00  # SMOKE       
+      
+  - type: CELATID_ARMOR
+    spriteSheet: CELATID.PCK
+    spriteInv: inventory_Celatid
+    corpseBattle:
+      - STR_CELATID_CORPSE
+    frontArmor: 20
+    sideArmor: 20
+    rearArmor: 20
+    underArmor: 20
+    drawingRoutine: 9
+    loftempsSet: [2]
+    constantAnimation: true
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 1.00  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 0.75  # PLASMA
+      - 1.00  # STUN
+      - 1.25  # MELEE
+      - 1.75  # ACID
+      - 0.00  # SMOKE 
+       
+  - type: ANTHROPOD_ARMOR0
+    spriteSheet: ANTHROPOD.PCK
+    spriteInv: inventory_Anthropod
+    corpseBattle:
+      - STR_ANTHROPOD_CORPSE
+    frontArmor: 10
+    sideArmor: 10
+    rearArmor: 5
+    underArmor: 5
+    drawingRoutine: 10
+    loftempsSet: [4]
+    damageModifier:
+      - 0.00 # EMP 
+      - 1.00 # AP
+      - 1.25 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 0.75 # PLASMA
+      - 1.00 # STUN
+      - 1.00 # MELEE
+      - 1.00 # ACID
+      - 0.00 # SMOKE 
+  - type: ANTHROPOD_ARMOR1
+    spriteSheet: ANTHROPOD.PCK
+    spriteInv: inventory_Anthropod
+    corpseBattle:
+      - STR_ANTHROPOD_CORPSE
+    frontArmor: 15
+    sideArmor: 15
+    rearArmor: 10
+    underArmor: 10
+    drawingRoutine: 10
+    loftempsSet: [4]
+    damageModifier:
+      - 0.00 # EMP 
+      - 1.00 # AP
+      - 1.25 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 0.75 # PLASMA
+      - 1.00 # STUN
+      - 1.00 # MELEE
+      - 1.00 # ACID
+      - 0.00 # SMOKE 
+  - type: ANTHROPOD_ARMOR2
+    spriteSheet: ANTHROPOD.PCK
+    spriteInv: inventory_Anthropod
+    corpseBattle:
+      - STR_ANTHROPOD_CORPSE
+    frontArmor: 20
+    sideArmor: 20
+    rearArmor: 15
+    underArmor: 15
+    drawingRoutine: 10
+    loftempsSet: [4]
+    damageModifier:
+      - 0.00 # EMP 
+      - 1.00 # AP
+      - 1.25 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 0.75 # PLASMA
+      - 1.00 # STUN
+      - 1.00 # MELEE
+      - 1.00 # ACID
+      - 0.00 # SMOKE 
+  - type: SPITTER_ARMOR
+    spriteSheet: SPITTER.PCK
+    corpseBattle:
+      - STR_SPITTER_CORPSE
+    frontArmor: 5
+    sideArmor: 30
+    rearArmor: 60
+    underArmor: 5
+    drawingRoutine: 4
+    loftempsSet: [3]
+    damageModifier:
+      - 0.00 # EMP 
+      - 1.00 # AP
+      - 1.75 # INC
+      - 0.75 # HE
+      - 1.00 # LASER
+      - 0.75 # PLASMA
+      - 1.00 # STUN
+      - 1.25 # MELEE
+      - 0.00 # ACID
+      - 2.50 # SMOKE 
+      
+  - type: SPITTER_RETRACT_ARMOR
+    spriteSheet: SPITTER_RETRACT.PCK
+    corpseBattle:
+      - STR_SPITTER_RETRACT_CORPSE
+    frontArmor: 35
+    sideArmor: 50
+    rearArmor: 60
+    underArmor: 45
+    drawingRoutine: 4
+    loftempsSet: [3]
+    damageModifier:
+      - 0.00 # EMP 
+      - 1.00 # AP
+      - 1.75 # INC
+      - 0.75 # HE
+      - 1.00 # LASER
+      - 0.75 # PLASMA
+      - 1.00 # STUN
+      - 1.25 # MELEE
+      - 0.00 # ACID
+      - 2.50 # SMOKE 
+  - type: SPITTER_RETRES_ARMOR
+    spriteSheet: SPITTER_RETRES.PCK
+    corpseBattle:
+      - STR_SPITTER_RETRES_CORPSE
+    frontArmor: 35
+    sideArmor: 50
+    rearArmor: 60
+    underArmor: 45
+    drawingRoutine: 4
+    loftempsSet: [3]
+    deathFrames: 18
+    damageModifier:
+      - 0.00 # EMP 
+      - 1.00 # AP
+      - 1.75 # INC
+      - 0.75 # HE
+      - 1.00 # LASER
+      - 0.75 # PLASMA
+      - 1.00 # STUN
+      - 1.25 # MELEE
+      - 0.00 # ACID
+      - 2.50 # SMOKE 
+  - type: SPITTER_NAKED_ARMOR
+    spriteSheet: SPITTER_NAKED.PCK
+    corpseBattle:
+      - STR_SPITTER_NAKED_CORPSE
+    frontArmor: 5
+    sideArmor: 5
+    rearArmor: 5
+    underArmor: 5
+    drawingRoutine: 4
+    loftempsSet: [3]
+    damageModifier:
+      - 0.00 # EMP 
+      - 1.00 # AP
+      - 1.75 # INC
+      - 0.75 # HE
+      - 1.00 # LASER
+      - 0.75 # PLASMA
+      - 1.00 # STUN
+      - 1.25 # MELEE
+      - 0.00 # ACID
+      - 2.50 # SMOKE 
+  - type: GAZER_ARMOR0
+    spriteSheet: GAZER.PCK
+    spriteInv: inventory_GAZER
+    corpseBattle:
+      - STR_GAZER_CORPSE
+    frontArmor: 60
+    sideArmor: 50
+    rearArmor: 40
+    underArmor: 25
+    drawingRoutine: 10
+    loftempsSet: [3]
+    damageModifier:
+      - 0.00 # EMP 
+      - 0.75 # AP
+      - 1.00 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 0.75 # PLASMA
+      - 1.00 # STUN
+      - 1.00 # MELEE
+      - 1.00 # ACID
+      - 0.00 # SMOKE 
+  - type: GAZER_ARMOR1
+    spriteSheet: GAZER.PCK
+    corpseBattle:
+      - STR_GAZER_CORPSE
+    spriteInv: inventory_Gazer
+    frontArmor: 65
+    sideArmor: 55
+    rearArmor: 45
+    underArmor: 30
+    drawingRoutine: 10
+    loftempsSet: [3]
+    damageModifier:
+      - 0.00 # EMP 
+      - 0.75 # AP
+      - 1.00 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 0.75 # PLASMA
+      - 1.00 # STUN
+      - 1.00 # MELEE
+      - 1.00 # ACID
+      - 0.00 # SMOKE 
+  - type: GAZER_ARMOR2
+    spriteSheet: GAZER.PCK
+    corpseBattle:
+      - STR_GAZER_CORPSE
+    spriteInv: inventory_Gazer 
+    frontArmor: 70
+    sideArmor: 60
+    rearArmor: 40
+    underArmor: 35
+    drawingRoutine: 10
+    loftempsSet: [3]
+    damageModifier:
+      - 0.00 # EMP 
+      - 0.75 # AP
+      - 1.00 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 0.75 # PLASMA
+      - 1.00 # STUN
+      - 1.00 # MELEE
+      - 1.00 # ACID
+      - 0.00 # SMOKE 
+  - type: HOLODRONE_ARMOR
+    spriteSheet: HOLODRONE.PCK
+    corpseBattle:
+      - STR_HOLODRONE_CORPSE
+    frontArmor: 10
+    sideArmor: 10
+    rearArmor: 10
+    underArmor: 10
+    drawingRoutine: 8
+    loftempsSet: [1]
+    damageModifier:
+      - 1.00 # EMP 
+      - 1.00 # AP
+      - 0.00 # INC
+      - 1.00 # HE
+      - 1.00 # LASER
+      - 0.50 # PLASMA
+      - 1.00 # STUN
+      - 1.00 # MELEE
+      - 1.00 # ACID
+      - 0.00 # SMOKE 
+    movementType: 1
+  - type: WASPITE_ARMOR0
+    spriteSheet: WASPITE.PCK
+    corpseBattle:
+      - STR_WASPITE_CORPSE
+    spriteInv: inventory_Waspite
+    frontArmor: 20
+    sideArmor: 15
+    rearArmor: 15
+    underArmor: 20
+    drawingRoutine: 1
+    loftempsSet: [2]
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 2.00  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 1.00  # PLASMA
+      - 1.00  # STUN
+      - 1.25  # MELEE
+      - 1.75  # ACID
+      - 1.00  # SMOKE 
+    movementType: 1
+  - type: WASPITE_ARMOR1
+    spriteSheet: WASPITE.PCK
+    corpseBattle:
+      - STR_WASPITE_CORPSE
+    spriteInv: inventory_Waspite 
+    frontArmor: 25
+    sideArmor: 20
+    rearArmor: 20
+    underArmor: 25
+    drawingRoutine: 1
+    loftempsSet: [2]
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 2.00  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 1.00  # PLASMA
+      - 1.00  # STUN
+      - 1.25  # MELEE
+      - 1.75  # ACID
+      - 1.00  # SMOKE 
+    movementType: 1
+  - type: WASPITE_ARMOR2
+    spriteSheet: WASPITE.PCK
+    corpseBattle:
+      - STR_WASPITE_CORPSE
+    spriteInv: inventory_Waspite 
+    frontArmor: 30
+    sideArmor: 25
+    rearArmor: 25
+    underArmor: 30
+    drawingRoutine: 1
+    loftempsSet: [2]
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 2.00  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 1.00  # PLASMA
+      - 1.00  # STUN
+      - 1.25  # MELEE
+      - 1.75  # ACID
+      - 1.00  # SMOKE 
+    movementType: 1
+  - type: CYBERMITE_ARMOR
+    spriteSheet: CYBERMITE.PCK
+    corpseBattle:
+      - STR_CYBERMITE_CORPSE
+    frontArmor: 25
+    sideArmor: 25
+    rearArmor: 25
+    underArmor: 25
+    drawingRoutine: 4
+    loftempsSet: [1]
+    damageModifier:
+      - 1.00  # EMP 
+      - 1.00  # AP
+      - 0.75  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 1.25  # PLASMA
+      - 0.75  # STUN
+      - 1.00  # MELEE
+      - 1.00  # ACID
+      - 0.00  # SMOKE 
+# MAN IN BLACK FORCES 
+  - type: MIB_ARMOR0
+    spriteSheet: MIB_0.PCK
+    spriteInv: inventory_MIB_0
+    corpseBattle:
+      - STR_MIB0_CORPSE
+    frontArmor: 0
+    sideArmor: 0
+    rearArmor: 0
+    underArmor: 0 
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 2.00  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 1.00  # PLASMA
+      - 1.00  # STUN
+      - 1.25  # MELEE
+      - 1.50  # ACID
+      - 2.00  # SMOKE 
+    loftempsSet: [ 3 ]
+  - type: MIB_ARMOR1
+    spriteSheet: MIB_1.PCK
+    spriteInv: inventory_MIB_1
+    corpseBattle:
+      - STR_MIB1_CORPSE
+    frontArmor: 30
+    sideArmor: 15
+    rearArmor: 15
+    underArmor: 0
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 1.00  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 1.00  # PLASMA
+      - 0.75  # STUN
+      - 1.00  # MELEE
+      - 1.25  # ACID
+      - 1.50  # SMOKE
+    loftempsSet: [ 3 ]
+  - type: MIB_ARMOR2
+    spriteSheet: MIB_2.PCK
+    spriteInv: inventory_MIB2
+    corpseBattle:
+      - STR_MIB2_CORPSE
+    frontArmor: 40
+    sideArmor: 20
+    rearArmor: 20
+    underArmor: 10
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 1.00  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 1.00  # PLASMA
+      - 0.75  # STUN
+      - 1.00  # MELEE
+      - 1.25  # ACID
+      - 1.50  # SMOKE
+    loftempsSet: [ 3 ]
+  - type: MIB_ARMOR3
+    spriteSheet: MIB_3.PCK
+    spriteInv: inventory_MIB_3
+    corpseBattle:
+      - STR_MIB3_CORPSE
+    frontArmor: 60
+    sideArmor: 30
+    rearArmor: 30
+    underArmor: 20
+    damageModifier:
+      - 0.00  # EMP  
+      - 1.00  # AP
+      - 0.75  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 1.00  # PLASMA
+      - 0.75  # STUN
+      - 1.00  # MELEE
+      - 1.25  # ACID
+      - 1.50  # SMOKE
+    loftempsSet: [ 4 ]
+  - type: MIB_ARMOR5
+    spriteSheet: MIB_5.PCK
+    spriteInv: inventory_MIB_5
+    movementType: 1
+    corpseBattle:
+      - STR_MIB5_CORPSE
+    frontArmor: 80
+    sideArmor: 60
+    rearArmor: 40
+    underArmor: 30
+    damageModifier:
+      - 0.25  # EMP 
+      - 1.00  # AP
+      - 0.50  # INC
+      - 1.00  # HE
+      - 1.00  # LASER
+      - 1.00  # PLASMA
+      - 0.75  # STUN
+      - 1.25  # MELEE
+      - 1.50  # ACID
+      - 1.50  # SMOKE
+    loftempsSet: [ 5 ]
+    
+  - type: MIB_TANK_ARMOR
+    spriteSheet: MIB_TANK.PCK
+    corpseBattle:
+      - MIBTANK_CORPSE_1
+      - MIBTANK_CORPSE_2
+      - MIBTANK_CORPSE_3
+      - MIBTANK_CORPSE_4
+    corpseGeo: STR_MIB_TANK_CORPSE      
+    frontArmor: 100
+    sideArmor: 75
+    rearArmor: 50
+    underArmor: 50
+    drawingRoutine: 2
+    size: 2
+    damageModifier:
+      - 1.00 # EMP 
+      - 1.00 # AP
+      - 0.50 # INC
+      - 0.75 # HE
+      - 1.00 # LASER
+      - 1.00 # PLASMA
+      - 0.50 # STUN
+      - 0.75 # MELEE
+      - 0.50 # ACID
+      - 0.00 # SMOKE 
+    loftempsSet: [ 92, 89, 90, 91 ]
+  - type: MIB_SECTOPOD_ARMOR
+    spriteSheet: MIB_SECTOTANK.PCK
+    corpseBattle:
+      - MIB_SECTOPOD_CORPSE_1
+      - MIB_SECTOPOD_CORPSE_2
+      - MIB_SECTOPOD_CORPSE_3
+      - MIB_SECTOPOD_CORPSE_4
+    corpseGeo: STR_MIB_SECTOPOD_CORPSE
+    frontArmor: 140
+    sideArmor: 100
+    rearArmor: 60
+    underArmor: 40
+    drawingRoutine: 5
+    size: 2
+    damageModifier:
+      - 1.00 # EMP 
+      - 1.00 # AP
+      - 0.75 # INC
+      - 1.00 # HE
+      - 1.25 # LASER
+      - 0.75 # PLASMA
+      - 0.75 # STUN
+      - 1.00 # MELEE
+      - 0.50 # ACID
+      - 0.00 # SMOKE 
+    loftempsSet: [ 92, 89, 90, 91 ]
+    
+extraSprites:
+
+################ X-COM VEHICLES #################    
+# X-COM SECTOTANK 
+  - type: SECTOTANK_1.PCK
+    width: 512
+    height: 440
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/armours/Sectotank/Sectotank_Laser.png  
+  - type: SECTOTANK_2.PCK
+    width: 512
+    height: 440
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/armours/Sectotank/Sectotank_Plasma.png
+  - type: SECTOTANK_3.PCK
+    width: 512
+    height: 440
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/armours/Sectotank/Sectotank_Rocket.png      
+ 
+# NORMAL TANK       
+  - type: TANK.PCK
+    width: 256
+    height: 760
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/armours/Tank/Tank.png       
+# HOVERTANK     
+  - type: ALLOY_TANK.PCK
+    width: 256
+    height: 760
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/armours/Tank/Alloy_Tank.png        
+      
+# WAR_DRONE      
+  - type: WAR_DRONE.PCK
+    width: 512
+    height: 200
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/armours/Drone/WarDrone.png      
+  
+# SCOUT_DRONE      
+  - type: SCOUT_DRONE.PCK
+    width: 256
+    height: 400
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/armours/Drone/SmokeDrone.png   
+      
+# ENFORCER
+  - type: ENFORCER.PCK
+    width: 256
+    height: 1440
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/armours/Enforcer/Enforcer.png   
+  - type: inventory_Enforcer
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/armours/Enforcer/Inv_Enforcer.png    
+
+############### NEUTRAL FORCES ###############      
+            
+# CIV_MALE      
+  - type: CIV_MALE.PCK
+    width: 256
+    height: 400
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/male/Male.png      
+  - type: inventory_Male
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/male/Inv_Male.png       
+# CIV_FEMALE      
+  - type: CIV_FEMALE.PCK
+    width: 256
+    height: 400
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/female/Female.png      
+  - type: inventory_FeMale
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/female/Inv_Female.png   
+# SCIENTIST      
+  - type: CIV_ACADEMY.PCK
+    width: 512
+    height: 720
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/academy/Academy.png      
+  - type: inventory_Academy
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/academy/Inv_Academy.png     
+# ENGINEER
+  - type: CIV_ENGINEER.PCK
+    width: 512
+    height: 720
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/engineer/Engineer.png      
+  - type: inventory_Engineer
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/engineer/Inv_Engineer.png   
+# MANAGER
+  - type: CIV_MANAGER.PCK
+    width: 512
+    height: 720
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/manager/Manager.png      
+  - type: inventory_Manager
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/manager/Inv_Manager.png    
+# POLICEMAN
+  - type: CIV_POLICEMAN.PCK
+    width: 512
+    height: 720
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/policeman/Policeman.png      
+  - type: inventory_Policeman
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/policeman/Inv_Policeman.png       
+      
+################ ALIEN FORCES #####################      
+# SECTOID      
+  - type: SECTOID.PCK
+    width: 256
+    height: 1360
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/sectoid/Sectoid.png      
+  - type: inventory_Sectoid
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/sectoid/Inv_Sectoid.png              
+# FLOATER      
+  - type: FLOATER.PCK
+    width: 256
+    height: 520
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/floater/Floater.png      
+  - type: inventory_Floater
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/floater/Inv_Floater.png       
+# CYBERDISC     
+  - type: inventory_Cyberdisc
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/cyberdisc/Inv_Cyberdisc.png        
+# REPEAR    
+  - type: REPEAR.PCK
+    width: 256
+    height: 800
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/repear/Repear.png   
+  - type: inventory_Repear
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/repear/Inv_Repear.png   
+# SECTOPOD    
+  - type: SECTOPOD.PCK
+    width: 256
+    height: 800
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/sectopod/Sectopod.png   
+  - type: inventory_Sectopod
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/sectopod/Inv_Sectopod.png  
+# SNAKEMAN    
+  - type: SNAKEMAN.PCK
+    width: 256
+    height: 680
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/snakeman/Snakeman.png   
+  - type: inventory_Snakeman
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/snakeman/Inv_Snakeman.png  
+# MUTON    
+  - type: MUTON.PCK
+    width: 256
+    height: 1360
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/muton/Muton.png   
+  - type: inventory_Muton
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/muton/Inv_Muton.png    
+# MUTON COMMANDER    
+  - type: MUTONCOM.PCK
+    width: 512
+    height: 680
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/mutonCom/MutonCom.png   
+  - type: inventory_MutonCom
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/mutonCom/Inv_MutonCom.png   
+# ETHERAL    
+  - type: ETHEREAL.PCK
+    width: 256
+    height: 400
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/etheral/Etheral.png   
+  - type: inventory_Etheral
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/etheral/Inv_Ethereal.png       
+# CHRYSSALID    
+  - type: CHRYSSALID.PCK
+    width: 256
+    height: 1160
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/chryssalid/Chryssalid.png   
+  - type: inventory_Chryssalid
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/chryssalid/Inv_Chryssalid.png   
+# ZOMBIE    
+  - type: ZOMBIE.PCK
+    width: 256
+    height: 480
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/zombie/Zombie.png   
+  - type: inventory_Zombie
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/zombie/Inv_Zombie.png       
+# SILACOID    
+  - type: SILACOID.PCK
+    width: 256
+    height: 80
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/silacoid/Silacoid.png   
+  - type: inventory_Silacoid
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/silacoid/Inv_Silacoid.png       
+# CELATID    
+  - type: CELATID.PCK
+    width: 256
+    height: 160
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/celatid/Celatid.png   
+  - type: inventory_Celatid
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/celatid/Inv_Celatid.png  
+# ANTHROPOD
+  - type: ANTHROPOD.PCK
+    width: 512
+    height: 680
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/antropod/Anthropod.png      
+  - type: inventory_Anthropod
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/antropod/Inv_Antropod.png   
+# OVERLOAD
+  - type: OVERLORD.PCK
+    width: 512 
+    height: 200
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/tentaculat/Tentaculat.png      
+  - type: inventory_Overlord
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/overlord/Inv_Overlord.png       
+# SPITTER
+  - type: SPITTER.PCK
+    width: 512
+    height: 200
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/spitter/Spitter.png    
+# SPITTER_RETRACT
+  - type: SPITTER_RETRACT.PCK
+    width: 512
+    height: 200
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/spitter/Spitter_Retract.png    
+# SPITTER_RETRES
+  - type: SPITTER_RETRES.PCK
+    width: 512
+    height: 240
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/spitter/Spitter_Retres.png 
+# SPITTER_NAKED
+  - type: SPITTER_NAKED.PCK
+    width: 512
+    height: 240
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/spitter/Spitter_Naked.png      
+# GAZER
+  - type: GAZER.PCK
+    width: 512
+    height: 680
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/gazer/Gazer.png      
+  - type: inventory_Gazer
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/gazer/Inv_Gazer.png  
+# HOLODRONE
+  - type: HOLODRONE.PCK
+    width: 512
+    height: 40
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/holodrone/Holodrone.png   
+# WASPITE
+  - type: WASPITE.PCK
+    width: 512
+    height: 280
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/waspite/Waspite.png      
+  - type: inventory_Waspite
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/waspite/Inv_Waspite.png  
+# CYBERMITE
+  - type: CYBERMITE.PCK
+    width: 512
+    height: 240
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/cybermite/CyberMite.png 
+
+############### MAN IN BLACK  ###############  
+      
+# MIB 0
+  - type: MIB_0.PCK
+    width: 512
+    height: 720
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/MiB/MIB_0.png      
+  - type: inventory_MIB_0
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/MiB/Inv_MIB_0.png    
+# MIB 1
+  - type: MIB_1.PCK
+    width: 512
+    height: 720
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/MiB/MIB_1.png      
+  - type: inventory_MIB_1
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/MiB/Inv_MIB_1.png  
+# MIB 2
+  - type: MIB_2.PCK
+    width: 512
+    height: 720
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/MiB/MIB_2.png      
+  - type: inventory_MIB_2
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/MiB/Inv_MIB_2.png 
+# MIB 3
+  - type: MIB_3.PCK
+    width: 512
+    height: 720
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/MiB/MIB_3.png      
+  - type: inventory_MIB_3
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/MiB/Inv_MIB_3.png      
+# MIB 5
+  - type: MIB_5.PCK
+    width: 256
+    height: 1440
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/MiB/MIB_5.png      
+  - type: inventory_MIB_5
+    width: 320
+    height: 200
+    singleImage: true
+    files:
+      0: Resources/aliens/MiB/Inv_MIB_5.png    
+
+# MIB TANK
+  - type: MIB_TANK.PCK
+    width: 512
+    height: 320
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/MiB HWP/MiB_Tank.png        
+      
+# MIB SECTOTANK
+  - type: MIB_SECTOTANK.PCK
+    width: 256
+    height: 840
+    subX: 32
+    subY: 40
+    files:
+      0: Resources/aliens/MiB HWP/MiB_Sectotank.png        
+
+################ X-COM FORCES ###############
+      
+  - type: XCOM_NONE.PCK
+    subX: 32
+    subY: 40
+    width: 256
+    height: 1440
+    files:
+      0: Resources/armours/Coverals/Coverals.png      
+  - type: XCOM_NONEF0.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Coverals/Inv_Coverals_1.png      
+  - type: XCOM_NONEF1.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Coverals/Inv_Coverals_2.png      
+  - type: XCOM_NONEF2.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Coverals/Inv_Coverals_3.png      
+  - type: XCOM_NONEF3.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Coverals/Inv_Coverals_4.png      
+  - type: XCOM_NONEM0.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Coverals/Inv_Coverals_5.png  
+  - type: XCOM_NONEM1.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Coverals/Inv_Coverals_6.png
+  - type: XCOM_NONEM2.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Coverals/Inv_Coverals_7.png
+  - type: XCOM_NONEM3.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Coverals/Inv_Coverals_8.png      
+            
+  - type: XCOM_JETPACK.PCK
+    subX: 32
+    subY: 40
+    width: 1024
+    height: 360
+    files:
+      0: Resources/armours/Jetpack/GravityModule.png      
+  - type: XCOM_JETPACKF0.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Jetpack/Inv_GravityModule_1.png      
+  - type: XCOM_JETPACKF1.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Jetpack/Inv_GravityModule_2.png      
+  - type: XCOM_JETPACKF2.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Jetpack/Inv_GravityModule_3.png      
+  - type: XCOM_JETPACKF3.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Jetpack/Inv_GravityModule_4.png      
+  - type: XCOM_JETPACKM0.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Jetpack/Inv_GravityModule_5.png  
+  - type: XCOM_JETPACKM1.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Jetpack/Inv_GravityModule_6.png
+  - type: XCOM_JETPACKM2.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Jetpack/Inv_GravityModule_7.png
+  - type: XCOM_JETPACKM3.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Jetpack/Inv_GravityModule_8.png      
+
+  - type: XCOM_LIGHT_VEST.PCK
+    subX: 32
+    subY: 40
+    width: 512
+    height: 720
+    files:
+      0: Resources/armours/Light Vest/LightVest.png      
+  - type: XCOM_LIGHT_VESTF0.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Light Vest/Inv_LightVest_1.png     
+  - type: XCOM_LIGHT_VESTF1.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Light Vest/Inv_LightVest_2.png      
+  - type: XCOM_LIGHT_VESTF2.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Light Vest/Inv_LightVest_3.png      
+  - type: XCOM_LIGHT_VESTF3.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Light Vest/Inv_LightVest_4.png      
+  - type: XCOM_LIGHT_VESTM0.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Light Vest/Inv_LightVest_5.png  
+  - type: XCOM_LIGHT_VESTM1.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Light Vest/Inv_LightVest_6.png
+  - type: XCOM_LIGHT_VESTM2.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Light Vest/Inv_LightVest_7.png
+  - type: XCOM_LIGHT_VESTM3.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Light Vest/Inv_LightVest_8.png     
+
+  - type: XCOM_ALLOY_VEST.PCK
+    subX: 32
+    subY: 40
+    width: 512
+    height: 720
+    files:
+      0: Resources/armours/Alloy Vest/AlloyVest.png      
+  - type: XCOM_ALLOY_VESTF0.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Alloy Vest/Inv_AlloyVest_1.png     
+  - type: XCOM_ALLOY_VESTF1.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Alloy Vest/Inv_AlloyVest_2.png      
+  - type: XCOM_ALLOY_VESTF2.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Alloy Vest/Inv_AlloyVest_3.png      
+  - type: XCOM_ALLOY_VESTF3.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Alloy Vest/Inv_AlloyVest_4.png      
+  - type: XCOM_ALLOY_VESTM0.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Alloy Vest/Inv_AlloyVest_5.png  
+  - type: XCOM_ALLOY_VESTM1.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Alloy Vest/Inv_AlloyVest_6.png
+  - type: XCOM_ALLOY_VESTM2.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Alloy Vest/Inv_AlloyVest_7.png
+  - type: XCOM_ALLOY_VESTM3.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Alloy Vest/Inv_AlloyVest_8.png               
+      
+  - type: XCOM_LEATHER_SUIT.PCK
+    subX: 32
+    subY: 40
+    width: 256
+    height: 1400
+    files:
+      0: Resources/armours/Leather Suit/LightSuit.png      
+  - type: XCOM_LEATHER_SUITF0.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Leather Suit/Inv_LightSuit_1.png     
+  - type: XCOM_LEATHER_SUITF1.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Leather Suit/Inv_LightSuit_2.png      
+  - type: XCOM_LEATHER_SUITF2.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Leather Suit/Inv_LightSuit_3.png      
+  - type: XCOM_LEATHER_SUITF3.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Leather Suit/Inv_LightSuit_4.png      
+  - type: XCOM_LEATHER_SUITM0.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Leather Suit/Inv_LightSuit_5.png  
+  - type: XCOM_LEATHER_SUITM1.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Leather Suit/Inv_LightSuit_6.png
+  - type: XCOM_LEATHER_SUITM2.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Leather Suit/Inv_LightSuit_7.png
+  - type: XCOM_LEATHER_SUITM3.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Leather Suit/Inv_LightSuit_8.png    
+
+  - type: XCOM_COMBAT_SUIT.PCK
+    subX: 32
+    subY: 40
+    width: 256
+    height: 1400
+    files:
+      0: Resources/armours/Combat Suit/CombatSuit.png      
+  - type: XCOM_COMBAT_SUITF0.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Combat Suit/Inv_CombatSuit_1.png     
+  - type: XCOM_COMBAT_SUITF1.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Combat Suit/Inv_CombatSuit_2.png      
+  - type: XCOM_COMBAT_SUITF2.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Combat Suit/Inv_CombatSuit_3.png      
+  - type: XCOM_COMBAT_SUITF3.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Combat Suit/Inv_CombatSuit_4.png      
+  - type: XCOM_COMBAT_SUITM0.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Combat Suit/Inv_CombatSuit_5.png  
+  - type: XCOM_COMBAT_SUITM1.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Combat Suit/Inv_CombatSuit_6.png
+  - type: XCOM_COMBAT_SUITM2.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Combat Suit/Inv_CombatSuit_7.png
+  - type: XCOM_COMBAT_SUITM3.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Combat Suit/Inv_CombatSuit_8.png      
+
+  - type: XCOM_JUMP_SUIT.PCK
+    subX: 32
+    subY: 40
+    width: 1024
+    height: 360
+    files:
+      0: Resources/armours/Jump Suit/JumpSuit.png      
+  - type: XCOM_JUMP_SUITF0.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Jump Suit/Inv_JumpSuit_1.png     
+  - type: XCOM_JUMP_SUITF1.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Jump Suit/Inv_JumpSuit_2.png      
+  - type: XCOM_JUMP_SUITF2.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Jump Suit/Inv_JumpSuit_3.png      
+  - type: XCOM_JUMP_SUITF3.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Jump Suit/Inv_JumpSuit_4.png      
+  - type: XCOM_JUMP_SUITM0.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Jump Suit/Inv_JumpSuit_5.png  
+  - type: XCOM_JUMP_SUITM1.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Jump Suit/Inv_JumpSuit_6.png
+  - type: XCOM_JUMP_SUITM2.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Jump Suit/Inv_JumpSuit_7.png
+  - type: XCOM_JUMP_SUITM3.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Jump Suit/Inv_JumpSuit_8.png     
+
+  - type: XCOM_METAL_ARMOUR.PCK
+    subX: 32
+    subY: 40
+    width: 1024
+    height: 360
+    files:
+      0: Resources/armours/Metal Armour/MetalArmour.png      
+  - type: XCOM_METAL_ARMOURF0.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Metal Armour/Inv_MetalArmour_1.png     
+  - type: XCOM_METAL_ARMOURF1.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Metal Armour/Inv_MetalArmour_2.png      
+  - type: XCOM_METAL_ARMOURF2.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Metal Armour/Inv_MetalArmour_3.png      
+  - type: XCOM_METAL_ARMOURF3.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Metal Armour/Inv_MetalArmour_4.png      
+  - type: XCOM_METAL_ARMOURM0.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Metal Armour/Inv_MetalArmour_5.png  
+  - type: XCOM_METAL_ARMOURM1.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Metal Armour/Inv_MetalArmour_6.png
+  - type: XCOM_METAL_ARMOURM2.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Metal Armour/Inv_MetalArmour_7.png
+  - type: XCOM_METAL_ARMOURM3.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Metal Armour/Inv_MetalArmour_8.png      
+
+  - type: XCOM_POWER_ARMOUR.PCK
+    subX: 32
+    subY: 40
+    width: 1024
+    height: 360
+    files:
+      0: Resources/armours/Power Armour/PowerArmour.png      
+  - type: XCOM_POWER_ARMOURF0.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Power Armour/Inv_PowerArmour_1.png     
+  - type: XCOM_POWER_ARMOURF1.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Power Armour/Inv_PowerArmour_2.png      
+  - type: XCOM_POWER_ARMOURF2.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Power Armour/Inv_PowerArmour_3.png      
+  - type: XCOM_POWER_ARMOURF3.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Power Armour/Inv_PowerArmour_4.png      
+  - type: XCOM_POWER_ARMOURM0.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Power Armour/Inv_PowerArmour_5.png  
+  - type: XCOM_POWER_ARMOURM1.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Power Armour/Inv_PowerArmour_6.png
+  - type: XCOM_POWER_ARMOURM2.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Power Armour/Inv_PowerArmour_7.png
+  - type: XCOM_POWER_ARMOURM3.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Power Armour/Inv_PowerArmour_8.png 
+
+  - type: XCOM_FLYING_ARMOUR.PCK
+    subX: 32
+    subY: 40
+    width: 1024
+    height: 360
+    files:
+      0: Resources/armours/Flying Armour/FlyingArmour.png      
+  - type: XCOM_FLYING_ARMOURF0.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Flying Armour/Inv_FlyingArmour_1.png     
+  - type: XCOM_FLYING_ARMOURF1.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Flying Armour/Inv_FlyingArmour_2.png      
+  - type: XCOM_FLYING_ARMOURF2.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Flying Armour/Inv_FlyingArmour_3.png      
+  - type: XCOM_FLYING_ARMOURF3.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Flying Armour/Inv_FlyingArmour_4.png      
+  - type: XCOM_FLYING_ARMOURM0.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Flying Armour/Inv_FlyingArmour_5.png  
+  - type: XCOM_FLYING_ARMOURM1.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Flying Armour/Inv_FlyingArmour_6.png
+  - type: XCOM_FLYING_ARMOURM2.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Flying Armour/Inv_FlyingArmour_7.png
+  - type: XCOM_FLYING_ARMOURM3.SPK
+    singleImage: true
+    files:
+      0: Resources/armours/Flying Armour/Inv_FlyingArmour_8.png        

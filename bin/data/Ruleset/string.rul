@@ -1,0 +1,535 @@
+extraStrings:
+  - type: en-US
+    strings:
+    
+      STR_RANGE_UC: RANGE
+      STR_ACCURACY_UC: TO HIT
+      STR_SHOT_TYPE_MELEE: Melee
+      STR_PERSONNEL_CAPACITY: Personnel capacity
+      STR_STORAGE_CAPACITY: Storage capacity
+      STR_RADAR_RANGE: Detection Range
+      STR_RADAR_CHANCE: Detection Chance
+      STR_PSIONIC_CAPACITY: Psionic Training Capacity
+      STR_CRAFT_CAPACITY: Crafts Capacity
+      STR_LABORATORY_CAPACITY: Scientists Capacity
+      STR_WORKSHOP_CAPACITY: Engineers Capacity
+      STR_WEIGHT_PEDIA: Weight
+      STR_PERSONAL_LIGHT: Personal light
+      
+      STR_ELERIUM_FLARE: Elerium Flare
+      STR_ELERIUM_FLARE_UFOPEDIA: Elerium based source of light gives stronger light then standard electro-flare and weights only 1kg. 
+      
+      STR_URBAN: Urban 
+      STR_DESERTMOUNT: Desert Mountains
+      STR_FORESTMOUNT: Forest Mountains
+      STR_POLARMOUNT: Polar Mountains
+      STR_MUJUNGLE: Jungle Artefact
+      STR_NATIVEURBAN: Village
+      STR_ATLANTDESERT: Desert Artefact 
+            
+      STR_FRAG_GRENADE: Frag Grenade 
+      STR_FRAG_GRENADE_UFOPEDIA: Anti personel light grenade. 
+      
+      STR_AUTO_MISSILE_LAUNCHER: Multi-Launcher
+      STR_AUTO_MISSILE_SMALL: Small Multi-Missile
+      STR_AUTO_MISSILE_LARGE: Large Multi-Missile
+      
+      STR_MORTAR: Heavy Mortar
+      STR_MORTAR_SHELL_STUN: Mortar Shell Stun
+      STR_MORTAR_SHELL_HE: Mortar Shell HE
+      STR_MORTAR_SHELL_INC: Mortar Shell INC
+      
+      STR_AUTO_MISSILE_LAUNCHER_UFOPEDIA: Multi-Launcher fires multi rockets. 
+      STR_MORTAR_UFOPEDIA: Heavy Mortar fires multi grenade bullets. 
+      
+      STR_MUTONCOM_CORPSE: Muton Corpse
+      STR_ANTHROPOD_CORPSE: Anthropod Corpse
+      STR_SPITTER_CORPSE: Spitter Corpse
+      STR_SPITTER_RETRACT_CORPSE: Spitter Corpse
+      STR_SPITTE_RETRES_CORPSE: Spitter Shell
+      STR_SPITTER_NAKED_CORPSE: Spitter Corpse
+      STR_GAZER_CORPSE: Gazer Corpse
+      STR_HOLODRONE_CORPSE: Holodrone Corpse
+      STR_WASPITE_CORPSE: Waspite Corpse
+      STR_CYBERMITE_CORPSE: Cybermite Corpse    
+      STR_SECTCOM_CORPSE: Sectoid Corpse
+            
+      STR_LMG: Heavy Machine Gun
+      STR_LMG_CLIP: Heavy Machine Gun Clip      
+      STR_LMG_UFOPEDIA: A heavier variant of the custom-designed X-Com rifle. The extra weight comes from a heavier barrel and integral bipod system, capable of facilitating heavy fire on medium-to-short range targets.  Powerful recoil and obtuse handling make it unsuitable for longe-range shooting.
+      
+      STR_ALLOY_AMMO: Small Arms Ammo (Alien Alloys) 
+      STR_ALLOY_AMMO_BIG: Big Arms Ammo (Alien Alloys)
+      STR_ALLOY_AMMO_HEAVY: Heavy Arms Ammo (Alien Alloys)
+      STR_PISTOL_CLIP_AA: Pistol Clip AA
+      STR_MSG_CLIP_AA: Submachine Clip AA
+      STR_RIFLE_CLIP_AA: Rifle Clip AA
+      STR_DMR_AMMO_AA: Sniper Rifle Clip AA
+      STR_SHOTGUN_SHELLS_AA: Shotgun Clip AA
+      STR_MINIGUN_CLIP_AA: Minigun Clip AA
+      STR_LMG_CLIP_AA: Machine Gun Clip AA
+             
+      STR_HUMAN_LARGE_FACILITIES_CONTRACT: Large Facilities
+      STR_HUMAN_EQUIPMENT_CONTRACT: Support Equipment 
+      STR_HUMAN_NONLEATHAL_CONTRACT: Non-Leathal Arms
+      STR_HUMAN_ARMOURS_CONTRACT: Soldier Armours
+
+      STR_LIVING_QUARTERS_LARGE: Large Living Quarters
+      STR_LIVING_QUARTERS_2_UFOPEDIA: "Meant for large bases, this facility is more cost-efficient than the standard Living Quarters, housing 200 personnel in considerable comfort as well as providing 50 storage space."
+      STR_GENERAL_STORES_LARGE: Large Storage
+      STR_GENERAL_STORES_2_UFOPEDIA: "This facility is considerably more costly than the General Stores, but it provides better-structured storage space (capacity 275 units)."
+       
+      STR_STORMLANCE: STORMLANCE
+      STR_STORMLANCE_MISSILE: Stormlance Missile
+      STR_STORMLANCE_MISSILES: Stormlance Missiles
+      STR_STORMLANCE_LAUNCHER: Stormlance Missile Launcher
+      STR_STORMLANCE_UFOPEDIA: THIS ROCKET CONTAINS A HIGH-POWERED ELERIUM WARHEAD. 
+
+      STR_ALLOY_TANK_ARMOR: Alloy HWP Armor
+      STR_TANK_CANNON_ALLOY: Alloy Tank/Cannon
+      STR_TANK_CANNON_ALLOY_UFOPEDIA: This is a standard Cannon HWP that has been refitted with light, strong alien alloy armor. Its performance is similar to the original, but it is slightly faster can take much more abuse.
+      STR_TANK_LASER_CANNON_ALLOY: Alloy Tank/Laser
+      STR_TANK_LASER_CANNON_ALLOY_UFOPEDIA: The pinnacle of X-COM tracked HWP technology. It employs both the powerful laser cannon designed by our scientists, and light, strong alien alloy armor.
+      STR_TANK_ROCKET_LAUNCHER_ALLOY: Alloy Tank/Rocket Launcher
+      STR_TANK_ROCKET_LAUNCHER_ALLOY_UFOPEDIA: This is a standard Rocket Launcher HWP that has been refitted with light, strong alien alloy armor. Its performance is similar to the original, but its longevity under fire has been greatly increased, and it is somewhat quicker.
+
+      STR_POWER_HOVERTANK_LASER: Power Tank/Laser
+      STR_POWER_HOVERTANK_PLASMA: Power Tank/Plasma
+      STR_POWER_HOVERTANK_LAUNCHER: Power Tank/Blaster      
+      
+      STR_GATLING_LASER: Laser Gatling
+      STR_GATLING_LASER_UFOPEDIA: Heavy and cumbersome minigun powered by laser. 
+      
+      STR_LARGE_WORKSHOP: Large Workshop
+      STR_LARGE_LAB: Large Laboratory
+      STR_CORRIDOR: Corridor
+      STR_PSIONIC_LABORATORY_LARGE: Large Psi Laboratory
+      STR_CORRIDOR_UFOPEDIA: A cheap facility designed to connect other facilities.
+      STR_LARGE_WORKSHOP_UFOPEDIA: This Large Workshop hosts expensive, but expansive infrastructure for manufacturing on a large scale. It provides up to 225 workshop space.
+      STR_LARGE_LAB_UFOPEDIA: This Large Lab contains numerous state of the art research equipment and can host a larger number of staff than the small version. It provides space for up to 225 scientists.      
+      STR_PSIONIC_LABORATORY_LARGE_UFOPEDIA: The large Psionic Laboratory has space to train and test up to 50 soldiers.
+      
+      STR_CLUSTER: CLUSTER
+      STR_CLUSTER_MISSILES: Cluster Missile 
+      STR_CLUSTER_LAUNCHER: Cluster Missiles Launcher
+      STR_CLUSTER_UFOPEDIA: Medium range high-speed missiles. 
+      
+      STR_APC: APC 
+      STR_APC_UFOPEDIA: Convinient way to deliver our soldier to the battlefield. APC has larger cargo are then Skyranger but is very slow and short range. It does not use craft fuel and is very cheap to maintain. 
+      
+      STR_SPACE_CRAFT: SPACE CRAFT
+      STR_SPACE_CRAFT_IDEA: Space Craft 
+      STR_SPACE_CRAFT_UFOPEDIA: SPACE CRAFT IS USED TO FLY TO CYDONIA ON MARS. 
+      
+      STR_FUSION_BEAM_UC: FUSION LANCE
+      STR_FUSION_BEAM: Fusion Craft Lance       
+      STR_FUSION_BEAM_UC_UFOPEDIA: Super weapon. 
+            
+      STR_GAUSS_CANNON_UC: GAUSS CANNON
+      STR_GAUSS_CANNON: Gauss Craft Cannon
+      STR_GAUSS_CANNON_UC_UFOPEDIA: THE GAUSS CANNON IS THE APOGEE OF GAUSS TECHNOLOGY. FIRING RELATIVELY SMALL BULLETS AT VERY HIGH SPEEDS, IT CAN PENETRATE ANY ARMOR. ITS RANGE, HOVEVER, IS LIMITED, AS THE BULLETS EVAPORATE QUICKLY DUE TO ATMOSPHERIC FRICTION.
+      
+      STR_ALLOY_CANNON: Alloy Craft Cannon
+      STR_ALLOY_CANNON_UC: ALLOY CANNON
+      STR_ALLOY_CANNON_UC_UFOPEDIA: ALIEN ALLOYS POWERED CANNON WHICH FIRES ARMOUR PIERCING ROUNDS WITH EXTREME SPEEDS.
+      
+      STR_HYP_UP_NET: Hyperwave Network
+      STR_HYP_UP_NET_UFOPEDIA: By bouncing an amplified hyperwave signal off of a network of satellites, XCom can achieve global hyperwave converge though the energy costs will be rather high.
+      
+      STR_POWERED_ALLOYS: Powered Alloys
+      STR_POWERED_ALLOYS_UFOPEDIA: Human made combination of Alien Alloys and Elerium-115 used for very active Clip clips. 
+      
+      STR_TRAINING_SMALL: Small plasma weapons training
+      STR_TRAINING_LARGE: Large plasma weapons training
+      STR_TRAINING_EXPLOSIVE: Alien explosives training
+      STR_TRAINING_HEAVY: Alien heavy weapons training
+      STR_TRAINING_BIO: Alien toxic weapons training       
+      STR_TRAINING_MELEE: Alien melee weapons training       
+      STR_TRAINING_SMALL_UFOPEDIA: Small plasma weapons training
+      STR_TRAINING_LARGE_UFOPEDIA: Large plasma weapons training
+      STR_TRAINING_EXPLOSIVE_UFOPEDIA: Alien explosives training
+      STR_TRAINING_HEAVY_UFOPEDIA: Alien heavy weapons training
+      STR_TRAINING_BIO_UFOPEDIA: Alien toxic weapons training      
+      STR_TRAINING_MELEE_UFOPEDIA: Alien melee weapons training 
+      
+      STR_PLASMA_PISTOL_CLIP_ADV: Plasma Pistol Clip Mk II
+      STR_PLASMA_ASSULTER_CLIP_ADV: Plasma Assulter Clip Mk II
+      STR_PLASMA_RIFLE_CLIP_ADV: Plasma Rifle Clip Mk II
+      STR_PLASMA_BLASTER_CLIP_ADV: Plasma Blaster Clip Mk II 
+      STR_PLASMA_SNIPER_RIFLE_CLIP_ADV: Plasma Sniper Rifle Mk II 
+      STR_HEAVY_PLASMA_CLIP_ADV: Heavy Plasma Clip Mk II       
+      STR_PLASMA_MINIGUN_CLIP_ADV: Plasma Minigun Clip Mk II 
+      
+      STR_GAUSS_WEAPONS: Gauss Weapons
+      STR_GAUSS_PISTOL: Gauss Pistol
+      STR_GAUSS_PISTOL_UFOPEDIA: The Gauss Pistol is a very potent sidearm, firing small ferromagnetic bullets using an electromagnetic field instead of chemical explosives.  The higher bullet velocity deals significant damage, able to pierce through vehicle armor plates with ease, as well as giving the weapon greater accuracy.
+      STR_GAUSS_RIFLE: Gauss Rifle
+      STR_GAUSS_RIFLE_UFOPEDIA: An extended and modified version of the Gauss Pistol, the gauss rifle is a very accurate and extremely powerful hand weapon.  The bullets' small size allow for a large clip that takes many shots to deplete.  The weapon's obvious downside is lack of autofire setting, as it would cause instant overheating.
+      STR_GAUSS_SNIPER_RIFLE: Gauss Sniper Rifle
+      STR_GAUSS_SNIPER_RIFLE_UFOPEDIA: The Gauss Sniper Rifle is a successful attempt at capitalizing on the Gauss Rifle's innate strengths.  It is yet more powerful and definitely more accurate, allowing X-Com operatives to down tough enemies in just one shot, therefore diminishing the need of autofire.
+      STR_HEAVY_GAUSS: Heavy Gauss
+      STR_HEAVY_GAUSS_UFOPEDIA: Although the Heavy Gauss is less accurate than its smaller counterparts, its destructive potential makes it more of an anti-tank weapon than anything else.  It is a successful attempt to adapt our troopers' equipment to the ever-increasing challenges of the alien war.
+            
+      STR_GAUSS_DEFENSES: Gauss Defences
+      STR_GAUSS_DEFENSES_UFOPEDIA: Gauss Defences.
+      
+      STR_LASER_SWORD: Laser Sword
+      STR_LASER_SWORD_UFOPEDIA: Due to the nature of the laser cutter, the wielder's strength is not added to the weapon, but the cutting damage is very high regardless.
+      
+      STR_PLASMA_BLADE: Plasma Blade
+      STR_PLASMA_BLADE_UFOPEDIA: Plasma Blade is ...
+      
+      STR_PLASMA_SWORD: Plasma Sword 
+      STR_PLASMA_SWORD_UFOPEDIA: Plasma Sword is ...      
+      
+      STR_MEDGAS_GRENADE: Flash Grenade
+      STR_MEDGAS_GRENADE_UFOPEDIA: Simple way to stun small live Aliens. 
+      
+      STR_KNIFE: Combat Knife
+      STR_KNIFE_UFOPEDIA: The standard issue XCom Combat Knife is light and deadly being made out of high carbon steel that holds an edge well. This close combat weapon gives any soldier a suitable weapon in case the aliens get too close. Unlike the stun rod, a Soldier's strength is added to the Combat Knife's damage.
+      
+      STR_ALLOY_BLADE: Alloy Blade
+      STR_ALLOY_BLADE_UFOPEDIA: This knife is made of alien alloys and is sharpened to only single molecule on the tip. This makes this weapon deadly in the hands of an agent skilled in hand to hand combat. The Wielder's skill determines accuracy. Strength is applied to this weapon.      
+      
+      STR_TANK_MINIGUN: Tank/Minigun
+      STR_HWP_MINIGUN_CLIP: Tank Minigun Clip
+      STR_HWP_MINIGUN_CLIP_AA: Tank Minigun Clip AA 
+      STR_TANK_MINIGUN_UFOPEDIA: This automated heavy weapons platform is equipped with a high-speed minigun, useful for area denial operations.
+    
+      STR_HWP_CANNON_SHELLS_AA: Tank Cannon Clip AA 
+    
+      STR_ELERIUM_BOMB: Elerium Bomb
+      STR_ELERIUM_BOMB_UFOPEDIA: Elerium Bomb is ultimate Clip used for Blaster Launcher. It is very powerfull weapon comparable to human nuke weapons.     
+      STR_BIO_BOMB: Bio Bomb
+      STR_BIO_BOMB_UFOPEDIA: Aliens discovers that acid weapons works much better againts humans then plasma. 
+      STR_NAPALM_BOMB: Napalm Bomb
+      STR_NAPALM_BOMB_UFOPEDIA: Napalm Bomb, used mainly by alien terrorists, is a powerful and deadly ammunition for Small Launcher that cause massive fire damage.
+            
+      STR_ALIEN_MINE: Alien Mine
+      STR_ALIEN_MINE_UFOPEDIA: Alien Mine is a powerfull version of Alien Grenade.
+
+      STR_OVERTIME: Overtime      
+      STR_OVERTIME_IMPROVED: Overtime Improved
+      STR_OVERTIME_ADVANCED: Overtime Advanced
+      STR_CRAFT_FUEL: Fuel
+      STR_SPACE_FUEL: Space Craft Fuel
+      STR_SPACE_FUEL_UFOPEDIA: Space Craft Fuel is used to fill space craft sent to Mars. It can also be used to fly over Earth but space fuel is very expensive. 
+      
+      STR_NONE: None      
+      STR_JETPACK_UC: JETPACK
+      STR_XCOM_JETPACK: Jetpack
+      STR_LIGHT_VEST_UC: KEVLAR VEST
+      STR_XCOM_LIGHT_VEST: Kevlar Vest
+      STR_ALLOY_VEST_UC: ALLOY VEST
+      STR_XCOM_ALLOY_VEST: Alloy Vest
+      STR_LEATHER_SUIT_UC: LEATHER SUIT 
+      STR_XCOM_LEATHER_SUIT: Leather Suit      
+      STR_COMBAT_SUIT_UC: COMBAT SUIT
+      STR_XCOM_COMBAT_SUIT: Combat Suit
+      STR_JUMP_SUIT_UC: JUMP SUIT
+      STR_XCOM_JUMP_SUIT: Jump Suit
+      STR_METAL_ARMOUR_UC: METAL ARMOUR
+      STR_XCOM_METAL_ARMOUR: Metal Armour
+      STR_POWER_ARMOUR_UC: POWER ARMOUR
+      STR_XCOM_POWER_ARMOUR: Power Armour
+      STR_FLYING_ARMOUR_UC: FLYING ARMOUR
+      STR_XCOM_FLYING_ARMOUR: Flying Armour 
+      
+      STR_NONE_UFOPEDIA: Standard X-COM soldier suit gives no protection other then visual one.   
+      STR_LIGHT_VEST_UFOPEDIA: Light Kevlar vest gives some front protection.
+      STR_ALLOY_VEST_UFOPEDIA: Vest made from alien alloys. 
+      STR_JETPACK_UFOPEDIA: Jet pack gives no armour but allows to fly. 
+      STR_LEATHER_SUIT_UFOPEDIA: Standard medium human suit made from leathers. 
+      STR_COMBAT_SUIT_UFOPEDIA: Alien alloys enhanced leather suit. 
+      STR_JUMP_SUIT_UFOPEDIA: Flying Combat suit. 
+      STR_METAL_ARMOUR_UFOPEDIA: Heavy and cumbersome armour made from metal plates. 
+      STR_POWER_ARMOUR_UFOPEDIA: Alien alloy based heavy armour. 
+      STR_FLYING_ARMOUR_UFOPEDIA: Flying powered armour.      
+           
+      STR_ALIEN_WEAPONRY: Alien Warfare
+      STR_PLASMA_BLASTER: Plasma Blaster
+      STR_PLASMA_BLASTER_CLIP: Plasma Blaster Clip
+      STR_PLASMA_BLASTER_UFOPEDIA: Plasma Blaster 
+      STR_PLASMA_BLASTER_CLIP_UFOPEDIA: Plasma Blaster Clip
+      STR_PLASMA_ASSULTER: Plasma Assulter
+      STR_PLASMA_ASSULTER_CLIP: Plasma Assulter Clip
+      STR_PLASMA_ASSULTER_UFOPEDIA: This plasma pistol variant fires its charged particles at a wide spread, making it a devastating short range weapon.
+      STR_PLASMA_ASSULTER_CLIP_UFOPEDIA: This roughly cubic device is used as ammunition for a Plasma Shotgun.  It contains a small quantity of Elerium.
+      STR_PLASMA_SNIPER_RIFLE: Plasma Sniper Rifle
+      STR_PLASMA_SNIPER_RIFLE_CLIP: Plasma Sniper Rifle Clip
+      STR_PLASMA_SNIPER_RIFLE_UFOPEDIA: This is an extremely precise and powerful weapon based on accelerating particles from within a minute anti-gravity field.
+      STR_PLASMA_SNIPER_RIFLE_CLIP_UFOPEDIA: This small object is used as a power source for a Plasma Sniper Rifle - a precision alien weapon.  Contains a small quantity of Elerium.
+      STR_PLASMA_MINIGUN: Plasma Minigun
+      STR_PLASMA_MINIGUN_CLIP: Plasma Minigun Clip
+      STR_PLASMA_MINIGUN_UFOPEDIA: This is a devastating anti-armor weapon based on plasma technology, vaporizing everything around the impact point.
+      STR_PLASMA_MINIGUN_CLIP_UFOPEDIA: This compact device is used as ammunition for a Plasma Minigun.  It contains a small quantity of Elerium.
+      STR_HEAVY_LAUNCHER: Heavy Launcher
+      STR_HEAVY_LAUNCHER_AMMO: Heavy Launcher Clip
+      STR_HEAVY_LAUNCHER_UFOPEDIA: Where the small launcher is a utility weapon, the heavy launcher is purly intended to cause damage to a target region.      
+      STR_TOXIC_GUN: Toxic Gun 
+      STR_TOXIC_GUN_CLIP: Toxic Gun Clip
+      STR_TOXIC_GUN_UFOPEDIA: Ultimate alien biological weapon. The most dangerous weapon from enemy's arsenal. It is most leathal againsts our heavy armours. We are not able to reproduce this weapon. 
+                  
+      STR_LASER_BLASTER: Laser Blaster
+      STR_LASER_BLASTER_UFOPEDIA: An attempt to make miniaturize the laser rifle, somewhat successful in that it did produce a smaller and more powerful weapon at the great expense of range.
+      STR_HEAVY_LASER_UFOPEDIA: The largest man portable laser developed by X-Coms research division, combining range, power and accuracy in a admittedly heavy and bulky package.
+      STR_SMALL_LAUNCHER_UFOPEDIA: Compact but powerful alien launcher, useful in a variety of combat scenarios. Versatile and deadly weapon.
+      STR_LASER_MSG: Laser MSG
+      STR_LASER_MSG_UFOPEDIA: Laser Machine Gun is ...
+      STR_LASER_SNIPER_RIFLE: Laser Sniper Rifle
+      STR_LASER_SNIPER_RIFLE_UFOPEDIA: Laser Sniper Rifle is ...
+      
+      STR_TASER: Taser Gun
+      STR_TASER_CLIP: Taser Gun Clip
+      STR_TASER_UFOPEDIA: A non-lethal weapon derived from a very recent police design, capable of incapacitating targets up to 5 meters away. While it delivers a less powerful charge than blunt-force stun weapons, its stylish pistol grip grants easy handling, and the range alone makes it a worthwhile asset.
+      
+      STR_WAR_DRONE: Battle Drone
+      STR_SCOUT_DRONE: Scout Drone
+      STR_WAR_DRONE_CORPSE: Battle Drone Wreck
+      STR_SCOUT_DRONE_CORPSE: Scout Drone Wreck
+      STR_SCOUT_DRONE_UFOPEDIA: This small rugged drone is designed for scout and reconnaissance. Although lacking in offensive weaponry or the armor of larger HWPs, it is fast and allows ground units to quickly scout out enemy positions and act as a spotter without risk to X-Com personnel. It also features a smoke launcher to help conceal itself and ground troops in open ground or from incoming fire.
+      STR_WAR_DRONE_UFOPEDIA: Battle drone is small tracked wehicle armed with simple fire weapons. It is used to light up battlescape during night. It will explode when killed due to large fuel tanks. 
+      
+      STR_XCOM_ENFORCER: X-Com Enforcer
+      STR_XCOM_ENFORCER_UFOPEDIA: Enforcer is an ideological child of Professor Able Standard. Stationed in Nevada, he worked on the Advanced Robotics Program before leaving to work on his own idea. The X-COM Enforcer is a perfect soldier. Heavily armed and armoured, this robot is a threat to all aliens that match it. We're sure even Sectopods won't stand too much of a chance.
+      STR_CORPSE_ROBO: Scrap Metal
+
+      STR_GLOVE: Power-Glove
+      STR_GLOVE_UFOPEDIA: A state-of-the-art close-combat weapon, the Power-Glove gives your troops enormous destruction capabilities.
+
+      STR_ELERIUM_115_REACTOR: Elerium-115 Synthezis
+      
+      STR_HOVERTANK_CONSTRUCTION: Hovertanks Construction
+      STR_HOVERTANK_LASER: Hovertank/Laser
+      STR_HOVERTANK_LASER_UFOPEDIA: Alien technology has given the HWP a new lease of life.  The added maneuverability of air travel and the power of laser is a lethal combination.
+
+      STR_SECTOPOD_CONSTRUCTION: Sectotanks Construction
+      STR_SECTOPOD_CONSTRUCTION_UFOPEDIA: The reverse engineering of the Alien Sectopod is complete.  Once the principles of their design are understood, and the functions of each component are known, then it is possible to rebuild these types of bipedal HWP.  Requiring less energy to move, more power is available to the main weapon.  Replacing the psionic-link control with our tank AI proved the most difficult.
+
+      STR_SECTOTANK_LASER: Sectotank/Laser
+      STR_SECTOTANK_LASER_UFOPEDIA: This robot is a sturdy design, an AI powered armor capable of resisting most forms of attack, in particular plasma weapons.  We were also able to reduce the circuitry vulnerability to laser weapons.  Coupled with an Heavy Laser our Unit is a valuable complement to any assault squad.
+
+      STR_SECTOTANK_PLASMA: Sectotank/Plasma
+      STR_SECTOTANK_PLASMA_UFOPEDIA: This robot is a sturdy design, an AI powered armor capable of resisting most forms of attack, in particular plasma weapons.  We were also able to reduce the circuitry vulnerability to laser weapons.  Coupled with an Heavy Plasma our Unit is a valuable complement to any assault squad.
+      
+      STR_SECTOTANK_ROCKET: Sectotank/Rocket
+      STR_SECTOTANK_ROCKET_UFOPEDIA: This robot is a sturdy design, an AI powered armor capable of resisting most forms of attack, in particular plasma weapons.  We were also able to reduce the circuitry vulnerability to laser weapons.  Coupled with a Launcher armed with Precision Guided Rockets and smoke pellets this Unit is a valuable complement to any assault squad. The Precision Guided Rockets are powerful but with a small blast radius to minimize friendly casualties.
+      
+      #STR_UNKNOWN: EMP
+      #STR_CAPACITY: CAPACITY
+      #STR_UNITS: Rnds
+      STR_HWP_PGROCKET: Sectotank Rockets 
+      STR_HEAT_ROCKET: HEAT Rocket 
+      STR_MINIGUN: Minigun 
+      STR_MINIGUN_CLIP: Minigun Clip 
+      STR_MINIGUN_UFOPEDIA: Largest balistic weapon available for human. Very cumbersome and difficult to use but gives massive support fire. 
+      STR_MSG: Submachine 
+      STR_MSG_CLIP: Submachine Clip       
+      STR_MSG_UFOPEDIA: Submachine Gun is a close range automatic balistic weapon.       
+      STR_SHOTGUN: Shotgun
+      STR_SHOTGUN_SHELLS: Shotgun Clip
+      STR_SHOTGUN_UFOPEDIA: The standard issue XCom tactical shotgun uses 12 gauge buck shot to deliver large amounts of damage to unarmored targets at close range, but the low penetrative power and spread of the projectiles limits its effectiveness against tougher opponents or at long ranges.
+      STR_DMR: Sniper Rifle  
+      STR_DMR_AMMO: Sniper Rifle Clip
+      STR_DMR_UFOPEDIA: A highly accurate modification of the standard X-Com Battle Rifle, upcalibered to fire a 7.5x80mm Armor Piercing round.
+      STR_INC_GRENADE: Incendiary Grenade
+      STR_INC_GRENADE_UFOPEDIA: Incendiary Grenades are thrown incendiary devices that burn at extremely high temperatures through a violent chemical reaction. Move away from ignition point.
+      STR_STUN_GRENADE: Stun Grenade
+      STR_STUN_GRENADE_UFOPEDIA: A stun bomb attached to a grenade casing. Though some effectiveness is lost during the conversion process, this fusion of human and alien technology trades power for convenience.       
+      STR_LANDMINE: Land Mine
+      STR_LANDMINE_UFOPEDIA: Land Mines are very efficient against alien foot soldiers, but also cumbersome to use.
+
+      STR_MIAMI: Miami
+      STR_ATLANTA: Atlanta
+      STR_SAN_FRANCISCO: San Francisco
+      STR_STOCKHOLM: Stockholm
+      STR_LISBON: Lisbon
+      STR_DUBAY: Dubai
+      
+      STR_KOLUMBIA: COLUMBIA
+      STR_IRAN: IRAN
+      STR_TURKEY: TURKEY
+      STR_TANZANIA: TANZANIA
+      STR_ARGENTINA: ARGENTINA
+      STR_INDONESIA: INDONESIA
+      STR_MEXICO: MEXICO
+      STR_SWEDEN: SWEDEN
+      STR_ARABIA: ARABIA  
+
+      STR_LARGE_RADAR_SYSTEM: Advanced Radar
+      STR_SMALL_RADAR_SYSTEM: Standard Radar  
+      STR_SMALL_RADAR_SYSTEM_UFOPEDIA: A small detection system has an effective radar range of 1500 mile.  Each system has a 10% chance of detecting an average sized object every 30 minutes.
+      STR_LARGE_RADAR_SYSTEM_UFOPEDIA: Advanced and alien alloys based detection system with an effective range of 2000 miles.  Each system has a 25% chance of detecting an average sized object every 30 minutes.
+      STR_HYPER_WAVE_DECODER_UFOPEDIA: Alien communications rely on a supra-dimensional wave which travels almost instantaneously.  The decoder facility intercepts UFO transmissions and decodes the information.  This will show the type of UFO, the alien race and the type of activity.  Each system has a range of 2500 miles and 50% chance of detecting an alien object every 30 minutes. 
+
+      STR_ADVANCED_CRAFT: New Advanced Craft
+      STR_RETALIATOR: RETALIATOR
+      STR_RETALIATOR_UFOPEDIA: A VARIANT OF THE INTERCEPTOR REFITTED WITH AN MORE ADVANCED AIRFRAME FOR INCREASED SURVIVABILITY AND SOPHISTICATED AVIONICS FOR OPTIMAL INTERCEPTION.
+      
+      STR_HYBRID_CRAFT: New Hybrid Aircraft      
+      STR_SENTINEL: SENTINEL
+      STR_SENTINEL_UFOPEDIA: A HEAVY COMBAT AIRCRAFT WITH TWIN SLOW BURNING ELERIUM ENGINES AND THE LATEST IN AVIONIC ARMOR TECHNOLOGY. THE TRADEOFF IS LOWER ACCELERATION RATE AND MAXIMUM SPEED DUE TO INCREASED WEIGHT.
+      
+      STR_HEAVY_TRANSPORTER: Heavy Troop Transporter      
+      STR_DROPSHIP: DROPSHIP
+      STR_DROPSHIP_UFOPEDIA: THIS ELERIUM-POWERED HEAVY TROOP TRANSPORTER IS FAST AND POWERFUL.  IT IS EQUIPPED WITH A TWIN RADAR SYSTEM WITH ENHANCED RANGE.
+      
+      STR_LIGHTNING_UFOPEDIA: TRANSPORTER AND COMBAT CRAFT.  A CRUDE BUT EFFECTIVE REPLICATION OF ALIEN DESIGN, THE LIGHTNING ALSO EMPLOYS AN EXPERIMENTAL ELERIUM REACTOR THAT SHOULD PROVIDE A SUSTAINABLE FUEL SOURCE.
+      
+      STR_AVALANCHE_UFOPEDIA: DEVASTATING AIR TO AIR MISSILE WITH A NUCLEAR WARHEAD.
+      STR_CANNON_UFOPEDIA: HIGH POWERED CANNON WHICH FIRES ARMOUR PIERCING ROUNDS.
+      STR_LASER_CANNON_UFOPEDIA: THIS CONVENTIONAL LASER BEAM IS POWERED BY AN ANTI-MATTER REACTION CHAMBER. INSTANT PAYLOAD DELIVERY OF THE LASER-BASED TECHNOLOGY ALLOWS FOR PINPOINT ACCURACY WHEN USED AGAINST LARGER TARGETS.
+      STR_PLASMA_BEAM_UFOPEDIA: THE GRAVITY BEAM DIRECTS A FINELY CHANNELLED IMPLODING GRAVITY FIELD, SPORTING HIGH DESTRUCTIVE POWER AND VERY LONG RANGE.
+      STR_FUSION_BALL_UFOPEDIA: THIS LAUNCHER FIRES A BALL SHAPED MISSILE POWERED BY ANTI-MATTER REACTION. THE BALL DESTROYS THE TARGET WITH A GRAVITY WAVE IMPLOSION. THIS WEAPON IS UNRIVALED IN POWER AND RANGE, AND WILL RELIABLY HIT A TARGET OF ANY SIZE.
+      
+      STR_MIB: Men In Black
+      STR_MIB_TANK: MiB HWPs
+
+      STR_MIB_SOLDIER: MiB Soldier
+      STR_MIB_ENGINEER: MiB Engineer
+      STR_MIB_NAVIGATOR: MiB Navigator
+      STR_MIB_MEDIC: MiB Medic
+      STR_MIB_LEADER: MiB Leader    
+      STR_MIB_COMMANDER: MiB Commander
+      STR_MIB_SECTOPOD_TERRORIST: MiB Sectopod      
+      STR_MIB_TANK_TERRORIST: MiB Tank         
+      
+      STR_MIB0_CORPSE: MiB Corpse
+      STR_MIB1_CORPSE: MiB Corpse
+      STR_MIB2_CORPSE: MiB Corpse
+      STR_MIB3_CORPSE: MiB Corpse
+      STR_MIB5_CORPSE: MiB Corpse            
+      STR_MIB_TANK_CORPSE: Mib Tank Wrek
+      STR_MIB_SECTOPOD_CORPSE: Mib Sectopod Wreck 
+      
+      STR_MIB_CRAFT_A: MiB Small Plane
+      STR_MIB_CRAFT_B: MiB Medium Plane
+      STR_MIB_CRAFT_C: MiB Large Plane
+      STR_MIB_TERROR_SHIP: MiB Terror Plane
+      STR_MIB_OUTPOST_SHIP: MiB Outpost Plane  
+      STR_MIB_HQ_SHIP: MiB HQ Plane
+      
+      STR_MIB_CRAFT_A_UFOPEDIA: MiB Small Plane Ufopedia
+      STR_MIB_CRAFT_B_UFOPEDIA: MiB Medium Plane Ufopedia
+      STR_MIB_CRAFT_C_UFOPEDIA: MiB Large Plane Ufopedia
+      STR_MIB_TERROR_SHIP_UFOPEDIA: MiB Terror Plane Ufopedia
+      STR_MIB_OUTPOST_SHIP_UFOPEDIA: MiB Outpost Plane Ufopedia 
+      STR_MIB_HQ_SHIP_UFOPEDIA: MiB HQ Plane Ufopedia      
+      
+      STR_MIB_RESEARCH: MiB Research
+      STR_MIB_OUTPOST: MiB Outpost
+      STR_MIB_TERROR: MiB Terror
+      STR_MIB_MAIN_HQ: MiB Main HQ
+      STR_MIB_ACTIVITY: Men In Black Activities
+      STR_MIB_IDENTITY: Men In Black      
+      STR_MIB_ACTIVITY_UFOPAEDIA: This organization somewhat mimics XCom, equipping advanced tech and intervening when aliens-related stuff happens. It howevers seems to be more concerned about concealing aliens than antagonizing them. We need to capture one of their leaders to know more.
+      STR_MIB_IDENTITY_UFOPAEDIA: MiB and XCom are two faces of the same coin. Both were founded by the world elites, but while XCom was established to fight the invaders, MiB were established to appease them. Looks like the world leaders wanted to keep their options open.
+      STR_MIB_RESEARCH_UFOPAEDIA: MiB Research Ufopedia
+      STR_MIB_TERROR_UFOPAEDIA: MiB Terror Ufopedia
+      STR_MIB_MAIN_HQ_UFOPAEDIA: MiB Main HQ Ufopedia    
+      STR_MIB_OUTPOST_UFOPAEDIA: MiB Outpost Ufopedia
+    
+      STR_MEDIBAG: Medic Bag 
+      STR_MEDIBAG_UFOPEDIA: Medic Bag is early way to heal soldiers on the battlefied. Cheap but not so effective. 
+    
+      STR_ALIEN_INTERCEPTION: Alien Interception
+      STR_ALIEN_INTERCEPTION_UFOPEDIA: Aliens will try to shotdown our interceptors by sending large number of fighting vessels with powerfull weapons but limited crew. 
+    
+      STR_ALIEN_ANIHILATION: Alien Anihilation
+      STR_ALIEN_ANIHILATION_UFOPEDIA: Ultimate Alien mission in which they will try to eredicate our biggests cities once and for all using their largest vessels. Very dangerous for existence of X-COM. 
+    
+      STR_UFO_PROBE: Probe
+      STR_UFO_SCOUT: Scout
+      STR_UFO_FIGHTER: Fighter
+      STR_UFO_BOMBER: Bomber
+      STR_UFO_DESTROYER: Destroyer
+      STR_UFO_HUNTER: Hunter
+      STR_UFO_DREADNOUGHT: Dreadnought      
+      
+      STR_UFO_ESCORT: Escort
+      STR_UFO_CRUISER: Cruiser
+      STR_UFO_ESCORT_HEAVY: Heavy Escort
+      STR_UFO_CRUISER_HEAVY: Heavy Cruiser      
+      STR_UFO_TRANSPORTER: Transporter      
+      STR_UFO_HARVESTER: Harvester      
+      STR_UFO_ABDUCTOR: Abductor
+      STR_TERROR_SHIP: Terror ship
+      STR_SUPPLY_SHIP: Supply ship     
+      STR_BATTLESHIP: Battleship
+      STR_UFO_CARRIER: Carrier      
+      
+      STR_UFO_PROBE_UFOPEDIA: UFO Probe is smallest alien craft.
+      STR_UFO_FIGHTER_UFOPEDIA: UFO Fighter is small fighter craft equiped with short range plasma beams. Has very small crew but very strong weapons.
+      STR_UFO_BOMBER_UFOPEDIA: UFO Bomber is small fighter craft equiped with long rage plasma missiles. Has very small crew but very strong weapons. 
+      STR_UFO_DESTROYER_UFOPEDIA: UFO Destroyer is medium fighter craft equiped with very long rage dual plasma missiles. Has very small crew but very strong weapons. 
+      STR_UFO_HUNTER_UFOPEDIA: UFO Hunter is medium fighter craft equiped with short range dual plasma beams. Has very small crew but very strong weapons.
+      STR_UFO_DREADNOUGHT_UFOPEDIA: UFO Dreadnought is large fighter craft equiped with medium range quad plasma beams. Has very small crew but  but very strong weapons. Is ultimate alien fighter craft.      
+            
+      STR_UFO_SCOUT_UFOPEDIA: UFO Scout is a very small universal alien craft used for mainly recon. 
+      STR_UFO_ESCORT_UFOPEDIA: UFO Escort is small universal alien craft used for any kind of mission. 
+      STR_UFO_CRUISER_UFOPEDIA: UFO Cruiser is medium universal alien craft used for any kind of mission.
+      
+      STR_UFO_ESCORT_HEAVY_UFOPEDIA: UFO Escort is small universal alien craft used for any kind of mission. Heavy version has limited speed but double standard crew and hull armour. 
+      STR_UFO_CRUISER_HEAVY_UFOPEDIA: UFO Cruiser is medium universal alien craft used for any kind of mission. Heavy version has limited speed but double standard crew and hull armour. 
+      
+      STR_UFO_TRANSPORTER_UFOPEDIA: UFO Transporter is medium size alien craft used mainly for general harvesting or abduction on small scale.       
+      STR_UFO_HARVESTER_UFOPEDIA: UFO Harvester is medium sized alien craft specialized in harvesting resources from farms and forests.
+      STR_UFO_ABDUCTOR_UFOPEDIA: UFO Abductor is medium sized alien craft specialized in secret abduction of humans from urban areas.      
+      STR_UFO_CARRIER_UFOPEDIA: UFO Carrier are large crafts tasked for massive resource harvesting and human abduction. It very numerous crews.      
+      
+      STR_TERROR_SHIP_UFOPEDIA: UFO Terror ship is a large craft used mainly as assult ship during terror missions on urban areas. 
+      STR_BATTLESHIP_UFOPEDIA: UFO Battleship is the largest and most powerful alien craft.  It is normally the primary alien mission craft, equipped with powerful weapons and numerous crew members.
+      STR_SUPPLY_SHIP_UFOPEDIA: UFO Supply Ship is large transporter used to build and supply existing alien bases. 
+
+      STR_MUTON_LEADER: Muton Leader
+      STR_MUTON_COMMANDER: Muton Commander
+      STR_ANTHROPOD: Anthropod
+      STR_ANTHROPOD_SOLDIER: Anthropod Soldier
+      STR_ANTHROPOD_NAVIGATOR: Anthropod Navigator
+      STR_ANTHROPOD_ENGINEER: Anthropod Engineer
+
+      STR_SPITTER: Spitter
+      STR_SPITTER_RETRACT: Spitter
+      STR_SPITTER_RETRES: Spitter
+      STR_SPITTER_NAKED: Spitter
+      STR_SPITTER_TERRORIST: Spitter Terrorist
+      STR_SPITTER_RETRACT_TERRORIST: Spitter Terrorist
+      STR_SPITTER_RETRES_TERRORIST: Spitter Terrorist
+      STR_SPITTER_NAKED_TERRORIST: Spitter Terrorist
+      STR_ANTHROPOD_AUTOPSY: Anthropod Autopsy
+      STR_SPITTER_AUTOPSY: Spitter Autopsy
+      STR_ANTHROPOD_UFOPAEDIA: Anthropods are aggressive creatures probably filling the role of heavy infantry in the alien ranks. They are strong and also fairly tougher than a human being. The inefficiency of their respiratory system is evident now that we have a live specimen, oxygen has a toxic effect and eventually kills them within a week. We believe these creatures are of completely artificial origin,  biological robots.
+      STR_ANTHROPOD_AUTOPSY_UFOPAEDIA: Despite its humanoid shape the anatomy of this creature is very alien. The skeleton is mostly cartilaginous with only few robust bones composing the framework. The organs have a diffuse quality, all the apparatus are spread within the mass of entrails. The brain size is slightly larger than a human's but it is composed of several ganglions which result in a lower interconnections density. The respiratory system is rudimentary and inefficient, we also notice signs of inflammation in it.
+      STR_SPITTER_UFOPAEDIA: Spitters are creatures with very elementary behavior, they just shoot their disrupting fluid on everything that moves. The aliens probably can prevent them attacking the wrong targets, by using psi powers. When retracted into their carapaces, they become quite resistant to all kind of blows, especially kinetic ones. These creatures are living weapons to be deployed in short range fights.
+      STR_SPITTER_AUTOPSY_UFOPAEDIA: The torso of this creature holds a massive gland that secretes high amounts of disrupting enzyme. The enzyme is then stored into a camera at the base of the funnels, presumably where high pressure quickly builds up to ultimately eject the substance on the target. The enzyme is a highly complex polymer capable of desegregating every substance almost instantly, we currently can't synthesize it. It also has a very resistant carapace.
+      STR_GAZER: Gazer
+      STR_HOLODRONE: Holodrone
+      STR_HOLODRONE_TERRORIST: Holodrone Terrorist
+      STR_GAZER_SOLDIER: Gazer Soldier
+      STR_GAZER_MEDIC: Gazer Medic
+      STR_GAZER_ENGINEER: Gazer Engineer
+      STR_GAZER_NAVIGATOR: Gazer Navigator
+      STR_GAZER_LEADER: Gazer Leader
+      STR_GAZER_COMMANDER: Gazer Commander
+
+      STR_GAZER_AUTOPSY: Gazer autopsy
+      STR_HOLODRONE_AUTOPSY: Holodrone autopsy
+      STR_GAZER_UFOPAEDIA: Gazers look like standing turtles and are indeed as sturdy as they appear. Their bulky heavy armor grants formidable resistance against blows of any kind, praticularly armor piercing and plasma.
+      STR_GAZER_AUTOPSY_UFOPAEDIA: The single big eye is the most prominent anatomical feature of this alien; it has crustacean traits but it is much more evolved. The very thick armor is not simply worn; cybernetic implants stem from it and connect to the organs of the creature, it is a shell for the creature.
+      STR_HOLODRONE_UFOPAEDIA: Holodrones are living, floating, artillery weapons. They are protected by plasma a bubble that interferes with plasma attacks and fire. It could be that they were developed specifically to fight plasma-equipped enemies. The mechanism runs too hot and radioactive to be applied to a human armor.
+      STR_HOLODRONE_AUTOPSY_UFOPAEDIA: A very complex automaton powered by a massive, for its size, elerium core. Two shafts stretch from this core and are used to spread the plasma bubble that envelops the creature. It is also evident that the core can overcharge and collect this extra energy to generate a powerful laser beam.
+      STR_WASPITE: Waspite
+      STR_CYBERMITE: Cybermite
+      STR_CYBERMITE_TERRORIST: Cybermite Terrorist
+      STR_WASPITE_SOLDIER: Waspite Soldier
+      STR_WASPITE_MEDIC: Waspite Medic
+      STR_WASPITE_ENGINEER: Waspite Engineer
+      STR_WASPITE_NAVIGATOR: Waspite Navigator
+      STR_WASPITE_LEADER: Waspite Leader
+      STR_WASPITE_COMMANDER: Waspite Commander
+      STR_WASPITE_AUTOPSY: Waspite autopsy
+      STR_CYBERMITE_AUTOPSY: Cybermite autopsy
+      STR_WASPITE_UFOPAEDIA: Waspites are elite terror agents and combatants. They are a very aggressive, genetically engineered and cybernetically enhanced, making them fearsome enemies. Their overall frailty though hints to an artillery role, rather than infantry. The spiral device that replaces their original bodies generates an anti-gravity field, enabling them float through the air.
+      STR_WASPITE_AUTOPSY_UFOPAEDIA: The anatomy of this creature verges on insanity. The body consists of a spiral life support system device, combined with a symbiotic, bioengineered plant. Grafted on to the body, are a pair of mechanical arms and the insect-like head of the creature, which is presumably the only piece left of the original species. The plant portion of the body is vulnerable to fire.
+      STR_CYBERMITE_UFOPAEDIA: This miniature robot is an automated terror weapon and represents the pinnacle of the alien robotics. As soon as the powerful optical sensor spots a target, the creature runs to it and attacks. The miniaturized elerium core is set to ignite and explode once damaged enough, making the act of killing the creature deadly for anyone nearby.
+      STR_CYBERMITE_AUTOPSY_UFOPAEDIA: The most prominent feature of incredibly complex robot is its weapon, an alloy sting linked to a miniaturized tank which, from the traces found, is presumably filled with a potent toxin. The power core is too damaged to be fully understood but it seems to be designed to be very susceptible to damage and its likely this will cause it to explode.

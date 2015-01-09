@@ -1,0 +1,623 @@
+# 
+# RESEARCH 
+#     JUST SCOUTING TO FIND GOOD PLACE FOR OTHER MISSIONS
+#     JUST WONDER AROUND ANY AREA
+# HARVEST
+#     NEVER LAND JUST WONDERS OVER LAND VERY LOW AND MEDIUM SPEED
+#     THE LONGER FLIGHT THE SLOWER SPEED 
+# ABDUCTION 
+#     PATROLS THEN MOVES SLOWLY TO CITY NOT TO MAKE A PANIC 
+#     LANDS THERE AND THEN GO AWAY
+# INFILTRATION
+#     FLY RANDOMLY OVER LAND THEN LANDS ON THE CITY
+#     FIRST FIND GOOD AREA TO BUILD A BASE 
+# ALIEN BASE 
+#     FLY SLOWY AND MEDIUM ALTITUDE TO FIND A GOOD SPOT TO BUILD A BASE 
+#     FIRST FIND GOOD AREA TO BUILD A BASE  
+# ALIEN TERROR 
+#     FIND A CITY AND ATTACK IT WITH MAX SPEED AND AGRESSION LIKE JUNKERS
+#     LEAVE ASAP AFTER TERROR MISSION IS DONE 
+# ALIEN REATALIATION 
+#     FIND X-COM BASE EVERYWHER JUST FLY LOW AND SLOW BUT NEVER LANDS 
+#     FLYS OVER WATER AND LAND 
+# ALIEN SUPPLY 
+#     GOES DIRECTLY TO ALIEN BASE 
+#
+# INTERCEPTION 
+#     ALIEN LAUNCH FIGHTERS TO INTERCEPT X-COM CRAFTS   
+#     PATROL AT MAX SPEED AND HIGH OVER LAND AND WATER
+#     DESIGNED ONLY FOR ALIEN INTERCEPTORS TO FIGHT X-COM INTERCEPTORS 
+#     NEVER LANDS
+# ANIHILITATION 
+#     MOVES VERY SLOWLY BETWEEN CITIES AND LAND IN EACH ONE 
+#     STAY SOME TIME IN EVERY CITY TO SIMULATE CITY SIEGE
+#     THEN MOVE TO ANOTHER CITY   
+#
+# MiB RAID 
+#     LANDS ONLY OVER LAND
+#     GO TO A PLACE, LAND FOR A WHILE AND GO UP
+#     EVERY TIME UFO MOVES SLOWER AS IT HAS MORE CARGO 
+#     ABDUCTION LANDS ON CITIES AND HARVEST NEVER LANDS
+# MiB TERROR 
+#     FIND A CITY AND ATTACK IT WITH MAX SPEED AND AGRESSION LIKE JUNKERS
+#     LEAVE ASAP AFTER TERROR MISSION IS DONE
+# MiB ASSUALT 
+#     MIB BUILD A HQ  
+# 
+# ALIEN CONVOY 
+#     FREIGHTER WITH SLEEPING IMPORTANT ALIENS ON BOARD
+#     JUST FLY BY FROM RANDOM POINT TO RANDOM POINT AT AVG SPEED AND ALTITUDE
+#     THIS SHOULD BE EASILY SHOT DOWN BY X-COM AS A PRIZE FOR PLAYER  
+# ALIEN TRANSFER 
+#     FREIGHTER FLYING WITH LOT OF ELERIUM 115 AND WEAPONS
+#     JUST FLY BY FROM RANDOM POINT TO RANDOM POINT AT AVG SPEED AND ALTITUDE
+#     THIS SHOULD BE EASILY SHOT DOWN BY X-COM AS A PRIZE FOR PLAYER  
+# ALIEN PRISON
+#     FREIGHTER FLYS WITH PRISONERS = CIVILIANS FOR LOT OF SCORE FOR SAVING
+#     JUST FLY BY FROM RANDOM POINT TO RANDOM POINT AT AVG SPEED AND ALTITUDE
+#     THIS SHOULD BE EASILY SHOT DOWN BY X-COM AS A PRIZE FOR PLAYER  
+# ALIEN CONTROL 
+#     LARGE FLAT SHIP WITH LARGE NUMBER OF COMANDERS NEAR POWER SOURCES
+# ALIEN OUTPOST 
+#     UFO IS MOVING FAST AND LANDS DIRECTLY ON LAND 
+#     STAYS FOR LONG TIME ON LAND AND MUST BE ATTACKED TO BE KILLED
+#     INSIDE ARE ALIEN PIRAMIDS INSTEAD OF UFO 
+alienMissions:
+  - type: STR_ALIEN_RESEARCH
+    points: 10
+    waves:
+      - ufo: STR_UFO_PROBE
+        count: 2
+        trajectory: P0
+        timer: 2000              
+      - ufo: STR_UFO_SCOUT
+        count: 2
+        trajectory: P0
+        timer: 4000   
+      - ufo: STR_UFO_ESCORT
+        count: 2
+        trajectory: P1
+        timer: 2000
+      - ufo: STR_UFO_CRUISER
+        count: 3
+        trajectory: P1
+        timer: 4000                
+      - ufo: STR_UFO_TRANSPORTER
+        count: 3
+        trajectory: P1
+        timer: 3000        
+      - ufo: STR_UFO_CARRIER
+        count: 2
+        trajectory: P2
+        timer: 6000        
+    raceWeights:
+      0:
+        STR_SECTOID: 40
+      1:
+        STR_FLOATER: 30
+        STR_SECTOID: 40
+      2:
+        STR_ANTHROPOD: 20
+        STR_FLOATER: 30
+        STR_SECTOID: 40
+      3:
+        STR_ANTHROPOD: 20
+        STR_FLOATER: 30
+        STR_SECTOID: 40
+        STR_SNAKEMAN: 10
+      4:
+        STR_ANTHROPOD: 20
+        STR_FLOATER: 30
+        STR_SECTOID: 40
+        STR_SNAKEMAN: 10
+        STR_WASPITE: 20        
+      5:
+        STR_ANTHROPOD: 20
+        STR_FLOATER: 30
+        STR_MUTON: 40
+        STR_SECTOID: 40
+        STR_SNAKEMAN: 10
+        STR_WASPITE: 20
+      7:
+        STR_ANTHROPOD: 20
+        STR_FLOATER: 30
+        STR_GAZER: 30
+        STR_MUTON: 40
+        STR_SECTOID: 40
+        STR_SNAKEMAN: 10
+        STR_WASPITE: 20
+
+  - type: STR_ALIEN_HARVEST
+    points: 30
+    waves:
+      - ufo: STR_UFO_SCOUT
+        count: 2
+        trajectory: H0
+        timer: 5000        
+      - ufo: STR_UFO_CRUISER
+        count: 2
+        trajectory: H0
+        timer: 4000        
+      - ufo: STR_UFO_CRUISER_HEAVY
+        count: 2
+        trajectory: H1
+        timer: 3000        
+      - ufo: STR_UFO_TRANSPORTER
+        count: 2
+        trajectory: H1
+        timer: 2000        
+      - ufo: STR_UFO_HARVESTER
+        count: 4
+        trajectory: H1
+        timer: 1000            
+      - ufo: STR_UFO_CARRIER
+        count: 2
+        trajectory: H2
+        timer: 6000          
+    raceWeights:
+      0:
+        STR_SECTOID: 30   
+      1:
+        STR_FLOATER: 40
+        STR_SECTOID: 30   
+      2:
+        STR_ANTHROPOD: 40
+        STR_FLOATER: 40
+        STR_SECTOID: 30        
+      4:
+        STR_ANTHROPOD: 40
+        STR_FLOATER: 40
+        STR_SECTOID: 30
+        STR_WASPITE: 20        
+      5:
+        STR_ANTHROPOD: 40
+        STR_FLOATER: 40
+        STR_MUTON: 30
+        STR_SECTOID: 30
+        STR_WASPITE: 20
+      7:
+        STR_ANTHROPOD: 40
+        STR_FLOATER: 40
+        STR_MUTON: 30
+        STR_SECTOID: 30
+        STR_WASPITE: 20
+  - type: STR_ALIEN_ABDUCTION
+    points: 40
+    waves:
+      - ufo: STR_UFO_SCOUT
+        count: 2
+        trajectory: A0
+        timer: 8000        
+      - ufo: STR_UFO_ESCORT
+        count: 2
+        trajectory: A0
+        timer: 7000        
+      - ufo: STR_UFO_ESCORT_HEAVY
+        count: 2
+        trajectory: A1
+        timer: 6000        
+      - ufo: STR_UFO_TRANSPORTER
+        count: 2
+        trajectory: A1
+        timer: 4000           
+      - ufo: STR_UFO_ABDUCTOR
+        count: 4
+        trajectory: A1
+        timer: 1000             
+      - ufo: STR_UFO_CARRIER
+        count: 2
+        trajectory: A2
+        timer: 2000            
+    raceWeights:
+      0:
+        STR_SECTOID: 40
+      1:
+        STR_FLOATER: 60
+        STR_SECTOID: 40
+
+  - type: STR_ALIEN_INFILTRATION
+    points: 150
+    waves:
+      - ufo: STR_UFO_SCOUT
+        count: 2
+        trajectory: I0
+        timer: 8000        
+      - ufo: STR_UFO_ESCORT
+        count: 3
+        trajectory: I0
+        timer: 4000        
+      - ufo: STR_UFO_CRUISER
+        count: 3
+        trajectory: I0
+        timer: 3000        
+      - ufo: STR_TERROR_SHIP
+        count: 2
+        trajectory: I1
+        timer: 120       
+      - ufo: STR_SUPPLY_SHIP
+        count: 2
+        trajectory: I1
+        timer: 60
+      - ufo: STR_BATTLESHIP
+        count: 2
+        trajectory: I2
+        timer: 30                 
+    raceWeights:
+      0:
+        STR_SECTOID: 20        
+      1:
+        STR_FLOATER: 10
+        STR_SECTOID: 20    
+      2:
+        STR_ANTHROPOD: 20
+        STR_FLOATER: 10
+        STR_SECTOID: 20
+      3:
+        STR_ANTHROPOD: 20
+        STR_FLOATER: 10
+        STR_SECTOID: 20
+        STR_SNAKEMAN: 20    
+      4:
+        STR_ANTHROPOD: 20
+        STR_FLOATER: 10
+        STR_SECTOID: 20
+        STR_SNAKEMAN: 20
+        STR_WASPITE: 20
+      5:
+        STR_ANTHROPOD: 20
+        STR_FLOATER: 10
+        STR_MUTON: 30
+        STR_SECTOID: 20
+        STR_SNAKEMAN: 20
+        STR_WASPITE: 20
+      6:
+        STR_ANTHROPOD: 20
+        STR_ETHEREAL: 10
+        STR_FLOATER: 10
+        STR_MUTON: 30
+        STR_SECTOID: 20
+        STR_SNAKEMAN: 20
+        STR_WASPITE: 20
+      7:
+        STR_ANTHROPOD: 20
+        STR_ETHEREAL: 10
+        STR_FLOATER: 10
+        STR_GAZER: 20
+        STR_MUTON: 30
+        STR_SECTOID: 20
+        STR_SNAKEMAN: 20
+        STR_WASPITE: 20
+
+  - type: STR_ALIEN_BASE
+    points: 50
+    waves:
+      - ufo: STR_UFO_SCOUT
+        count: 2
+        trajectory: B0
+        timer: 4000
+      - ufo: STR_UFO_ESCORT_HEAVY
+        count: 3
+        trajectory: B0
+        timer: 6000
+      - ufo: STR_UFO_CRUISER_HEAVY
+        count: 3
+        trajectory: B0
+        timer: 3000
+      - ufo: STR_UFO_TRANSPORTER
+        count: 3
+        trajectory: B1
+        timer: 120
+      - ufo: STR_SUPPLY_SHIP
+        count: 3
+        trajectory: B1
+        timer: 60
+      - ufo: STR_BATTLESHIP
+        count: 2
+        trajectory: B2
+        timer: 30       
+    raceWeights:
+      0:
+        STR_SECTOID: 10    
+      1:
+        STR_FLOATER: 10
+        STR_SECTOID: 10  
+      2:
+        STR_ANTHROPOD: 20
+        STR_FLOATER: 10
+        STR_SECTOID: 10    
+      3:
+        STR_ANTHROPOD: 20
+        STR_FLOATER: 10
+        STR_SECTOID: 10
+        STR_SNAKEMAN: 20  
+      4:
+        STR_ANTHROPOD: 20
+        STR_FLOATER: 10
+        STR_SECTOID: 10
+        STR_SNAKEMAN: 20
+        STR_WASPITE: 20   
+      5:
+        STR_ANTHROPOD: 20
+        STR_FLOATER: 10
+        STR_MUTON: 20
+        STR_SECTOID: 10
+        STR_SNAKEMAN: 20
+        STR_WASPITE: 20  
+      6:
+        STR_ANTHROPOD: 20
+        STR_ETHEREAL: 30
+        STR_FLOATER: 10
+        STR_MUTON: 20
+        STR_SECTOID: 10
+        STR_SNAKEMAN: 20
+        STR_WASPITE: 20  
+      7:
+        STR_ANTHROPOD: 20
+        STR_ETHEREAL: 30
+        STR_FLOATER: 10
+        STR_GAZER: 20
+        STR_MUTON: 20
+        STR_SECTOID: 10
+        STR_SNAKEMAN: 20
+        STR_WASPITE: 20   
+
+  - type: STR_ALIEN_TERROR
+    points: 10
+    waves:
+      - ufo: STR_UFO_ESCORT
+        count: 2
+        trajectory: T0
+        timer: 8000
+      - ufo: STR_UFO_CRUISER
+        count: 2
+        trajectory: T0
+        timer: 6000
+      - ufo: STR_UFO_TRANSPORTER
+        count: 3
+        trajectory: T1
+        timer: 4000
+      - ufo: STR_TERROR_SHIP
+        count: 3
+        trajectory: T2
+        timer: 2000        
+    raceWeights:
+      0:
+        STR_SECTOID: 20     
+      1:
+        STR_FLOATER: 10
+        STR_SECTOID: 20    
+      2:
+        STR_ANTHROPOD: 20
+        STR_FLOATER: 10
+        STR_SECTOID: 20   
+      3:
+        STR_ANTHROPOD: 20
+        STR_FLOATER: 10
+        STR_SECTOID: 20
+        STR_SNAKEMAN: 30  
+      4:
+        STR_ANTHROPOD: 20
+        STR_FLOATER: 10
+        STR_SECTOID: 20
+        STR_SNAKEMAN: 30
+        STR_WASPITE: 30  
+      5:
+        STR_ANTHROPOD: 20
+        STR_FLOATER: 10
+        STR_MUTON: 20
+        STR_SECTOID: 20
+        STR_SNAKEMAN: 30
+        STR_WASPITE: 30   
+      6:
+        STR_ANTHROPOD: 20
+        STR_ETHEREAL: 20
+        STR_FLOATER: 10
+        STR_MUTON: 20
+        STR_SECTOID: 20
+        STR_SNAKEMAN: 30
+        STR_WASPITE: 30   
+      7:
+        STR_ANTHROPOD: 20
+        STR_ETHEREAL: 20
+        STR_FLOATER: 10
+        STR_GAZER: 30
+        STR_MUTON: 20
+        STR_SECTOID: 20
+        STR_SNAKEMAN: 30
+        STR_WASPITE: 30   
+  - type: STR_ALIEN_RETALIATION
+    points: 10
+    raceWeights: {} #Special case, race comes from trigger UFO.
+    waves:
+      - ufo: STR_UFO_SCOUT
+        count: 2
+        trajectory: R0
+        timer: 3000
+      - ufo: STR_UFO_ESCORT_HEAVY
+        count: 3
+        trajectory: R1
+        timer: 1000
+      - ufo: STR_UFO_CRUISER_HEAVY
+        count: 4
+        trajectory: R1
+        timer: 2000
+      - ufo: STR_BATTLESHIP
+        count: 3
+        trajectory: R2
+        timer: 1000        
+    
+  - type: STR_ALIEN_SUPPLY
+    points: 20
+    waves:
+      - ufo: STR_SUPPLY_SHIP
+        count: 2
+        trajectory: S0
+        timer: 3000           
+    raceWeights: {}
+    
+  - type: STR_ALIEN_INTERCEPTION
+    points: 10 
+    waves:    
+      - ufo: STR_UFO_FIGHTER
+        count: 3
+        trajectory: D0
+        timer: 2000   
+      - ufo: STR_UFO_HUNTER
+        count: 3
+        trajectory: D0
+        timer: 2000    
+      - ufo: STR_UFO_BOMBER
+        count: 3
+        trajectory: D1
+        timer: 3000   
+      - ufo: STR_UFO_DESTROYER
+        count: 3
+        trajectory: D1
+        timer: 3000          
+      - ufo: STR_UFO_DREADNOUGHT
+        count: 2
+        trajectory: D2
+        timer: 4000           
+    raceWeights:
+      0:
+        STR_SECTOID: 10
+      1:
+        STR_FLOATER: 30
+        STR_SECTOID: 10
+      4:
+        STR_FLOATER: 30
+        STR_SECTOID: 10
+        STR_WASPITE: 20      
+
+  - type: STR_ALIEN_ANIHILATION
+    points: 60
+    waves:     
+      - ufo: STR_UFO_PROBE
+        count: 6
+        trajectory: C0
+        timer: 5000   
+      - ufo: STR_BATTLESHIP    # TODO STR_MOTHERSHIP
+        count: 2
+        trajectory: C2
+        timer: 3000   
+           
+    raceWeights:
+      0:
+        STR_SECTOID: 10    
+      1:
+        STR_FLOATER: 10
+        STR_SECTOID: 10
+      2:
+        STR_ANTHROPOD: 30
+        STR_FLOATER: 10
+        STR_SECTOID: 10    
+      3:
+        STR_ANTHROPOD: 30
+        STR_FLOATER: 10
+        STR_SECTOID: 10   
+      4:
+        STR_ANTHROPOD: 30
+        STR_FLOATER: 10
+        STR_SECTOID: 10
+        STR_WASPITE: 30   
+      5:
+        STR_ANTHROPOD: 30
+        STR_FLOATER: 10
+        STR_SECTOID: 10
+        STR_WASPITE: 30   
+      6:
+        STR_ANTHROPOD: 30
+        STR_FLOATER: 10
+        STR_SECTOID: 10
+        STR_WASPITE: 30   
+      7:
+        STR_ANTHROPOD: 30
+        STR_FLOATER: 10
+        STR_SECTOID: 10
+        STR_WASPITE: 30 
+        STR_GAZER: 30  
+
+  - type: STR_MIB_RESEARCH 
+    points: 10
+    raceWeights:
+      0:
+          STR_MIB: 100
+      1:
+          STR_MIB: 100                    
+    waves:
+      - ufo: STR_MIB_CRAFT_A
+        count: 4
+        trajectory: X0
+        timer: 5000
+      - ufo: STR_MIB_CRAFT_B
+        count: 3
+        trajectory: X1
+        timer: 4000
+      - ufo: STR_MIB_CRAFT_C
+        count: 2
+        trajectory: X2
+        timer: 3000 
+
+  - type: STR_MIB_TERROR
+    points: 10
+    raceWeights:
+      0:
+          STR_MIB: 100
+      1:
+          STR_MIB: 100            
+    waves:
+      - ufo: STR_MIB_TERROR_SHIP
+        count: 2
+        trajectory: F0
+        timer: 8000
+      - ufo: STR_MIB_TERROR_SHIP
+        count: 2
+        trajectory: F1
+        timer: 8000
+      - ufo: STR_MIB_TERROR_SHIP
+        count: 2
+        trajectory: F2
+        timer: 8000           
+  - type: STR_MIB_OUTPOST
+    points: 20
+    raceWeights:
+      0:
+          STR_MIB: 100
+      1:
+          STR_MIB: 100            
+    waves:
+      - ufo: STR_MIB_OUTPOST_SHIP
+        count: 2
+        trajectory: O0
+        timer: 14000
+      - ufo: STR_MIB_OUTPOST_SHIP
+        count: 2
+        trajectory: O1
+        timer: 14000
+      - ufo: STR_MIB_OUTPOST_SHIP
+        count: 2
+        trajectory: O2
+        timer: 14000             
+  - type: STR_MIB_MAIN_HQ
+    points: 30
+    raceWeights:
+      0:
+          STR_MIB: 100
+      1:
+          STR_MIB: 100                  
+    waves:
+      - ufo: STR_MIB_HQ_SHIP
+        count: 2
+        trajectory: O3
+        timer: 20000        
+
+# ALIEN OUTPOST 
+# ALIENS FLY VERY FAST AND BUILD TEMPORARY FORT        
+       
+# ALIEN FORT 
+# SAME AS OUTPOST BUT ALIENS STOPS INSIDE CITIES INSTEAD OF EMPTY TERRAIN      
+       
+# ALIEN AMBUSH 
+# ALIENS HAVE CRAFT THAT ARE INVISIBLE FOR US 
+# WE START WITHOUT CRAFT AND ALIENS HAVE 
+        

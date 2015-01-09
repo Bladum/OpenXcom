@@ -1,0 +1,2041 @@
+ufopaedia:
+
+# CRAFTS 
+  - id: STR_APC
+    type_id: 1
+    section: STR_XCOM_CRAFT_ARMAMENT
+    image_id: UP004.SPK
+    rect_stats:
+      x: 160
+      y: 5
+      width: 160
+      height: 60
+    rect_text:
+      x: 5
+      y: 40
+      width: 140
+      height: 100
+    text: STR_APC_UFOPEDIA 
+
+  - id: STR_SKYRANGER
+    type_id: 1
+    section: STR_XCOM_CRAFT_ARMAMENT
+    image_id: UP004.SPK
+    rect_stats:
+      x: 160
+      y: 5
+      width: 160
+      height: 60
+    rect_text:
+      x: 5
+      y: 40
+      width: 140
+      height: 100
+    text: STR_SKYRANGER_UFOPEDIA 
+    
+  - id: STR_INTERCEPTOR
+    type_id: 1
+    section: STR_XCOM_CRAFT_ARMAMENT
+    image_id: UP002.SPK
+    rect_stats:
+      x: 5
+      y: 110
+      width: 160
+      height: 60
+    rect_text:
+      x: 5
+      y: 40
+      width: 210
+      height: 60
+    text: STR_INTERCEPTOR_UFOPEDIA
+    
+  - id: STR_RETALIATOR
+    type_id: 1
+    section: STR_XCOM_CRAFT_ARMAMENT
+    requires:
+      - STR_ADVANCED_CRAFT
+    image_id: UFORetaliator
+    rect_stats:
+      x: 5
+      y: 93
+      width: 140
+      height: 60
+    rect_text:
+      x: 5
+      y: 40
+      width: 210
+      height: 200
+    text: STR_RETALIATOR_UFOPEDIA  
+    
+  - id: STR_SENTINEL
+    type_id: 1
+    section: STR_XCOM_CRAFT_ARMAMENT
+    requires:
+      - STR_ADVANCED_HYBRID_CRAFT
+    image_id: SENTINEL_BIG
+    rect_stats:
+      x: 5
+      y: 132
+      width: 140
+      height: 60
+    rect_text:
+      x: 5
+      y: 40
+      width: 310
+      height: 60
+    text: STR_SENTINEL_UFOPEDIA    
+    
+  - id: STR_FIRESTORM
+    type_id: 1
+    section: STR_XCOM_CRAFT_ARMAMENT
+    requires:
+      - STR_NEW_FIGHTER_CRAFT
+    image_id: UP005.SPK
+    rect_stats:
+      x: 160
+      y: 5
+      width: 160
+      height: 60
+    rect_text:
+      x: 5
+      y: 40
+      width: 140
+      height: 100
+    text: STR_FIRESTORM_UFOPEDIA
+    
+  - id: STR_LIGHTNING
+    type_id: 1
+    section: STR_XCOM_CRAFT_ARMAMENT
+    requires:
+      - STR_NEW_FIGHTER_TRANSPORTER
+    image_id: UP003.SPK
+    rect_stats:
+      x: 5
+      y: 132
+      width: 160
+      height: 60
+    rect_text:
+      x: 5
+      y: 40
+      width: 310
+      height: 60
+    text: STR_LIGHTNING_UFOPEDIA
+    
+  - id: STR_DROPSHIP
+    type_id: 1
+    section: STR_XCOM_CRAFT_ARMAMENT
+    requires:
+      - STR_HEAVY_TRANSPORTER
+    image_id: DROPSHIP.SPK
+    rect_stats:
+      x: 5
+      y: 132
+      width: 160
+      height: 60
+    rect_text:
+      x: 175
+      y: 40
+      width: 140
+      height: 60
+    text: STR_DROPSHIP_UFOPEDIA
+    
+  - id: STR_AVENGER
+    type_id: 1
+    section: STR_XCOM_CRAFT_ARMAMENT
+    requires:
+      - STR_ULTIMATE_CRAFT
+    image_id: UP001.SPK
+    rect_stats:
+      x: 160
+      y: 5
+      width: 160
+      height: 60
+    rect_text:
+      x: 5
+      y: 40
+      width: 140
+      height: 100
+    text: STR_AVENGER_UFOPEDIA
+    
+  - id: STR_SPACE_CRAFT
+    type_id: 1
+    section: STR_XCOM_CRAFT_ARMAMENT
+    requires:
+      - STR_SPACE_CRAFT_IDEA
+    image_id: UP001.SPK
+    rect_stats:
+      x: 160
+      y: 5
+      width: 160
+      height: 60
+    rect_text:
+      x: 5
+      y: 40
+      width: 140
+      height: 100
+    text: STR_SPACE_CRAFT_UFOPEDIA    
+    
+# CRAFT WEAPONS
+  - id: STR_CANNON_UC
+    type_id: 2
+    section: STR_XCOM_CRAFT_ARMAMENT
+    image_id: CANNON
+    text: STR_CANNON_UFOPEDIA
+  - id: STR_ALLOY_CANNON_UC
+    type_id: 2
+    requires:
+      - STR_ALLOY_CANNON    
+    section: STR_XCOM_CRAFT_ARMAMENT
+    image_id: ALLOYCANNON
+    text: STR_ALLOY_CANNON_UFOPEDIA  
+    
+  - id: STR_GAUSS_CANNON_UC
+    type_id: 2
+    requires:
+      - STR_GAUSS_CANNON    
+    section: STR_XCOM_CRAFT_ARMAMENT
+    image_id: ALLOYCANNON
+    text: STR_GAUSS_CANNON_UC_UFOPEDIA      
+    
+  - id: STR_STINGRAY
+    type_id: 2
+    section: STR_XCOM_CRAFT_ARMAMENT
+    image_id: STINGRAY
+    text: STR_STINGRAY_UFOPEDIA
+  - id: STR_AVALANCHE
+    type_id: 2
+    section: STR_XCOM_CRAFT_ARMAMENT
+    image_id: AVALANCHE
+    text: STR_AVALANCHE_UFOPEDIA
+    
+  - id: STR_CLUSTER
+    type_id: 2
+    section: STR_XCOM_CRAFT_ARMAMENT
+    image_id: CLUSTER
+    requires:
+      - STR_CLUSTER_MISSILE
+    text: STR_CLUSTER_UFOPEDIA    
+  - id: STR_STORMLANCE
+    type_id: 2
+    section: STR_XCOM_CRAFT_ARMAMENT
+    image_id: PILUM
+    requires:
+      - STR_STORMLANCE_MISSILE
+    text: STR_STORMLANCE_UFOPEDIA
+ 
+  - id: STR_LASER_CANNON_UC
+    type_id: 2
+    section: STR_XCOM_CRAFT_ARMAMENT
+    requires:
+      - STR_LASER_CANNON
+    image_id: LASER
+    text: STR_LASER_CANNON_UFOPEDIA    
+  - id: STR_PLASMA_BEAM_UC
+    type_id: 2
+    section: STR_XCOM_CRAFT_ARMAMENT
+    requires:
+      - STR_PLASMA_CANNON
+    image_id: PLASMA
+    text: STR_PLASMA_BEAM_UFOPEDIA    
+  - id: STR_FUSION_BALL_UC
+    type_id: 2
+    section: STR_XCOM_CRAFT_ARMAMENT
+    requires:
+      - STR_FUSION_MISSILE
+    image_id: FUSION
+    text: STR_FUSION_BALL_UFOPEDIA    
+  - id: STR_FUSION_BEAM_UC
+    type_id: 2
+    section: STR_XCOM_CRAFT_ARMAMENT
+    requires:
+      - STR_FUSION_BEAM
+    image_id: EPM
+    text: STR_FUSION_BEAM_UC_UFOPEDIA     
+  
+# DRONES
+  - id: STR_SCOUT_DRONE
+    type_id: 3
+    section: STR_HEAVY_WEAPONS_PLATFORMS
+    text: STR_SCOUT_DRONE_UFOPEDIA
+    weapon: STR_SCOUT_DRONE
+  - id: STR_WAR_DRONE
+    type_id: 3
+    section: STR_HEAVY_WEAPONS_PLATFORMS
+    text: STR_WAR_DRONE_UFOPEDIA
+    weapon: STR_WAR_DRONE
+  - id: STR_XCOM_ENFORCER
+    type_id: 3
+    section: STR_HEAVY_WEAPONS_PLATFORMS
+    weapon: STR_GLOVE
+    requires:
+      - STR_XCOM_ENFORCER
+    text: STR_XCOM_ENFORCER_UFOPEDIA
+# TANKS 
+  - id: STR_TANK_CANNON
+    type_id: 3
+    section: STR_HEAVY_WEAPONS_PLATFORMS
+    text: STR_TANK_CANNON_UFOPEDIA
+    weapon: STR_CANNON
+  - id: STR_TANK_ROCKET_LAUNCHER
+    type_id: 3
+    section: STR_HEAVY_WEAPONS_PLATFORMS
+    text: STR_TANK_ROCKET_LAUNCHER_UFOPEDIA
+    weapon: STR_ROCKET_LAUNCHER  
+  - id: STR_TANK_MINIGUN
+    type_id: 3
+    section: STR_HEAVY_WEAPONS_PLATFORMS
+    text: STR_TANK_MINIGUN_UFOPEDIA
+    weapon: STR_MINIGUN    
+  - id: STR_TANK_LASER_CANNON
+    type_id: 3
+    section: STR_HEAVY_WEAPONS_PLATFORMS
+    weapon: STR_LASER_CANNON    
+    requires:
+      - STR_LASER_TANK
+    text: STR_TANK_LASER_CANNON_UFOPEDIA
+  - id: STR_TANK_CANNON_ALLOY
+    type_id: 3
+    section: STR_HEAVY_WEAPONS_PLATFORMS
+    requires:
+      - STR_ALLOY_TANK_ARMOR
+    text: STR_TANK_CANNON_ALLOY_UFOPEDIA
+    weapon: STR_CANNON
+  - id: STR_TANK_ROCKET_LAUNCHER_ALLOY
+    type_id: 3
+    section: STR_HEAVY_WEAPONS_PLATFORMS
+    requires:
+      - STR_ALLOY_TANK_ARMOR
+    text: STR_TANK_ROCKET_LAUNCHER_ALLOY_UFOPEDIA
+    weapon: STR_ROCKET_LAUNCHER
+  - id: STR_TANK_LASER_CANNON_ALLOY
+    type_id: 3
+    section: STR_HEAVY_WEAPONS_PLATFORMS
+    requires:
+      - STR_LASER_CANNON
+      - STR_ALLOY_TANK_ARMOR
+    text: STR_TANK_LASER_CANNON_ALLOY_UFOPEDIA
+    weapon: STR_LASER_CANNON    
+      
+  - id: STR_HOVERTANK_LASER
+    type_id: 3
+    section: STR_HEAVY_WEAPONS_PLATFORMS
+    weapon: STR_LASER_CANNON
+    requires:
+      - STR_HOVERTANK_LASER
+    text: STR_HOVERTANK_LASER_UFOPEDIA  
+  - id: STR_HOVERTANK_PLASMA
+    type_id: 3
+    section: STR_HEAVY_WEAPONS_PLATFORMS
+    weapon: STR_PLASMA_CANNON
+    requires:
+      - STR_HOVERTANK_PLASMA
+    text: STR_HOVERTANK_PLASMA_UFOPEDIA
+  - id: STR_HOVERTANK_LAUNCHER
+    type_id: 3
+    section: STR_HEAVY_WEAPONS_PLATFORMS
+    weapon: STR_FUSION_BALL_LAUNCHER
+    requires:
+      - STR_HOVERTANK_LAUNCHER
+    text: STR_HOVERTANK_LAUNCHER_UFOPEDIA
+    
+
+  - id: STR_SECTOTANK_LASER
+    type_id: 3
+    section: STR_HEAVY_WEAPONS_PLATFORMS
+    weapon: STR_LASER_CANNON
+    requires:
+      - STR_SECTOTANK_LASER
+    text: STR_SECTOTANK_LASER_UFOPEDIA
+  - id: STR_SECTOTANK_PLASMA
+    type_id: 3
+    section: STR_HEAVY_WEAPONS_PLATFORMS
+    weapon: STR_PLASMA_CANNON
+    requires:
+      - STR_SECTOTANK_PLASMA
+    text: STR_SECTOTANK_PLASMA_UFOPEDIA        
+  - id: STR_SECTOTANK_ROCKET
+    type_id: 3
+    section: STR_HEAVY_WEAPONS_PLATFORMS
+    weapon: STR_BLASTER_LAUNCHER
+    requires:
+      - STR_SECTOTANK_ROCKET
+    text: STR_SECTOTANK_ROCKET_UFOPEDIA
+    
+  - id: STR_POWER_HOVERTANK_LASER
+    type_id: 3
+    section: STR_HEAVY_WEAPONS_PLATFORMS
+    weapon: STR_LASER_CANNON
+    requires:
+      - STR_POWER_HOVERTANK_LASER
+    text: STR_POWER_HOVERTANK_LASER_UFOPEDIA  
+  - id: STR_POWER_HOVERTANK_PLASMA
+    type_id: 3
+    section: STR_HEAVY_WEAPONS_PLATFORMS
+    weapon: STR_PLASMA_CANNON
+    requires:
+      - STR_POWER_HOVERTANK_PLASMA
+    text: STR_POWER_HOVERTANK_PLASMA_UFOPEDIA
+  - id: STR_POWER_HOVERTANK_LAUNCHER
+    type_id: 3
+    section: STR_HEAVY_WEAPONS_PLATFORMS
+    weapon: STR_FUSION_BALL_LAUNCHER
+    requires:
+      - STR_POWER_HOVERTANK_LAUNCHER
+    text: STR_POWER_HOVERTANK_LAUNCHER_UFOPEDIA    
+    
+# ARMOURS
+  - id: STR_NONE_UC
+    type_id: 5
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_NONE_UFOPEDIA     
+  - id: STR_LIGHT_VEST_UC
+    type_id: 5
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_LIGHT_VEST_UFOPEDIA    
+  - id: STR_ALLOY_VEST_UC
+    type_id: 5
+    section: STR_WEAPONS_AND_EQUIPMENT
+    requires:
+      - STR_XCOM_ALLOY_VEST
+    text: STR_ALLOY_VEST_UFOPEDIA  
+  - id: STR_JETPACK_UC
+    type_id: 5
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_JETPACK_UFOPEDIA
+    requires:
+      - STR_XCOM_JETPACK
+  - id: STR_LEATHER_SUIT_UC
+    type_id: 5
+    section: STR_WEAPONS_AND_EQUIPMENT
+    requires:
+      - STR_HUMAN_ARMOURS_CONTRACT
+    text: STR_LEATHER_SUIT_UFOPEDIA      
+  - id: STR_COMBAT_SUIT_UC
+    type_id: 5
+    section: STR_WEAPONS_AND_EQUIPMENT
+    requires:
+      - STR_XCOM_COMBAT_SUIT
+    text: STR_COMBAT_SUIT_UFOPEDIA      
+  - id: STR_JUMP_SUIT_UC
+    type_id: 5
+    section: STR_WEAPONS_AND_EQUIPMENT
+    requires:
+      - STR_XCOM_JUMP_SUIT
+    text: STR_JUMP_SUIT_UFOPEDIA
+    
+  - id: STR_METAL_ARMOUR_UC
+    type_id: 5
+    section: STR_WEAPONS_AND_EQUIPMENT
+    requires:
+      - STR_HUMAN_ARMOURS_CONTRACT
+    text: STR_METAL_ARMOUR_UFOPEDIA      
+  - id: STR_POWER_ARMOUR_UC
+    type_id: 5
+    section: STR_WEAPONS_AND_EQUIPMENT
+    requires:
+      - STR_XCOM_POWER_ARMOUR
+    text: STR_POWER_ARMOUR_UFOPEDIA
+  - id: STR_FLYING_ARMOUR_UC
+    type_id: 5
+    section: STR_WEAPONS_AND_EQUIPMENT
+    requires:
+      - STR_XCOM_FLYING_ARMOUR
+    text: STR_FLYING_ARMOUR_UFOPEDIA    
+    
+# WEAPONS
+  - id: STR_KNIFE
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_KNIFE_UFOPEDIA  
+  - id: STR_LASER_SWORD
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_LASER_SWORD_UFOPEDIA
+    requires:
+      - STR_LASER_SWORD    
+  - id: STR_PLASMA_SWORD
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    requires:
+      - STR_PLASMA_SWORD
+    text: STR_PLASMA_SWORD_UFOPEDIA    
+  - id: STR_GLOVE
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_GLOVE_UFOPEDIA
+    requires:
+      - STR_GLOVE
+# WEAPONS FIRE
+  - id: STR_PISTOL
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_PISTOL_UFOPEDIA
+  - id: STR_PISTOL_CLIP
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+  - id: STR_PISTOL_CLIP_AA
+    type_id: 4
+    section: STR_NOT_AVAILABLE 
+    requires:
+      - STR_ALLOY_AMMO    
+  - id: STR_TASER
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_TASER_UFOPEDIA
+    requires: 
+      - STR_HUMAN_NONLEATHAL_CONTRACT
+  - id: STR_TASER_CLIP
+    type_id: 4
+    section: STR_NOT_AVAILABLE       
+  - id: STR_MSG
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_MSG_UFOPEDIA
+  - id: STR_MSG_CLIP
+    type_id: 4
+    section: STR_NOT_AVAILABLE    
+  - id: STR_MSG_CLIP_AA
+    type_id: 4
+    section: STR_NOT_AVAILABLE  
+    requires:
+      - STR_ALLOY_AMMO    
+  - id: STR_RIFLE
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_RIFLE_UFOPEDIA
+  - id: STR_RIFLE_CLIP
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+  - id: STR_RIFLE_CLIP_AA
+    type_id: 4
+    section: STR_NOT_AVAILABLE  
+    requires:
+      - STR_ALLOY_AMMO     
+  - id: STR_LMG
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_LMG_UFOPEDIA
+  - id: STR_LMG_CLIP
+    type_id: 4
+    section: STR_NOT_AVAILABLE 
+  - id: STR_LMG_CLIP_AA
+    type_id: 4
+    section: STR_NOT_AVAILABLE  
+    requires:
+      - STR_ALLOY_AMMO_BIG     
+  - id: STR_SHOTGUN
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_SHOTGUN_UFOPEDIA
+  - id: STR_SHOTGUN_SHELLS
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+  - id: STR_SHOTGUN_SHELLS_AA
+    type_id: 4
+    section: STR_NOT_AVAILABLE  
+    requires:
+      - STR_ALLOY_AMMO      
+  - id: STR_DMR
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_DMR_UFOPEDIA
+  - id: STR_DMR_AMMO
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+  - id: STR_DMR_AMMO_AA
+    type_id: 4
+    section: STR_NOT_AVAILABLE  
+    requires:
+      - STR_ALLOY_AMMO_BIG       
+  - id: STR_HEAVY_CANNON
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_HEAVY_CANNON_UFOPEDIA    
+  - id: STR_HC_AP_AMMO
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+  - id: STR_HC_HE_AMMO
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+  - id: STR_HC_I_AMMO
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+  - id: STR_AUTO_CANNON
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_AUTO_CANNON_UFOPEDIA     
+  - id: STR_AC_AP_AMMO
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+  - id: STR_AC_HE_AMMO
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+  - id: STR_AC_I_AMMO
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+  - id: STR_ROCKET_LAUNCHER
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_ROCKET_LAUNCHER_UFOPEDIA  
+  - id: STR_SMALL_ROCKET
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+  - id: STR_LARGE_ROCKET
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+  - id: STR_INCENDIARY_ROCKET
+    type_id: 4
+    section: STR_NOT_AVAILABLE 
+  
+#BIG GUNS
+  - id: STR_MINIGUN
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_MINIGUN_UFOPEDIA         
+  - id: STR_MINIGUN_CLIP
+    type_id: 4
+    section: STR_NOT_AVAILABLE    
+  - id: STR_MINIGUN_CLIP_AA
+    type_id: 4
+    section: STR_NOT_AVAILABLE  
+    requires:
+      - STR_ALLOY_AMMO_BIG  
+      
+  - id: STR_AUTO_MISSILE_LAUNCHER
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_AUTO_MISSILE_LAUNCHER_UFOPEDIA        
+  - id: STR_AUTO_MISSILE_SMALL
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+  - id: STR_AUTO_MISSILE_LARGE
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+    
+  - id: STR_MORTAR
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_MORTAR_UFOPEDIA        
+  - id: STR_MORTAR_SHELL_STUN
+    type_id: 4
+    section: STR_NOT_AVAILABLE    
+  - id: STR_MORTAR_SHELL_HE
+    type_id: 4
+    section: STR_NOT_AVAILABLE     
+  - id: STR_MORTAR_SHELL_INC
+    type_id: 4
+    section: STR_NOT_AVAILABLE       
+    
+#LASER WEAPONS
+  - id: STR_LASER_PISTOL
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    requires:
+      - STR_LASER_PISTOL
+    text: STR_LASER_PISTOL_UFOPEDIA
+  - id: STR_LASER_MSG
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    requires:
+      - STR_LASER_MSG
+    text: STR_LASER_MSG_UFOPEDIA    
+  - id: STR_LASER_RIFLE
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    requires:
+      - STR_LASER_RIFLE
+    text: STR_LASER_RIFLE_UFOPEDIA
+  - id: STR_LASER_BLASTER
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    requires:
+      - STR_LASER_BLASTER
+    text: STR_LASER_BLASTER_UFOPEDIA  
+  - id: STR_LASER_SNIPER_RIFLE
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    requires:
+      - STR_LASER_SNIPER_RIFLE
+    text: STR_LASER_SNIPER_RIFLE_UFOPEDIA       
+  - id: STR_HEAVY_LASER
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    requires:
+      - STR_HEAVY_LASER
+    text: STR_HEAVY_LASER_UFOPEDIA
+  - id: STR_GATLING_LASER
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_GATLING_LASER_UFOPEDIA
+    requires:
+      - STR_GATLING_LASER    
+
+# GAUSS WEAPONS
+  - id: STR_GAUSS_PISTOL
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_GAUSS_PISTOL_UFOPEDIA
+    requires:
+      - STR_GAUSS_PISTOL
+  - id: STR_GAUSS_RIFLE
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_GAUSS_RIFLE_UFOPEDIA
+    requires:
+      - STR_GAUSS_RIFLE
+  - id: STR_GAUSS_SNIPER_RIFLE
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_GAUSS_SNIPER_RIFLE_UFOPEDIA
+    requires:
+      - STR_GAUSS_SNIPER_RIFLE
+  - id: STR_HEAVY_GAUSS
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_HEAVY_GAUSS_UFOPEDIA
+    requires:
+      - STR_HEAVY_GAUSS  
+      
+# EXPLOSIVES
+  - id: STR_STUN_ROD
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    requires:
+      - STR_HUMAN_NONLEATHAL_CONTRACT        
+    text: STR_STUN_ROD_UFOPEDIA
+  - id: STR_GRENADE
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_GRENADE_UFOPEDIA
+  - id: STR_FRAG_GRENADE
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_FRAG_GRENADE_UFOPEDIA    
+  - id: STR_INC_GRENADE
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_INC_GRENADE_UFOPEDIA      
+  - id: STR_SMOKE_GRENADE
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_SMOKE_GRENADE_UFOPEDIA
+  - id: STR_PROXIMITY_GRENADE
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_PROXIMITY_GRENADE_UFOPEDIA
+  - id: STR_HIGH_EXPLOSIVE
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_HIGH_EXPLOSIVE_UFOPEDIA
+  - id: STR_LANDMINE
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_LANDMINE_UFOPEDIA
+  - id: STR_MEDGAS_GRENADE
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_MEDGAS_GRENADE_UFOPEDIA    
+    requires:
+      - STR_HUMAN_NONLEATHAL_CONTRACT
+  - id: STR_STUN_GRENADE
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_STUN_GRENADE_UFOPEDIA
+    requires:
+      - STR_STUN_GRENADE
+  - id: STR_MOTION_SCANNER
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    requires:
+      - STR_HUMAN_EQUIPMENT_CONTRACT
+    text: STR_MOTION_SCANNER_UFOPEDIA
+  - id: STR_MEDIBAG
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_MEDIBAG_UFOPEDIA
+  - id: STR_MEDI_KIT
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    requires:
+      - STR_HUMAN_EQUIPMENT_CONTRACT
+    text: STR_MEDI_KIT_UFOPEDIA
+  - id: STR_PSI_AMP
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    requires:
+      - STR_PSI_AMP
+    text: STR_PSI_AMP_UFOPEDIA
+  - id: STR_ELECTRO_FLARE
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_ELECTRO_FLARE_UFOPEDIA
+  - id: STR_ELERIUM_FLARE
+    type_id: 4
+    section: STR_WEAPONS_AND_EQUIPMENT
+    text: STR_ELERIUM_FLARE_UFOPEDIA
+    requires:
+      - STR_ELERIUM_FLARE  
+# ALIEN WEAPONS     
+  - id: STR_ALLOY_BLADE
+    type_id: 4
+    section: STR_ALIEN_ARTIFACTS
+    requires:
+      - STR_ALLOY_BLADE
+    text: STR_ALLOY_BLADE_UFOPEDIA      
+  - id: STR_PLASMA_BLADE
+    type_id: 4
+    section: STR_ALIEN_ARTIFACTS
+    requires:
+      - STR_PLASMA_BLADE
+    text: STR_PLASMA_BLADE_UFOPEDIA      
+# PLASMA WEAPONS    
+  - id: STR_PLASMA_PISTOL
+    type_id: 4
+    section: STR_ALIEN_ARTIFACTS
+    requires:
+      - STR_PLASMA_PISTOL      
+    text: STR_PLASMA_PISTOL_UFOPEDIA
+  - id: STR_PLASMA_PISTOL_CLIP
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+    requires:
+      - STR_PLASMA_PISTOL_CLIP
+    text: STR_PLASMA_PISTOL_CLIP_UFOPEDIA        
+  - id: STR_PLASMA_PISTOL_CLIP_ADV
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+    requires:
+      - STR_PLASMA_PISTOL_CLIP_ADV
+    text: STR_PLASMA_PISTOL_CLIP_ADV_UFOPEDIA 
+    
+  - id: STR_PLASMA_ASSULTER
+    type_id: 4
+    section: STR_ALIEN_ARTIFACTS
+    requires:
+      - STR_PLASMA_ASSULTER
+    text: STR_PLASMA_BLASTER_UFOPEDIA
+  - id: STR_PLASMA_ASSULTER_CLIP
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+    requires:
+      - STR_PLASMA_ASSULTER_CLIP
+    text: STR_PLASMA_ASSULTER_CLIP_UFOPEDIA        
+  - id: STR_PLASMA_ASSULTER_CLIP_ADV
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+    requires:
+      - STR_PLASMA_ASSULTER_CLIP_ADV
+    text: STR_PLASMA_ASSULTER_CLIP_ADV_UFOPEDIA    
+    
+  - id: STR_PLASMA_RIFLE
+    type_id: 4
+    section: STR_ALIEN_ARTIFACTS
+    requires:
+      - STR_PLASMA_RIFLE
+    text: STR_PLASMA_RIFLE_UFOPEDIA    
+  - id: STR_PLASMA_RIFLE_CLIP
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+    requires:
+      - STR_PLASMA_RIFLE_CLIP
+    text: STR_PLASMA_RIFLE_CLIP_UFOPEDIA    
+  - id: STR_PLASMA_RIFLE_CLIP_ADV
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+    requires:
+      - STR_PLASMA_RIFLE_CLIP_ADV
+    text: STR_PLASMA_RIFLE_CLIP_ADV_UFOPEDIA  
+    
+  - id: STR_PLASMA_BLASTER
+    type_id: 4
+    section: STR_ALIEN_ARTIFACTS
+    requires:
+      - STR_PLASMA_BLASTER
+    text: STR_PLASMA_BLASTER_UFOPEDIA
+  - id: STR_PLASMA_BLASTER_CLIP
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+    requires:
+      - STR_PLASMA_BLASTER_CLIP
+    text: STR_PLASMA_BLASTER_CLIP_UFOPEDIA        
+  - id: STR_PLASMA_BLASTER_CLIP_ADV
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+    requires:
+      - STR_PLASMA_BLASTER_CLIP_ADV
+    text: STR_PLASMA_BLASTER_CLIP_ADV_UFOPEDIA  
+  
+  - id: STR_PLASMA_SNIPER_RIFLE
+    type_id: 4
+    section: STR_ALIEN_ARTIFACTS
+    requires:
+      - STR_PLASMA_SNIPER_RIFLE
+    text: STR_PLASMA_SNIPER_RIFLE_UFOPEDIA
+  - id: STR_PLASMA_SNIPER_RIFLE_CLIP
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+    requires:
+      - STR_PLASMA_SNIPER_RIFLE_CLIP
+    text: STR_PLASMA_SNIPER_RIFLE_CLIP_UFOPEDIA     
+  - id: STR_PLASMA_SNIPER_RIFLE_CLIP_ADV
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+    requires:
+      - STR_PLASMA_SNIPER_RIFLE_CLIP_ADV
+    text: STR_PLASMA_SNIPER_RIFLE_ADV_UFOPEDIA
+    
+  - id: STR_HEAVY_PLASMA
+    type_id: 4
+    section: STR_ALIEN_ARTIFACTS
+    requires:
+      - STR_HEAVY_PLASMA
+    text: STR_HEAVY_PLASMA_UFOPEDIA
+  - id: STR_HEAVY_PLASMA_CLIP
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+    requires:
+      - STR_HEAVY_PLASMA_CLIP
+    text: STR_HEAVY_PLASMA_CLIP_UFOPEDIA
+  - id: STR_HEAVY_PLASMA_CLIP_ADV
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+    requires:
+      - STR_HEAVY_PLASMA_CLIP_ADV
+    text: STR_HEAVY_PLASMA_CLIP_ADV_UFOPEDIA  
+    
+  - id: STR_PLASMA_MINIGUN
+    type_id: 4
+    section: STR_ALIEN_ARTIFACTS
+    requires:
+      - STR_PLASMA_MINIGUN
+    text: STR_PLASMA_MINIGUN_UFOPEDIA
+  - id: STR_PLASMA_MINIGUN_CLIP
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+    requires:
+      - STR_PLASMA_MINIGUN_CLIP
+    text: STR_PLASMA_MINIGUN_CLIP_UFOPEDIA       
+  - id: STR_PLASMA_MINIGUN_CLIP_ADV
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+    requires:
+      - STR_PLASMA_MINIGUN_CLIP_ADV
+    text: STR_PLASMA_MINIGUN_CLIP_ADV_UFOPEDIA 
+
+  - id: STR_TOXIC_GUN
+    type_id: 4
+    section: STR_ALIEN_ARTIFACTS
+    requires:
+      - STR_TOXIC_GUN
+    text: STR_TOXIC_GUN_UFOPEDIA
+  - id: STR_TOXIC_GUN_CLIP
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+    requires:
+      - STR_TOXIC_GUN_CLIP
+    text: STR_TOXIC_GUN_CLIP_UFOPEDIA  
+    
+  - id: STR_BLASTER_LAUNCHER
+    type_id: 4
+    section: STR_ALIEN_ARTIFACTS
+    requires:
+      - STR_BLASTER_LAUNCHER
+    text: STR_BLASTER_LAUNCHER_UFOPEDIA
+  - id: STR_BLASTER_BOMB
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+    requires:
+      - STR_BLASTER_BOMB
+    text: STR_BLASTER_BOMB_UFOPEDIA
+  - id: STR_ELERIUM_BOMB
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+    requires:
+      - STR_ELERIUM_BOMB
+    text: STR_ELERIUM_BOMB_UFOPEDIA    
+    
+  - id: STR_HEAVY_LAUNCHER
+    type_id: 4
+    section: STR_ALIEN_ARTIFACTS
+    requires:
+      - STR_HEAVY_LAUNCHER
+    text: STR_HEAVY_LAUNCHER_UFOPEDIA
+  - id: STR_HEAVY_LAUNCHER_AMMO
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+    
+  - id: STR_SMALL_LAUNCHER
+    type_id: 4
+    section: STR_ALIEN_ARTIFACTS
+    requires:
+      - STR_SMALL_LAUNCHER
+    text: STR_SMALL_LAUNCHER_UFOPEDIA
+  - id: STR_STUN_BOMB
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+    requires:
+      - STR_STUN_BOMB
+    text: STR_STUN_BOMB_UFOPEDIA
+  - id: STR_NAPALM_BOMB
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+    requires:
+      - STR_NAPALM_BOMB
+    text: STR_NAPALM_BOMB_UFOPEDIA
+  - id: STR_BIO_BOMB
+    type_id: 4
+    section: STR_NOT_AVAILABLE
+    requires:
+      - STR_BIO_BOMB
+    text: STR_BIO_BOMB_UFOPEDIA    
+    
+  - id: STR_ALIEN_GRENADE
+    type_id: 4
+    section: STR_ALIEN_ARTIFACTS
+    requires:
+      - STR_ALIEN_GRENADE
+    text: STR_ALIEN_GRENADE_UFOPEDIA
+  - id: STR_ALIEN_MINE
+    type_id: 4
+    section: STR_ALIEN_ARTIFACTS
+    requires:
+      - STR_ALIEN_MINE
+    text: STR_ALIEN_MINE_UFOPEDIA    
+  - id: STR_MIND_PROBE
+    type_id: 4
+    section: STR_ALIEN_ARTIFACTS
+    text: STR_MIND_PROBE_UFOPEDIA
+    requires:
+      - STR_MIND_PROBE
+
+  - id: STR_POWERED_ALLOYS
+    type_id: 4
+    section: STR_ALIEN_ARTIFACTS
+    requires:
+      - STR_POWERED_ALLOYS
+    text: STR_POWERED_ALLOYS_UFOPEDIA
+  - id: STR_ELERIUM_115
+    type_id: 4
+    section: STR_ALIEN_ARTIFACTS
+    requires:
+      - STR_ELERIUM_115
+    text: STR_ELERIUM_115_UFOPEDIA
+# FACALITIES
+  - id: STR_ACCESS_LIFT
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    text: STR_ACCESS_LIFT_UFOPEDIA
+  - id: STR_CORRIDOR
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    text: STR_CORRIDOR_UFOPEDIA    
+  - id: STR_LIVING_QUARTERS
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    text: STR_LIVING_QUARTERS_UFOPEDIA
+  - id: STR_LIVING_QUARTERS_LARGE
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    text: STR_LIVING_QUARTERS_2_UFOPEDIA  
+    requires:
+      - STR_HUMAN_LARGE_FACILITIES_CONTRACT
+  - id: STR_GENERAL_STORES
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    text: STR_GENERAL_STORES_UFOPEDIA
+  - id: STR_GENERAL_STORES_LARGE
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    text: STR_GENERAL_STORES_2_UFOPEDIA  
+    requires:
+      - STR_HUMAN_LARGE_FACILITIES_CONTRACT    
+  - id: STR_LABORATORY
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    text: STR_LABORATORY_UFOPEDIA
+  - id: STR_LARGE_LAB
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    text: STR_LARGE_LAB_UFOPEDIA       
+    requires:
+      - STR_HUMAN_LARGE_FACILITIES_CONTRACT    
+  - id: STR_WORKSHOP
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    text: STR_WORKSHOP_UFOPEDIA    
+  - id: STR_LARGE_WORKSHOP
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    text: STR_LARGE_WORKSHOP_UFOPEDIA 
+    requires:
+      - STR_HUMAN_LARGE_FACILITIES_CONTRACT    
+  - id: STR_SMALL_RADAR_SYSTEM
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    text: STR_SMALL_RADAR_SYSTEM_UFOPEDIA
+  - id: STR_LARGE_RADAR_SYSTEM
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    requires:
+      - STR_HUMAN_LARGE_FACILITIES_CONTRACT
+      - STR_LARGE_RADAR_SYSTEM
+    text: STR_LARGE_RADAR_SYSTEM_UFOPEDIA  
+  - id: STR_ALIEN_CONTAINMENT
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    requires:
+      - STR_ALIEN_CONTAINMENT
+    text: STR_ALIEN_CONTAINMENT_UFOPEDIA    
+  - id: STR_MISSILE_DEFENSES
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    text: STR_MISSILE_DEFENSES_UFOPEDIA
+  - id: STR_LASER_DEFENSES
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    requires:
+      - STR_LASER_DEFENSE
+    text: STR_LASER_DEFENSES_UFOPEDIA
+  - id: STR_PLASMA_DEFENSES
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    requires:
+      - STR_PLASMA_DEFENSE
+    text: STR_PLASMA_DEFENSES_UFOPEDIA
+  - id: STR_GAUSS_DEFENSES
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    text: STR_GAUSS_DEFENSES_UFOPEDIA
+    requires:
+      - STR_GAUSS_DEFENSES    
+  - id: STR_FUSION_BALL_DEFENSES
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    text: STR_FUSION_BALL_DEFENSES_UFOPEDIA
+    requires:
+      - STR_FUSION_DEFENSE
+  - id: STR_GRAV_SHIELD
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    requires:
+      - STR_GRAV_SHIELD
+    text: STR_GRAV_SHIELD_UFOPEDIA
+  - id: STR_MIND_SHIELD
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    requires:
+      - STR_MIND_SHIELD
+    text: STR_MIND_SHIELD_UFOPEDIA
+  - id: STR_PSIONIC_LABORATORY
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    requires:
+      - STR_PSI_LAB
+    text: STR_PSIONIC_LABORATORY_UFOPEDIA
+  - id: STR_PSIONIC_LABORATORY_LARGE
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    requires:
+      - STR_HUMAN_LARGE_FACILITIES_CONTRACT
+      - STR_PSI_LAB
+    text: STR_PSIONIC_LABORATORY_LARGE_UFOPEDIA      
+  - id: STR_HYPER_WAVE_DECODER
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    requires:
+      - STR_HYPER_WAVE_DECODER
+    text: STR_HYPER_WAVE_DECODER_UFOPEDIA
+  - id: STR_HYP_UP_NET
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    requires:
+      - STR_HUMAN_LARGE_FACILITIES_CONTRACT
+      - STR_HYP_UP_NET
+    text: STR_HYP_UP_NET_UFOPEDIA        
+  - id: STR_HANGAR
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    text: STR_HANGAR_UFOPEDIA
+# ALIEN RACES
+  - id: STR_SECTOID
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_SECTOID
+    image_id: UFOPEDIA_SECTOID
+    text: STR_SECTOID_UFOPEDIA
+    text_width: 158
+
+  - id: STR_SECTOID_AUTOPSY
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    image_id: UFOPEDIA_SECTOID_AUTOPSY
+    text: STR_SECTOID_AUTOPSY_UFOPEDIA
+    requires:
+      - STR_SECTOID_CORPSE
+    text_width: 158
+  - id: STR_SNAKEMAN
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_SNAKEMAN
+    image_id: UFOPEDIA_SNAKEMAN
+    text: STR_SNAKEMAN_UFOPEDIA
+    text_width: 158
+  - id: STR_SNAKEMAN_AUTOPSY
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_SNAKEMAN_CORPSE
+    image_id: UFOPEDIA_SNAKEMAN_AUTOPSY
+    text: STR_SNAKEMAN_AUTOPSY_UFOPEDIA
+    text_width: 158
+  - id: STR_ETHEREAL
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_ETHEREAL
+    image_id: UFOPEDIA_ETHEREAL
+    text: STR_ETHEREAL_UFOPEDIA
+    text_width: 158
+  - id: STR_ETHEREAL_AUTOPSY
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_ETHEREAL_CORPSE
+    image_id: UFOPEDIA_ETHEREAL_AUTOPSY
+    text: STR_ETHEREAL_AUTOPSY_UFOPEDIA
+    text_width: 158
+  - id: STR_MUTON
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_MUTON
+    image_id: UFOPEDIA_MUTON
+    text: STR_MUTON_UFOPEDIA
+    text_width: 158
+  - id: STR_MUTON_AUTOPSY
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_MUTON_CORPSE
+    image_id: UFOPEDIA_MUTON_AUTOPSY
+    text: STR_MUTON_AUTOPSY_UFOPEDIA
+    text_width: 158
+  - id: STR_FLOATER
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_FLOATER
+    image_id: UFOPEDIA_FLOATER
+    text: STR_FLOATER_UFOPEDIA
+    text_width: 158
+  - id: STR_FLOATER_AUTOPSY
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_FLOATER_CORPSE
+    image_id: UFOPEDIA_FLOATER_AUTOPSY
+    text: STR_FLOATER_AUTOPSY_UFOPEDIA
+    text_width: 158
+  - id: STR_CELATID
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_CELATID
+    image_id: UFOPEDIA_CELATID
+    text: STR_CELATID_UFOPEDIA
+    text_width: 158
+  - id: STR_CELATID_AUTOPSY
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_CELATID_CORPSE
+    image_id: UFOPEDIA_CELATID_AUTOPSY
+    text: STR_CELATID_AUTOPSY_UFOPEDIA
+    text_width: 158
+  - id: STR_SILACOID
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_SILACOID
+    image_id: UFOPEDIA_SILACOID
+    text: STR_SILACOID_UFOPEDIA
+    text_width: 158
+  - id: STR_SILACOID_AUTOPSY
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_SILACOID_CORPSE
+    image_id: UFOPEDIA_SILACOID_AUTOPSY
+    text: STR_SILACOID_AUTOPSY_UFOPEDIA
+    text_width: 158
+  - id: STR_CHRYSSALID
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_CHRYSSALID
+    image_id: UFOPEDIA_CHRYSSALID
+    text: STR_CHRYSSALID_UFOPEDIA
+    text_width: 158
+  - id: STR_CHRYSSALID_AUTOPSY
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_CHRYSSALID_CORPSE
+    image_id: UFOPEDIA_CHRYSSALID_AUTOPSY
+    text: STR_CHRYSSALID_AUTOPSY_UFOPEDIA
+    text_width: 158
+  - id: STR_REAPER
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_REAPER
+    image_id: UFOPEDIA_REPEAR
+    text: STR_REAPER_UFOPEDIA
+    text_width: 158
+  - id: STR_REAPER_AUTOPSY
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_REAPER_CORPSE
+    image_id: UFOPEDIA_REPEAR_AUTOPSY
+    text: STR_REAPER_AUTOPSY_UFOPEDIA
+    text_width: 158
+  - id: STR_SECTOPOD
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_SECTOPOD
+    image_id: UFOPEDIA_SECTOPOD
+    text: STR_SECTOPOD_UFOPEDIA
+    text_width: 158
+  - id: STR_SECTOPOD_AUTOPSY
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_SECTOPOD_CORPSE
+    image_id: UFOPEDIA_SECTOPOD_AUTOPSY
+    text: STR_SECTOPOD_AUTOPSY_UFOPEDIA
+    text_width: 158
+  - id: STR_CYBERDISC
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_CYBERDISC
+    image_id: UFOPEDIA_CYBERDISC
+    text: STR_CYBERDISC_UFOPEDIA
+    text_width: 158
+  - id: STR_CYBERDISC_AUTOPSY
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_CYBERDISC_CORPSE
+    image_id: UFOPEDIA_CYBERDISC_AUTOPSY
+    text: STR_CYBERDISC_AUTOPSY_UFOPEDIA
+    text_width: 158
+  - id: STR_ANTHROPOD
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_ANTHROPOD
+    image_id: UFOPEDIA_ANTRHOPOD
+    text: STR_ANTHROPOD_UFOPAEDIA
+    text_width: 158
+  - id: STR_ANTHROPOD_AUTOPSY
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_ANTHROPOD_CORPSE
+    image_id: UFOPEDIA_ANTRHOPOD_AUTOPSY
+    text: STR_ANTHROPOD_AUTOPSY_UFOPAEDIA
+    text_width: 158
+  - id: STR_SPITTER
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_SPITTER
+    image_id: UFOPEDIA_SPITTER
+    text: STR_SPITTER_UFOPAEDIA
+    text_width: 158
+  - id: STR_SPITTER_AUTOPSY
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_SPITTER_CORPSE
+    image_id: UFOPEDIA_SPITTER_AUTOPSY
+    text: STR_SPITTER_AUTOPSY_UFOPAEDIA
+    text_width: 158
+
+  - id: STR_GAZER
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_GAZER
+    image_id: UFOPEDIA_GAZER
+    text: STR_GAZER_UFOPAEDIA
+    text_width: 158
+  - id: STR_GAZER_AUTOPSY
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_GAZER_CORPSE
+    image_id: UFOPEDIA_GAZER_AUTOPSY
+    text: STR_GAZER_AUTOPSY_UFOPAEDIA
+    text_width: 158
+  - id: STR_HOLODRONE
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_HOLODRONE
+    image_id: UFOPEDIA_HOLODRONE
+    text: STR_HOLODRONE_UFOPAEDIA
+    text_width: 158 
+  - id: STR_HOLODRONE_AUTOPSY
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_HOLODRONE_CORPSE
+    image_id: UFOPEDIA_HOLODRONE_AUTOPSY
+    text: STR_HOLODRONE_AUTOPSY_UFOPAEDIA
+    text_width: 158
+
+  - id: STR_WASPITE
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_WASPITE
+    image_id: UFOPEDIA_WASPITE
+    text: STR_WASPITE_UFOPAEDIA
+    text_width: 158
+  - id: STR_WASPITE_AUTOPSY
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_WASPITE_CORPSE
+    image_id: UFOPEDIA_WASPITE_AUTOPSY
+    text: STR_WASPITE_AUTOPSY_UFOPAEDIA
+    text_width: 158
+  - id: STR_CYBERMITE
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_CYBERMITE
+    image_id: UFOPEDIA_CYBERMITE
+    text: STR_CYBERMITE_UFOPAEDIA
+    text_width: 158 
+  - id: STR_CYBERMITE_AUTOPSY
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_CYBERMITE_CORPSE
+    image_id: UFOPEDIA_CYBERMITE_AUTOPSY
+    text: STR_CYBERMITE_AUTOPSY_UFOPAEDIA
+    text_width: 158
+  - id: STR_MIB_IDENTITY
+    type_id: 7
+    section: STR_ALIEN_LIFE_FORMS
+    requires:
+      - STR_MIB_IDENTITY
+    image_id: UFOPEDIA_MIB_IDENTITY
+    text: STR_MIB_IDENTITY_UFOPAEDIA
+    text_width: 108  
+# ALIEN MISSIONS
+  - id: STR_ALIEN_ORIGINS
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_ALIEN_ORIGINS
+    text: STR_ALIEN_ORIGINS_UFOPEDIA
+  - id: STR_THE_MARTIAN_SOLUTION
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_THE_MARTIAN_SOLUTION
+    text: STR_THE_MARTIAN_SOLUTION_UFOPEDIA
+  - id: STR_CYDONIA_OR_BUST
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_CYDONIA_OR_BUST
+    text: STR_CYDONIA_OR_BUST_UFOPEDIA
+  - id: STR_ALIEN_RESEARCH
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_ALIEN_RESEARCH
+    text: STR_ALIEN_RESEARCH_UFOPEDIA
+  - id: STR_ALIEN_HARVEST
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_ALIEN_HARVEST
+    text: STR_ALIEN_HARVEST_UFOPEDIA
+  - id: STR_ALIEN_ABDUCTION
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_ALIEN_ABDUCTION
+    text: STR_ALIEN_ABDUCTION_UFOPEDIA
+  - id: STR_ALIEN_INFILTRATION
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_ALIEN_INFILTRATION
+    text: STR_ALIEN_INFILTRATION_UFOPEDIA
+  - id: STR_ALIEN_BASE
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_ALIEN_BASE
+    text: STR_ALIEN_BASE_UFOPEDIA
+  - id: STR_ALIEN_TERROR
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_ALIEN_TERROR
+    text: STR_ALIEN_TERROR_UFOPEDIA
+  - id: STR_ALIEN_RETALIATION
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_ALIEN_RETALIATION
+    text: STR_ALIEN_RETALIATION_UFOPEDIA
+  - id: STR_ALIEN_SUPPLY
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_ALIEN_SUPPLY
+    text: STR_ALIEN_SUPPLY_UFOPEDIA
+  - id: STR_ALIEN_INTERCEPTION
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_ALIEN_INTERCEPTION
+    text: STR_ALIEN_INTERCEPTION_UFOPEDIA
+  - id: STR_ALIEN_ANIHILATION
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_ALIEN_ANIHILATION
+    text: STR_ALIEN_ANIHILATION_UFOPEDIA    
+# MIB MISSION 
+  - id: STR_MIB_ACTIVITY
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_MIB_ACTIVITY
+    text: STR_MIB_ACTIVITY_UFOPAEDIA
+  - id: STR_MIB_RESEARCH
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_MIB_RESEARCH
+    text: STR_MIB_RESEARCH_UFOPAEDIA
+  - id: STR_MIB_TERROR
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_MIB_TERROR
+    text: STR_MIB_TERROR_UFOPAEDIA
+  - id: STR_MIB_OUTPOST
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_MIB_OUTPOST
+    text: STR_MIB_OUTPOST_UFOPAEDIA     
+  - id: STR_MIB_MAIN_HQ
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_MIB_MAIN_HQ
+    text: STR_MIB_MAIN_HQ_UFOPAEDIA 
+    
+# ALIEN TRAININGS    
+  - id: STR_TRAINING_SMALL
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_TRAINING_SMALL
+    text: STR_TRAINING_SMALL_UFOPEDIA    
+  - id: STR_TRAINING_LARGE
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_TRAINING_LARGE
+    text: STR_TRAINING_LARGE_UFOPEDIA       
+  - id: STR_TRAINING_EXPLOSIVE
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_TRAINING_EXPLOSIVE
+    text: STR_TRAINING_EXPLOSIVE_UFOPEDIA     
+  - id: STR_TRAINING_HEAVY
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_TRAINING_HEAVY
+    text: STR_TRAINING_HEAVY_UFOPEDIA    
+  - id: STR_TRAINING_BIO
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_TRAINING_BIO
+    text: STR_TRAINING_BIO_UFOPEDIA     
+  - id: STR_TRAINING_MELEE
+    type_id: 8
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_TRAINING_MELEE
+    text: STR_TRAINING_MELEE_UFOPEDIA      
+# UFO COMPONENTS
+  - id: STR_UFO_POWER_SOURCE
+    type_id: 7
+    section: STR_UFO_COMPONENTS
+    requires:
+      - STR_UFO_POWER_SOURCE
+    image_id: UP032.SPK
+    text: STR_UFO_POWER_SOURCE_UFOPEDIA
+    text_width: 163
+  - id: STR_UFO_NAVIGATION
+    type_id: 7
+    section: STR_UFO_COMPONENTS
+    requires:
+      - STR_UFO_NAVIGATION
+    image_id: UP033.SPK
+    text: STR_UFO_NAVIGATION_UFOPEDIA
+    text_width: 147
+  - id: STR_UFO_CONSTRUCTION
+    type_id: 7
+    section: STR_UFO_COMPONENTS
+    requires:
+      - STR_UFO_CONSTRUCTION
+    image_id: UP034.SPK
+    text: STR_UFO_CONSTRUCTION_UFOPEDIA
+    text_width: 148
+  - id: STR_ALIEN_FOOD
+    type_id: 7
+    section: STR_UFO_COMPONENTS
+    requires:
+      - STR_ALIEN_FOOD
+    image_id: UP035.SPK
+    text: STR_ALIEN_FOOD_UFOPEDIA
+    text_width: 173
+  - id: STR_ALIEN_REPRODUCTION
+    type_id: 7
+    section: STR_UFO_COMPONENTS
+    requires:
+      - STR_ALIEN_REPRODUCTION
+    image_id: UP036.SPK
+    text: STR_ALIEN_REPRODUCTION_UFOPEDIA
+    text_width: 167
+  - id: STR_ALIEN_ENTERTAINMENT
+    type_id: 7
+    section: STR_UFO_COMPONENTS
+    requires:
+      - STR_ALIEN_ENTERTAINMENT
+    image_id: UP037.SPK
+    text: STR_ALIEN_ENTERTAINMENT_UFOPEDIA
+    text_width: 146
+  - id: STR_ALIEN_SURGERY
+    type_id: 7
+    section: STR_UFO_COMPONENTS
+    requires:
+      - STR_ALIEN_SURGERY
+    image_id: UP038.SPK
+    text: STR_ALIEN_SURGERY_UFOPEDIA
+    text_width: 108
+  - id: STR_EXAMINATION_ROOM
+    type_id: 7
+    section: STR_UFO_COMPONENTS
+    requires:
+      - STR_EXAMINATION_ROOM
+    image_id: UP039.SPK
+    text: STR_EXAMINATION_ROOM_UFOPEDIA
+    text_width: 150
+  - id: STR_ALIEN_ALLOYS
+    type_id: 7
+    section: STR_UFO_COMPONENTS
+    requires:
+      - STR_ALIEN_ALLOYS
+    image_id: UP040.SPK
+    text: STR_ALIEN_ALLOYS_UFOPEDIA
+    text_width: 145
+   
+# ALIEN UFO
+  - id: STR_UFO_PROBE
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_UFO_PROBE
+    text: STR_UFO_PROBE_UFOPEDIA
+  - id: STR_UFO_SCOUT
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_UFO_SCOUT
+    text: STR_UFO_SCOUT_UFOPEDIA
+  - id: STR_UFO_FIGHTER
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_UFO_FIGHTER
+    text: STR_UFO_FIGHTER_UFOPEDIA
+  - id: STR_UFO_ESCORT
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_UFO_ESCORT
+    text: STR_UFO_ESCORT_UFOPEDIA    
+  - id: STR_UFO_ESCORT_HEAVY
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_UFO_ESCORT_HEAVY
+    text: STR_UFO_ESCORT_HEAVY_UFOPEDIA       
+  - id: STR_UFO_BOMBER
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_UFO_BOMBER
+    text: STR_UFO_BOMBER_UFOPEDIA
+  - id: STR_UFO_CRUISER
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_UFO_CRUISER
+    text: STR_UFO_CRUISER_UFOPEDIA
+  - id: STR_UFO_CRUISER_HEAVY
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_UFO_CRUISER_HEAVY
+    text: STR_UFO_CRUISER_HEAVY_UFOPEDIA
+  - id: STR_UFO_DESTROYER
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_UFO_DESTROYER
+    text: STR_UFO_DESTROYER_UFOPEDIA      
+  - id: STR_UFO_TRANSPORTER
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_UFO_TRANSPORTER
+    text: STR_UFO_TRANSPORTER_UFOPEDIA    
+  - id: STR_UFO_HUNTER
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_UFO_HUNTER
+    text: STR_UFO_HUNTER_UFOPEDIA        
+  - id: STR_UFO_HARVESTER
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_UFO_HARVESTER
+    text: STR_UFO_HARVESTER_UFOPEDIA
+  - id: STR_UFO_ABDUCTOR
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_UFO_ABDUCTOR
+    text: STR_UFO_ABDUCTOR_UFOPEDIA
+  - id: STR_UFO_DREADNOUGHT
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_UFO_DREADNOUGHT
+    text: STR_UFO_DREADNOUGHT_UFOPEDIA     
+  - id: STR_TERROR_SHIP
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_TERROR_SHIP
+    text: STR_TERROR_SHIP_UFOPEDIA
+  - id: STR_BATTLESHIP
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_BATTLESHIP
+    text: STR_BATTLESHIP_UFOPEDIA
+  - id: STR_SUPPLY_SHIP
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_SUPPLY_SHIP
+    text: STR_SUPPLY_SHIP_UFOPEDIA
+  - id: STR_UFO_CARRIER
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_UFO_CARRIER
+    text: STR_UFO_CARRIER_UFOPEDIA
+# MIB UFOS     
+  - id: STR_MIB_CRAFT_A
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_MIB_CRAFT_A
+    text: STR_MIB_CRAFT_A_UFOPEDIA
+  - id: STR_MIB_CRAFT_B
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_MIB_CRAFT_B
+    text: STR_MIB_CRAFT_B_UFOPEDIA
+  - id: STR_MIB_CRAFT_C
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_MIB_CRAFT_C
+    text: STR_MIB_CRAFT_C_UFOPEDIA 
+  - id: STR_MIB_TERROR_SHIP
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_MIB_TERROR_SHIP
+    text: STR_MIB_TERROR_SHIP_UFOPEDIA
+  - id: STR_MIB_OUTPOST_SHIP
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_MIB_OUTPOST_SHIP
+    text: STR_MIB_OUTPOST_SHIP_UFOPEDIA
+  - id: STR_MIB_HQ_SHIP
+    type_id: 9
+    section: STR_UFOS
+    requires:
+      - STR_MIB_HQ_SHIP
+    text: STR_MIB_HQ_SHIP_UFOPEDIA      
+
+extraSprites:    
+  - type: UFOPEDIA_SECTOID
+    singleImage: true
+    files:
+      0: Resources/aliens/sectoid/Pedia_Sectoid.png
+  - type: UFOPEDIA_SECTOID_AUTOPSY
+    singleImage: true
+    files:
+      0: Resources/aliens/sectoid/Pedia_Sectoid_Autopsy.png 
+  - type: UFOPEDIA_FLOATER
+    singleImage: true
+    files:
+      0: Resources/aliens/floater/Pedia_Floater.png
+  - type: UFOPEDIA_FLOATER_AUTOPSY
+    singleImage: true
+    files:
+      0: Resources/aliens/floater/Pedia_Floater_Autopsy.png       
+  - type: UFOPEDIA_SNAKEMAN
+    singleImage: true
+    files:
+      0: Resources/aliens/snakeman/Pedia_Snakeman.png
+  - type: UFOPEDIA_SNAKEMAN_AUTOPSY
+    singleImage: true
+    files:
+      0: Resources/aliens/snakeman/Pedia_Snakeman_Autopsy.png  
+  - type: UFOPEDIA_MUTON
+    singleImage: true
+    files:
+      0: Resources/aliens/muton/Pedia_Muton.png
+  - type: UFOPEDIA_MUTON_AUTOPSY
+    singleImage: true
+    files:
+      0: Resources/aliens/muton/Pedia_Muton_Autopsy.png  
+
+  - type: UFOPEDIA_ETHEREAL
+    singleImage: true
+    files:
+      0: Resources/aliens/etheral/Pedia_Etheral.png
+  - type: UFOPEDIA_ETHEREAL_AUTOPSY
+    singleImage: true
+    files:
+      0: Resources/aliens/etheral/Pedia_Etheral_Autopsy.png      
+
+  - type: UFOPEDIA_ANTRHOPOD
+    singleImage: true
+    files:
+      0: Resources/aliens/antropod/Pedia_Antropod.png
+  - type: UFOPEDIA_ANTRHOPOD_AUTOPSY
+    singleImage: true
+    files:
+      0: Resources/aliens/antropod/Pedia_Antropod_Autopsy.png  
+  - type: UFOPEDIA_CELATID
+    singleImage: true
+    files:
+      0: Resources/aliens/celatid/Pedia_Celatid.png
+  - type: UFOPEDIA_CELATID_AUTOPSY
+    singleImage: true
+    files:
+      0: Resources/aliens/celatid/Pedia_Celatid_Autopsy.png  
+  - type: UFOPEDIA_GAZER
+    singleImage: true
+    files:
+      0: Resources/aliens/gazer/Pedia_Gazer.png
+  - type: UFOPEDIA_GAZER_AUTOPSY
+    singleImage: true
+    files:
+      0: Resources/aliens/gazer/Pedia_Gazer_Autopsy.png        
+  - type: UFOPEDIA_WASPITE
+    singleImage: true
+    files:
+      0: Resources/aliens/waspite/Pedia_Waspite.png
+  - type: UFOPEDIA_WASPITE_AUTOPSY
+    singleImage: true
+    files:
+      0: Resources/aliens/waspite/Pedia_Waspite_Autopsy.png    
+  - type: UFOPEDIA_CHRYSSALID
+    singleImage: true
+    files:
+      0: Resources/aliens/chryssalid/Pedia_Chryssalid.png
+  - type: UFOPEDIA_CHRYSSALID_AUTOPSY
+    singleImage: true
+    files:
+      0: Resources/aliens/chryssalid/Pedia_Chryssalid_Autopsy.png       
+  - type: UFOPEDIA_CYBERDISC
+    singleImage: true
+    files:
+      0: Resources/aliens/cyberdisc/Pedia_Cyberdisc.png
+  - type: UFOPEDIA_CYBERDISC_AUTOPSY
+    singleImage: true
+    files:
+      0: Resources/aliens/cyberdisc/Pedia_Cyberdisc_Autopsy.png       
+  - type: UFOPEDIA_SILACOID
+    singleImage: true
+    files:
+      0: Resources/aliens/silacoid/Pedia_Silacoid.png
+  - type: UFOPEDIA_SILACOID_AUTOPSY
+    singleImage: true
+    files:
+      0: Resources/aliens/silacoid/Pedia_Silacoid_Autopsy.png        
+  - type: UFOPEDIA_REPEAR
+    singleImage: true
+    files:
+      0: Resources/aliens/repear/Pedia_Repear.png
+  - type: UFOPEDIA_REPEAR_AUTOPSY
+    singleImage: true
+    files:
+      0: Resources/aliens/repear/Pedia_Repear_Autopsy.png     
+  - type: UFOPEDIA_SECTOPOD
+    singleImage: true
+    files:
+      0: Resources/aliens/sectopod/Pedia_Sectopod.png
+  - type: UFOPEDIA_SECTOPOD_AUTOPSY
+    singleImage: true
+    files:
+      0: Resources/aliens/sectopod/Pedia_Sectopod_Autopsy.png       
+  - type: UFOPEDIA_SPITTER
+    singleImage: true
+    files:
+      0: Resources/aliens/spitter/Pedia_Spitter.png
+  - type: UFOPEDIA_SPITTER_AUTOPSY
+    singleImage: true
+    files:
+      0: Resources/aliens/spitter/Pedia_Spitter_Autopsy.png   
+  - type: UFOPEDIA_HOLODRONE
+    singleImage: true
+    files:
+      0: Resources/aliens/holodrone/Pedia_Holodrone.png
+  - type: UFOPEDIA_HOLODRONE_AUTOPSY
+    singleImage: true
+    files:
+      0: Resources/aliens/holodrone/Pedia_Holodrone_Autopsy.png        
+  - type: UFOPEDIA_CYBERMITE
+    singleImage: true
+    files:
+      0: Resources/aliens/cybermite/Pedia_CyberMite.png
+  - type: UFOPEDIA_CYBERMITE_AUTOPSY
+    singleImage: true
+    files:
+      0: Resources/aliens/cybermite/Pedia_CyberMite_Autopsy.png        
+      
+  - type: UFOPEDIA_MIB_IDENTITY
+    singleImage: true
+    files:
+      0: Resources/aliens/MiB/Pedia_MIB.png       
+      
+      
+  - type: UFORetaliator
+    singleImage: true
+    width: 320
+    height: 200
+    files:
+      0: Resources/pedia/retaliator_ufopedia.gif
+  - type: UFORaven
+    singleImage: true
+    width: 320
+    height: 200
+    files:
+      0: Resources/pedia/raven_ufopedia.gif
+  - type: SENTINEL_BIG
+    singleImage: true
+    width: 320
+    height: 200
+    files:
+      0: Resources/pedia/Sentinel_Article.gif
+  - type: DROPSHIP.SPK
+    singleImage: true
+    width: 320
+    height: 200
+    files:
+      0: Resources/pedia/Dropship.png      
+  - type: ALLOYCANNON
+    singleImage: true
+    width: 320
+    height: 200
+    files:
+      0: Resources/pedia/AlloyCannon.png     
+  - type: CANNON
+    singleImage: true
+    width: 320
+    height: 200
+    files:
+      0: Resources/pedia/Cannon.png         
+  - type: AVALANCHE
+    singleImage: true
+    width: 320
+    height: 200
+    files:
+      0: Resources/pedia/Avalanche.png   
+  - type: STINGRAY
+    singleImage: true
+    width: 320
+    height: 200
+    files:
+      0: Resources/pedia/Stingray.png 
+  - type: CLUSTER
+    singleImage: true
+    width: 320
+    height: 200
+    files:
+      0: Resources/pedia/Cluster.png       
+  - type: PILUM
+    singleImage: true
+    width: 320
+    height: 200
+    files:
+      0: Resources/pedia/Pilum.png 
+  - type: LASER
+    singleImage: true
+    width: 320
+    height: 200
+    files:
+      0: Resources/pedia/Laser2.png            
+  - type: PLASMA
+    singleImage: true
+    width: 320
+    height: 200
+    files:
+      0: Resources/pedia/Plasma.png   
+  - type: FUSION
+    singleImage: true
+    width: 320
+    height: 200
+    files:
+      0: Resources/pedia/Fusion.png    
+  - type: EPM
+    singleImage: true
+    width: 320
+    height: 200
+    files:
+      0: Resources/pedia/EPM.png          

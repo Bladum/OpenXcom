@@ -1,0 +1,656 @@
+#    raceBonus: 
+#      STR_SECTOID: 
+#        sightRange: 400   
+#      STR_FLOATER: 
+#        speedMax: 120 
+#      STR_SNAKEMAN: 
+#        avoidBonus: 10   
+#      STR_MUTON: 
+#        powerBonus: 10  
+#      STR_ETHEREAL: 
+#        hitBonus: 10   
+#      STR_ANTHROPOD: 
+#        damageMax: 10   
+#      STR_GAZER: 
+#        armor: 0   
+#      STR_WASPITE:   
+#        accel: 6  
+
+ufos:
+  - type: STR_UFO_PROBE
+    size: STR_VERY_SMALL
+    modSprite: InterceptionProbe
+    damageMax: 25
+    speedMax: 1200      
+    accel: 12 
+    power: 0
+    range: 0
+    score: 10
+    reload: 90
+    breakOffTime: 30
+    battlescapeTerrainData:
+      name: UFO1C
+      mapDataSets:
+        - BLANKS
+        - UFO1
+      mapBlocks:
+        - name: UFO_00
+          width: 10
+          length: 10
+  - type: STR_UFO_SCOUT
+    size: STR_VERY_SMALL
+    sprite: 0
+    damageMax: 50
+    speedMax: 1600        
+    accel: 10 
+    power: 0
+    range: 0
+    score: 25
+    reload: 60
+    breakOffTime: 50
+    battlescapeTerrainData:
+      name: UFO1A
+      mapDataSets:
+        - BLANKS
+        - UFO1
+      mapBlocks:
+        - name: UFO_01
+          width: 10
+          length: 10
+  - type: STR_UFO_FIGHTER
+    modSprite: InterceptionFighter
+    size: STR_SMALL
+    damageMax: 100
+    speedMax: 2400       
+    accel: 10
+    power: 10
+    range: 10
+    score: 50
+    reload: 8
+    breakOffTime: 50
+    battlescapeTerrainData:
+      name: FIGHTER
+      mapDataSets:
+        - BLANKS
+        - U_EXT02
+        - U_WALL02
+        - U_BITS
+        - UFOL83
+      mapBlocks:
+        - name: UFO_02
+          width: 10
+          length: 10
+        - name: UFO_02A
+          width: 10
+          length: 10
+  - type: STR_UFO_ESCORT
+    size: STR_SMALL
+    sprite: 1
+    damageMax: 150
+    speedMax: 2000       
+    accel: 8
+    power: 20
+    range: 20
+    score: 75
+    reload: 32
+    breakOffTime: 100
+    battlescapeTerrainData:
+      name: UFO_110
+      mapDataSets:
+        - BLANKS
+        - U_EXT02
+        - U_WALL02
+        - U_BITS
+        - UFOL83
+      mapBlocks:
+        - name: UFO_03
+          width: 10
+          length: 10
+        - name: UFO_03A
+          width: 10
+          length: 10     
+  - type: STR_UFO_ESCORT_HEAVY
+    size: STR_SMALL
+    sprite: 1 #TODO
+    damageMax: 300
+    speedMax: 1600    
+    accel: 4
+    power: 20
+    range: 20
+    score: 100
+    reload: 32
+    breakOffTime: 100
+    battlescapeTerrainData:
+      name: UFO_110
+      mapDataSets:
+        - BLANKS
+        - U_EXT02
+        - U_WALL02
+        - U_BITS
+        - UFOL83
+      mapBlocks:
+        - name: UFO_03C
+          width: 10
+          length: 10
+        - name: UFO_03D
+          width: 10
+          length: 10              
+  - type: STR_UFO_HUNTER
+    size: STR_SMALL
+    sprite: 2 # TODO 
+    damageMax: 200
+    speedMax: 2800    
+    accel: 9
+    power: 20
+    range: 15
+    score: 75
+    reload: 6
+    breakOffTime: 75
+    battlescapeTerrainData:
+      name: UFO_129
+      mapDataSets:
+        - BLANKS
+        - U_EXT02
+        - U_WALL02
+        - U_BITS
+        - UFOL83
+      mapBlocks:
+        - name: UFO_04
+          width: 20
+          length: 20
+        - name: UFO_04A
+          width: 20
+          length: 20
+
+  - type: STR_UFO_BOMBER
+    modSprite: InterceptionSentry
+    size: STR_SMALL
+    damageMax: 250
+    speedMax: 1600      
+    accel: 8
+    power: 80
+    range: 40
+    score: 100
+    reload: 40
+    breakOffTime: 100
+    battlescapeTerrainData:
+      name: SENTRY
+      mapDataSets:
+        - BLANKS
+        - U_EXT02
+        - U_WALL02
+        - U_BITS
+        - UFOL83
+      mapBlocks:
+        - name: UFO_07
+          width: 20
+          length: 20  
+        - name: UFO_07A
+          width: 20
+          length: 20    
+  - type: STR_UFO_CRUISER
+    size: STR_SMALL
+    sprite: 2
+    damageMax: 250
+    speedMax: 2400    
+    accel: 7
+    power: 25
+    range: 30
+    score: 150
+    reload: 24
+    breakOffTime: 200
+    battlescapeTerrainData:
+      name: UFO_120
+      mapDataSets:
+        - BLANKS
+        - U_EXT02
+        - U_WALL02
+        - U_BITS
+        - UFOL83
+      mapBlocks:
+        - name: UFO_05
+          width: 20
+          length: 20
+        - name: UFO_05A
+          width: 20
+          length: 20 
+  - type: STR_UFO_CRUISER_HEAVY
+    size: STR_SMALL
+    sprite: 2 #TODO
+    damageMax: 500
+    speedMax: 2000      
+    accel: 3
+    power: 25
+    range: 30
+    score: 200
+    reload: 24
+    breakOffTime: 200
+    battlescapeTerrainData:
+      name: UFO_120
+      mapDataSets:
+        - BLANKS
+        - U_EXT02
+        - U_WALL02
+        - U_BITS
+        - UFOL83
+      mapBlocks:
+        - name: UFO_05C
+          width: 20
+          length: 20
+        - name: UFO_05D
+          width: 20
+          length: 20           
+    
+  - type: STR_UFO_TRANSPORTER
+    modSprite: InterceptionExcavator
+    size: STR_MEDIUM_UC
+    damageMax: 300
+    speedMax: 2800      
+    accel: 6
+    power: 30
+    range: 25
+    score: 200
+    reload: 24
+    breakOffTime: 300
+    battlescapeTerrainData:
+      name: EXCAVTR
+      mapDataSets:
+        - BLANKS
+        - U_EXT02
+        - U_WALL02
+        - U_BITS
+        - UFOL83
+      mapBlocks:
+        - name: UFO_06
+          width: 20
+          length: 20
+        - name: UFO_06A
+          width: 20
+          length: 20
+  - type: STR_UFO_DESTROYER
+    size: STR_MEDIUM_UC
+    sprite: 2  #TODO
+    damageMax: 400
+    speedMax: 2000      
+    accel: 7
+    power: 120
+    range: 50
+    score: 150
+    reload: 30
+    breakOffTime: 150
+    battlescapeTerrainData:
+      name: UFO_120          
+      mapDataSets:
+        - BLANKS
+        - U_EXT02
+        - U_WALL02
+        - U_OPER2
+        - U_BITS
+        - UFOL83
+      mapBlocks:
+        - name: UFO_13 
+          width: 20
+          length: 20            
+  - type: STR_UFO_ABDUCTOR
+    size: STR_MEDIUM_UC
+    sprite: 4
+    damageMax: 500
+    speedMax: 4000 
+    accel: 5
+    power: 45
+    range: 20
+    score: 250
+    reload: 16
+    breakOffTime: 400
+    battlescapeTerrainData:
+      name: UFO_140
+      mapDataSets:
+        - BLANKS
+        - U_EXT02
+        - U_WALL02
+        - U_OPER2
+        - U_BITS
+        - UFOL83
+      mapBlocks:
+        - name: UFO_08        
+          width: 20
+          length: 20
+        - name: UFO_08A
+          width: 20
+          length: 20
+  - type: STR_UFO_HARVESTER
+    size: STR_MEDIUM_UC
+    sprite: 3
+    damageMax: 600
+    speedMax: 3600      
+    accel: 5
+    power: 40
+    range: 25
+    score: 250
+    reload: 20
+    breakOffTime: 400
+    battlescapeTerrainData:
+      name: UFO_130
+      mapDataSets:
+        - BLANKS
+        - U_EXT02
+        - U_WALL02
+        - U_DISEC3
+        - U_BITS
+        - UFOL83
+      mapBlocks:
+        - name: UFO_09
+          width: 20
+          length: 20
+        - name: UFO_09A
+          width: 20
+          length: 20
+  - type: STR_UFO_DREADNOUGHT
+    size: STR_MEDIUM_UC
+    sprite: 2 # TODO 
+    damageMax: 800
+    speedMax: 3600      
+    accel: 6
+    power: 100
+    range: 30
+    score: 200
+    reload: 10
+    breakOffTime: 200
+    battlescapeTerrainData:
+      name: UFO_120
+      mapDataSets:
+        - BLANKS
+        - U_EXT02
+        - U_WALL02
+        - U_BITS
+        - UFOL83
+      mapBlocks:
+        - name: UFO_10        
+          width: 20
+          length: 20  
+        - name: UFO_10A
+          width: 20
+          length: 20             
+  - type: STR_SUPPLY_SHIP
+    size: STR_LARGE
+    sprite: 7
+    damageMax: 2400
+    speedMax: 3200      
+    accel: 4
+    power: 80
+    range: 35
+    score: 400
+    reload: 16
+    breakOffTime: 1500
+    battlescapeTerrainData:
+      name: UFO_170
+      mapDataSets:
+        - BLANKS
+        - U_EXT02
+        - U_WALL02
+        - U_DISEC2
+        - U_BITS
+        - UFOL83
+      mapBlocks:
+        - name: UFO_11
+          width: 30
+          length: 20
+        - name: UFO_11A
+          width: 20
+          length: 30      
+  - type: STR_TERROR_SHIP
+    size: STR_LARGE
+    sprite: 5
+    damageMax: 1200
+    speedMax: 4400    
+    accel: 4
+    power: 120
+    range: 45
+    score: 600
+    reload: 12
+    breakOffTime: 1000
+    battlescapeTerrainData:
+      name: UFO_150
+      mapDataSets:
+        - BLANKS
+        - U_EXT02
+        - U_WALL02
+        - U_PODS
+        - U_BITS
+        - UFOL83
+      mapBlocks:
+        - name: UFO_12
+          width: 30
+          length: 20
+        - name: UFO_12A
+          width: 20
+          length: 30
+        
+  - type: STR_UFO_CARRIER
+    modSprite: InterceptionLabShip
+    size: STR_LARGE
+    damageMax: 2000
+    speedMax: 3600     
+    accel: 3
+    power: 60
+    range: 40
+    score: 500
+    reload: 10
+    breakOffTime: 500
+    battlescapeTerrainData:
+      name: LABSHIP
+      mapDataSets:
+        - BLANKS
+        - U_EXT02
+        - U_WALL02
+        - U_PODS
+        - U_BITS
+        - U_DISEC2
+        - UFOL83
+      mapBlocks:
+        - name: UFO_14
+          width: 30
+          length: 30
+  - type: STR_BATTLESHIP
+    size: STR_VERY_LARGE
+    sprite: 6
+    damageMax: 3200
+    speedMax: 4800    
+    accel: 3
+    power: 200
+    range: 60
+    score: 800
+    reload: 20
+    breakOffTime: 2000
+    battlescapeTerrainData:
+      name: UFO_160
+      mapDataSets:
+        - BLANKS
+        - U_EXT02
+        - U_WALL02
+        - U_PODS
+        - U_BITS
+      mapBlocks:
+        - name: UFO_15
+          width: 30
+          length: 30
+  - type: STR_MIB_CRAFT_A
+    size: STR_SMALL
+    modSprite: interception_jammed #TODO
+    damageMax: 100
+    speedMax: 2000
+    accel: 10
+    power: 20
+    range: 20
+    score: 75
+    reload: 30
+    breakOffTime: 100
+    battlescapeTerrainData:
+      name: CRAFT00
+      mapDataSets:
+        - BLANKS
+        - C_EXT02
+        - C_WALL02
+        - C_BITS
+        - UFOL83           
+      mapBlocks:
+        - name: CRAFT00
+          width: 10
+          length: 20
+  - type: STR_MIB_CRAFT_B
+    size: STR_MEDIUM
+    modSprite: interception_jammed #TODO
+    damageMax: 200
+    speedMax: 2400
+    accel: 9
+    power: 30
+    range: 25
+    score: 125
+    reload: 25
+    breakOffTime: 100
+    battlescapeTerrainData:
+      name: CRAFT01
+      mapDataSets:
+        - BLANKS
+        - C_EXT02
+        - C_WALL02
+        - C_BITS
+        - UFOL83          
+      mapBlocks:
+        - name: CRAFT01
+          width: 10
+          length: 20
+  - type: STR_MIB_CRAFT_C
+    size: STR_MEDIUM
+    modSprite: interception_jammed #TODO
+    damageMax: 300 
+    speedMax: 2800
+    accel: 8
+    power: 40
+    range: 35
+    score: 200
+    reload: 20
+    breakOffTime: 150
+    battlescapeTerrainData:
+      name: CRAFT02
+      mapDataSets:
+        - BLANKS
+        - C_EXT02
+        - C_WALL02
+        - C_BITS
+        - UFOL83        
+      mapBlocks:
+        - name: CRAFT02
+          width: 20
+          length: 20
+  - type: STR_MIB_TERROR_SHIP
+    size: STR_LARGE
+    modSprite: interception_jammed #TODO
+    damageMax: 600
+    speedMax: 3600
+    accel: 6
+    power: 60
+    range: 40
+    score: 350
+    reload: 15
+    breakOffTime: 200
+    battlescapeTerrainData:
+      name: CRAFT03
+      mapDataSets:
+        - BLANKS
+        - C_EXT02
+        - C_WALL02
+        - C_BITS
+        - UFOL83 
+      mapBlocks:
+        - name: CRAFT03
+          width: 20
+          length: 20
+        - name: CRAFT03A
+          width: 20
+          length: 20          
+  - type: STR_MIB_OUTPOST_SHIP
+    size: STR_VERY_LARGE
+    modSprite: interception_jammed #TODO
+    damageMax: 1000
+    speedMax: 4800
+    accel: 4
+    power: 80
+    range: 20
+    score: 500
+    reload: 10
+    breakOffTime: 250
+    battlescapeTerrainData:
+      name: CRAFT04
+      mapDataSets:
+        - BLANKS
+        - C_EXT02
+        - C_WALL02
+        - U_DISEC2
+        - C_BITS
+        - UFOL83
+      mapBlocks:
+        - name: CRAFT04
+          width: 30
+          length: 30
+  - type: STR_MIB_HQ_SHIP
+    size: STR_VERY_LARGE
+    modSprite: interception_jammed #TODO
+    damageMax: 50
+    speedMax: 10000
+    accel: 4
+    power: 0
+    range: 0
+    score: 0
+    reload: 10
+    breakOffTime: 2500
+    battlescapeTerrainData:
+      name: MBASE01
+      mapDataSets:
+        - BLANKS
+        - AREAROADS
+        - AREAURBITS
+        - AREAURBAN
+        - AREAFRNITURE
+      mapBlocks:
+        - name: MBASE01
+          width: 30
+          length: 30
+          
+extraSprites:                
+  - type: interception_jammed
+    singleImage: true
+    width: 160
+    height: 52
+    files:
+      0: Resources/planes/UFO_Unkown.gif          
+  - type: InterceptionExcavator
+    singleImage: true
+    width: 160
+    height: 52
+    files:
+      0: Resources/planes/UFO_Transporter.gif
+  - type: InterceptionFighter
+    singleImage: true
+    width: 160
+    height: 52
+    files:
+      0: Resources/planes/UFO_Fighter.gif
+  - type: InterceptionSentry
+    singleImage: true
+    width: 160
+    height: 52
+    files:
+      0: Resources/planes/UFO_Bomber.gif
+  - type: InterceptionLabShip
+    singleImage: true
+    width: 160
+    height: 52
+    files:
+      0: Resources/planes/UFO_Carrier.gif      
+  - type: InterceptionProbe
+    singleImage: true
+    width: 160
+    height: 52
+    files:
+      0: Resources/planes/UFO_Probe.gif            

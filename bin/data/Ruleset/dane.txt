@@ -1,0 +1,187 @@
+pistol    12m   snap 
+smg       8m    auto x3
+shotgun   4m    snap 
+rifle     16m   snap, auto x3, aim 
+
+    1: [1, 15]
+    16: [96, 16]
+    32: [80, 16]
+    48: [1, 1]
+    49: [1, 15]
+    64: [160, 16]
+    80: [64, 16]
+    96: [128, 16]
+    112: [240, 16]
+    128: [144, 16]
+    144: [144, 16]
+    160: [16, 16]
+    176: [32, 16]
+    192: [224, 16]
+    208: [176, 16]
+    224: [192, 16]
+    240: [208, 16]
+
+DtA = Damage to Armour
+DoS = Damage or Stun 
+emp = only to mechanical units 
+
+power *= power * (50% - 150%)
+DtA = power * DtA modifier below
+power *= armour damage modifier 
+power -= armour value
+health -= power  
+armour value -= DtA 
+
+          DtA  DoS
+0 emp     0.0  0.5 
+1 ap      0.2  0.2
+2 inc     0.1  0.0
+3 he      0.0  0.3
+4 laser   0.1  0.1
+5 plasma  0.1  0.0  
+6 stun    0.0  1.0
+7 melee   0.3  0.2
+8 acid    0.2  0.3
+9 smoke   0.0  1.0
+
+Average damage inflicted to armour per hit
+Pistol        5 
+Rifle         6 
+Heavy Cannon  11
+Auto Cannon   8
+Laser Pistol  4
+Laser Rifle   6
+Heavy Laser   8
+Plasma Rifle  8
+Heavy Plasma  11  
+
+Recoil - minStrenght to fire weapon
+every 1 point below is -2% to accurancy
+
+LMG recoil is 50 
+
+# ALIEN UNITS REASON 
+#             TU  ST  HT  BR  RE  FIR THR STR PSI PSI MEL ENR IQ  AGR ARM SIZ
+# sectoid     55  60  30  80  60  50  60  30  40  50  30  15  5   1   5   16x2    
+## cyberdisc  65  90  100 100 70  60  0   80  100 0   0   45  4   1   30  15x5      
+# floater     45  80  40  70  50  50  60  40  30  0   40  20  3   2   10  21x4           
+## repear     60  90  140 90  60  0   0   120 30  0   60  30  2   2   20  23x5   
+# snakeman    40  60  50  80  40  60  70  50  40  0   50  25  2   0   20  18x4 
+## chrysalis  110 120 80  100 70  0   0   90  50  0   70  20  3   3   10  21x3 
+## zombie     35  80  60  100 30  0   0   60  80  0   50  10  1   1   0   18x3
+# muton       50  70  120 80  50  50  60  70  20  0   60  35  2   2   10  21x3    
+## celatid    75  50  70  90  30  90  0   30  70  0   40  50  3   2   -   12x2 
+## silacoid   30  90  90  100 40  0   0   40  80  0   60  60  3   0   30  10x2
+# ehtereal    70  80  50  80  80  70  70  50  50  40  50  20  6   1   45  20x4      
+## sectopod   40  120 100 100 60  0   0   120 100 0   60  20  3   1   140       
+# gazer       40  80  70  80  40  60  70  50  50  0   60  40  3   1   60  19x3 
+## holodrone  60  100 50  100 60  60  0   20  100 0   50  50  2   2   
+# antropod    55  100 60  70  50  60  60  80  30  0   90  40  2   2   10  21x4 
+## spitter    45  80  30  80  40  60  70  50  40  0   70  20  2   2   20   
+# waspite     65  100 40  70  90  60  40  40  50  0   40  20  5   0   5   21x4 
+## cybermite  45  120 25  100 50  0   0   20  100 0   70  10  10  4   0    
+
+# SOLDIER     ARMOUR 1
+# ENGINEER    +10 THROWING, IQ +2, ARMOUR 2, HEALTH +10
+# MEDIC       +10 FIRING, IQ +2, ARMOUR 2, STAMINA +10, ENERGY RECOVERY +5
+# NAVIGATOR   +10 REACTION, IQ +2, ARMOUR 2, TU +10
+# LEADER      +10 BRAVERY, IQ +3, ARMOUR 3, PSI +10, MELEE +10, HEALTH +10, STAMINA +10, TU +10
+# COMANDER    +20 BRAVERY, IQ +4, ARMOUR 4, PSI +20, MELEE +20, +10 THR, +10 FIRE, +10 REACTION, HEALTH +10, STAMINA +10, TU +10
+
+
+tier 1) balistic weapons 
+tier 2A) laser weapons 
+tier 2B) improved alien alloy ammo for balistic weapon, DAMAGE +25%, CAPACITY AMMO +50%, 
+tier 3) gauss weapons (bron AP)
+tier 4) plasma weapons 
+tier 5) fussion weapons (fussion lance, blaster launcher)
+
+nowy system walk 
+  30x30 mala          
+  40x40 srednia       
+  50x50 duza          
+  60x60 bardzo duza   
+  
+parametry minimalHit (domyslnie 0)
+  0 - brak min celnosci, obcy atakuje nawet jak jest 0%
+  1 - obcy nie strzela jesli szansa trafienia nie jest conajmniej 10%
+  2 - obcy stara sie zwiekszyc szanse na trafienie do poziomu 20%   
+  3 - same as above 30%
+  
+parametr  minimalHitAction (domyslnie 0)
+  0 - obcy nic nie robi aby poprawic minimalHitChance 
+  1 - obcy ma 50% szansy na to ze bedzie staral sie podejsc do x-coma 
+  2 - obcy stara sie podejsc do x-coma i poprawic minimalHitChance
+  
+parameter meleeOrRange
+  0 - rather range 
+  1 - mix close or range 
+  2 - rather close 
+  
+  
+  
+sredni TU = 40 = 10 pól po terenie zwyklym 
+srednia energia = 40 z regeneracja 10 na ture,   
+  
+pole widzenia obcych 20
+pole widzenia naszych 9 w nocy   
+  
+zasiegi broni 
+  shotgun     4
+  SMG         8     
+  pistol      12    auto cannon 
+  rifle       16    heavy cannon 
+  SAW         20    tank minigun 
+  rockets     24    tank cannon 
+  sniper      32    tank rocket 
+  
+LMG -> SAW (squad assult weapon)
+Heavy Cannon -> Grenade Launcher 
+Rifle -> grafike z Assult Rifle 
+Auto Cannon -> grafike z ktoregos moda 
+
+Pistol           28 dmg, 15% TU, 12 clips, 3kg, 15m, snap
+SMG              24 dmg, 25% TU, 30 clips, 6kg, 10m, snap / auto x3
+Shotgun          20x6 dmg, 30% TU, 6 clips, 8kg, 5m, snap S6
+Sniper rifle     48 dmg, 80% TU, 8 clips, 14kg, 40m, aim
+Rifle            32 dmg, 25% TU, 24 clips, 10kg, 20m, snap / auto x3 / aim
+SAW              36 dmg, 50% TU, 30 clips, 20kg, 25m, auto x5
+Auto Cannon      44@3 dmg, 40% TU, 12 clips, 18kg, 15m, auto x3
+Grenade Launcher 56@4 dmg, 30% TU, 6 clips, 16kg, 20m, snap
+Rocket Launcher  80@5/100@6 dmg, 1 clip, 12kg, 35m, snap / aim 
+
+frag grenade      
+grenade             
+flashbang         
+high explosive      
+land mine         
+proximity grenade   
+
+Tank Cannon      64 dmg, 30% TU, 30 clip, -, 30m, snap, 
+Tank MG          24 dmg, 25% TU, -, 15m, auto x3
+Tank Rocket      100x6 dmg, 8 clip, -, 40m, snap / aim 
+Tank Minigun     20x10 dmg, 100 clip,  
+
+MECH WEAPONS    
+Minigun               
+Multilauncher   
+Mortar          
+Power Glove     
+Anti tank gun   
+Flamethrower    
+
+EXPERIENCE GAINED 
+0   0-0
+1   0-1
+2   0-1
+3   0-2
+4   1-2
+5   1-3
+6   1-3
+7   1-4
+8   2-4  
+9   2-5
+10  2-5
+11  2-6 
+12  3-6
+

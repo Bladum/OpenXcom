@@ -1,0 +1,589 @@
+crafts:
+# STANDARD TRANSPORTER WITH 10 FOLKS AND 1 TANK 
+  - type: STR_SKYRANGER
+    sprite: 0
+    fuelMax: 60
+    refuelItem: STR_CRAFT_FUEL
+    refuelRate: 5     
+    damageMax: 150
+    repairRate: 3
+    radarRange: 600
+    radarChance: 100
+    speedMax: 800
+    accel: 1
+    weapons: 0 
+    soldiers: 10
+    vehicles: 1
+    costBuy: 600000
+    costRent: 60000   
+    costSell: 300000
+    transferTime: 96    
+    score: 150
+    battlescapeTerrainData:
+      name: PLANE
+      mapDataSets:
+        - BLANKS
+        - PLANE
+      mapBlocks:
+        - name: PLANE_01
+          width: 10
+          length: 20 
+    deployment:
+      - [4, 9, 1, 0]
+      - [5, 9, 1, 0]    
+      - [4, 10, 1, 0]
+      - [5, 10, 1, 0] 
+      - [4, 11, 1, 0]
+      - [5, 11, 1, 0] 
+      - [4, 12, 1, 0]
+      - [5, 12, 1, 0]    
+      - [4, 13, 1, 0]
+      - [5, 13, 1, 0]          
+# EARLY HEAVY LAND TRANSPORTER, VERY SLOW BUT WITH LARGE LOAD
+# DOES NOT USE CRAFT FUEL AT ALL 
+  - type: STR_APC
+    sprite: 0
+    fuelMax: 300
+    #refuelItem: ~
+    refuelRate: 50     
+    damageMax: 50
+    repairRate: 5
+    radarRange: 200
+    radarChance: 100
+    speedMax: 200
+    accel: 1
+    weapons: 0 
+    soldiers: 15
+    vehicles: 3
+    costBuy: 200000
+    costRent: 20000    
+    costSell: 100000
+    transferTime: 96    
+    score: 50
+    battlescapeTerrainData:
+      name: NKF_APC
+      mapDataSets:
+        - BLANKS
+        - NKF_APC
+      mapBlocks:
+        - name: NKF_APC
+          width: 10
+          length: 20   
+    deployment:
+      - [3, 10, 0, 0]
+      - [4, 10, 0, 0]      
+      - [5, 10, 0, 0]
+      - [3, 11, 0, 0]
+      - [4, 11, 0, 0]      
+      - [5, 11, 0, 0]
+      - [3, 12, 0, 0]
+      - [4, 12, 0, 0]      
+      - [5, 12, 0, 0]    
+      - [3, 13, 0, 0]
+      - [4, 13, 0, 0]      
+      - [5, 13, 0, 0] 
+      - [3, 14, 0, 0]
+      - [4, 14, 0, 0]      
+      - [5, 14, 0, 0]         
+# EARLY CHEAP INTERCEPTOR          
+  - type: STR_INTERCEPTOR
+    sprite: 3
+    fuelMax: 40
+    refuelItem: STR_CRAFT_FUEL
+    refuelRate: 5   
+    damageMax: 100
+    repairRate: 3    
+    speedMax: 2000
+    radarRange: 600
+    radarChance: 100
+    accel: 10
+    weapons: 2 
+    costBuy: 400000
+    costRent: 40000
+    costSell: 200000    
+    transferTime: 96    
+    score: 100
+# EARLY FIGHTER-TRANSPORTER CRAFT     
+  - type: STR_RETALIATOR
+    requires:
+      - STR_ADVANCED_CRAFT
+    sprite: 24
+    fuelMax: 100
+    refuelItem: STR_CRAFT_FUEL
+    refuelRate: 5   
+    damageMax: 200
+    repairRate: 3    
+    speedMax: 1600
+    radarRange: 800
+    radarChance: 100    
+    accel: 3
+    weapons: 1 
+    costBuy: 0  
+    soldiers: 4
+    vehicles: 0       
+    costRent: 60000
+    costSell: 300000
+    transferTime: 96    
+    score: 200     
+    battlescapeTerrainData:
+      name: INTERC
+      mapDataSets:
+        - BLANKS
+        - PLANE2
+      mapBlocks:
+        - name: PLANE_02
+          width: 10
+          length: 10   
+    deployment:
+      - [4, 5, 1, 0]
+      - [5, 5, 1, 0]      
+      - [4, 6, 1, 0]
+      - [5, 6, 1, 0]          
+# HEAVY HYBRID INTERCEPTOR     
+  - type: STR_SENTINEL
+    requires:
+      - STR_ADVANCED_CRAFT
+    sprite: 27
+    fuelMax: 80
+    refuelItem: STR_CRAFT_FUEL
+    refuelRate: 5    
+    damageMax: 300
+    repairRate: 2    
+    speedMax: 2800
+    radarRange: 800
+    radarChance: 100     
+    accel: 5
+    weapons: 2 
+    costBuy: 0    
+    costRent: 80000    
+    costSell: 400000    
+    transferTime: 96
+    score: 250        
+# ALIEN FIGHTER    
+  - type: STR_FIRESTORM
+    requires:
+      - STR_NEW_FIGHTER_CRAFT
+    sprite: 4
+    fuelMax: 30
+    refuelItem: STR_ELERIUM_115    
+    refuelRate: 5    
+    damageMax: 500
+    repairRate: 1    
+    speedMax: 4800
+    radarRange: 1000
+    radarChance: 100
+    accel: 10
+    weapons: 2 
+    costBuy: 0    
+    costRent: 120000    
+    costSell: 600000  
+    transferTime: 96    
+    score: 300
+    soldiers: 2
+    vehicles: 0    
+    battlescapeTerrainData:
+      name: FIRES
+      mapDataSets:
+        - BLANKS
+        - LIGHTNIN
+      mapBlocks:
+        - name: PLANE_03
+          width: 10
+          length: 10
+    deployment:
+      - [4, 5, 1, 2]
+      - [3, 5, 1, 2]   
+# ALIEN FIGHTER-TRANSPORTER      
+  - type: STR_LIGHTNING
+    requires:
+      - STR_NEW_FIGHTER_TRANSPORTER
+    sprite: 1
+    fuelMax: 60
+    refuelItem: STR_ELERIUM_115    
+    refuelRate: 5    
+    damageMax: 800
+    repairRate: 1    
+    speedMax: 3600
+    radarRange: 1000
+    radarChance: 100
+    accel: 8
+    weapons: 1 
+    soldiers: 12
+    vehicles: 2    
+    costBuy: 0    
+    costRent: 100000    
+    costSell: 500000   
+    transferTime: 96
+    score: 500
+    battlescapeTerrainData:
+      name: LIGHTNIN
+      mapDataSets:
+        - BLANKS
+        - LIGHTNIN
+      mapBlocks:
+        - name: PLANE_04
+          width: 20
+          length: 10
+    deployment:
+      - [6, 5, 1, 2]
+      - [6, 4, 1, 2]    
+      - [5, 5, 1, 2]
+      - [5, 4, 1, 2]
+      - [5, 3, 1, 2]
+      - [5, 6, 1, 2]
+      - [4, 4, 1, 2]
+      - [4, 5, 1, 2]
+      - [4, 3, 1, 2]
+      - [4, 6, 1, 2]  
+      - [3, 5, 1, 2]
+      - [3, 4, 1, 2]
+# ALIEN TRANSPORTER      
+  - type: STR_DROPSHIP
+    requires:
+      - STR_HEAVY_TRANSPORTER
+    sprite: 29
+    fuelMax: 60
+    refuelItem: STR_ELERIUM_115
+    refuelRate: 5    
+    damageMax: 1000
+    repairRate: 1      
+    speedMax: 3200
+    accel: 7
+    soldiers: 24
+    vehicles: 5
+    costBuy: 0    
+    costRent: 120000    
+    costSell: 600000   
+    radarRange: 1200
+    radarChance: 100    
+    transferTime: 96
+    score: 400
+    battlescapeTerrainData:
+      name: DROPSHIP
+      mapDataSets:
+        - BLANKS
+        - LIGHTNIN
+        - AVENGER
+      mapBlocks:
+        - name: PLANE_05
+          width: 10
+          length: 20   
+# ALIEN ULTIMATE CRAFT 
+# JUST THE ULTIMATE CRAFT BUT NOT THE SPACE CRAFT
+  - type: STR_AVENGER
+    requires:
+      - STR_ULTIMATE_CRAFT
+    sprite: 2
+    fuelMax: 50
+    refuelItem: STR_ELERIUM_115
+    refuelRate: 5    
+    damageMax: 1200
+    repairRate: 1    
+    speedMax: 5200
+    radarRange: 1000
+    radarChance: 100
+    accel: 9
+    weapons: 2
+    soldiers: 18
+    vehicles: 4    
+    costBuy: 0    
+    costRent: 160000    
+    costSell: 800000   
+    transferTime: 96    
+    score: 500
+    battlescapeTerrainData:
+      name: AVENGER
+      mapDataSets:
+        - BLANKS
+        - AVENGER
+      mapBlocks:
+        - name: PLANE_06
+          width: 10
+          length: 20
+    deployment:
+      - [4, 10, 1, 0]
+      - [5, 10, 1, 0]           
+      - [3, 11, 1, 0]
+      - [4, 11, 1, 0]                 
+      - [5, 11, 1, 0]                       
+      - [6, 11, 1, 0]    
+      - [3, 12, 1, 0]
+      - [4, 12, 1, 0]                 
+      - [5, 12, 1, 0]                       
+      - [6, 12, 1, 0]  
+      - [3, 13, 1, 0]
+      - [4, 13, 1, 0]                 
+      - [5, 13, 1, 0]                       
+      - [6, 13, 1, 0]  
+      - [4, 14, 1, 0]                 
+      - [5, 14, 1, 0]                       
+      - [4, 15, 1, 0]        
+      - [5, 15, 1, 0]      
+# ALIEN SPACE CRAFT
+# THIS MUST BE BUILD TO FLY TO CYDONIA NOT THE AVENGER
+# SPECIAL FUEL MUST BE BUILD TO ALLOW THIS SHIP FLY 
+  - type: STR_SPACE_CRAFT
+    requires:
+      - STR_SPACE_CRAFT_IDEA
+    sprite: 29
+    fuelMax: 10
+    refuelItem: STR_SPACE_FUEL
+    refuelRate: 1    
+    damageMax: 2000
+    repairRate: 1    
+    speedMax: 6400
+    radarRange: 1400
+    radarChance: 100
+    accel: 7
+    weapons: 2
+    soldiers: 30
+    vehicles: 6    
+    costBuy: 0    
+    costRent: 240000    
+    costSell: 1200000   
+    transferTime: 96    
+    score: 600
+    spacecraft: true
+    battlescapeTerrainData:
+      name: XCRAFT
+      mapDataSets:
+        - BLANKS
+        - LIGHTNIN
+        - AVENGER
+        - U_WALL02        
+      mapBlocks:
+        - name: XCRAFT
+          width: 20
+          length: 20
+    deployment:
+      - [7, 10, 1, 2]
+      - [7, 9, 1, 2]
+      - [7, 8, 1, 2] 
+      - [8, 7, 1, 4]
+      - [9, 7, 1, 4]
+      - [10, 7, 1, 4]  
+      - [11, 8, 1, 6]
+      - [11, 9, 1, 6]
+      - [11, 10, 1, 6]
+      - [10, 11, 1, 0]
+      - [9, 11, 1, 0]
+      - [8, 11, 1, 0]
+      - [7, 11, 1, 1]
+      - [7, 7, 1, 3]
+      - [11, 7, 1, 5]
+      - [11, 11, 1, 7]
+      - [6, 10, 1, 2]
+      - [6, 9, 1, 2]
+      - [6, 8, 1, 2]
+      - [8, 6, 1, 4]
+      - [9, 6, 1, 4]
+      - [10, 6, 1, 4]
+      - [12, 8, 1, 6]
+      - [12, 9, 1, 6]
+      - [12, 10, 1, 6]
+      - [10, 12, 1, 0]
+      - [9, 12, 1, 0]
+      - [8, 12, 1, 0]
+      - [9, 5, 1, 4]  
+      
+craftWeapons:      
+  - type: STR_CANNON_UC
+    sprite: 111
+    sound: 4
+    damage: 20
+    range: 10
+    accuracy: 20
+    reloadCautious: 3
+    reloadStandard: 3
+    reloadAggressive: 3
+    ammoMax: 200
+    rearmRate: 50  
+    launcher: STR_CANNON
+    clip: STR_CANNON_ROUNDS_X50
+    projectileType: 2
+    projectileSpeed: 12
+  - type: STR_ALLOY_CANNON_UC
+    sprite: 119
+    sound: 4
+    damage: 30
+    range: 15
+    accuracy: 25
+    reloadCautious: 2
+    reloadStandard: 2
+    reloadAggressive: 2
+    ammoMax: 100
+    rearmRate: 20  
+    launcher: STR_ALLOY_CANNON
+    clip: STR_ALIEN_ALLOYS
+    projectileType: 2
+    projectileSpeed: 16       
+  - type: STR_STINGRAY
+    sprite: 112
+    sound: 5
+    damage: 60
+    range: 30
+    accuracy: 70
+    reloadCautious: 32
+    reloadStandard: 24
+    reloadAggressive: 16
+    ammoMax: 6
+    rearmRate: 2 
+    launcher: STR_STINGRAY_LAUNCHER
+    clip: STR_STINGRAY_MISSILES
+    projectileType: 0
+    projectileSpeed: 6 
+  - type: STR_AVALANCHE
+    sprite: 113
+    sound: 5
+    damage: 100
+    range: 50
+    accuracy: 80
+    reloadCautious: 48
+    reloadStandard: 36
+    reloadAggressive: 24
+    ammoMax: 3
+    rearmRate: 1 
+    launcher: STR_AVALANCHE_LAUNCHER
+    clip: STR_AVALANCHE_MISSILES
+    projectileType: 1
+    projectileSpeed: 8
+  - type: STR_CLUSTER
+    sprite: 117
+    sound: 5
+    damage: 40
+    range: 35
+    accuracy: 60
+    reloadCautious: 12
+    reloadStandard: 9
+    reloadAggressive: 6
+    ammoMax: 12
+    rearmRate: 4 
+    launcher: STR_CLUSTER_LAUNCHER
+    clip: STR_CLUSTER_MISSILES
+    projectileType: 0
+    projectileSpeed: 7     
+  - type: STR_GAUSS_CANNON_UC
+    sprite: 120
+    sound: 4
+    damage: 40
+    range: 20
+    accuracy: 30
+    reloadCautious: 2
+    reloadStandard: 2
+    reloadAggressive: 2
+    ammoMax: 30
+    rearmRate: 10  
+    launcher: STR_GAUSS_CANNON
+    clip: STR_POWERED_ALLOYS
+    projectileType: 2
+    projectileSpeed: 16      
+  - type: STR_STORMLANCE
+    sprite: 118
+    sound: 5
+    damage: 160
+    range: 60
+    accuracy: 90
+    reloadCautious: 64
+    reloadStandard: 48
+    reloadAggressive: 32
+    ammoMax: 6
+    rearmRate: 2  
+    launcher: STR_STORMLANCE_LAUNCHER
+    clip: STR_STORMLANCE_MISSILES
+    projectileType: 3
+    projectileSpeed: 5    
+  - type: STR_LASER_CANNON_UC
+    sprite: 114
+    sound: 8
+    damage: 80
+    range: 25
+    accuracy: 40
+    reloadCautious: 10
+    reloadStandard: 10
+    reloadAggressive: 10
+    ammoMax: 50
+    rearmRate: 1 
+    launcher: STR_LASER_CANNON
+    projectileType: 4
+  - type: STR_PLASMA_BEAM_UC
+    sprite: 115
+    sound: 9
+    damage: 120
+    range: 40
+    accuracy: 50
+    reloadCautious: 16
+    reloadStandard: 16
+    reloadAggressive: 16
+    ammoMax: 25
+    rearmRate: 5
+    launcher: STR_PLASMA_BEAM
+    clip: STR_ELERIUM_115
+    projectileType: 5
+  - type: STR_FUSION_BALL_UC
+    sprite: 116
+    sound: 7
+    damage: 240
+    range: 70
+    accuracy: 120
+    reloadCautious: 40
+    reloadStandard: 30
+    reloadAggressive: 20
+    ammoMax: 3
+    rearmRate: 1  
+    launcher: STR_FUSION_BALL_LAUNCHER
+    clip: STR_FUSION_BALL
+    projectileType: 3
+    projectileSpeed: 2
+  - type: STR_FUSION_BEAM_UC
+    sprite: 121
+    sound: 9
+    damage: 200
+    range: 50
+    accuracy: 50
+    reloadCautious: 12
+    reloadStandard: 12
+    reloadAggressive: 12
+    ammoMax: 10
+    rearmRate: 10 
+    launcher: STR_FUSION_BEAM
+    projectileType: 5    
+
+extraSprites:
+  - type: BASEBITS.PCK
+    files:
+      57: Resources/crafts/retaliator_base.gif
+      59: Resources/crafts/raven_base.gif
+      60: Resources/crafts/Sentinel_Base_View.gif 
+      62: Resources/crafts/Dropship_base.gif
+      159: Resources/basebit/Cannon.gif
+      160: Resources/basebit/Stingray.gif
+      161: Resources/basebit/Avalanche.gif
+      162: Resources/basebit/Laser.gif
+      163: Resources/basebit/Plasma.gif
+      164: Resources/basebit/Fusion.gif
+      165: Resources/basebit/Cluster.gif
+      166: Resources/basebit/Pilum.gif   
+      167: Resources/basebit/AlloyCannon.gif  
+      168: Resources/basebit/Gauss.gif    
+      169: Resources/basebit/Railgun.gif          
+  - type: INTICON.PCK
+    files:
+      24: Resources/crafts/retaliator_minimised.gif
+      35: Resources/crafts/retaliator_dogfight.gif
+      26: Resources/crafts/raven_minimised.gif
+      27: Resources/crafts/Sentinel_Minimized.gif
+      28: Resources/crafts/Dropship_minimised.gif
+      37: Resources/crafts/raven_dogfight.gif
+      39: Resources/crafts/Dropship_dogfight.gif 
+      38: Resources/crafts/Sentinel_Dogfight.gif 
+      116: Resources/craftweapons/Cannon.gif
+      117: Resources/craftweapons/Stingray.gif
+      118: Resources/craftweapons/Avalanche.gif
+      119: Resources/craftweapons/Laser.gif 
+      120: Resources/craftweapons/Plasma.gif 
+      121: Resources/craftweapons/Fusion.gif 
+      122: Resources/craftweapons/Cluster.gif 
+      123: Resources/craftweapons/Pilum.gif 
+      124: Resources/craftweapons/AlloyCannon.gif  
+      125: Resources/craftweapons/Gauss.gif    
+      126: Resources/craftweapons/Railgun.gif

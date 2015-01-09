@@ -1,0 +1,967 @@
+manufacture:
+  - name: STR_OVERTIME
+    category: STR_EQUIPMENT
+    space: 0
+    time: 100
+    cost: 0   
+  - name: STR_OVERTIME_IMPROVED
+    category: STR_EQUIPMENT
+    space: 0
+    time: 80
+    cost: 0     
+    requires:
+      - STR_OVERTIME_IMPROVED
+  - name: STR_OVERTIME_ADVANCED
+    category: STR_EQUIPMENT
+    space: 0
+    time: 60
+    cost: 0       
+    requires:
+      - STR_OVERTIME_ADVANCED        
+### CRAFT WEAPONS ###   
+  - name: STR_ALLOY_CANNON
+    category: STR_CRAFT_WEAPON
+    requires:
+      - STR_ALLOY_CANNON
+    space: 3
+    time: 250
+    cost: 60000  
+    requiredItems:
+      STR_ALIEN_ALLOYS: 3 
+  - name: STR_CLUSTER_LAUNCHER
+    category: STR_CRAFT_WEAPON
+    requires:
+      - STR_CLUSTER_LAUNCHER
+    space: 4
+    time: 200
+    cost: 30000  
+    requiredItems:
+      STR_ALIEN_ALLOYS: 2       
+  - name: STR_CLUSTER_MISSILES
+    category: STR_CRAFT_WEAPON
+    requires:
+      - STR_CLUSTER_LAUNCHER
+    space: 2
+    time: 50
+    cost: 3000  
+    requiredItems:
+      STR_ALIEN_ALLOYS: 1       
+  - name: STR_STORMLANCE_LAUNCHER
+    category: STR_CRAFT_WEAPON
+    requires:
+      - STR_STORMLANCE_MISSILE
+    space: 6
+    time: 200
+    cost: 50000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 5
+  - name: STR_STORMLANCE_MISSILES
+    category: STR_CRAFT_AMMUNITION
+    requires:
+      - STR_STORMLANCE_MISSILE
+    space: 3
+    time: 150
+    cost: 24000
+    requiredItems:
+      STR_ELERIUM_115: 3      
+  - name: STR_LASER_CANNON
+    category: STR_CRAFT_WEAPON
+    requires:
+      - STR_LASER_CANNON
+    space: 5
+    time: 350
+    cost: 180000
+  - name: STR_PLASMA_BEAM
+    category: STR_CRAFT_WEAPON
+    requires:
+      - STR_PLASMA_CANNON
+    space: 6
+    time: 500
+    cost: 240000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 5
+      STR_ELERIUM_115: 10
+  - name: STR_FUSION_BALL_LAUNCHER
+    category: STR_CRAFT_WEAPON
+    requires:
+      - STR_FUSION_MISSILE
+    space: 8
+    time: 650
+    cost: 320000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 6      
+  - name: STR_FUSION_BALL
+    category: STR_CRAFT_AMMUNITION
+    requires:
+      - STR_FUSION_MISSILE
+    space: 3
+    time: 300
+    cost: 25000
+    requiredItems:
+      STR_ELERIUM_115: 3      
+  - name: STR_FUSION_BEAM
+    category: STR_CRAFT_AMMUNITION
+    requires:
+      - STR_FUSION_BEAM
+    space: 8
+    time: 750
+    cost: 48000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 8    
+      STR_ELERIUM_115: 15       
+# CRAFT STUFF 
+  - name: STR_SPACE_FUEL
+    category: STR_CRAFT_WEAPON
+    requires:
+      - STR_SPACE_FUEL
+    space: 5
+    time: 1000
+    cost: 50000
+    requiredItems:
+      STR_CRAFT_FUEL: 10
+      STR_ELERIUM_115: 5        
+### TANKS ### 
+  - name: STR_TANK_LASER_CANNON
+    category: STR_HEAVY_WEAPONS_PLATFORM
+    requires:
+      - STR_LASER_TANK
+    space: 20
+    time: 1000
+    cost: 400000
+# ALLOY TANK    
+  - name: STR_TANK_CANNON_ALLOY
+    category: STR_HEAVY_WEAPONS_PLATFORM
+    requires:
+      - STR_ALLOY_TANK_ARMOR
+    space: 20
+    time: 900
+    cost: 300000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 15 
+  - name: STR_TANK_ROCKET_LAUNCHER_ALLOY
+    category: STR_HEAVY_WEAPONS_PLATFORM
+    requires:
+      - STR_ALLOY_TANK_ARMOR
+    space: 20
+    time: 1000
+    cost: 350000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 15
+  - name: STR_TANK_LASER_CANNON_ALLOY
+    category: STR_HEAVY_WEAPONS_PLATFORM
+    requires:
+      - STR_LASER_TANK
+      - STR_ALLOY_TANK_ARMOR
+    space: 20
+    time: 1200
+    cost: 500000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 15      
+# HOVERTANK  
+  - name: STR_HOVERTANK_LASER
+    category: STR_HEAVY_WEAPONS_PLATFORM
+    requires:
+      - STR_HOVERTANK_LASER
+    space: 25
+    time: 1200
+    cost: 750000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 20
+      STR_ELERIUM_115: 20    
+  - name: STR_HOVERTANK_PLASMA
+    category: STR_HEAVY_WEAPONS_PLATFORM
+    requires:
+      - STR_HOVERTANK_PLASMA
+    space: 25
+    time: 1800
+    cost: 900000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 20
+      STR_ELERIUM_115: 25   
+  - name: STR_HOVERTANK_LAUNCHER
+    category: STR_HEAVY_WEAPONS_PLATFORM
+    requires:
+      - STR_HOVERTANK_LAUNCHER
+    space: 25
+    time: 2000
+    cost: 1000000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 20
+      STR_ELERIUM_115: 30
+# POWERTANK 
+  - name: STR_POWER_HOVERTANK_LASER
+    category: STR_HEAVY_WEAPONS_PLATFORM
+    requires:
+      - STR_POWER_HOVERTANK_LASER
+    space: 25
+    time: 1500
+    cost: 850000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 30
+      STR_ELERIUM_115: 20    
+  - name: STR_POWER_HOVERTANK_PLASMA
+    category: STR_HEAVY_WEAPONS_PLATFORM
+    requires:
+      - STR_POWER_HOVERTANK_PLASMA
+    space: 25
+    time: 2100
+    cost: 1000000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 30
+      STR_ELERIUM_115: 25   
+  - name: STR_POWER_HOVERTANK_LAUNCHER
+    category: STR_HEAVY_WEAPONS_PLATFORM
+    requires:
+      - STR_POWER_HOVERTANK_LAUNCHER
+    space: 25
+    time: 2400
+    cost: 1200000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 30
+      STR_ELERIUM_115: 30
+      
+  - name: STR_HWP_FUSION_BOMB
+    category: STR_HWP_CANNON_SHELLS
+    requires:
+      - STR_HOVERTANK_LAUNCHER
+    space: 6
+    time: 400
+    cost: 15000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 8
+      STR_ELERIUM_115: 4
+# SECTOTANK 
+  - name: STR_SECTOTANK_LASER
+    category: STR_HEAVY_WEAPONS_PLATFORM
+    requires:
+      - STR_SECTOTANK_LASER
+    space: 30
+    time: 2000
+    cost: 1600000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 50
+  - name: STR_SECTOTANK_PLASMA
+    category: STR_HEAVY_WEAPONS_PLATFORM
+    requires:
+      - STR_SECTOTANK_PLASMA
+    space: 30
+    time: 2200
+    cost: 2000000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 50
+      STR_ELERIUM_115: 15      
+  - name: STR_SECTOTANK_ROCKET
+    category: STR_HEAVY_WEAPONS_PLATFORM
+    requires:
+      - STR_SECTOTANK_ROCKET
+    space: 30
+    time: 2400
+    cost: 2400000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 50
+      STR_ELERIUM_115: 20
+
+  - name: STR_HWP_PGROCKET
+    category: STR_HWP_CANNON_SHELLS
+    requires:
+      - STR_BLASTER_BOMB
+      - STR_SECTOTANK_ROCKET
+    space: 6
+    time: 300
+    cost: 12000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 5
+      STR_ELERIUM_115: 3      
+# ROBOTS       
+  - name: STR_XCOM_ENFORCER
+    category: STR_HEAVY_WEAPONS_PLATFORM
+    requires:
+      - STR_XCOM_ENFORCER
+    space: 15
+    time: 2000
+    cost: 600000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 15
+      STR_ELERIUM_115: 15
+      STR_XCOM_POWER_ARMOUR: 1
+      STR_MIND_PROBE: 1
+### WEAPONS ###
+# MELEE 
+  - name: STR_ALLOY_BLADE
+    category: STR_WEAPON
+    requires:
+      - STR_ALLOY_BLADE
+    space: 2
+    time: 100
+    cost: 5000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 1    
+  - name: STR_LASER_SWORD
+    category: STR_LASER_WEAPONS
+    requires:
+      - STR_LASER_SWORD
+    space: 2
+    time: 200
+    cost: 20000      
+  - name: STR_PLASMA_BLADE
+    category: STR_WEAPON
+    requires:
+      - STR_PLASMA_BLADE
+    space: 2
+    time: 300
+    cost: 30000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 2
+      STR_ELERIUM_115: 2
+  - name: STR_PLASMA_SWORD
+    category: STR_WEAPON
+    requires:
+      - STR_PLASMA_SWORD
+    space: 2
+    time: 400
+    cost: 50000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 2
+      STR_ELERIUM_115: 4      
+  - name: STR_GLOVE
+    category: STR_WEAPON
+    requires:
+      - STR_GLOVE
+    space: 3
+    time: 600
+    cost: 120000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 3
+      STR_ELERIUM_115: 3
+# ALLOY AMMO 
+  - name: STR_PISTOL_CLIP_AA
+    category: STR_AMMUNITION
+    requires:
+      - STR_ALLOY_AMMO
+    space: 2
+    time: 25
+    cost: 500
+    requiredItems:
+      STR_ALIEN_ALLOYS: 1  
+  - name: STR_MSG_CLIP_AA
+    category: STR_AMMUNITION
+    requires:
+      - STR_ALLOY_AMMO
+    space: 2
+    time: 50
+    cost: 1500
+    requiredItems:
+      STR_ALIEN_ALLOYS: 1  
+  - name: STR_RIFLE_CLIP_AA
+    category: STR_AMMUNITION
+    requires:
+      - STR_ALLOY_AMMO
+    space: 2
+    time: 75
+    cost: 2000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 1      
+  - name: STR_SHOTGUN_SHELLS_AA
+    category: STR_AMMUNITION
+    requires:
+      - STR_ALLOY_AMMO
+    space: 2
+    time: 75
+    cost: 2000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 1   
+  - name: STR_DMR_AMMO_AA
+    category: STR_AMMUNITION
+    requires:
+      - STR_ALLOY_AMMO_BIG
+    space: 3
+    time: 100
+    cost: 4000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 2   
+  - name: STR_LMG_CLIP_AA
+    category: STR_AMMUNITION
+    requires:
+      - STR_ALLOY_AMMO_BIG
+    space: 3
+    time: 100
+    cost: 7500
+    requiredItems:
+      STR_ALIEN_ALLOYS: 3   
+  - name: STR_MINIGUN_CLIP_AA
+    category: STR_AMMUNITION
+    requires:
+      - STR_ALLOY_AMMO_HEAVY
+    space: 4
+    time: 250
+    cost: 16000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 5     
+# TANK AMMO        
+  - name: STR_HWP_MINIGUN_CLIP_AA
+    category: STR_AMMUNITION
+    requires:
+      - STR_ALLOY_AMMO_HEAVY  
+    space: 4
+    time: 500
+    cost: 75000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 15
+    producedItems: 
+      STR_HWP_MINIGUN_CLIP_AA: 150        
+  - name: STR_HWP_CANNON_SHELLS_AA
+    category: STR_AMMUNITION
+    requires:
+      - STR_ALLOY_AMMO_HEAVY  
+    space: 4
+    time: 400
+    cost: 45000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 10 
+    producedItems: 
+      STR_HWP_CANNON_SHELLS_AA: 45      
+          
+      
+# LASER WEAPONS    
+  - name: STR_LASER_PISTOL
+    category: STR_WEAPON
+    requires:
+      - STR_LASER_PISTOL
+    space: 2
+    time: 250
+    cost: 15000
+  - name: STR_LASER_RIFLE
+    category: STR_WEAPON
+    requires:
+      - STR_LASER_RIFLE
+    space: 3
+    time: 450
+    cost: 30000
+  - name: STR_LASER_MSG
+    category: STR_WEAPON
+    requires:
+      - STR_LASER_MSG
+    space: 3
+    time: 350
+    cost: 20000    
+  - name: STR_LASER_BLASTER
+    category: STR_WEAPON
+    requires:
+      - STR_LASER_BLASTER
+    space: 3
+    time: 400
+    cost: 25000    
+  - name: STR_LASER_SNIPER_RIFLE
+    category: STR_WEAPON
+    requires:
+      - STR_LASER_SNIPER_RIFLE
+    space: 4
+    time: 600
+    cost: 35000     
+  - name: STR_HEAVY_LASER
+    category: STR_WEAPON
+    requires:
+      - STR_HEAVY_LASER
+    space: 4
+    time: 700
+    cost: 45000
+  - name: STR_GATLING_LASER
+    category: STR_WEAPON
+    requires:
+      - STR_GATLING_LASER
+    space: 5
+    time: 1000
+    cost: 80000    
+### EQUIPEMENT ###   
+  - name: STR_MOTION_SCANNER
+    category: STR_EQUIPMENT
+    requires:
+      - STR_HUMAN_EQUIPMENT_CONTRACT
+    space: 3
+    time: 250
+    cost: 20000
+  - name: STR_MEDI_KIT
+    category: STR_EQUIPMENT
+    requires:
+      - STR_HUMAN_EQUIPMENT_CONTRACT
+    space: 3
+    time: 450
+    cost: 40000
+  - name: STR_PSI_AMP
+    category: STR_EQUIPMENT
+    requires:
+      - STR_PSI_AMP
+    space: 4
+    time: 600
+    cost: 120000
+    requiredItems:
+      STR_ELERIUM_115: 3
+  - name: STR_ELERIUM_FLARE
+    category: STR_EQUIPMENT
+    requires:
+      - STR_ELERIUM_FLARE
+    space: 2
+    time: 50
+    cost: 1000
+    requiredItems:
+      STR_ELERIUM_115: 1  
+# ALIEN WEAPONS
+  - name: STR_PLASMA_PISTOL
+    category: STR_WEAPON
+    requires:
+      - STR_PLASMA_PISTOL
+    space: 3
+    time: 400
+    cost: 40000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 2
+  - name: STR_PLASMA_PISTOL_CLIP
+    category: STR_AMMUNITION
+    requires:
+      - STR_PLASMA_PISTOL_CLIP
+    space: 1
+    time: 40
+    cost: 4000
+    requiredItems:
+      STR_ELERIUM_115: 1
+      
+  - name: STR_PLASMA_ASSULTER
+    category: STR_WEAPON
+    requires:
+      - STR_PLASMA_ASSULTER
+    space: 4
+    time: 600
+    cost: 60000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 3
+  - name: STR_PLASMA_ASSULTER_CLIP
+    category: STR_AMMUNITION
+    requires:
+      - STR_PLASMA_ASSULTER_CLIP
+    space: 1
+    time: 60
+    cost: 6000
+    requiredItems:
+      STR_ELERIUM_115: 2      
+
+  - name: STR_PLASMA_RIFLE
+    category: STR_WEAPON
+    requires:
+      - STR_PLASMA_RIFLE
+    space: 5
+    time: 1000
+    cost: 100000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 4
+  - name: STR_PLASMA_RIFLE_CLIP
+    category: STR_AMMUNITION
+    requires:
+      - STR_PLASMA_RIFLE_CLIP
+    space: 1
+    time: 100
+    cost: 10000
+    requiredItems:
+      STR_ELERIUM_115: 2
+      
+  - name: STR_PLASMA_BLASTER
+    category: STR_WEAPON
+    requires:
+      - STR_PLASMA_BLASTER
+    space: 5
+    time: 800
+    cost: 80000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 4
+  - name: STR_PLASMA_BLASTER_CLIP
+    category: STR_AMMUNITION
+    requires:
+      - STR_PLASMA_BLASTER_CLIP
+    space: 1
+    time: 80
+    cost: 8000
+    requiredItems:
+      STR_ELERIUM_115: 2      
+      
+  - name: STR_PLASMA_SNIPER_RIFLE
+    category: STR_WEAPON
+    requires:
+      - STR_PLASMA_SNIPER_RIFLE
+    space: 6
+    time: 1400
+    cost: 140000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 5
+  - name: STR_PLASMA_SNIPER_RIFLE_CLIP
+    category: STR_AMMUNITION
+    requires:
+      - STR_PLASMA_SNIPER_RIFLE_CLIP
+    space: 1
+    time: 140
+    cost: 14000
+    requiredItems:
+      STR_ELERIUM_115: 3  
+      
+  - name: STR_HEAVY_PLASMA
+    category: STR_WEAPON
+    requires:
+      - STR_HEAVY_PLASMA
+    space: 8
+    time: 1800
+    cost: 180000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 6
+  - name: STR_HEAVY_PLASMA_CLIP
+    category: STR_AMMUNITION
+    requires:
+      - STR_HEAVY_PLASMA_CLIP
+    space: 2
+    time: 180
+    cost: 18000
+    requiredItems:
+      STR_ELERIUM_115: 3
+
+  - name: STR_PLASMA_MINIGUN
+    category: STR_WEAPON
+    requires:
+      - STR_PLASMA_MINIGUN
+    space: 10
+    time: 2400
+    cost: 240000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 8
+  - name: STR_PLASMA_MINIGUN_CLIP
+    category: STR_AMMUNITION
+    requires:
+      - STR_PLASMA_MINIGUN_CLIP
+    space: 3
+    time: 240
+    cost: 24000
+    requiredItems:
+      STR_ELERIUM_115: 4
+
+  - name: STR_BLASTER_LAUNCHER
+    category: STR_WEAPON
+    requires:
+      - STR_BLASTER_LAUNCHER
+    space: 6
+    time: 1200
+    cost: 120000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 4
+  - name: STR_BLASTER_BOMB
+    category: STR_AMMUNITION
+    requires:
+      - STR_BLASTER_BOMB
+    space: 2
+    time: 200
+    cost: 15000
+    requiredItems:
+      STR_ELERIUM_115: 2
+  - name: STR_ELERIUM_BOMB
+    category: STR_AMMUNITION
+    requires:
+      - STR_ELERIUM_BOMB
+    space: 2
+    time: 400
+    cost: 45000
+    requiredItems:
+      STR_ELERIUM_115: 5  
+  - name: STR_HEAVY_LAUNCHER
+    category: STR_WEAPON
+    requires:
+      - STR_HEAVY_LAUNCHER
+    space: 5
+    time: 1000
+    cost: 100000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 4
+  - name: STR_HEAVY_LAUNCHER_AMMO
+    category: STR_AMMUNITION
+    requires:
+      - STR_HEAVY_LAUNCHER_AMMO
+    space: 2
+    time: 400
+    cost: 15000
+    requiredItems:
+      STR_ELERIUM_115: 5
+  - name: STR_SMALL_LAUNCHER
+    category: STR_WEAPON
+    requires:
+      - STR_SMALL_LAUNCHER
+    space: 3
+    time: 900
+    cost: 90000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 3
+  - name: STR_STUN_BOMB
+    category: STR_AMMUNITION
+    requires:
+      - STR_STUN_BOMB
+    space: 2
+    time: 200
+    cost: 8000
+    requiredItems:
+      STR_ELERIUM_115: 1
+  - name: STR_NAPALM_BOMB
+    category: STR_AMMUNITION
+    requires:
+      - STR_NAPALM_BOMB
+    space: 2
+    time: 250
+    cost: 12000
+    requiredItems:
+      STR_ELERIUM_115: 1
+  - name: STR_BIO_BOMB
+    category: STR_AMMUNITION
+    requires:
+      - STR_BIO_BOMB
+    space: 2
+    time: 350
+    cost: 18000
+    requiredItems:
+      STR_ELERIUM_115: 2      
+  - name: STR_STUN_GRENADE
+    category: STR_WEAPON
+    requires:
+      - STR_STUN_GRENADE
+    space: 1
+    time: 250
+    cost: 15000
+    requiredItems:
+      STR_ELERIUM_115: 2  
+  - name: STR_ALIEN_GRENADE
+    category: STR_WEAPON
+    requires:
+      - STR_ALIEN_GRENADE
+    space: 2
+    time: 150
+    cost: 10000
+    requiredItems:
+      STR_ELERIUM_115: 2
+  - name: STR_ALIEN_MINE
+    category: STR_WEAPON
+    requires:
+      - STR_ALIEN_MINE
+    space: 2
+    time: 300
+    cost: 25000
+    requiredItems:
+      STR_ELERIUM_115: 3      
+  - name: STR_MIND_PROBE
+    category: STR_EQUIPMENT
+    requires:
+      - STR_MIND_PROBE
+    space: 3
+    time: 1200
+    cost: 150000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 5
+      STR_ELERIUM_115: 3
+      
+# ARMOURS  
+  - name: STR_XCOM_JETPACK
+    category: STR_PERSONAL_ARMOR
+    requires:
+      - STR_XCOM_JETPACK
+    space: 8
+    time: 450
+    cost: 30000
+    requiredItems:
+      STR_ELERIUM_115: 5
+      
+  - name: STR_XCOM_ALLOY_VEST
+    category: STR_PERSONAL_ARMOR
+    requires:
+      - STR_XCOM_ALLOY_VEST
+    space: 8
+    time: 300
+    cost: 20000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 2
+      
+  - name: STR_XCOM_COMBAT_SUIT
+    category: STR_PERSONAL_ARMOR
+    requires:
+      - STR_XCOM_COMBAT_SUIT
+    space: 12
+    time: 600
+    cost: 40000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 5
+  - name: STR_XCOM_JUMP_SUIT
+    category: STR_PERSONAL_ARMOR
+    requires:
+      - STR_XCOM_JUMP_SUIT
+    space: 12
+    time: 900
+    cost: 60000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 5      
+      STR_ELERIUM_115: 5    
+      
+  - name: STR_XCOM_POWER_ARMOUR
+    category: STR_PERSONAL_ARMOR
+    requires:
+      - STR_XCOM_POWER_ARMOUR
+    space: 16
+    time: 1200
+    cost: 120000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 15
+      STR_ELERIUM_115: 5
+  - name: STR_XCOM_FLYING_ARMOUR
+    category: STR_PERSONAL_ARMOR
+    requires:
+      - STR_XCOM_FLYING_ARMOUR
+    space: 16
+    time: 1800
+    cost: 180000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 15
+      STR_ELERIUM_115: 15
+      
+# COMPONENTS      
+  - name: STR_ALIEN_ALLOYS
+    category: STR_UFO_COMPONENT
+    requires:
+      - STR_ALIEN_ALLOYS
+    space: 10
+    time: 100
+    cost: 5000
+  - name: STR_POWERED_ALLOYS
+    category: STR_UFO_COMPONENT
+    requires:
+      - STR_POWERED_ALLOYS
+    space: 5
+    time: 200
+    cost: 20000
+    requiredItems:
+      STR_ELERIUM_115: 1
+      STR_ALIEN_ALLOYS: 5        
+  - name: STR_ELERIUM_115
+    category: STR_UFO_COMPONENT
+    requires:
+      - STR_ELERIUM_115_REACTOR
+    space: 100
+    time: 1000
+    cost: 10000
+    requiredItems:
+      STR_CRAFT_FUEL: 10   
+    producedItems: 
+      STR_ELERIUM_115: 1
+  - name: STR_UFO_POWER_SOURCE
+    category: STR_UFO_COMPONENT
+    requires:
+      - STR_UFO_POWER_SOURCE
+    space: 20
+    time: 1800
+    cost: 150000
+    requiredItems:
+      STR_ELERIUM_115: 15
+  - name: STR_UFO_NAVIGATION
+    category: STR_UFO_COMPONENT
+    requires:
+      - STR_UFO_NAVIGATION
+    space: 15
+    time: 1200
+    cost: 100000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 5
+      STR_ELERIUM_115: 3      
+  - name: STR_UFO_CONSTRUCTION
+    category: STR_UFO_COMPONENT
+    requires:
+      - STR_UFO_CONSTRUCTION
+    space: 25
+    time: 1000
+    cost: 50000
+    requiredItems:
+      STR_ALIEN_ALLOYS: 25     
+      
+
+#### CRAFTS ####
+# BUILD RETALIATOR 
+  - name: STR_RETALIATOR
+    category: STR_CRAFT
+    requires:
+      - STR_ADVANCED_INTERCEPTOR
+    space: 30
+    time: 3000
+    cost: 300000  
+# BUILD SENTIEL    
+  - name: STR_SENTINEL
+    category: STR_CRAFT
+    requires:
+      - STR_ADVANCED_HYBRID_CRAFT
+    space: 30
+    time: 9000
+    cost: 600000
+    requiredItems:
+      STR_UFO_CONSTRUCTION: 1
+      STR_UFO_NAVIGATION: 2
+# BUILD FIRESTORM 
+  - name: STR_FIRESTORM
+    category: STR_CRAFT
+    requires:
+      - STR_NEW_FIGHTER_CRAFT
+    space: 40
+    time: 15000
+    cost: 600000
+    requiredItems:
+      STR_UFO_CONSTRUCTION: 2
+      STR_UFO_POWER_SOURCE: 2      
+      STR_UFO_NAVIGATION: 2
+      STR_ELERIUM_115: 30      
+# BUILD LIGHTING      
+  - name: STR_LIGHTNING
+    category: STR_CRAFT
+    requires:
+      - STR_NEW_FIGHTER_TRANSPORTER
+    space: 40
+    time: 20000
+    cost: 500000
+    requiredItems:
+      STR_UFO_CONSTRUCTION: 3
+      STR_UFO_POWER_SOURCE: 2      
+      STR_UFO_NAVIGATION: 4
+      STR_ELERIUM_115: 45   
+# BUILD DROPSHIP       
+  - name: STR_DROPSHIP
+    category: STR_CRAFT
+    requires:
+      - STR_HEAVY_TRANSPORTER
+    space: 50
+    time: 25000
+    cost: 600000
+    requiredItems:
+      STR_UFO_CONSTRUCTION: 4
+      STR_UFO_POWER_SOURCE: 2
+      STR_UFO_NAVIGATION: 5
+      STR_ELERIUM_115: 60  
+# BUILD AVENGER      
+  - name: STR_AVENGER
+    category: STR_CRAFT
+    requires:
+      - STR_ULTIMATE_CRAFT
+    space: 50
+    time: 30000
+    cost: 800000
+    requiredItems:
+      STR_UFO_CONSTRUCTION: 6
+      STR_UFO_POWER_SOURCE: 4
+      STR_UFO_NAVIGATION: 8
+      STR_ELERIUM_115: 60
+# BUILD SPACE CRAFT       
+  - name: STR_SPACE_CRAFT
+    category: STR_CRAFT
+    requires:
+      - STR_SPACE_CRAFT_IDEA
+    space: 100
+    time: 50000
+    cost: 1200000
+    requiredItems:
+      STR_UFO_CONSTRUCTION: 12
+      STR_UFO_POWER_SOURCE: 6
+      STR_UFO_NAVIGATION: 10
+      STR_SPACE_FUEL: 20  
+
