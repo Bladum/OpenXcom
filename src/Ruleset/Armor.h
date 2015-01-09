@@ -53,6 +53,7 @@ private:
 	ForcedTorso _forcedTorso;
 	int _personalLightPower;
 	int _regeneration;	
+	std::vector<std::string> _builtInWeapons;
 	int _fearImmune, _bleedImmune, _painImmune, _zombiImmune;
 public:
 	/// Creates a blank armor ruleset.
@@ -118,6 +119,8 @@ public:
 	bool getPainImmune(bool def = false) const;
 	/// Gets how armor react to zombification.
 	bool getZombiImmune(bool def = false) const;
+	/// Gets buildin weapons of armor.
+	const std::vector<std::string> &getBuiltInWeapons() const;
 };
 
 }

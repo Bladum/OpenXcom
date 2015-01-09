@@ -27,7 +27,8 @@ namespace OpenXcom
  * @param type String defining the type.
  */
 Armor::Armor(const std::string &type) : _type(type), _frontArmor(0), _sideArmor(0), _rearArmor(0), _underArmor(0), _drawingRoutine(0), _movementType(MT_WALK), _size(1), _weight(0), _deathFrames(3), _constantAnimation(false), _canHoldWeapon(false), _forcedTorso(TORSO_USE_GENDER), 
-	_personalLightPower(15), _regeneration(0), _fearImmune(-1), _bleedImmune(-1), _painImmune(-1), _zombiImmune(-1)
+	_personalLightPower(15), _regeneration(0), _fearImmune(-1), _bleedImmune(-1), _painImmune(-1), _zombiImmune(-1),
+	 _builtInWeapons()
 {
 	for (int i=0; i < DAMAGE_TYPES; i++)
 		_damageModifier[i] = 1.0f;
@@ -130,6 +131,7 @@ void Armor::load(const YAML::Node &node)
 	{
 		_zombiImmune = node["zombiImmune"].as<bool>();
 	}
+	_builtInWeapons = node["builtInWeapons"].as<std::vector<std::string> >(_builtInWeapons);
 }
 
 /**
@@ -391,6 +393,19 @@ bool Armor::getZombiImmune(bool def) const
 ForcedTorso Armor::getForcedTorso() const
 {
 	return _forcedTorso;
+}
+
+ /**
+ * What weapons does this armor have built in?
+ * this is a vector of strings representing any
+ * weapons that may be inherent to this armor.
+ * note: unlike "livingWeapon" this is used in ADDITION to
+ * any loadout or living weapon item that may be defined.
+ * @return list of weapons that are integral to this armor.
+ */
+const std::vector<std::string> &Armor::getBuiltInWeapons() const
+{
+	return _builtInWeapons;
 }
 
 }

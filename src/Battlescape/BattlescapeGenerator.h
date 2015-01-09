@@ -23,6 +23,7 @@
 #include "../Ruleset/RuleTerrain.h"
 #include "../Ruleset/MapScript.h"
 
+
 namespace OpenXcom
 {
 class SavedBattleGame;
@@ -162,6 +163,9 @@ public:
 	void nextStage();
 	/// Generates an inventory battlescape.
 	void runInventory(Craft *craft);
+
+	/// Add buildIn weapon form list to unit.
+	void addBuildInWeapons(BattleUnit *unit, const std::vector<std::string> &fixed);
 };
 
 }
