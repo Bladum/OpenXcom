@@ -27,11 +27,14 @@ namespace OpenXcom
  * type of UFO.
  * @param type String defining the type.
  */
-RuleUfo::RuleUfo(const std::string &type) : _type(type), _size("STR_VERY_SMALL"), _sprite(-1), _damageMax(0), _speedMax(0), 
-	_accel(0), _power(0), _range(0), _score(0), _reload(0), _breakOffTime(0), _sightRange(268), _battlescapeTerrainData(0),
-	_modSprite(""), _stats(), _statsRaceBonus()
+RuleUfo::RuleUfo(const std::string &type) : _type(type), _size("STR_VERY_SMALL"), 
+	_sprite(-1), _damageMax(0), _speedMax(0), 
+	_accel(0), _power(0), _range(0), _score(0), 
+	_reload(0), _breakOffTime(0), _sightRange(250), 
+	_battlescapeTerrainData(0),	_modSprite(""), _stats(), _statsRaceBonus(), 
+	_crashSiteTime(100)
 {
-	_stats.sightRange = 268;
+	_stats.sightRange = 250;
 	_statsRaceBonus[""] = RuleUfoStats();
 }
 
@@ -52,11 +55,16 @@ void RuleUfo::load(const YAML::Node &node, Ruleset *ruleset)
 {
 	_type = node["type"].as<std::string>(_type);
 	_size = node["size"].as<std::string>(_size);
-	_sprite = node["sprite"].as<int>(_sprite);
-	
+	_sprite = node["sprite"].as<int>(_sprite);	
 	_score = node["score"].as<int>(_score);
+	if( node["sightRange"] ) 
+	{
+		_sightRange = node["sightRange"].as<int>(_sightRange);
+	}
 	_breakOffTime = node["breakOffTime"].as<int>(_breakOffTime);
-	
+	_crashSiteTime = _breakOffTime;
+	_crashSiteTime = node["crashSiteTime"].as<int>(_crashSiteTime);
+
 	_stats.load(node);
 
 	if (const YAML::Node &terrain = node["battlescapeTerrainData"])
@@ -256,16 +264,17 @@ const RuleUfoStats& RuleUfo::getStats() const
 */ 
 int RuleUfo::getWeaponAccuracy() const	
 {
-	return 60 + _stats.hitBonus;
+	return 60 + _stats.hitChanceBonus;
+	//TODO alien hit chance grows 1% per month of game 
 }
 
 /**
  * Gets the UFO's avoid chance
  * @return The chance to hit in percantage.
 */
-int RuleUfo::getAvoidChance() const
+int RuleUfo::getChanceToHitUfo() const
 {
-	return + 100 - 40 + getRadius()*10 - _stats.avoidBonus;
+	return 60 + getRadius() * 10 - _stats.avoidBonus;
 }
 
 /**
@@ -280,6 +289,15 @@ const RuleUfoStats& RuleUfo::getRaceBonus(const std::string& s) const
 		return i->second;
 	else
 		return _statsRaceBonus.find("")->second;
+}
+
+/**
+ * Get the time UFO is on the crash site time
+ * @return Time on crash site.
+ */
+int RuleUfo::getCrashSiteTime() const
+{
+	return _crashSiteTime;
 }
 
 }

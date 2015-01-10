@@ -555,15 +555,6 @@ int Craft::getFuelPercentage() const
 }
 
 /**
- * Return current max amount of damage this craft can take.
- * @return Max amount of damage.
- */
-int Craft::getDamageMax() const
-{
-	return _stats.damageMax;
-}
-
-/**
  * Returns the amount of damage this craft has taken.
  * @return Amount of damage.
  */
@@ -593,7 +584,7 @@ void Craft::setDamage(int damage)
  */
 int Craft::getDamagePercentage() const
 {
-	return (int)floor((double)_damage / _rules->getMaxDamage() * 100);
+	return (int)floor((double)_damage / _stats.damageMax * 100);
 }
 
 /**
@@ -1001,9 +992,10 @@ CraftId Craft::getUniqueId() const
  */
 void Craft::addCraftStats(const RuleCraftStats& s)
 {
-	setDamage(_damage + s.damageMax); //you need "fix" new damage capability first before use.
+	//setDamage(_damage + s.damageMax); //you need "fix" new damage capability first before use.
 	_stats += s;
 	setFuel(_fuel); //it will split some fuel if you have to much.
+	setDamage(_damage); //it will need repair if needed
 }
 
 /**
@@ -1015,14 +1007,70 @@ const RuleCraftStats& Craft::getCraftStats() const
 	return _stats;
 }
 
+
 /**
- * Returns current max amount of fuel that craft can carry.
- * @return Max amount of fuel.
+ * Gets the maximum fuel the craft can contain.
+ * @return The fuel amount.
  */
 int Craft::getFuelMax() const
 {
 	return _stats.fuelMax;
 }
 
+/**
+ * Gets the maximum damage (damage the craft can take)
+ * of the craft.
+ * @return The maximum damage.
+ */
+int Craft::getDamageMax() const
+{
+	return _stats.damageMax;
+}
+
+
+/**
+ * Gets the craft's avoid chance
+ * @return Base chance for craft to be hit
+ */
+float Craft::getAvoidBonus() const
+{
+	return _stats.avoidBonus;
+}
+
+/**
+ * Gets the craft's accurancy modifier
+ * @return Base chance for craft to hit Ufo
+ */
+float Craft::getWeaponsAccurancy() const
+{
+	return _stats.accuracy;
+}
+
+/**
+ * Gets the craft's range of weapons modifier
+ * @return Modifier for range of all weapons
+ */
+float Craft::getWeaponsRange() const
+{
+	return _stats.range;
+}
+
+/**
+ * Gets the craft's damage of weapons 
+ * @return Modifier for damage of all weapons
+ */
+float Craft::getWeaponsDamage() const
+{
+	return _stats.damage;
+}
+
+/**
+ * Gets the craft's reload time of weapons 
+ * @return Modifier for reload time of all weapons
+ */
+float Craft::getWeaponsReload() const
+{
+	return _stats.reload;
+}
 
 }

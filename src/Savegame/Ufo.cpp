@@ -133,11 +133,11 @@ void Ufo::load(const YAML::Node &node, const Ruleset &ruleset, SavedGame &game)
 	}
 	else
 	{
-		if (_damage >= _stats.damageMax)
+		if (_damage >= getRules()->getMaxDamage() )
 		{
 			_status = DESTROYED;
 		}
-		else if (_damage >= _stats.damageMax / 2)
+		else if (_damage >= getRules()->getMaxDamage() / 2)
 		{
 			_status = CRASHED;
 		}
@@ -322,11 +322,11 @@ void Ufo::setDamage(int damage)
 	{
 		_damage = 0;
 	}
-	if (_damage >= _stats.damageMax)
+	if (_damage >= getRules()->getMaxDamage())
 	{
 		_status = DESTROYED;
 	}
-	else if (_damage >= _stats.damageMax / 2)
+	else if (_damage >= getRules()->getMaxDamage() / 2)
 	{
 		_status = CRASHED;
 	}
@@ -414,7 +414,7 @@ void Ufo::setAltitude(const std::string &altitude)
  */
 bool Ufo::isCrashed() const
 {
-	return (_damage >  _stats.damageMax / 2);
+	return (_damage > getRules()->getMaxDamage() / 2);
 }
 
 /**
@@ -424,7 +424,7 @@ bool Ufo::isCrashed() const
  */
 bool Ufo::isDestroyed() const
 {
-	return (_damage >=  _stats.damageMax );
+	return (_damage >=  getRules()->getMaxDamage() );
 }
 
 /**

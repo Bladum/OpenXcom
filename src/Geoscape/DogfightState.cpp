@@ -409,15 +409,8 @@ DogfightState::DogfightState(Globe *globe, Craft *craft, Ufo *ufo) :
 	_btnUfo->copy(_window);
 
 	_btnUfo->onMouseClick((ActionHandler)&DogfightState::btnUfoClick);
-
-
-
-
-
-
-
+	
 	_txtDistance->setText(L"640");
-
 
 	_txtStatus->setText(tr("STR_STANDOFF"));
 
@@ -462,7 +455,6 @@ DogfightState::DogfightState(Globe *globe, Craft *craft, Ufo *ufo) :
 		// Draw weapon icon
 		frame = set->getFrame(w->getRules()->getSprite() + 5);
 
-		
 		frame->setX(0);
 		frame->setY(0);
 		frame->blit(weapon);
@@ -477,7 +469,7 @@ DogfightState::DogfightState(Globe *globe, Craft *craft, Ufo *ufo) :
 		Uint8 color = _game->getRuleset()->getInterface("dogfight")->getElement("background")->color;
 		range->lock();
 
-		int rangeY = range->getHeight() - w->getRules()->getRange();
+		int rangeY = range->getHeight() - w->getRules()->getRange() * _craft->getWeaponsRange();
 		int connectY = weapon->getHeight() / 2 + weapon->getY() - range->getY();
 		for (int x = x1; x <= x1 + 20 - x_off; x += 2)		for (int x = x1; x <= x1 + 18; x += 2)
 		{
@@ -819,16 +811,16 @@ void DogfightState::move()
 
 	if (_minimized && _ufo->getSpeed() > _craft->getSpeed())
 	{
-		_craft->setSpeed(_craft->getCraftStats().speedMax);
+		_craft->setSpeed( _craft->getRules()->getMaxSpeed() );
 		if (_ufo->getSpeed() > _craft->getSpeed())
 		{
 			_ufoBreakingOff = true;
 		}
 	}
 	// Check if UFO is not breaking off.
-	if (_ufo->getSpeed() == _ufo->getUfoStats().speedMax)
-	{
-		_craft->setSpeed( _craft->getCraftStats().speedMax );
+	if (_ufo->getSpeed() == _ufo->getRules()->getMaxSpeed() )
+	{ 
+		_craft->setSpeed( _craft->getRules()->getMaxSpeed() );
 		// Crappy craft is chasing UFO.
 		if (_ufo->getSpeed() > _craft->getSpeed())
 		{
@@ -894,15 +886,13 @@ void DogfightState::move()
 				// Projectile reached the UFO - determine if it's been hit.
 				if (((p->getPosition() >= _currentDist) || (p->getGlobalType() == CWPGT_BEAM && p->toBeRemoved())) && !_ufo->isCrashed() && !p->getMissed())
 				{
-					// UFO hit.
-					//TODO
-					if (RNG::percent( p->getAccuracy() * _ufo->getRules()->getAvoidChance() ) * _craft->getCraftStats().hitBonus )
+					// UFO hit by x-com
+					// WEAPON CHANCE * UFO CHANCE TO AVOID * CRAFT CHANCE TO HIT
+					if (RNG::percent( p->getAccuracy() * _ufo->getRules()->getChanceToHitUfo() * _craft->getWeaponsAccurancy() ) )
 					{
-						// Formula delivered by Volutar, altered by Extended version.
-						int power = p->getDamage() * (_ufo->getUfoStats().power + 100) / 100;
-
-
-						int damage = RNG::generate(0, power);
+						// WEAPON DAMAGE * CRAFT DAMAGE MULTIPLIER
+						int power = p->getDamage() * _craft->getWeaponsDamage();						
+						int damage = RNG::generate(power / 2, power * 3 / 2);
 
 						if (_ufo->isCrashed())
 						{
@@ -936,7 +926,7 @@ void DogfightState::move()
 				// Check if projectile passed it's maximum range.
 				if (p->getGlobalType() == CWPGT_MISSILE)
 				{
-					if (p->getPosition() / 8 >= p->getRange())
+					if (p->getPosition() / 8 >= p->getRange() * _craft->getWeaponsRange() )
 					{
 						p->remove();
 					}
@@ -951,16 +941,15 @@ void DogfightState::move()
 			{
 				if (p->getGlobalType() == CWPGT_MISSILE || (p->getGlobalType() == CWPGT_BEAM && p->toBeRemoved()))
 				{
-
-					if (RNG::percent(p->getAccuracy()))
+					// CHANCE TO HIT INTERCEPTOR by UFO
+					if (RNG::percent( p->getAccuracy() * _craft->getAvoidBonus() ) )
 					{
-						// Formula delivered by Volutar
-
-
-						int damage = RNG::generate(0, _ufo->getRules()->getWeaponPower());
+						// UFO POWER 50-150%
+						int power = p->getDamage();						
+						int damage = RNG::generate(power / 2, power * 3 / 2);						
 						if (damage)
 						{
-							_craft->setDamage(_craft->getDamage() + damage);
+							_craft->setDamage( _craft->getDamage() + damage);
 							drawCraftDamage();
 							setStatus("STR_INTERCEPTOR_DAMAGED");
 							_game->getResourcePack()->getSound("GEO.CAT", ResourcePack::INTERCEPTOR_HIT)->play(); //10
@@ -1001,13 +990,14 @@ void DogfightState::move()
 			Timer *wTimer = _wTimer[i];
 
 			// Handle weapon firing
-			if (!wTimer->isRunning() && _currentDist <= w->getRules()->getRange() * 8 && w->getAmmo() > 0 && _mode != _btnStandoff
+			int weaponRange =  w->getRules()->getRange() * 8 * _craft->getWeaponsRange();
+			if (!wTimer->isRunning() && _currentDist <= weaponRange && w->getAmmo() > 0 && _mode != _btnStandoff
 				&& _mode != _btnDisengage && !_ufo->isCrashed() && !_craft->isDestroyed())
 			{
 				wTimer->start();
 				fireWeapon(i);
 			}
-			else if (wTimer->isRunning() && (_currentDist > w->getRules()->getRange() * 8 || (w->getAmmo() == 0 && !projectileInFlight) || _mode == _btnStandoff
+			else if (wTimer->isRunning() && (_currentDist > weaponRange || (w->getAmmo() == 0 && !projectileInFlight) || _mode == _btnStandoff
 				|| _mode == _btnDisengage || _ufo->isCrashed() || _craft->isDestroyed()))
 			{
 				wTimer->stop();
@@ -1275,8 +1265,8 @@ void DogfightState::ufoFireWeapon()
 	setStatus("STR_UFO_RETURN_FIRE");
 	CraftWeaponProjectile *p = new CraftWeaponProjectile();
 	p->setType(CWPT_PLASMA_BEAM);
-	p->setAccuracy( _ufo->getRules()->getWeaponAccuracy());
-	p->setDamage(_ufo->getRules()->getWeaponPower());
+	p->setAccuracy( _ufo->getRules()->getWeaponAccuracy() );
+	p->setDamage(_ufo->getRules()->getWeaponPower() );
 	p->setDirection(D_DOWN);
 	p->setHorizontalPosition(HP_CENTER);
 	p->setPosition(_currentDist - (_ufo->getRules()->getRadius() / 2));
@@ -1295,9 +1285,9 @@ void DogfightState::minimumDistance()
 	{
 		if (*i == 0)
 			continue;
-		if ((*i)->getRules()->getRange() > max && (*i)->getAmmo() > 0)
+		if ((*i)->getRules()->getRange() * _craft->getWeaponsRange() > max && (*i)->getAmmo() > 0)
 		{
-			max = (*i)->getRules()->getRange();
+			max = (*i)->getRules()->getRange() * _craft->getWeaponsRange();
 		}
 	}
 	if (max == 0)
@@ -1321,9 +1311,9 @@ void DogfightState::maximumDistance()
 	{
 		if (*i == 0)
 			continue;
-		if ((*i)->getRules()->getRange() < min && (*i)->getAmmo() > 0)
+		if ((*i)->getRules()->getRange() * _craft->getWeaponsRange() < min && (*i)->getAmmo() > 0)
 		{
-			min = (*i)->getRules()->getRange();
+			min = (*i)->getRules()->getRange() * _craft->getWeaponsRange();
 		}
 	}
 	if (min == 1000)
@@ -1419,7 +1409,8 @@ void DogfightState::btnCautiousPress(Action *)
 			CraftWeapon* w = _craft->getWeapons()->at(i);
 			if (w != 0)
 			{
-				_wTimer[i]->setInterval(w->getRules()->getCautiousReload() * _timeScale);
+				float timeModifier = _craft->getWeaponsReload();
+				_wTimer[i]->setInterval(w->getRules()->getCautiousReload() * _timeScale * timeModifier);
 			}
 
  		}
@@ -1444,7 +1435,8 @@ void DogfightState::btnStandardPress(Action *)
 			CraftWeapon* w = _craft->getWeapons()->at(i);
 			if (w != 0)
 			{
-				_wTimer[i]->setInterval(w->getRules()->getStandardReload() * _timeScale);
+				float timeModifier = _craft->getWeaponsReload();
+				_wTimer[i]->setInterval(w->getRules()->getStandardReload() * _timeScale * timeModifier);
 			}
 
  		}
@@ -1469,7 +1461,8 @@ void DogfightState::btnAggressivePress(Action *)
 			CraftWeapon* w = _craft->getWeapons()->at(i);
 			if (w != 0)
 			{
-				_wTimer[i]->setInterval(w->getRules()->getAggressiveReload() * _timeScale);
+				float timeModifier = _craft->getWeaponsReload();
+				_wTimer[i]->setInterval(w->getRules()->getAggressiveReload() * _timeScale * timeModifier);
 			}
 
  		}
@@ -1542,7 +1535,7 @@ void DogfightState::ufoBreakOff()
 {
 	if (!_ufo->isCrashed() && !_ufo->isDestroyed() && !_craft->isDestroyed())
 	{
-		_ufo->setSpeed(_ufo->getUfoStats().speedMax);
+		_ufo->setSpeed(_ufo->getRules()->getMaxSpeed() );
 		_ufoBreakingOff = true;
 	}
 }

@@ -35,9 +35,6 @@ RuleCraft::RuleCraft(const std::string &type) :
 {
 	for (int i = 0; i < WeaponMax; ++ i)
 		_weaponTypes[i] = 0;
-	_stats.radarRange = 672;
-	_stats.radarChance = 100;
-	_stats.sightRange = 1696;
 }
 
 /**
@@ -78,6 +75,7 @@ void RuleCraft::load(const YAML::Node &node, Ruleset *ruleset, int modIndex, int
 	_refuelRate = node["refuelRate"].as<int>(_refuelRate);
 	_transferTime = node["transferTime"].as<int>(_transferTime);
 	_score = node["score"].as<int>(_score);
+	
 	if (const YAML::Node &terrain = node["battlescapeTerrainData"])
 	{
 		RuleTerrain *rule = new RuleTerrain(terrain["name"].as<std::string>());
@@ -134,44 +132,6 @@ int RuleCraft::getSprite() const
 	return _sprite;
 }
 
-/**
- * Gets the maximum fuel the craft can contain.
- * @return The fuel amount.
- */
-int RuleCraft::getMaxFuel() const
-{
-	return _stats.fuelMax;
-}
-
-/**
- * Gets the maximum damage (damage the craft can take)
- * of the craft.
- * @return The maximum damage.
- */
-int RuleCraft::getMaxDamage() const
-{
-	return _stats.damageMax;
-}
-
-/**
- * Gets the maximum speed of the craft flying
- * around the Geoscape.
- * @return The speed in knots.
- */
-int RuleCraft::getMaxSpeed() const
-{
-	return _stats.speedMax;
-}
-
-/**
- * Gets the acceleration of the craft for
- * taking off / stopping.
- * @return The acceleration.
- */
-int RuleCraft::getAcceleration() const
-{
-	return _stats.accel;
-}
 
 /**
  * Gets the maximum number of weapons that
@@ -263,6 +223,45 @@ int RuleCraft::getRefuelRate() const
 }
 
 /**
+ * Gets the maximum fuel the craft can contain.
+ * @return The fuel amount.
+ */
+int RuleCraft::getMaxFuel() const
+{
+	return _stats.fuelMax;
+}
+
+/**
+ * Gets the maximum damage (damage the craft can take)
+ * of the craft.
+ * @return The maximum damage.
+ */
+int RuleCraft::getMaxDamage() const
+{
+	return _stats.damageMax;
+}
+
+/**
+ * Gets the maximum speed of the craft flying
+ * around the Geoscape.
+ * @return The speed in knots.
+ */
+int RuleCraft::getMaxSpeed() const
+{
+	return _stats.speedMax;
+}
+
+/**
+ * Gets the acceleration of the craft for
+ * taking off / stopping.
+ * @return The acceleration.
+ */
+int RuleCraft::getAcceleration() const
+{
+	return _stats.accel;
+}
+
+/**
  * Gets the craft's radar range
  * for detecting UFOs.
  * @return The range in nautical miles.
@@ -290,6 +289,51 @@ int RuleCraft::getRadarChance() const
 int RuleCraft::getSightRange() const
 {
 	return _stats.sightRange;
+}
+
+/**
+ * Gets the craft's avoid chance
+ * @return Base chance for craft to be hit
+ */
+float RuleCraft::getAvoidBonus() const
+{
+	return _stats.avoidBonus;
+}
+
+/**
+ * Gets the craft's accurancy modifier
+ * @return Base chance for craft to hit Ufo
+ */
+float RuleCraft::getWeaponsAccurancy() const
+{
+	return _stats.accuracy;
+}
+
+/**
+ * Gets the craft's range of weapons modifier
+ * @return Modifier for range of all weapons
+ */
+float RuleCraft::getWeaponsRange() const
+{
+	return _stats.range;
+}
+
+/**
+ * Gets the craft's damage of weapons 
+ * @return Modifier for damage of all weapons
+ */
+float RuleCraft::getWeaponsDamage() const
+{
+	return _stats.damage;
+}
+
+/**
+ * Gets the craft's reload time of weapons 
+ * @return Modifier for reload time of all weapons
+ */
+float RuleCraft::getWeaponsReload() const
+{
+	return _stats.reload;
 }
 
 /**

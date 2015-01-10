@@ -82,3 +82,4 @@ Dependencies/
 *.swp
 #Ignore NetBeans project directory
 nbproject/
+*.txt

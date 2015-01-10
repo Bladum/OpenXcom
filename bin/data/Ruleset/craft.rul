@@ -386,7 +386,25 @@ crafts:
       - [8, 12, 1, 0]
       - [9, 5, 1, 4]  
       
-craftWeapons:      
+craftWeapons:   
+# NON WAR
+  - type: STR_CANNON_UC
+    sprite: 111
+    sound: 4
+    damage: 20
+    range: 10
+    accuracy: 20
+    reloadCautious: 3
+    reloadStandard: 3
+    reloadAggressive: 3
+    ammoMax: 200
+    rearmRate: 50  
+    launcher: STR_CANNON
+    clip: STR_CANNON_ROUNDS_X50
+    projectileType: 2
+    projectileSpeed: 12
+
+# WAR   
   - type: STR_CANNON_UC
     sprite: 111
     sound: 4

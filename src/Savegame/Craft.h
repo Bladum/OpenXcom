@@ -183,6 +183,18 @@ public:
 	int getDamageMax() const;
 	/// Checks if a target is inside the craft's radar range.
 	bool insideRadarRange(Target *target) const;
+
+	/// Gets the craft's avoid chance
+	float getAvoidBonus() const;
+	/// Gets the craft's accurancy modifier
+	float getWeaponsAccurancy() const;
+	/// Gets the craft's range of weapons modifier
+	float getWeaponsRange() const;
+	/// Gets the craft's damage of weapons 
+	float getWeaponsDamage() const;
+	/// Gets the craft's reload time of weapons 
+	float getWeaponsReload() const;
+
 };
 
 }

@@ -1,33 +1,36 @@
-#    raceBonus: 
-#      STR_SECTOID: 
-#        sightRange: 400   
-#      STR_FLOATER: 
-#        speedMax: 120 
-#      STR_SNAKEMAN: 
-#        avoidBonus: 10   
-#      STR_MUTON: 
-#        powerBonus: 10  
-#      STR_ETHEREAL: 
-#        hitBonus: 10   
-#      STR_ANTHROPOD: 
-#        damageMax: 10   
-#      STR_GAZER: 
-#        armor: 0   
-#      STR_WASPITE:   
-#        accel: 6  
+
 
 ufos:
   - type: STR_UFO_PROBE
     size: STR_VERY_SMALL
     modSprite: InterceptionProbe
-    damageMax: 25
+    damageMax: 30
     speedMax: 1200      
     accel: 12 
     power: 0
     range: 0
     score: 10
-    reload: 90
+    reload: 50 
+    sightRange: 250
     breakOffTime: 30
+    crashSiteTime: 30
+    raceBonus: 
+      STR_SECTOID: #+100 sight range
+        sightRange: 100   
+      STR_FLOATER: #10% speed
+        speedMax: 120 
+      STR_SNAKEMAN: #10% avoidBonus
+        avoidBonus: 10   
+      STR_MUTON: #-10% reload time
+        reload: -5 
+      STR_ETHEREAL: #+10% to hit chance
+        hitChanceBonus: 10   
+      STR_ANTHROPOD: #+10% to power damage
+        power: 0   
+      STR_GAZER:  #10% to max life 
+        damageMax: 3   
+      STR_WASPITE: #+3 to accel   
+        accel: 3      
     battlescapeTerrainData:
       name: UFO1C
       mapDataSets:
@@ -47,7 +50,26 @@ ufos:
     range: 0
     score: 25
     reload: 60
+    sightRange: 250
     breakOffTime: 50
+    crashSiteTime: 50
+    raceBonus: 
+      STR_SECTOID: #+100 sight range
+        sightRange: 100   
+      STR_FLOATER: #10% speed
+        speedMax: 160 
+      STR_SNAKEMAN: #10% avoidBonus
+        avoidBonus: 10   
+      STR_MUTON: #-10% reload time
+        reload: -6 
+      STR_ETHEREAL: #+10% to hit chance
+        hitChanceBonus: 10   
+      STR_ANTHROPOD: #+10% to power damage
+        power: 0   
+      STR_GAZER:  #10% to max life 
+        damageMax: 5   
+      STR_WASPITE: #+3 to accel   
+        accel: 3   
     battlescapeTerrainData:
       name: UFO1A
       mapDataSets:
@@ -67,7 +89,26 @@ ufos:
     range: 10
     score: 50
     reload: 8
+    sightRange: 250
     breakOffTime: 50
+    crashSiteTime: 50
+    raceBonus: 
+      STR_SECTOID: #+100 sight range
+        sightRange: 100   
+      STR_FLOATER: #10% speed
+        speedMax: 240 
+      STR_SNAKEMAN: #10% avoidBonus
+        avoidBonus: 10   
+      STR_MUTON: #-10% reload time
+        reload: -1 
+      STR_ETHEREAL: #+10% to hit chance
+        hitChanceBonus: 10   
+      STR_ANTHROPOD: #+10% to power damage
+        power: 1  
+      STR_GAZER:  #10% to max life 
+        damageMax: 10  
+      STR_WASPITE: #+3 to accel   
+        accel: 3  
     battlescapeTerrainData:
       name: FIGHTER
       mapDataSets:
@@ -93,7 +134,26 @@ ufos:
     range: 20
     score: 75
     reload: 32
+    sightRange: 250
     breakOffTime: 100
+    crashSiteTime: 100
+    raceBonus: 
+      STR_SECTOID: #+100 sight range
+        sightRange: 100   
+      STR_FLOATER: #10% speed
+        speedMax: 200 
+      STR_SNAKEMAN: #10% avoidBonus
+        avoidBonus: 10   
+      STR_MUTON: #-10% reload time
+        reload: -3 
+      STR_ETHEREAL: #+10% to hit chance
+        hitChanceBonus: 10   
+      STR_ANTHROPOD: #+10% to power damage
+        power: 2  
+      STR_GAZER:  #10% to max life 
+        damageMax: 15  
+      STR_WASPITE: #+3 to accel   
+        accel: 3 
     battlescapeTerrainData:
       name: UFO_110
       mapDataSets:
@@ -119,7 +179,26 @@ ufos:
     range: 20
     score: 100
     reload: 32
+    sightRange: 250
     breakOffTime: 100
+    crashSiteTime: 100
+    raceBonus: 
+      STR_SECTOID: #+100 sight range
+        sightRange: 100   
+      STR_FLOATER: #10% speed
+        speedMax: 160 
+      STR_SNAKEMAN: #10% avoidBonus
+        avoidBonus: 10   
+      STR_MUTON: #-10% reload time
+        reload: -3 
+      STR_ETHEREAL: #+10% to hit chance
+        hitChanceBonus: 10   
+      STR_ANTHROPOD: #+10% to power damage
+        power: 2  
+      STR_GAZER:  #10% to max life 
+        damageMax: 30  
+      STR_WASPITE: #+3 to accel   
+        accel: 3 
     battlescapeTerrainData:
       name: UFO_110
       mapDataSets:
@@ -145,7 +224,26 @@ ufos:
     range: 15
     score: 75
     reload: 6
+    sightRange: 250
     breakOffTime: 75
+    crashSiteTime: 75
+    raceBonus: 
+      STR_SECTOID: #+100 sight range
+        sightRange: 100   
+      STR_FLOATER: #10% speed
+        speedMax: 280 
+      STR_SNAKEMAN: #10% avoidBonus
+        avoidBonus: 10   
+      STR_MUTON: #-10% reload time
+        reload: -1 
+      STR_ETHEREAL: #+10% to hit chance
+        hitChanceBonus: 10   
+      STR_ANTHROPOD: #+10% to power damage
+        power: 2  
+      STR_GAZER:  #10% to max life 
+        damageMax: 20  
+      STR_WASPITE: #+3 to accel   
+        accel: 3
     battlescapeTerrainData:
       name: UFO_129
       mapDataSets:
@@ -172,7 +270,26 @@ ufos:
     range: 40
     score: 100
     reload: 40
+    sightRange: 250
     breakOffTime: 100
+    crashSiteTime: 100
+    raceBonus: 
+      STR_SECTOID: #+100 sight range
+        sightRange: 100   
+      STR_FLOATER: #10% speed
+        speedMax: 160 
+      STR_SNAKEMAN: #10% avoidBonus
+        avoidBonus: 10   
+      STR_MUTON: #-10% reload time
+        reload: -4 
+      STR_ETHEREAL: #+10% to hit chance
+        hitChanceBonus: 10   
+      STR_ANTHROPOD: #+10% to power damage
+        power: 8  
+      STR_GAZER:  #10% to max life 
+        damageMax: 25  
+      STR_WASPITE: #+3 to accel   
+        accel: 3
     battlescapeTerrainData:
       name: SENTRY
       mapDataSets:
@@ -198,7 +315,26 @@ ufos:
     range: 30
     score: 150
     reload: 24
+    sightRange: 250
     breakOffTime: 200
+    crashSiteTime: 200
+    raceBonus: 
+      STR_SECTOID: #+100 sight range
+        sightRange: 100   
+      STR_FLOATER: #10% speed
+        speedMax: 240 
+      STR_SNAKEMAN: #10% avoidBonus
+        avoidBonus: 10   
+      STR_MUTON: #-10% reload time
+        reload: -2 
+      STR_ETHEREAL: #+10% to hit chance
+        hitChanceBonus: 10   
+      STR_ANTHROPOD: #+10% to power damage
+        power: 3  
+      STR_GAZER:  #10% to max life 
+        damageMax: 25  
+      STR_WASPITE: #+3 to accel   
+        accel: 3
     battlescapeTerrainData:
       name: UFO_120
       mapDataSets:
@@ -224,7 +360,26 @@ ufos:
     range: 30
     score: 200
     reload: 24
+    sightRange: 250
     breakOffTime: 200
+    crashSiteTime: 200
+    raceBonus: 
+      STR_SECTOID: #+100 sight range
+        sightRange: 100   
+      STR_FLOATER: #10% speed
+        speedMax: 200 
+      STR_SNAKEMAN: #10% avoidBonus
+        avoidBonus: 10   
+      STR_MUTON: #-10% reload time
+        reload: -2 
+      STR_ETHEREAL: #+10% to hit chance
+        hitChanceBonus: 10   
+      STR_ANTHROPOD: #+10% to power damage
+        power: 3  
+      STR_GAZER:  #10% to max life 
+        damageMax: 50  
+      STR_WASPITE: #+3 to accel   
+        accel: 3
     battlescapeTerrainData:
       name: UFO_120
       mapDataSets:
@@ -251,7 +406,26 @@ ufos:
     range: 25
     score: 200
     reload: 24
+    sightRange: 250
     breakOffTime: 300
+    crashSiteTime: 300
+    raceBonus: 
+      STR_SECTOID: #+100 sight range
+        sightRange: 100   
+      STR_FLOATER: #10% speed
+        speedMax: 280 
+      STR_SNAKEMAN: #10% avoidBonus
+        avoidBonus: 10   
+      STR_MUTON: #-10% reload time
+        reload: -2 
+      STR_ETHEREAL: #+10% to hit chance
+        hitChanceBonus: 10   
+      STR_ANTHROPOD: #+10% to power damage
+        power: 3  
+      STR_GAZER:  #10% to max life 
+        damageMax: 30  
+      STR_WASPITE: #+3 to accel   
+        accel: 3
     battlescapeTerrainData:
       name: EXCAVTR
       mapDataSets:
@@ -267,6 +441,7 @@ ufos:
         - name: UFO_06A
           width: 20
           length: 20
+          
   - type: STR_UFO_DESTROYER
     size: STR_MEDIUM_UC
     sprite: 2  #TODO
@@ -277,7 +452,26 @@ ufos:
     range: 50
     score: 150
     reload: 30
+    sightRange: 250
     breakOffTime: 150
+    crashSiteTime: 150
+    raceBonus: 
+      STR_SECTOID: #+100 sight range
+        sightRange: 100   
+      STR_FLOATER: #10% speed
+        speedMax: 200 
+      STR_SNAKEMAN: #10% avoidBonus
+        avoidBonus: 10   
+      STR_MUTON: #-10% reload time
+        reload: -3 
+      STR_ETHEREAL: #+10% to hit chance
+        hitChanceBonus: 10   
+      STR_ANTHROPOD: #+10% to power damage
+        power: 12  
+      STR_GAZER:  #10% to max life 
+        damageMax: 40  
+      STR_WASPITE: #+3 to accel   
+        accel: 3
     battlescapeTerrainData:
       name: UFO_120          
       mapDataSets:
@@ -290,7 +484,8 @@ ufos:
       mapBlocks:
         - name: UFO_13 
           width: 20
-          length: 20            
+          length: 20      
+          
   - type: STR_UFO_ABDUCTOR
     size: STR_MEDIUM_UC
     sprite: 4
@@ -301,7 +496,26 @@ ufos:
     range: 20
     score: 250
     reload: 16
+    sightRange: 250
     breakOffTime: 400
+    crashSiteTime: 400
+    raceBonus: 
+      STR_SECTOID: #+100 sight range
+        sightRange: 100   
+      STR_FLOATER: #10% speed
+        speedMax: 400 
+      STR_SNAKEMAN: #10% avoidBonus
+        avoidBonus: 10   
+      STR_MUTON: #-10% reload time
+        reload: -1 
+      STR_ETHEREAL: #+10% to hit chance
+        hitChanceBonus: 10   
+      STR_ANTHROPOD: #+10% to power damage
+        power: 5  
+      STR_GAZER:  #10% to max life 
+        damageMax: 50  
+      STR_WASPITE: #+3 to accel   
+        accel: 3
     battlescapeTerrainData:
       name: UFO_140
       mapDataSets:
@@ -318,6 +532,7 @@ ufos:
         - name: UFO_08A
           width: 20
           length: 20
+          
   - type: STR_UFO_HARVESTER
     size: STR_MEDIUM_UC
     sprite: 3
@@ -328,7 +543,26 @@ ufos:
     range: 25
     score: 250
     reload: 20
+    sightRange: 250
     breakOffTime: 400
+    crashSiteTime: 400
+    raceBonus: 
+      STR_SECTOID: #+100 sight range
+        sightRange: 100   
+      STR_FLOATER: #10% speed
+        speedMax: 360 
+      STR_SNAKEMAN: #10% avoidBonus
+        avoidBonus: 10   
+      STR_MUTON: #-10% reload time
+        reload: -2 
+      STR_ETHEREAL: #+10% to hit chance
+        hitChanceBonus: 10   
+      STR_ANTHROPOD: #+10% to power damage
+        power: 4  
+      STR_GAZER:  #10% to max life 
+        damageMax: 60  
+      STR_WASPITE: #+3 to accel   
+        accel: 3
     battlescapeTerrainData:
       name: UFO_130
       mapDataSets:
@@ -345,6 +579,7 @@ ufos:
         - name: UFO_09A
           width: 20
           length: 20
+          
   - type: STR_UFO_DREADNOUGHT
     size: STR_MEDIUM_UC
     sprite: 2 # TODO 
@@ -355,7 +590,26 @@ ufos:
     range: 30
     score: 200
     reload: 10
+    sightRange: 250
     breakOffTime: 200
+    crashSiteTime: 200
+    raceBonus: 
+      STR_SECTOID: #+100 sight range
+        sightRange: 100   
+      STR_FLOATER: #10% speed
+        speedMax: 360 
+      STR_SNAKEMAN: #10% avoidBonus
+        avoidBonus: 10   
+      STR_MUTON: #-10% reload time
+        reload: -1 
+      STR_ETHEREAL: #+10% to hit chance
+        hitChanceBonus: 10   
+      STR_ANTHROPOD: #+10% to power damage
+        power: 10  
+      STR_GAZER:  #10% to max life 
+        damageMax: 80  
+      STR_WASPITE: #+3 to accel   
+        accel: 3
     battlescapeTerrainData:
       name: UFO_120
       mapDataSets:
@@ -370,7 +624,8 @@ ufos:
           length: 20  
         - name: UFO_10A
           width: 20
-          length: 20             
+          length: 20  
+          
   - type: STR_SUPPLY_SHIP
     size: STR_LARGE
     sprite: 7
@@ -381,7 +636,26 @@ ufos:
     range: 35
     score: 400
     reload: 16
-    breakOffTime: 1500
+    sightRange: 250
+    breakOffTime: 1000
+    crashSiteTime: 1000
+    raceBonus: 
+      STR_SECTOID: #+100 sight range
+        sightRange: 100   
+      STR_FLOATER: #10% speed
+        speedMax: 320 
+      STR_SNAKEMAN: #10% avoidBonus
+        avoidBonus: 10   
+      STR_MUTON: #-10% reload time
+        reload: -2 
+      STR_ETHEREAL: #+10% to hit chance
+        hitChanceBonus: 10   
+      STR_ANTHROPOD: #+10% to power damage
+        power: 8  
+      STR_GAZER:  #10% to max life 
+        damageMax: 240  
+      STR_WASPITE: #+3 to accel   
+        accel: 3
     battlescapeTerrainData:
       name: UFO_170
       mapDataSets:
@@ -397,7 +671,8 @@ ufos:
           length: 20
         - name: UFO_11A
           width: 20
-          length: 30      
+          length: 30    
+          
   - type: STR_TERROR_SHIP
     size: STR_LARGE
     sprite: 5
@@ -408,7 +683,26 @@ ufos:
     range: 45
     score: 600
     reload: 12
-    breakOffTime: 1000
+    sightRange: 250
+    breakOffTime: 800
+    crashSiteTime: 800
+    raceBonus: 
+      STR_SECTOID: #+100 sight range
+        sightRange: 100   
+      STR_FLOATER: #10% speed
+        speedMax: 440 
+      STR_SNAKEMAN: #10% avoidBonus
+        avoidBonus: 10   
+      STR_MUTON: #-10% reload time
+        reload: -1 
+      STR_ETHEREAL: #+10% to hit chance
+        hitChanceBonus: 10   
+      STR_ANTHROPOD: #+10% to power damage
+        power: 12  
+      STR_GAZER:  #10% to max life 
+        damageMax: 120  
+      STR_WASPITE: #+3 to accel   
+        accel: 3
     battlescapeTerrainData:
       name: UFO_150
       mapDataSets:
@@ -436,7 +730,26 @@ ufos:
     range: 40
     score: 500
     reload: 10
-    breakOffTime: 500
+    sightRange: 250
+    breakOffTime: 600
+    crashSiteTime: 600
+    raceBonus: 
+      STR_SECTOID: #+100 sight range
+        sightRange: 100   
+      STR_FLOATER: #10% speed
+        speedMax: 360 
+      STR_SNAKEMAN: #10% avoidBonus
+        avoidBonus: 10   
+      STR_MUTON: #-10% reload time
+        reload: -1 
+      STR_ETHEREAL: #+10% to hit chance
+        hitChanceBonus: 10   
+      STR_ANTHROPOD: #+10% to power damage
+        power: 6  
+      STR_GAZER:  #10% to max life 
+        damageMax: 200  
+      STR_WASPITE: #+3 to accel   
+        accel: 3
     battlescapeTerrainData:
       name: LABSHIP
       mapDataSets:
@@ -451,6 +764,7 @@ ufos:
         - name: UFO_14
           width: 30
           length: 30
+          
   - type: STR_BATTLESHIP
     size: STR_VERY_LARGE
     sprite: 6
@@ -461,7 +775,26 @@ ufos:
     range: 60
     score: 800
     reload: 20
-    breakOffTime: 2000
+    sightRange: 250
+    breakOffTime: 1500
+    crashSiteTime: 1500
+    raceBonus: 
+      STR_SECTOID: #+100 sight range
+        sightRange: 100   
+      STR_FLOATER: #10% speed
+        speedMax: 480 
+      STR_SNAKEMAN: #10% avoidBonus
+        avoidBonus: 10   
+      STR_MUTON: #-10% reload time
+        reload: -2 
+      STR_ETHEREAL: #+10% to hit chance
+        hitChanceBonus: 10   
+      STR_ANTHROPOD: #+10% to power damage
+        power: 20  
+      STR_GAZER:  #10% to max life 
+        damageMax: 320  
+      STR_WASPITE: #+3 to accel   
+        accel: 3
     battlescapeTerrainData:
       name: UFO_160
       mapDataSets:
@@ -474,6 +807,7 @@ ufos:
         - name: UFO_15
           width: 30
           length: 30
+          
   - type: STR_MIB_CRAFT_A
     size: STR_SMALL
     modSprite: interception_jammed #TODO
@@ -484,7 +818,9 @@ ufos:
     range: 20
     score: 75
     reload: 30
+    sightRange: 450
     breakOffTime: 100
+    crashSiteTime: 100
     battlescapeTerrainData:
       name: CRAFT00
       mapDataSets:
@@ -507,7 +843,9 @@ ufos:
     range: 25
     score: 125
     reload: 25
-    breakOffTime: 100
+    sightRange: 450
+    breakOffTime: 150
+    crashSiteTime: 150
     battlescapeTerrainData:
       name: CRAFT01
       mapDataSets:
@@ -530,7 +868,9 @@ ufos:
     range: 35
     score: 200
     reload: 20
-    breakOffTime: 150
+    sightRange: 450
+    breakOffTime: 200
+    crashSiteTime: 200
     battlescapeTerrainData:
       name: CRAFT02
       mapDataSets:
@@ -553,7 +893,9 @@ ufos:
     range: 40
     score: 350
     reload: 15
-    breakOffTime: 200
+    sightRange: 450
+    breakOffTime: 250
+    crashSiteTime: 250
     battlescapeTerrainData:
       name: CRAFT03
       mapDataSets:
@@ -579,7 +921,9 @@ ufos:
     range: 20
     score: 500
     reload: 10
+    sightRange: 450
     breakOffTime: 250
+    crashSiteTime: 250
     battlescapeTerrainData:
       name: CRAFT04
       mapDataSets:
@@ -603,7 +947,9 @@ ufos:
     range: 0
     score: 0
     reload: 10
+    sightRange: 450
     breakOffTime: 2500
+    crashSiteTime: 2500
     battlescapeTerrainData:
       name: MBASE01
       mapDataSets:

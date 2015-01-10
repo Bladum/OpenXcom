@@ -34,13 +34,17 @@ class Ruleset;
  */
 struct RuleCraftStats
 {
-	int fuelMax, damageMax, speedMax, accel, radarRange, radarChance, sightRange, hitBonus, avoidBonus, powerBonus, armor;
+	int fuelMax, damageMax, speedMax, accel, 
+		radarRange, radarChance, sightRange; 
+
+	float accuracy, avoidBonus, damage, reload, range;
 
 	/// Default constructor.
 	RuleCraftStats() :
 		fuelMax(0), damageMax(0), speedMax(0), accel(0),
-		radarRange(0), radarChance(0), sightRange(0),
-		hitBonus(0), avoidBonus(0), powerBonus(0), armor(0)
+		radarRange(600), radarChance(100), sightRange(1800),
+		// percenage values
+		accuracy(1.0f), avoidBonus(1.0f), damage(1.0f), reload(1.0f), range(1.0f)
 	{
 
 	}
@@ -54,10 +58,12 @@ struct RuleCraftStats
 		radarRange += r.radarRange;
 		radarChance += r.radarChance;
 		sightRange += r.sightRange;
-		hitBonus += r.hitBonus;
+
 		avoidBonus += r.avoidBonus;
-		powerBonus += r.powerBonus;
-		armor += r.armor;
+		accuracy += r.accuracy;		
+		damage += r.damage;
+		reload += r.reload;
+		range += r.range;
 		return *this;
 	}
 	/// Subtract different stats.
@@ -70,10 +76,12 @@ struct RuleCraftStats
 		radarRange -= r.radarRange;
 		radarChance -= r.radarChance;
 		sightRange -= r.sightRange;
-		hitBonus -= r.hitBonus;
+
 		avoidBonus -= r.avoidBonus;
-		powerBonus -= r.powerBonus;
-		armor -= r.armor;
+		accuracy -= r.accuracy;		
+		damage -= r.damage;
+		reload -= r.reload;
+		range -= r.range;
 		return *this;
 	}
 	/// Gets negative values of stats.
@@ -86,6 +94,7 @@ struct RuleCraftStats
 	/// Loads stats form YAML.
 	void load(const YAML::Node &node)
 	{
+		// bonus for craft it self
 		fuelMax = node["fuelMax"].as<int>(fuelMax);
 		damageMax = node["damageMax"].as<int>(damageMax);
 		speedMax = node["speedMax"].as<int>(speedMax);
@@ -93,13 +102,15 @@ struct RuleCraftStats
 		radarRange = node["radarRange"].as<int>(radarRange);
 		radarChance = node["radarChance"].as<int>(radarChance);
 		sightRange = node["sightRange"].as<int>(sightRange);
-		hitBonus = node["hitBonus"].as<int>(hitBonus);
-		avoidBonus = node["avoidBonus"].as<int>(avoidBonus);
-		powerBonus = node["powerBonus"].as<int>(powerBonus);
-		armor = node["armor"].as<int>(armor);
+
+		// bonus for other weapons
+		avoidBonus = node["avoidBonus"].as<float>(avoidBonus);		
+		accuracy = node["accuracy"].as<float>(accuracy);		
+		damage = node["damage"].as<float>(damage);
+		reload = node["reload"].as<float>(reload);
+		range = node["range"].as<float>(range);
 	}
 };
-
 
 /**
  * Represents a specific type of craft.
@@ -188,6 +199,17 @@ public:
 	bool isValidWeaponSlot(int slot, int weaponType) const;
 	/// Get basic statistic of craft.
 	const RuleCraftStats& getStats() const;
+
+	/// Gets the craft's avoid chance
+	float getAvoidBonus() const;
+	/// Gets the craft's accurancy modifier
+	float getWeaponsAccurancy() const;
+	/// Gets the craft's range of weapons modifier
+	float getWeaponsRange() const;
+	/// Gets the craft's damage of weapons 
+	float getWeaponsDamage() const;
+	/// Gets the craft's reload time of weapons 
+	float getWeaponsReload() const;
 };
 
 }
