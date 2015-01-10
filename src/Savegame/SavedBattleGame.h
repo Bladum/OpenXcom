@@ -52,6 +52,7 @@ class SavedBattleGame
 {
 private:
 	BattlescapeState *_battleState;
+	Ruleset *_rule;
 	int _mapsize_x, _mapsize_y, _mapsize_z;
 	std::vector<MapDataSet*> _mapDataSets;
 	Tile **_tiles;
@@ -81,7 +82,7 @@ private:
 	BattleUnit *selectPlayerUnit(int dir, bool checkReselect = false, bool setReselect = false, bool checkInventory = false);
 public:
 	/// Creates a new battle save, based on the current generic save.
-	SavedBattleGame();
+	SavedBattleGame(Ruleset *rule);
 	/// Cleans up the saved game.
 	~SavedBattleGame();
 	/// Loads a saved battle game from YAML.
@@ -91,7 +92,7 @@ public:
 	/// Sets the dimensions of the map and initializes it.
 	void initMap(int mapsize_x, int mapsize_y, int mapsize_z);
 	/// Initialises the pathfinding and tileengine.
-	void initUtilities(ResourcePack *res);
+	void initUtilities(ResourcePack *res, Ruleset *rule);
 	/// Gets the game's mapdatafiles.
 	std::vector<MapDataSet*> *getMapDataSets();
 	/// Sets the mission type.
@@ -118,6 +119,13 @@ public:
 	int getMapSizeZ() const;
 	/// Gets terrain x*y*z
 	int getMapSizeXYZ() const;
+
+	/// Adds an item to a unit and the game.
+	bool addItem(BattleItem *item, BattleUnit *unit, bool allowSecondClip = false, bool allowAutoLoadout = false, bool allowUnloadedWeapons = false);
+	/// Add buildIn weapon form list to unit.
+	void addFixedItems(BattleUnit *unit, const std::vector<std::string> &fixed);
+	/// Create all fixed items for new created unit.
+	void initFixedItems(BattleUnit *unit);
 
 	/**
 	 * Converts coordinates into a unique index.
@@ -232,7 +240,7 @@ public:
 	/// Resets the visibility of all tiles on the map.
 	void resetTiles();
 	/// get an 11x11 grid of positions (-10 to +10) to check.
-	const std::vector<Position> getTileSearch();
+	const std::vector<Position> &getTileSearch();
 	/// check if the AI has engaged cheat mode.
 	bool isCheating();
 	/// get the reserved fire mode.
@@ -263,6 +271,8 @@ public:
 	void setAmbientSound(int sound);
 	/// gets the ambient sound effect;
 	int getAmbientSound() const;
+	// gets ruleset.
+	const Ruleset *getRuleset() const;
 };
 
 }

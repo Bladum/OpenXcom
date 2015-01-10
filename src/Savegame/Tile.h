@@ -245,7 +245,8 @@ public:
 	void addParticle(Particle *particle);
 	/// gets a pointer to this tile's particle array.
 	std::list<Particle *> *getParticleCloud();
-
+	/// Get the shade amount except 2th (dynamic) layer.
+	int getExternalShade() const;
 };
 
 }

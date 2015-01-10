@@ -23,6 +23,7 @@
 #include <vector>
 #include <yaml-cpp/yaml.h>
 #include "RuleDamageType.h"
+#include "Unit.h"
 
 namespace OpenXcom
 {
@@ -31,6 +32,8 @@ enum BattleType { BT_NONE, BT_FIREARM, BT_AMMO, BT_MELEE, BT_GRENADE, BT_PROXIMI
 
 class SurfaceSet;
 class Surface;
+class BattleUnit;
+class UnitStats;
 
 /**
  * Represents a specific type of item.
@@ -43,6 +46,7 @@ class RuleItem
 private:
 	std::string _type, _name; // two types of objects can have the same name
 	std::vector<std::string> _requires;
+	std::vector<std::string> _requiresBuy;
 	double _size;
 	int _costBuy, _costSell, _transferTime, _weight;
 	int _bigSprite, _bigSpriteAlt;
@@ -63,8 +67,10 @@ private:
 	int _recoveryPoints;
 	int _armor;
 	int _turretType;
+	float _powerRangeReduction;
 	int  _tuPrime, _tuThrow;
 	int  _tuLoad, _tuUnload;
+	std::string _psiAttackName;
 	bool _recover, _liveAlien;
 	int  _attraction;
 	bool _flatRate, _arcingShot;
@@ -72,6 +78,8 @@ private:
 	std::string _zombieUnit;
 	bool _strengthApplied, _skillApplied, _LOSRequired, _underwaterOnly;
 	int _meleeSound, _meleePower, _meleeAnimation, _meleeHitSound, _specialType, _vaporColor, _vaporDensity, _vaporProbability;
+	float _strengthBonus, _psiBonus, _psiSkillBonus, _psiStrengthBonus, _throwBonus;
+	
 public:
 	/// Creates a blank item ruleset.
 	RuleItem(const std::string &type);
@@ -89,6 +97,8 @@ public:
 	double getSize() const;
 	/// Gets the item's purchase cost.
 	int getBuyCost() const;
+	/// Gets the item's buy requirements.
+	const std::vector<std::string> &getBuyRequirements() const;
 	/// Gets the item's sale cost.
 	int getSellCost() const;
 	/// Gets the item's transfer time.
@@ -228,15 +238,15 @@ public:
 	/// Check if LOS is required to use this item (only applies to psionic type items)
 	bool isLOSRequired() const;
 	/// Is this item restricted to use underwater?
-	const bool isWaterOnly() const;
+	bool isWaterOnly() const;
 	/// Get the associated special type of this item.
-	const int getSpecialType() const;
+	int getSpecialType() const;
 	/// Get the color offset to use for the vapor trail.
-	const int getVaporColor() const;
+	int getVaporColor() const;
 	/// Gets the vapor cloud density.
-	const int getVaporDensity() const;
+	int getVaporDensity() const;
 	/// Gets the vapor cloud probability.
-	const int getVaporProbability() const;
+	int getVaporProbability() const;
 	/// Gets the item's load TU cost.
 	int getTULoad() const;
 	/// Gets the item's unload TU cost.
@@ -245,7 +255,13 @@ public:
 	int getTUPrime() const;
 	/// Gets the item's throw TU cost.
 	int getTUThrow() const;
+	/// Get additional power form unit statistics
+	//int getBonusPower(UnitStats* stats) const;
+	/// Gets amount of power drop per tile.
+	float getPowerRangeReduction() const;
 
+	/// Get name of psi attack for action menu.
+	std::string getPsiAttackName() const;
 };
 
 }

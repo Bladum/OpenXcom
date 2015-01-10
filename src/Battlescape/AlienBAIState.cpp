@@ -153,7 +153,7 @@ void AlienBAIState::think(BattleAction *action)
 	_knownEnemies = countKnownTargets();
 	_visibleEnemies = selectNearestTarget();
 	_spottingEnemies = getSpottingUnits(_unit->getPosition());
-	_melee = _unit->getMeleeWeapon();
+	_melee = _unit->getUtilityWeapon(BT_MELEE);
 	_rifle = false;
 	_blaster = false;
 	_reachable = _save->getPathfinding()->findReachable(_unit, _unit->getTimeUnits());
@@ -236,6 +236,7 @@ void AlienBAIState::think(BattleAction *action)
 		action->target = _psiAction->target;
 		action->number -= 1;
 		action->weapon = _psiAction->weapon;
+		action->updateTU();
 		return;
 	}
 	else
@@ -359,7 +360,7 @@ void AlienBAIState::think(BattleAction *action)
 		}
 		// if this is a firepoint action, set our facing.
 		action->finalFacing = _attackAction->finalFacing;
-		action->TU = _unit->getActionTUs(_attackAction->type, _attackAction->weapon);
+		action->updateTU();
 		// if this is a "find fire point" action, don't increment the AI counter.
 		if (action->type == BA_WALK && _rifle
 			// so long as we can take a shot afterwards.
@@ -512,7 +513,7 @@ void AlienBAIState::setupPatrol()
 						_patrolAction->target = Position(i, j, 1);
 						_patrolAction->weapon = _patrolAction->actor->getMainHandWeapon();
 						_patrolAction->type = BA_SNAPSHOT;
-						_patrolAction->TU = _patrolAction->actor->getActionTUs(_patrolAction->type, _patrolAction->weapon);
+						_patrolAction->updateTU();
 						return;
 					}
 				}
@@ -1646,7 +1647,7 @@ void AlienBAIState::wayPointAction()
 	if (_aggroTarget != 0)
 	{
 		_attackAction->type = BA_LAUNCH;
-		_attackAction->TU = _unit->getActionTUs(BA_LAUNCH, _attackAction->weapon);
+		_attackAction->updateTU();
 		if (_attackAction->TU > _unit->getTimeUnits())
 		{
 			_attackAction->type = BA_RETHINK;
@@ -1742,7 +1743,7 @@ void AlienBAIState::selectFireMethod()
 		return;
 	}
 
-
+	//TODO BATTLE AI SHOULD USE THIS INSTEAD OF 20 / 12 ETC
 	if ( distance > 12 )
 	{
 		if (tuAimed && currentTU >= tuAimed)
@@ -1821,18 +1822,13 @@ void AlienBAIState::grenadeAction()
  */
 bool AlienBAIState::psiAction()
 {
-	BattleItem *item = _unit->getSpecialWeapon(BT_PSIAMP);
+	BattleItem *item = _unit->getUtilityWeapon(BT_PSIAMP);
 	if (!item)
 	{
 		return false;
 	}
-	RuleItem *psiWeaponRules = item->getRules();
-	int cost = psiWeaponRules->getTUUse();
-	if (!psiWeaponRules->getFlatRate())
-	{
-		cost = (int)floor(_unit->getBaseStats()->tu * cost / 100.0f);
-	}
-	bool LOSRequired = psiWeaponRules->isLOSRequired();
+	int cost = _unit->getActionTUs(BA_USE, item);
+	bool LOSRequired = item->getRules()->isLOSRequired();
 
 	_aggroTarget = 0;
 		// don't let mind controlled soldiers mind control other soldiers.
@@ -1855,9 +1851,15 @@ bool AlienBAIState::psiAction()
 				(!LOSRequired ||
 				std::find(_unit->getVisibleUnits()->begin(), _unit->getVisibleUnits()->end(), *i) != _unit->getVisibleUnits()->end()))
 			{
+				if (_save->getTileEngine()->distance((*i)->getPosition(), _unit->getPosition()) > item->getRules()->getMaxRange())
+				{
+					continue;
+				}
+				Position p = _unit->getPosition().toVexel() - (*i)->getPosition().toVexel();
+				p *= p;
 				int chanceToAttackMe = psiAttackStrength
 					+ (((*i)->getBaseStats()->psiSkill > 0) ? (*i)->getBaseStats()->psiSkill * -0.4 : 0)
-					- _save->getTileEngine()->distance((*i)->getPosition(), _unit->getPosition())
+					- sqrt(float(p.x + p.y + p.z)) * item->getRules()->getPowerRangeReduction()
 					- ((*i)->getBaseStats()->psiStrength)
 					+ RNG::generate(55, 105);
 
@@ -1871,6 +1873,7 @@ bool AlienBAIState::psiAction()
 
 		if (!_aggroTarget || !chanceToAttack) return false;
 
+		//TODO CHANCES TO ATTACK BASED ON ALIEN UNIT STATS
 		if (_visibleEnemies && _attackAction->weapon && _attackAction->weapon->getAmmoItem())
 		{
 			if (_attackAction->weapon->getAmmoItem()->getRules()->getPower() >= chanceToAttack)
@@ -1888,6 +1891,16 @@ bool AlienBAIState::psiAction()
 			Log(LOG_INFO) << "making a psionic attack this turn";
 		}
 
+		if (chanceToAttack >= 60 && !item->getRules()->getPsiAttackName().empty())
+		{
+			if (RNG::percent(chanceToAttack - 60))
+			{
+				_psiAction->type = BA_USE;
+				_psiAction->target = _aggroTarget->getPosition();
+				_psiAction->weapon = item;
+				return true;
+			}
+		}
 		if (chanceToAttack >= 30)
 		{
 			int controlOdds = 40;
@@ -1937,7 +1950,7 @@ void AlienBAIState::meleeAttack()
 	if (_traceAI) { Log(LOG_INFO) << "Attack unit: " << _aggroTarget->getId(); }
 	_attackAction->target = _aggroTarget->getPosition();
 	_attackAction->type = BA_HIT;
-	_attackAction->weapon = _unit->getMeleeWeapon();
+	_attackAction->weapon = _unit->getUtilityWeapon(BT_MELEE);
 }
 
 /**
@@ -1985,7 +1998,7 @@ BattleActionType AlienBAIState::getReserveMode()
 void AlienBAIState::selectMeleeOrRanged()
 {
 	RuleItem *rangedWeapon = _unit->getMainHandWeapon()->getRules();
-	RuleItem *meleeWeapon = _unit->getMeleeWeapon() ? _unit->getMeleeWeapon()->getRules() : 0;
+	RuleItem *meleeWeapon = _unit->getUtilityWeapon(BT_MELEE) ? _unit->getUtilityWeapon(BT_MELEE)->getRules() : 0;
 
 	if (!meleeWeapon)
 	{
@@ -2008,6 +2021,7 @@ void AlienBAIState::selectMeleeOrRanged()
 	}
 	dmg *= _aggroTarget->getArmor()->getDamageModifier(meleeWeapon->getDamageType()->ResistType);
 
+	//TODO DAMAGE FROM MELEE IS MAKING MORE ODDS TO ATTACK WITH MELEE
 	if (dmg > 50)
 	{
 		meleeOdds += (dmg - 50) / 2;

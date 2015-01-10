@@ -16,6 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with OpenXcom.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include "Unit.h"
 #include "RuleItem.h"
 #include "RuleInventory.h"
 #include "../Engine/SurfaceSet.h"
@@ -29,11 +30,12 @@ namespace OpenXcom
  * @param type String defining the type.
  */
 RuleItem::RuleItem(const std::string &type) : _type(type), _name(type), _size(0.0), _costBuy(0), _costSell(0), _transferTime(24), _weight(3), _bigSprite(0), _bigSpriteAlt(0), _floorSprite(-1), _floorSpriteAlt(-1), _handSprite(120), _bulletSprite(-1), _fireSound(-1), _hitSound(-1), _hitAnimation(0), _power(0), _damageType(),
-											_accuracyAuto(0), _accuracySnap(0), _accuracyAimed(0), _tuAuto(0), _tuSnap(0), _tuAimed(0), _clipSize(0), _accuracyMelee(0), _tuMelee(0), _battleType(BT_NONE), _twoHanded(false), _waypoint(false), _fixedWeapon(false), _invWidth(1), _invHeight(1),
-											_painKiller(0), _heal(0), _stimulant(0), _woundRecovery(0), _healthRecovery(0), _stunRecovery(0), _energyRecovery(0), _tuUse(0), _recoveryPoints(0), _armor(20), _turretType(-1), _recover(true), _liveAlien(false), _attraction(0),
-											_flatRate(false), _arcingShot(false), _listOrder(0), _maxRange(200), _aimRange(200), _snapRange(15), _autoRange(7), _minRange(0), _dropoff(2), _bulletSpeed(0), _explosionSpeed(0), _autoShots(3), _shotgunPellets(0),  _tuLoad(15), _tuUnload(8),
-											_strengthApplied(false), _skillApplied(true), _LOSRequired(false), _underwaterOnly(false), _meleeSound(39), _meleePower(0), _meleeAnimation(0), _meleeHitSound(-1), _specialType(-1), _vaporColor(-1), _vaporDensity(0), _vaporProbability(15),
-											 _tuPrime(50), _tuThrow(25)
+			_accuracyAuto(0), _accuracySnap(0), _accuracyAimed(0), _tuAuto(0), _tuSnap(0), _tuAimed(0), _clipSize(0), _accuracyMelee(0), _tuMelee(0), _battleType(BT_NONE), _twoHanded(false), _waypoint(false), _fixedWeapon(false), _invWidth(1), _invHeight(1),
+			_painKiller(0), _heal(0), _stimulant(0), _woundRecovery(0), _healthRecovery(0), _stunRecovery(0), _energyRecovery(0), _tuUse(0), _recoveryPoints(0), _armor(20), _turretType(-1), _recover(true), _liveAlien(false), _attraction(0),
+			_flatRate(false), _arcingShot(false), _listOrder(0), _maxRange(200), _aimRange(200), _snapRange(15), _autoRange(7), _minRange(0), _dropoff(2), _bulletSpeed(0), _explosionSpeed(0), _autoShots(3), _shotgunPellets(0),  _tuLoad(15), _tuUnload(8),
+			_strengthApplied(false), _skillApplied(true), _LOSRequired(false), _underwaterOnly(false), _meleeSound(39), _meleePower(0), _meleeAnimation(0), _meleeHitSound(-1), _specialType(-1), _vaporColor(-1), _vaporDensity(0), _vaporProbability(15),
+			_tuPrime(50), _tuThrow(25), _throwBonus(0.0f),
+			_strengthBonus(0.0f), _psiBonus(0.0f), _psiSkillBonus(0.0f), _psiStrengthBonus(0.0f)
 {
 }
 
@@ -58,6 +60,7 @@ void RuleItem::load(const YAML::Node &node, int modIndex, int listOrder, const s
 	_size = node["size"].as<double>(_size);
 	_costBuy = node["costBuy"].as<int>(_costBuy);
 	_costSell = node["costSell"].as<int>(_costSell);
+	_requiresBuy = node["requiresBuy"].as< std::vector<std::string> >(_requiresBuy);
 	_transferTime = node["transferTime"].as<int>(_transferTime);
 	_weight = node["weight"].as<int>(_weight);
 	if (node["bigSprite"])
@@ -67,10 +70,27 @@ void RuleItem::load(const YAML::Node &node, int modIndex, int listOrder, const s
 		if (_bigSprite > 56)
 			_bigSprite += modIndex;
 	}
+		
+	_skillApplied = node["skillApplied"].as<bool>(_skillApplied);
+	if (node["strengthApplied"].as<bool>(false))
+	{
+		_strengthBonus = 1.0f;		
+	}
+
+	if (const YAML::Node &d = node["damageBonus"])
+ 	{
+		_strengthBonus = d["strength"].as<float>(_strengthBonus);
+		_psiBonus = d["psi"].as<float>(_psiBonus);
+		_psiSkillBonus = d["psiSkill"].as<float>(_psiSkillBonus);
+		_psiStrengthBonus = d["psiStrength"].as<float>(_psiStrengthBonus);
+		_throwBonus = d["throw"].as<float>(_throwBonus);
+ 	}
 	if (node["damageType"])
 	{
+		//compatibility hack for corpse explosion, that didn't have defined damage type
+		ItemDamageType type = node["blastRadius"].as<int>(0) > 0 ? DT_HE : DT_NONE;
 		//load predefined damage type
-		_damageType = *damageTypes.at(node["damageType"].as<int>(DT_NONE));
+		_damageType = *damageTypes.at(node["damageType"].as<int>(type));
 	}
 	_damageType.FixRadius = node["blastRadius"].as<int>(_damageType.FixRadius);
 	if (node["damageAlter"])
@@ -163,6 +183,7 @@ void RuleItem::load(const YAML::Node &node, int modIndex, int listOrder, const s
 			_meleeHitSound += modIndex;
 	}
 	_power = node["power"].as<int>(_power);
+	_psiAttackName = node["psiAttackName"].as<std::string>(_psiAttackName);
 	_compatibleAmmo = node["compatibleAmmo"].as< std::vector<std::string> >(_compatibleAmmo);
 	_accuracyAuto = node["accuracyAuto"].as<int>(_accuracyAuto);
 	_accuracySnap = node["accuracySnap"].as<int>(_accuracySnap);
@@ -207,8 +228,6 @@ void RuleItem::load(const YAML::Node &node, int modIndex, int listOrder, const s
 	_autoShots = node["autoShots"].as<int>(_autoShots);
 	_shotgunPellets = node["shotgunPellets"].as<int>(_shotgunPellets);
 	_zombieUnit = node["zombieUnit"].as<std::string>(_zombieUnit);
-	_strengthApplied = node["strengthApplied"].as<bool>(_strengthApplied);
-	_skillApplied = node["skillApplied"].as<bool>(_skillApplied);
 	_LOSRequired = node["LOSRequired"].as<bool>(_LOSRequired);
 	_meleePower = node["meleePower"].as<int>(_meleePower);
 	_underwaterOnly = node["underwaterOnly"].as<bool>(_underwaterOnly);
@@ -220,6 +239,7 @@ void RuleItem::load(const YAML::Node &node, int modIndex, int listOrder, const s
 	_tuUnload = node["tuUnload"].as<int>(_tuUnload);
 	_tuPrime = node["tuPrime"].as<int>(_tuPrime);
 	_tuThrow = node["tuThrow"].as<int>(_tuThrow);
+	_powerRangeReduction = node["powerRangeReduction"].as<float>(_powerRangeReduction);
 
 	if (!_listOrder)
 	{
@@ -651,10 +671,10 @@ int RuleItem::getExplosionRadius() const
  		{
 			radius += 1;
  		}
-		// cap the formula to 12
-		if (radius > 12)
+		// cap the formula to 10
+		if (radius > 10)
 		{
-			radius = 12;
+			radius = 10;
 		}
 	}
 	else
@@ -877,6 +897,19 @@ bool RuleItem::isStrengthApplied() const
 	return _strengthApplied;
 }
 
+
+//int RuleItem::getBonusPower(UnitStats* stats) const
+//{
+//	int power = 0;
+//	power += stats->strength * _strengthBonus;
+//	power += stats->psiSkill * stats->psiStrength * _psiBonus;
+//	power += stats->psiSkill * _psiSkillBonus;
+//	power += stats->psiStrength * _psiStrengthBonus;
+//	power += stats->throwing * _throwBonus;
+//	return power;
+//}
+
+
 /**
  * Is skill applied to the accuracy of this weapon?
  * this only applies to melee weapons.
@@ -936,7 +969,7 @@ int RuleItem::getMeleeAnimation() const
  * Can this item be used on land or is it underwater only?
  * @return if this is an underwater weapon or not.
  */
-const bool RuleItem::isWaterOnly() const
+bool RuleItem::isWaterOnly() const
 {
 	return _underwaterOnly;
 }
@@ -948,7 +981,7 @@ const bool RuleItem::isWaterOnly() const
  * so try not to use those ones.
  * @return special type.
  */
-const int RuleItem::getSpecialType() const
+int RuleItem::getSpecialType() const
 {
 	return _specialType;
 }
@@ -957,7 +990,7 @@ const int RuleItem::getSpecialType() const
  * Gets the color offset to use for the vapor trail.
  * @return the color offset.
  */
-const int RuleItem::getVaporColor() const
+int RuleItem::getVaporColor() const
 {
 	return _vaporColor;
 }
@@ -966,7 +999,7 @@ const int RuleItem::getVaporColor() const
  * Gets the vapor cloud density for the vapor trail.
  * @return the vapor density.
  */
-const int RuleItem::getVaporDensity() const
+int RuleItem::getVaporDensity() const
 {
 	return _vaporDensity;
 }
@@ -975,7 +1008,7 @@ const int RuleItem::getVaporDensity() const
  * Gets the vapor cloud probability for the vapor trail.
  * @return the vapor probability.
  */
-const int RuleItem::getVaporProbability() const
+int RuleItem::getVaporProbability() const
 {
 	return _vaporProbability;
 }
@@ -1015,5 +1048,31 @@ int RuleItem::getTUThrow() const
 	return _tuThrow;
 }
 
+/** * Gets the list of research required to
+ * buy this item from market.
+ * @return The list of research IDs.
+ */
+const std::vector<std::string> &RuleItem::getBuyRequirements() const
+{
+	return _requiresBuy;
+}
+
+ /**
+ * Gets amount of power drop per voxel.
+ * @return Reduction per voxel.
+ */
+float RuleItem::getPowerRangeReduction() const
+{
+	return _powerRangeReduction * 0.0625f;
+}
+ 
+/**
+ * Gets the name of psi attack for action popup list.
+ * @return String Id.
+ */
+std::string RuleItem::getPsiAttackName() const
+{
+	return _psiAttackName;
+}
 
 }

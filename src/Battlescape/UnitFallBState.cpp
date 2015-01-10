@@ -83,7 +83,7 @@ void UnitFallBState::think()
 		bool largeCheck = true;
 		bool falling = true;
 		int size = (*unit)->getArmor()->getSize() - 1;
-		if ((*unit)->getHealth() == 0 || (*unit)->getStunlevel() >= (*unit)->getHealth())
+		if ((*unit)->getHealth() <= 0 || (*unit)->getStunlevel() >= (*unit)->getHealth())
 		{
 			unit = _parent->getSave()->getFallingUnits()->erase(unit);
 			continue;
@@ -298,6 +298,20 @@ void UnitFallBState::think()
 		_parent->popState();
 		return;
 	}
+}
+
+/**
+ * Helper function calculating out unit if over damaged.
+ * @param src Source surface with dying graphic.
+ * @param dest Destination surface.
+ * @param unit Dying unit.
+ * @return Value of fadeout.
+ */
+static inline void burnOut(Surface *src, Surface *dest, BattleUnit *unit)
+{
+	int burn = 0;
+	burn = - 16 * unit->getHealth() * (unit->getFallingPhase() + 1) / unit->getArmor()->getDeathFrames() / unit->getBaseStats()->health;
+	src->blitNShade(dest, 0, 0, burn);
 }
 
 }

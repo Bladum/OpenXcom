@@ -20,6 +20,7 @@
 #define OPENXCOM_DOGFIGHTSTATE_H
 
 #include "../Engine/State.h"
+#include "../Ruleset/RuleCraft.h"
 #include <vector>
 #include <string>
 
@@ -45,27 +46,28 @@ class CraftWeaponProjectile;
 class DogfightState : public State
 {
 private:
-	Timer *_animTimer, *_moveTimer, *_w1Timer, *_w2Timer, *_ufoWtimer, *_ufoEscapeTimer, *_craftDamageAnimTimer;
-	Surface *_window, *_battle, *_range1, *_range2, *_damage;
-	InteractiveSurface *_btnMinimize, *_preview, *_weapon1, *_weapon2;
+	Timer *_animTimer, *_moveTimer, *_wTimer[RuleCraft::WeaponMax], *_ufoWtimer, *_ufoEscapeTimer, *_craftDamageAnimTimer;
+	Surface *_window, *_battle, *_range[RuleCraft::WeaponMax], *_damage;
+	InteractiveSurface *_btnMinimize, *_preview, *_weapon[RuleCraft::WeaponMax];
 	ImageButton *_btnStandoff, *_btnCautious, *_btnStandard, *_btnAggressive, *_btnDisengage, *_btnUfo;
 	ImageButton *_mode;
 	InteractiveSurface *_btnMinimizedIcon;
-	Text *_txtAmmo1, *_txtAmmo2, *_txtDistance, *_txtStatus, *_txtInterceptionNumber;
+	Text *_txtAmmo[RuleCraft::WeaponMax], *_txtDistance, *_txtStatus, *_txtInterceptionNumber;
 	Globe *_globe;
 	Craft *_craft;
 	Ufo *_ufo;
 	int _timeout, _currentDist, _targetDist, _ufoFireInterval;
-	bool _end, _destroyUfo, _destroyCraft, _ufoBreakingOff, _weapon1Enabled, _weapon2Enabled, _minimized, _endDogfight, _animatingHit;
+	bool _end, _destroyUfo, _destroyCraft, _ufoBreakingOff, _weaponEnabled[RuleCraft::WeaponMax], _minimized, _endDogfight, _animatingHit;
 	std::vector<CraftWeaponProjectile*> _projectiles;
 	static const int _ufoBlobs[8][13][13];
-	static const int _projectileBlobs[4][6][3];
+	static const int _projectileBlobs[5][6][3];
 	int _timeScale;
 	int _ufoSize, _craftHeight, _currentCraftDamageColor, _interceptionNumber;
 	size_t _interceptionsCount;
 	int _x, _y, _minimizedIconX, _minimizedIconY;
 	// craft min/max, radar min/max, damage min/max
 	int _color[6];
+	int _weaponNum;
 	// Ends the dogfight.
 	void endDogfight();
 
@@ -80,10 +82,16 @@ public:
 	void animate();
 	/// Moves the craft.
 	void move();
-	// Fires the first weapon.
-	void fireWeapon1();
-	// Fires the second weapon.
-	void fireWeapon2();
+	// Fires the weapons.
+	void fireWeapon(int i);
+ 	// Fires the first weapon.
+ 	void fireWeapon1();
+ 	// Fires the second weapon.
+ 	void fireWeapon2();
+	// Fires the third weapon.
+	void fireWeapon3();
+	// Fires the fourth weapon.
+	void fireWeapon4();
 	// Fires UFO weapon.
 	void ufoFireWeapon();
 	// Sets the craft to minimum distance.
@@ -118,10 +126,8 @@ public:
 	void animateCraftDamage();
 	/// Updates craft damage.
 	void drawCraftDamage();
-	/// Toggles usage of weapon 1.
-	void weapon1Click(Action *action);
-	/// Toggles usage of weapon 2.
-	void weapon2Click(Action *action);
+	/// Toggles usage of weapons.
+	void weaponClick(Action *action);
 	/// Changes colors of weapon icons, range indicators and ammo texts base on current weapon state.
 	void recolor(const int weaponNo, const bool currentState);
 	/// Returns true if state is minimized.

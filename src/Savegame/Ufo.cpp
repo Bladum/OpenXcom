@@ -40,12 +40,12 @@ namespace OpenXcom
  * Initializes a UFO of the specified type.
  * @param rules Pointer to ruleset.
  */
-Ufo::Ufo(RuleUfo *rules)
-  : MovingTarget(), _rules(rules), _id(0), _crashId(0), _landId(0), _damage(0), _direction("STR_NORTH")
-  , _altitude("STR_HIGH_UC"), _status(FLYING), _secondsRemaining(0)
-  , _inBattlescape(false), _mission(0), _trajectory(0)
-  , _trajectoryPoint(0), _detected(false), _hyperDetected(false), _shootingAt(0), _hitFrame(0),
-  _stats()
+Ufo::Ufo(const RuleUfo *rules) : MovingTarget(),
+	_rules(rules), _id(0), _crashId(0), _landId(0), _damage(0), _direction("STR_NORTH"),
+	_altitude("STR_HIGH_UC"), _status(FLYING), _secondsRemaining(0),
+	_inBattlescape(false), _mission(0), _trajectory(0),
+	_trajectoryPoint(0), _detected(false), _hyperDetected(false),
+	_shootingAt(0), _hitFrame(0), _stats()
 {
 	_stats = rules->getStats();
 }
@@ -223,7 +223,7 @@ YAML::Node Ufo::saveId() const
  * Returns the ruleset for the UFO's type.
  * @return Pointer to ruleset.
  */
-RuleUfo *Ufo::getRules() const
+const RuleUfo *Ufo::getRules() const
 {
 	return _rules;
 }
@@ -713,7 +713,7 @@ int Ufo::getHitFrame()
 }
 
 /// Gets the UFO's stats.
-const RuleUfoStats& Ufo::getCraftStats() const
+const RuleUfoStats& Ufo::getUfoStats() const
 {
 	return _stats;
 }

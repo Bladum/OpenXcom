@@ -47,12 +47,13 @@ namespace OpenXcom
  * @param item Item involved in the explosion (eg grenade).
  * @param unit Unit involved in the explosion (eg unit throwing the grenade).
  * @param tile Tile the explosion is on.
+ * @param range Distance between weapon and target.
  * @param lowerWeapon Whether the unit causing this explosion should now lower their weapon.
  */
-ExplosionBState::ExplosionBState(BattlescapeGame *parent, Position center, BattleItem *item, BattleUnit *unit, Tile *tile, bool lowerWeapon) : BattleState(parent), 
-		_unit(unit), _center(center), _item(item), _damageType(), 
-		_tile(tile), _power(0), _radius(6), _areaOfEffect(false), 
-		_lowerWeapon(lowerWeapon), _pistolWhip(false), _hit(false)
+ExplosionBState::ExplosionBState(BattlescapeGame *parent, Position center, BattleItem *item, BattleUnit *unit, Tile *tile, bool lowerWeapon, int range) : 
+			BattleState(parent), _unit(unit), _center(center), _item(item), _damageType(),
+			_tile(tile), _power(0), _radius(6), _range(range), _areaOfEffect(false), 
+			_lowerWeapon(lowerWeapon), _pistolWhip(false), _hit(false)
 {
 
 }
@@ -72,45 +73,79 @@ ExplosionBState::~ExplosionBState()
  */
 void ExplosionBState::init()
 {
+	BattleType type = BT_NONE;
+	BattleActionType action = BA_NONE;
+
 	if (_item)
 	{
+		type = _item->getRules()->getBattleType();
+		action = _parent->getCurrentAction()->type;
 		_power = _item->getRules()->getPower();
 		_damageType = _item->getRules()->getDamageType();
 		_radius = _item->getRules()->getExplosionRadius();
+
+		_damageType = _item->getRules()->getDamageType();
+		_radius = _item->getRules()->getExplosionRadius();
 		// getCurrentAction() only works for player actions: aliens cannot melee attack with rifle butts.
-		_pistolWhip = (_item->getRules()->getBattleType() != BT_MELEE &&
-			_parent->getCurrentAction()->type == BA_HIT);
+		_pistolWhip = (type != BT_MELEE && action == BA_HIT);
 		if (_pistolWhip)
 		{
 			_power = _item->getRules()->getMeleePower();
 			_damageType = _parent->getRuleset()->getDamageType(DT_MELEE);
 			_radius = 0;
 		}
-		// since melee aliens don't use a conventional weapon type, we use their strength instead.
 		if (_item->getRules()->isStrengthApplied())
+ 		{
+			// since melee aliens don't use a conventional weapon type, we use their strength instead.
+			_power += _unit->getBaseStats()->strength;		
+ 		}
+		//TODO
+		_power -= _item->getRules()->getPowerRangeReduction() * _range;
+
+		if (type == BT_PSIAMP)
 		{
-			_power += _unit->getBaseStats()->strength;
+			if (!_parent->psiAttack(_parent->getCurrentAction()) || action != BA_USE)
+			{
+				_power = 0;
+			}
 		}
 
-		_areaOfEffect = _item->getRules()->getBattleType() != BT_MELEE &&
-						_item->getRules()->getExplosionRadius() != 0 &&
-						!_pistolWhip;
+		_areaOfEffect = type != BT_MELEE &&
+ 						_item->getRules()->getExplosionRadius() != 0 &&
+						(type != BT_PSIAMP || action == BA_USE) &&
+ 						!_pistolWhip;
 	}
 	else if (_tile)
 	{
-		_power = _tile->getExplosive();
-		_areaOfEffect = true;
-		_tile->setExplosive(0, true);
-		_damageType = _parent->getRuleset()->getDamageType(DT_HE);
+		ItemDamageType DT;
+		switch (_tile->getExplosiveType())
+		{
+		case 0:
+			DT = DT_HE;
+			break;
+		case 5:
+			DT = DT_IN;
+			break;
+		case 6:
+			DT = DT_STUN;
+			break;
+		default:
+			DT = DT_SMOKE;
+			break;
+		}
+ 		_power = _tile->getExplosive();
+		_tile->setExplosive(0, 0, true);
+		_damageType = _parent->getRuleset()->getDamageType(DT);
 		_radius = _power /10;
+ 		_areaOfEffect = true;
 	}
 	else if (_unit && (_unit->getSpecialAbility() == SPECAB_EXPLODEONDEATH || _unit->getSpecialAbility() == SPECAB_BURN_AND_EXPLODE))
 	{
 		RuleItem* corpse = _parent->getRuleset()->getItem(_unit->getArmor()->getCorpseGeoscape());
 		_power = corpse->getPower();
 		_damageType = corpse->getDamageType();
-		_radius = corpse->getExplosionRadius();		
-		_areaOfEffect = true;
+		_radius = corpse->getExplosionRadius();
+ 		_areaOfEffect = true;
 	}
 	else
 	{
@@ -122,7 +157,7 @@ void ExplosionBState::init()
 	Tile *t = _parent->getSave()->getTile(_center.toTile());
 	if (_areaOfEffect)
 	{
-		if (_power)
+		if (_power > 0)
 		{
 			int frame = ResourcePack::EXPLOSION_OFFSET;
 			if (_item)
@@ -167,8 +202,8 @@ void ExplosionBState::init()
 	// create a bullet hit
 	{
 		_parent->setStateInterval(std::max(1, ((BattlescapeState::DEFAULT_ANIM_SPEED/2) - (10 * _item->getRules()->getExplosionSpeed()))));
-		_hit = _pistolWhip || _item->getRules()->getBattleType() == BT_MELEE;
-		bool psi = _item->getRules()->getBattleType() == BT_PSIAMP;
+		_hit = _pistolWhip || type == BT_MELEE;
+		bool psi = type == BT_PSIAMP && action != BA_USE;
 		int anim = _item->getRules()->getHitAnimation();
 		int sound = _item->getRules()->getHitSound();
 		if (_hit || psi) // Play melee animation on hitting and psiing
@@ -275,7 +310,7 @@ void ExplosionBState::explode()
 		// check if this unit turns others into zombies
 		if (!_item->getRules()->getZombieUnit().empty()
 			&& victim
-			&& victim->getArmor()->getSize() == 1
+			&& victim->getArmor()->getZombiImmune() == false
 			&& victim->getSpawnUnit().empty()
 			&& victim->getOriginalFaction() != FACTION_HOSTILE)
 		{

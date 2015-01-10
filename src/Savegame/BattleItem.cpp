@@ -37,9 +37,9 @@ BattleItem::BattleItem(RuleItem *rules, int *id) : _id(*id), _rules(rules), _own
 		setAmmoQuantity(_rules->getClipSize());
 	} else if (_rules && _rules->getBattleType() == BT_MEDIKIT)
 	{
-		setHealQuantity (_rules->getHealQuantity());
-		setPainKillerQuantity (_rules->getPainKillerQuantity());
-		setStimulantQuantity (_rules->getStimulantQuantity());
+		setHealQuantity(_rules->getHealQuantity());
+		setPainKillerQuantity(_rules->getPainKillerQuantity());
+		setStimulantQuantity(_rules->getStimulantQuantity());
 	}
 	(*id)++;
 

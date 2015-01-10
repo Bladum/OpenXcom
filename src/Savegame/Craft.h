@@ -23,11 +23,11 @@
 #include <vector>
 #include <string>
 #include "CraftId.h"
+#include "../Ruleset/RuleCraft.h"
 
 namespace OpenXcom
 {
 
-class RuleCraft;
 class Base;
 class Soldier;
 class CraftWeapon;
@@ -54,6 +54,7 @@ private:
 	std::string _status;
 	bool _lowFuel, _mission, _inBattlescape, _inDogfight;
 	std::wstring _name;
+	RuleCraftStats _stats;
 public:
 	/// Creates a craft of the specified type.
 	Craft(RuleCraft *rules, Base *base, int id = 0);
@@ -171,6 +172,17 @@ public:
 	int getInterceptionOrder() const;
 	/// Gets the craft's unique id.
 	CraftId getUniqueId() const;
+
+	/// Update the craft's stats.
+	void addCraftStats(const RuleCraftStats& s);
+	/// Gets the craft's stats.
+	const RuleCraftStats& getCraftStats() const;
+	/// Gets the craft's max amount of fuel.
+	int getFuelMax() const;
+	/// Gets the craft's max amount of damage.
+	int getDamageMax() const;
+	/// Checks if a target is inside the craft's radar range.
+	bool insideRadarRange(Target *target) const;
 };
 
 }

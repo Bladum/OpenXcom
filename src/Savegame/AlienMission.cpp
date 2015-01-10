@@ -227,7 +227,7 @@ Ufo *AlienMission::spawnUfo(const SavedGame &game, const Ruleset &ruleset, const
 			// Spawn a battleship straight for the XCOM base.
 			const RuleUfo &battleshipRule = *ruleset.getUfo("STR_BATTLESHIP");
 			const UfoTrajectory &assaultTrajectory = *ruleset.getUfoTrajectory("__RETALIATION_ASSAULT_RUN");
-			Ufo *ufo = new Ufo(const_cast<RuleUfo*>(&battleshipRule));
+			Ufo *ufo = new Ufo(&battleshipRule);
 			ufo->setMissionInfo(this, &assaultTrajectory);
 			std::pair<double, double> pos;
 			if (trajectory.getAltitude(0) == "STR_GROUND")
@@ -239,7 +239,7 @@ Ufo *AlienMission::spawnUfo(const SavedGame &game, const Ruleset &ruleset, const
 				pos = regionRules.getRandomPoint(trajectory.getZone(0));
 			}
 			ufo->setAltitude(assaultTrajectory.getAltitude(0));
-			ufo->setSpeed(assaultTrajectory.getSpeedPercentage(0) * battleshipRule.getMaxSpeed());
+			ufo->setSpeed(assaultTrajectory.getSpeedPercentage(0) * ufo->getUfoStats().speedMax);
 			ufo->setLongitude(pos.first);
 			ufo->setLatitude(pos.second);
 			Waypoint *wp = new Waypoint();
@@ -257,7 +257,7 @@ Ufo *AlienMission::spawnUfo(const SavedGame &game, const Ruleset &ruleset, const
 			return 0;
 		}
 		// Our destination is always an alien base.
-		Ufo *ufo = new Ufo(const_cast<RuleUfo*>(&ufoRule));
+		Ufo *ufo = new Ufo(&ufoRule);
 		ufo->setMissionInfo(this, &trajectory);
 		const RuleRegion &regionRules = *ruleset.getRegion(_region);
 		std::pair<double, double> pos;
@@ -270,7 +270,7 @@ Ufo *AlienMission::spawnUfo(const SavedGame &game, const Ruleset &ruleset, const
 			pos = regionRules.getRandomPoint(trajectory.getZone(0));
 		}
 		ufo->setAltitude(trajectory.getAltitude(0));
-		ufo->setSpeed(trajectory.getSpeedPercentage(0) * ufoRule.getMaxSpeed());
+		ufo->setSpeed(trajectory.getSpeedPercentage(0) * ufo->getUfoStats().speedMax);
 		ufo->setLongitude(pos.first);
 		ufo->setLatitude(pos.second);
 		Waypoint *wp = new Waypoint();
@@ -298,7 +298,7 @@ Ufo *AlienMission::spawnUfo(const SavedGame &game, const Ruleset &ruleset, const
 		return ufo;
 	}
 	// Spawn according to sequence.
-	Ufo *ufo = new Ufo(const_cast<RuleUfo*>(&ufoRule));
+	Ufo *ufo = new Ufo(&ufoRule);
 	ufo->setMissionInfo(this, &trajectory);
 	const RuleRegion &regionRules = *ruleset.getRegion(_region);
 	std::pair<double, double> pos = getWaypoint(trajectory, 0, globe, regionRules);
@@ -307,7 +307,7 @@ Ufo *AlienMission::spawnUfo(const SavedGame &game, const Ruleset &ruleset, const
 	{
 		ufo->setSecondsRemaining(trajectory.groundTimer()*5);
 	}
-	ufo->setSpeed(trajectory.getSpeedPercentage(0) * ufoRule.getMaxSpeed());
+	ufo->setSpeed(trajectory.getSpeedPercentage(0) * ufo->getUfoStats().speedMax);
 	ufo->setLongitude(pos.first);
 	ufo->setLatitude(pos.second);
 	Waypoint *wp = new Waypoint();
@@ -402,7 +402,7 @@ void AlienMission::ufoReachedWaypoint(Ufo &ufo, Game &engine, const Globe &globe
 			ufo.setLandId(0);
 		}
 		// Set next waypoint.
-		ufo.setSpeed((int)(ufo.getRules()->getMaxSpeed() * trajectory.getSpeedPercentage(nextWaypoint)));
+		ufo.setSpeed((int)(ufo.getUfoStats().speedMax * trajectory.getSpeedPercentage(nextWaypoint)));
 	}
 	else
 	{
@@ -532,7 +532,7 @@ void AlienMission::ufoLifting(Ufo &ufo, Game &engine, const Globe &globe)
 				addScore(ufo.getLongitude(), ufo.getLatitude(), engine);
 			}
 			ufo.setAltitude("STR_VERY_LOW");
-			ufo.setSpeed((int)(ufo.getRules()->getMaxSpeed() * ufo.getTrajectory().getSpeedPercentage(ufo.getTrajectoryPoint())));
+			ufo.setSpeed((int)(ufo.getUfoStats().speedMax * ufo.getTrajectory().getSpeedPercentage(ufo.getTrajectoryPoint())));
 		}
 		break;
 	case Ufo::CRASHED:

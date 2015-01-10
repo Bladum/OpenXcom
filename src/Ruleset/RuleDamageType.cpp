@@ -27,19 +27,18 @@ namespace OpenXcom
  * Default constructor
  */
 RuleDamageType::RuleDamageType() :
-	FixRadius(0), RandomType(DRT_DEFAULT), ResistType(DT_AP), FireBlastCalc(false), 
-	IgnoreDirection(false), IgnoreSelfDestruct(false), IgnorePainImmunity(false), ArmorEffectiveness(1.0f), RadiusEffectiveness(0.0f),
-	ToHealth(1.0f), ToArmor(0.1f), ToWound(1.0f), ToItem(0.0f), ToTile(0.5f), ToStun(0.25f),
-	FireThreshold(1000), SmokeThreshold(1000), IgnoreNormalMoraleLose(false), 
-	ToEnergy(0.0f), ToTime(0.0f), ToMorale(0.0f)
+	FixRadius(0), RandomType(DRT_DEFAULT), ResistType(DT_NONE), FireBlastCalc(false),
+	IgnoreDirection(false), IgnoreSelfDestruct(false), IgnorePainImmunity(false), IgnoreNormalMoraleLose(false),
+	ArmorEffectiveness(1.0f), RadiusEffectiveness(0.0f),
+	FireThreshold(1000), SmokeThreshold(1000),
+	ToHealth(1.0f), ToArmor(0.1f), ToWound(1.0f), ToItem(0.0f), ToTile(0.5f), ToStun(0.25f), ToEnergy(0.0f), ToTime(0.0f), ToMorale(0.0f)
 {
 
 }
-
 /**
  * Function converting power to damage.
  * @param power Input power.
- * return Random damage based on power.
+ * @return Random damage based on power.
  */
 int RuleDamageType::getRandomDamage(int power) const
 {
@@ -49,6 +48,7 @@ int RuleDamageType::getRandomDamage(int power) const
 	{
 		switch (ResistType)
 		{
+		case DT_NONE: randType = DRT_NONE; break;
 		case DT_IN: randType = DRT_FIRE; break;
 		case DT_HE: randType = DRT_TFTD; break;
 		case DT_SMOKE: randType = DRT_NONE; break;
@@ -56,7 +56,7 @@ int RuleDamageType::getRandomDamage(int power) const
 		}
 	}
 
-	switch(randType)
+	switch (randType)
 	{
 	case DRT_UFO: dmgRng = 100; break;
 	case DRT_TFTD: dmgRng = 50; break;
@@ -91,13 +91,15 @@ void RuleDamageType::load(const YAML::Node& node)
 	ResistType = (ItemDamageType)node["ResistType"].as<int>(ResistType);
 	FireBlastCalc = node["FireBlastCalc"].as<bool>(FireBlastCalc);
 	IgnoreDirection = node["IgnoreDirection"].as<bool>(IgnoreDirection);
-	ArmorEffectiveness = node["ArmorEffectiveness"].as<float>(ArmorEffectiveness);
-	RadiusEffectiveness = node["RadiusEffectiveness"].as<float>(RadiusEffectiveness);
 	IgnoreSelfDestruct = node["IgnoreSelfDestruct"].as<bool>(IgnoreSelfDestruct);
 	IgnorePainImmunity = node["IgnorePainImmunity"].as<bool>(IgnorePainImmunity);
+	IgnoreNormalMoraleLose = node["IgnoreNormalMoraleLose"].as<bool>(IgnoreNormalMoraleLose);
+	ArmorEffectiveness = node["ArmorEffectiveness"].as<float>(ArmorEffectiveness);
+	RadiusEffectiveness = node["RadiusEffectiveness"].as<float>(RadiusEffectiveness);
+
 	FireThreshold = node["FireThreshold"].as<float>(FireThreshold);
 	SmokeThreshold = node["SmokeThreshold"].as<float>(SmokeThreshold);
-	IgnoreNormalMoraleLose = node["IgnoreNormalMoraleLose"].as<bool>(IgnoreNormalMoraleLose);
+
 	ToHealth = node["ToHealth"].as<float>(ToHealth);
 	ToArmor = node["ToArmor"].as<float>(ToArmor);
 	ToWound = node["ToWound"].as<float>(ToWound);

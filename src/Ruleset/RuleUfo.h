@@ -88,8 +88,7 @@ struct RuleUfoStats
 	{
 		damageMax = node["damageMax"].as<int>(damageMax);
 		speedMax = node["speedMax"].as<int>(speedMax);
-		accel = node["accel"].as<int>(accel);
-		sightRange = node["sightRange"].as<int>(sightRange);
+		accel = node["accel"].as<int>(accel);		
 		power = node["power"].as<int>(power);
 		range = node["range"].as<int>(range);
 		reload = node["reload"].as<int>(reload);
@@ -98,7 +97,7 @@ struct RuleUfoStats
 		hitBonus = node["hitBonus"].as<int>(hitBonus);		
 		radarRange = node["radarRange"].as<int>(radarRange);
 		radarChance = node["radarChance"].as<int>(radarChance);
-		
+		sightRange = node["sightRange"].as<int>(sightRange);
 	}
 };
 
@@ -149,7 +148,7 @@ public:
 	/// Gets the UFO's score.
 	int getScore() const;
 	/// Sets the battlescape terrain data ruleset for this UFO
-	RuleTerrain *getBattlescapeTerrainData();
+	RuleTerrain *getBattlescapeTerrainData()  const;
 	/// Gets the reload time of the UFO's weapon.
 	int getWeaponReload() const;
 	/// Gets the UFO's escape time.

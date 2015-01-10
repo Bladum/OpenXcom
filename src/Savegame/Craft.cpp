@@ -21,6 +21,7 @@
 #include <cmath>
 #include <sstream>
 #include "../Engine/Language.h"
+#include "../Engine/RNG.h"
 #include "../Ruleset/RuleCraft.h"
 #include "CraftWeapon.h"
 #include "../Ruleset/RuleCraftWeapon.h"
@@ -46,14 +47,19 @@ namespace OpenXcom
  * @param base Pointer to base of origin.
  * @param id ID to assign to the craft (0 to not assign).
  */
-Craft::Craft(RuleCraft *rules, Base *base, int id) : MovingTarget(), _rules(rules), _base(base), _id(0), _fuel(0), _damage(0), _interceptionOrder(0), _takeoff(0), _status("STR_READY"), _lowFuel(false), _mission(false), _inBattlescape(false), _inDogfight(false)
+Craft::Craft(RuleCraft *rules, Base *base, int id) : 
+	MovingTarget(), _rules(rules), _base(base), _id(0), 
+		_fuel(0), _damage(0), _interceptionOrder(0), _takeoff(0), 
+		_status("STR_READY"), _lowFuel(false), _mission(false), 
+		_inBattlescape(false), _inDogfight(false), _stats()
 {
+	_stats = rules->getStats();
 	_items = new ItemContainer();
 	if (id != 0)
 	{
 		_id = id;
 	}
-	for (unsigned int i = 0; i < _rules->getWeapons(); ++i)
+	for (int i = 0; i < _rules->getWeapons(); ++i)
 	{
 		_weapons.push_back(0);
 	}
@@ -92,17 +98,19 @@ void Craft::load(const YAML::Node &node, const Ruleset *rule, SavedGame *save)
 	_fuel = node["fuel"].as<int>(_fuel);
 	_damage = node["damage"].as<int>(_damage);
 
-	size_t j = 0;
+	int j = 0;
 	for (YAML::const_iterator i = node["weapons"].begin(); i != node["weapons"].end(); ++i)
 	{
 		if (_rules->getWeapons() > j)
 		{
 			std::string type = (*i)["type"].as<std::string>();
-			if (type != "0" && rule->getCraftWeapon(type))
+			RuleCraftWeapon* weapon = rule->getCraftWeapon(type);
+			if (type != "0" && weapon)
 			{
-				CraftWeapon *w = new CraftWeapon(rule->getCraftWeapon(type), 0);
+				CraftWeapon *w = new CraftWeapon(weapon, 0);
 				w->load(*i);
 				_weapons[j] = w;
+				_stats += weapon->getBonusStats();
 			}
 			else
 			{
@@ -287,7 +295,7 @@ void Craft::changeRules(RuleCraft *rules)
 {
 	_rules = rules;
 	_weapons.clear();
-	for (unsigned int i = 0; i < _rules->getWeapons(); ++i)
+	for (int i = 0; i < _rules->getWeapons(); ++i)
 	{
 		_weapons.push_back(0);
 	}
@@ -526,9 +534,9 @@ int Craft::getFuel() const
 void Craft::setFuel(int fuel)
 {
 	_fuel = fuel;
-	if (_fuel > _rules->getMaxFuel())
+	if (_fuel > _stats.fuelMax)
 	{
-		_fuel = _rules->getMaxFuel();
+		_fuel = _stats.fuelMax;
 	}
 	else if (_fuel < 0)
 	{
@@ -543,7 +551,16 @@ void Craft::setFuel(int fuel)
  */
 int Craft::getFuelPercentage() const
 {
-	return (int)floor((double)_fuel / _rules->getMaxFuel() * 100.0);
+	return (int)floor((double)_fuel / _stats.fuelMax * 100.0);
+}
+
+/**
+ * Return current max amount of damage this craft can take.
+ * @return Max amount of damage.
+ */
+int Craft::getDamageMax() const
+{
+	return _stats.damageMax;
 }
 
 /**
@@ -552,7 +569,7 @@ int Craft::getFuelPercentage() const
  */
 int Craft::getDamage() const
 {
-	return _damage;
+	return (int)floor((double)_damage / _stats.damageMax * 100);
 }
 
 /**
@@ -725,9 +742,13 @@ void Craft::checkup()
 	{
 		_status = "STR_REARMING";
 	}
-	else
+	else if (_fuel < _stats.fuelMax)
 	{
 		_status = "STR_REFUELLING";
+	}
+	else
+	{
+		_status = "STR_READY";
 	}
 }
 
@@ -739,8 +760,26 @@ void Craft::checkup()
  */
 bool Craft::detect(Target *target) const
 {
-	if (_rules->getRadarRange() == 0)
+	if (_rules->getRadarRange() == 0 || !insideRadarRange(target))
 		return false;
+	
+	// backward compatibility with vanilla
+	if (_rules->getRadarChance() == 100)
+		return true;
+
+	Ufo *u = dynamic_cast<Ufo*>(target);
+	int chance = _rules->getRadarChance() * (100 + u->getVisibility()) / 100;
+	return RNG::percent(chance);
+}
+
+/**
+ * Returns if a certain target is inside the craft's
+ * radar range, taking in account the positions of both.
+ * @param target Pointer to target to compare.
+ * @return True if inside radar range.
+ */
+bool Craft::insideRadarRange(Target *target) const
+{
 	double range = _rules->getRadarRange() * (1 / 60.0) * (M_PI / 180);
 	return (getDistance(target) <= range);
 }
@@ -774,7 +813,7 @@ void Craft::repair()
 void Craft::refuel()
 {
 	setFuel(_fuel + _rules->getRefuelRate());
-	if (_fuel >= _rules->getMaxFuel())
+	if (_fuel >= _stats.fuelMax)
 	{
 		_status = "STR_READY";
 		for (std::vector<CraftWeapon*>::iterator i = _weapons.begin(); i != _weapons.end(); ++i)
@@ -855,8 +894,8 @@ void Craft::setInBattlescape(bool inbattle)
 	_inBattlescape = inbattle;
 }
 
-/// Returns the craft destroyed status.
 /**
+ * Returns the craft destroyed status.
  * If the amount of damage the craft take
  * is more than it's health it will be
  * destroyed.
@@ -955,5 +994,35 @@ CraftId Craft::getUniqueId() const
 {
 	return std::make_pair(_rules->getType(), _id);
 }
+
+ /**
+ * Update stats of craft.
+ * @param s
+ */
+void Craft::addCraftStats(const RuleCraftStats& s)
+{
+	setDamage(_damage + s.damageMax); //you need "fix" new damage capability first before use.
+	_stats += s;
+	setFuel(_fuel); //it will split some fuel if you have to much.
+}
+
+/**
+ * Gets all basic stats of craft.
+ * @return Stats of craft
+ */
+const RuleCraftStats& Craft::getCraftStats() const
+{
+	return _stats;
+}
+
+/**
+ * Returns current max amount of fuel that craft can carry.
+ * @return Max amount of fuel.
+ */
+int Craft::getFuelMax() const
+{
+	return _stats.fuelMax;
+}
+
 
 }

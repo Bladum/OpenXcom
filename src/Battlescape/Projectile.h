@@ -48,6 +48,7 @@ private:
 	Surface *_sprite;
 	int _speed;
 	int _bulletSprite;
+	float _distance;
 	bool _reversed;
 	int _vaporColor, _vaporDensity, _vaporProbability;
 	void applyAccuracy(const Position& origin, Position *target, double accuracy, bool keepRange, Tile *targetTile, bool extendLine);
@@ -81,6 +82,8 @@ public:
 	bool isReversed() const;
 	/// adds a cloud of particles at the projectile's location
 	void addVaporCloud();
+	/// Gets the distance that projectile traveled.
+	float getDistance() const;
 };
 
 }

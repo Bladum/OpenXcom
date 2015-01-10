@@ -60,8 +60,13 @@ const int TileEngine::heightFromCenter[11] = {0,-2,+2,-4,+4,-6,+6,-8,+8,-12,+12}
  * Sets up a TileEngine.
  * @param save Pointer to SavedBattleGame object.
  * @param voxelData List of voxel data.
+ * @param maxViewDistance Max view distance in tiles.
+ * @param maxDarknessToSeeUnits Threshold of darkness for LoS calculation.
  */
-TileEngine::TileEngine(SavedBattleGame *save, std::vector<Uint16> *voxelData) : _save(save), _voxelData(voxelData), _personalLighting(true)
+TileEngine::TileEngine(SavedBattleGame *save, std::vector<Uint16> *voxelData, int maxViewDistance, int maxDarknessToSeeUnits) :
+	_save(save), _voxelData(voxelData), _personalLighting(true),
+	_maxViewDistance(maxViewDistance), _maxViewDistanceSq(maxViewDistance * maxViewDistance),
+	_maxVoxelViewDistance(maxViewDistance * 16), _maxDarknessToSeeUnits(maxDarknessToSeeUnits)
 {
 }
 
@@ -266,12 +271,12 @@ bool TileEngine::calculateFOV(BattleUnit *unit)
 			++pos.z;
 		}
 	}
-	for (int x = 0; x <= MAX_VIEW_DISTANCE; ++x)
+	for (int x = 0; x <=  getMaxViewDistance(); ++x)
 	{
 		if (direction%2)
 		{
 			y1 = 0;
-			y2 = MAX_VIEW_DISTANCE;
+			y2 = getMaxViewDistance();
 		}
 		else
 		{
@@ -284,7 +289,7 @@ bool TileEngine::calculateFOV(BattleUnit *unit)
 			{
 				const int distanceSqr = x*x + y*y;
 				test.z = z;
-				if (distanceSqr <= MAX_VIEW_DISTANCE_SQR)
+				if (distanceSqr <=  getMaxViewDistanceSq())
 				{
 					test.x = center.x + signX[direction]*(swap?y:x);
 					test.y = center.y + signY[direction]*(swap?x:y);
@@ -404,24 +409,23 @@ bool TileEngine::visible(BattleUnit *currentUnit, Tile *tile)
 		return false;
 	}
 
-	// aliens can see in the dark, xcom can see at a distance of 9 or less, further if there's enough light.
-	if (currentUnit->getFaction() == FACTION_PLAYER &&
-		distance(currentUnit->getPosition(), tile->getPosition()) > 9 &&
-		tile->getShade() > MAX_DARKNESS_TO_SEE_UNITS)
+	// friendlies are always seen
+	if (currentUnit->getFaction() == tile->getUnit()->getFaction()) return true;
+
+	// aliens can see in the dark at least 20 tiles, xcom can see at a distance of 9 (MaxViewDistanceAtDark) or less, further if there's enough light.
+	if (getMaxViewDistanceSq() > currentUnit->getMaxViewDistanceAtDarkSq() &&
+		distanceSq(currentUnit->getPosition(), tile->getPosition(), false) > currentUnit->getMaxViewDistanceAtDarkSq() &&
+		tile->getExternalShade() > getMaxDarknessToSeeUnits() &&
+		tile->getUnit()->getFire() == 0)
 	{
 		return false;
 	}
 
-	if (currentUnit->getFaction() == tile->getUnit()->getFaction()) return true; // friendlies are always seen
-
 	Position originVoxel = getSightOriginVoxel(currentUnit);
-
-	bool unitSeen = false;
-	// for large units origin voxel is in the middle
 
 	Position scanVoxel;
 	std::vector<Position> _trajectory;
-	unitSeen = canTargetUnit(&originVoxel, tile, &scanVoxel, currentUnit);
+	bool unitSeen = canTargetUnit(&originVoxel, tile, &scanVoxel, currentUnit);
 
 	if (unitSeen)
 	{
@@ -432,25 +436,34 @@ bool TileEngine::visible(BattleUnit *currentUnit, Tile *tile)
 		// this is traced in voxel space, with smoke affecting visibility every step of the way
 		_trajectory.clear();
 		calculateLine(originVoxel, scanVoxel, true, &_trajectory, currentUnit);
-		Tile *t = _save->getTile(currentUnit->getPosition());
 		int visibleDistance = _trajectory.size();
-		for (size_t i = 0; i < _trajectory.size(); i++)
+		int densityOfSmoke = 0;
+		Position voxelToTile(16, 16, 24);
+		Position trackTile(-1, -1, -1);
+		Tile *t = 0;
+
+		for (int i = 0; i < visibleDistance; i++)
 		{
-			if (t != _save->getTile(Position(_trajectory.at(i).x/16,_trajectory.at(i).y/16, _trajectory.at(i).z/24)))
+			_trajectory.at(i) /= voxelToTile;
+			if (trackTile != _trajectory.at(i))
 			{
-				t = _save->getTile(Position(_trajectory.at(i).x/16,_trajectory.at(i).y/16, _trajectory.at(i).z/24));
+				// 3  - coefficient of calculation (see above).
+				// 20 - maximum view distance in vanilla Xcom.
+				// Even if MaxViewDistance will be increased via ruleset, smoke will keep effect.
+				if (visibleDistance > getMaxVoxelViewDistance() - densityOfSmoke * getMaxViewDistance()/(3 * 20))
+				{
+					return false;
+				}
+				trackTile = _trajectory.at(i);
+				t = _save->getTile(trackTile);
 			}
 			if (t->getFire() == 0)
 			{
-				visibleDistance += t->getSmoke() / 3;
-			}
-			if (visibleDistance > MAX_VOXEL_VIEW_DISTANCE)
-			{
-				unitSeen = false;
-				break;
+				densityOfSmoke += t->getSmoke();
 			}
 		}
-	}
+		unitSeen = visibleDistance <= getMaxVoxelViewDistance() - densityOfSmoke * getMaxViewDistance()/(3 * 20);
+ 	}
 	return unitSeen;
 }
 
@@ -770,7 +783,7 @@ void TileEngine::calculateFOV(const Position &position)
 {
 	for (std::vector<BattleUnit*>::iterator i = _save->getUnits()->begin(); i != _save->getUnits()->end(); ++i)
 	{
-		if (distanceSq(position, (*i)->getPosition()) <= MAX_VIEW_DISTANCE_SQR)
+		if (distanceSq(position, (*i)->getPosition(), false) < getMaxViewDistanceSq())
 		{
 			calculateFOV(*i);
 		}
@@ -840,13 +853,13 @@ std::vector<BattleUnit *> TileEngine::getSpottingUnits(BattleUnit* unit)
 			// not dead/unconscious
 		if (!(*i)->isOut() &&
 			// not dying
-			(*i)->getHealth() != 0 &&
+			(*i)->getHealth() > 0 &&
 			// not about to pass out
 			(*i)->getStunlevel() < (*i)->getHealth() &&
 			// not a friend
 			(*i)->getFaction() != _save->getSide() &&
 			// closer than 20 tiles
-			distanceSq(unit->getPosition(), (*i)->getPosition()) <= MAX_VIEW_DISTANCE_SQR)
+			distanceSq(unit->getPosition(), (*i)->getPosition(), false) <= getMaxViewDistanceSq())
 		{
 			Position originVoxel = _save->getTileEngine()->getSightOriginVoxel(*i);
 			originVoxel.z -= 2;
@@ -966,7 +979,7 @@ bool TileEngine::tryReactionSnap(BattleUnit *unit, BattleUnit *target)
 		action.type = BA_HIT;
 	}
 	action.target = target->getPosition();
-	action.TU = unit->getActionTUs(action.type, action.weapon);
+	action.updateTU();
 
 	if (action.weapon->getAmmoItem() && action.weapon->getAmmoItem()->getAmmoQuantity() && unit->getTimeUnits() >= action.TU)
 	{
@@ -1261,44 +1274,59 @@ void TileEngine::explode(const Position &center, int power, const RuleDamageType
  					{
 						const int damage  = type->getRandomDamage(power_);
  						BattleUnit *bu = dest->getUnit();
-
-						if (distance(dest->getPosition(), Position(centerX, centerY, centerZ)) < 2)
- 						{
-							// ground zero effect is in effect
-							hitUnit(unit, bu, Position(0, 0, 0), damage , type);
- 						}
-						else
- 						{
-							// directional damage relative to explosion position.
-							// units above the explosion will be hit in the legs, units lateral to or below will be hit in the torso
-							hitUnit(unit, bu, Position(centerX, centerY, centerZ + 5) - dest->getPosition(), damage , type);
-						}
- 
-						// Affect all items and units in inventory
 						toRemove.clear();
+						if (bu)
+						{
+							if (distance(dest->getPosition(), Position(centerX, centerY, centerZ)) < 2)
+ 							{
+								// ground zero effect is in effect
+								hitUnit(unit, bu, Position(0, 0, 0), damage , type);
+ 							}
+							else
+ 							{
+								// directional damage relative to explosion position.
+								// units above the explosion will be hit in the legs, units lateral to or below will be hit in the torso
+								hitUnit(unit, bu, Position(centerX, centerY, centerZ + 5) - dest->getPosition(), damage , type);
+							}
+ 
+							// Affect all items and units in inventory						
+							for (std::vector<BattleItem*>::iterator it = dest->getInventory()->begin(); it != dest->getInventory()->end(); ++it)
+							{
+								if((*it)->getUnit())
+ 								{
+									if(hitUnit(unit, (*it)->getUnit(), Position(0, 0, 0), damage , type))
+									{
+										continue;
+									}
+									else
+									{
+										(*it)->getUnit()->instaKill();
+									}
+ 								}
+								if (power_ * type->ToItem > (*it)->getRules()->getArmor())
+ 								{
+									toRemove.push_back(*it);
+ 								}
+ 							}
+						}
+
+						// Affect all items and units on ground
 						for (std::vector<BattleItem*>::iterator it = dest->getInventory()->begin(); it != dest->getInventory()->end(); ++it)
 						{
-							if((*it)->getUnit())
+							if (!hitUnit(unit, (*it)->getUnit(), Position(0, 0, 0), damage, type) && damage * type->ToItem > (*it)->getRules()->getArmor())
  							{
-								if(hitUnit(unit, (*it)->getUnit(), Position(0, 0, 0), damage , type))
-								{
-									continue;
-								}
-								else
-								{
-									(*it)->getUnit()->instaKill();
-								}
- 							}
-							if (power_ * type->ToItem > (*it)->getRules()->getArmor())
- 							{
+								bu->killedBy(unit->getFaction());
 								toRemove.push_back(*it);
  							}
  						}
+
+						// remove all items to remove
 						for (std::vector<BattleItem*>::iterator it = toRemove.begin(); it != toRemove.end(); ++it)
  						{
 							_save->removeItem((*it));
  						}
- 
+
+						// hit tile
 						hitTile(dest, damage, type);
  					}
  				}
@@ -2463,8 +2491,13 @@ int TileEngine::distanceSq(const Position &pos1, const Position &pos2, bool cons
 {
 	int x = pos1.x - pos2.x;
 	int y = pos1.y - pos2.y;
-	int z = considerZ ? (pos1.z - pos2.z) : 0;
-	return x*x + y*y + z*z;
+	int sq = x*x + y*y;
+	if (considerZ)
+	{
+		int z = pos1.z - pos2.z;
+		sq += z*z;
+	}
+	return sq;
 }
 
 /**
@@ -2474,14 +2507,19 @@ int TileEngine::distanceSq(const Position &pos1, const Position &pos2, bool cons
  */
 bool TileEngine::psiAttack(BattleAction *action)
 {
+	RuleItem *item = action->weapon->getRules();
 	BattleUnit *victim = _save->getTile(action->target)->getUnit();
 	if (!victim)
 		return false;
+
 	double attackStrength = action->actor->getBaseStats()->psiStrength * action->actor->getBaseStats()->psiSkill / 50.0;
 	double defenseStrength = victim->getBaseStats()->psiStrength
 		+ ((victim->getBaseStats()->psiSkill > 0) ? 10.0 + victim->getBaseStats()->psiSkill / 5.0 : 10.0);
-	double d = distance(action->actor->getPosition(), action->target);
-	attackStrength -= d;
+
+	Position p = action->actor->getPosition().toVexel() - action->target.toVexel();
+	p *= p;
+	attackStrength -= sqrt(float(p.x + p.y + p.z)) * item->getPowerRangeReduction();
+
 	attackStrength += RNG::generate(0,55);
 
 	if (action->type == BA_MINDCONTROL)
@@ -2573,7 +2611,7 @@ Tile *TileEngine::applyGravity(Tile *t)
 		}
 		if (unitpos != occupant->getPosition())
 		{
-			if (occupant->getHealth() != 0 && occupant->getStunlevel() < occupant->getHealth())
+			if (occupant->getHealth() > 0 && occupant->getStunlevel() < occupant->getHealth())
 			{
 				if (occupant->getMovementType() == MT_FLY)
 				{

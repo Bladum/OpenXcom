@@ -53,7 +53,7 @@ namespace OpenXcom
  * @param targetVoxel Position the projectile is targeting.
  * @param ammo the ammo that produced this projectile, where applicable.
  */
-Projectile::Projectile(ResourcePack *res, SavedBattleGame *save, BattleAction action, Position origin, Position targetVoxel, BattleItem *ammo) : _res(res), _save(save), _action(action), _origin(origin), _targetVoxel(targetVoxel), _position(0), _bulletSprite(-1), _reversed(false), _vaporColor(-1), _vaporDensity(-1), _vaporProbability(5)
+Projectile::Projectile(ResourcePack *res, SavedBattleGame *save, BattleAction action, Position origin, Position targetVoxel, BattleItem *ammo) : _res(res), _save(save), _action(action), _origin(origin), _targetVoxel(targetVoxel), _position(0), _distance(0.0f), _bulletSprite(-1), _reversed(false), _vaporColor(-1), _vaporDensity(-1), _vaporProbability(5)
 {
 	// this is the number of pixels the sprite will move between frames
 	_speed = Options::battleFireSpeed;
@@ -129,6 +129,7 @@ int Projectile::calculateTrajectory(double accuracy, Position originVoxel)
 	Tile *targetTile = _save->getTile(_action.target);
 	BattleUnit *bu = _action.actor;
 	
+	_distance = 0.0f;
 	int test = _save->getTileEngine()->calculateLine(originVoxel, _targetVoxel, false, &_trajectory, bu);
 	if (test != V_EMPTY &&
 		!_trajectory.empty() &&
@@ -229,6 +230,7 @@ int Projectile::calculateThrow(double accuracy)
 		}
 	}
 
+	_distance = 0.0f;
 	double curvature = 0.0;
 	int retVal = V_OUTOFBOUNDS;
 	if (_save->getTileEngine()->validateThrow(_action, originVoxel, targetVoxel, &curvature, &retVal))
@@ -364,6 +366,12 @@ bool Projectile::move()
 			_position--;
 			return false;
 		}
+		else if (_position > 0)
+		{
+			Position p = _trajectory[_position] - _trajectory[_position - 1];
+			p *= p;
+			_distance += sqrt(float(p.x + p.y + p.z));
+		}
 		if (_save->getDepth() > 0 && _vaporColor != -1 && _action.type != BA_THROW && RNG::percent(_vaporProbability))
 		{
 			addVaporCloud();
@@ -479,4 +487,15 @@ void Projectile::addVaporCloud()
 		}
 	}
 }
+
+/*
+ * Gets distances that projectile have traveled until now.
+ * @return Returns traveled distance.
+*/
+float Projectile::getDistance() const
+{
+	return _distance;
+}
+
+
 }

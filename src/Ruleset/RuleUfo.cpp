@@ -31,6 +31,7 @@ RuleUfo::RuleUfo(const std::string &type) : _type(type), _size("STR_VERY_SMALL")
 	_accel(0), _power(0), _range(0), _score(0), _reload(0), _breakOffTime(0), _sightRange(268), _battlescapeTerrainData(0),
 	_modSprite(""), _stats(), _statsRaceBonus()
 {
+	_stats.sightRange = 268;
 	_statsRaceBonus[""] = RuleUfoStats();
 }
 
@@ -52,19 +53,12 @@ void RuleUfo::load(const YAML::Node &node, Ruleset *ruleset)
 	_type = node["type"].as<std::string>(_type);
 	_size = node["size"].as<std::string>(_size);
 	_sprite = node["sprite"].as<int>(_sprite);
-
-	_damageMax = node["damageMax"].as<int>(_damageMax);
-	_speedMax = node["speedMax"].as<int>(_speedMax);
-	_accel = node["accel"].as<int>(_accel);
-	_sightRange = node["sightRange"].as<int>(_sightRange);
-	_power = node["power"].as<int>(_power);
-	_range = node["range"].as<int>(_range);
-	_reload = node["reload"].as<int>(_reload);
 	
 	_score = node["score"].as<int>(_score);
 	_breakOffTime = node["breakOffTime"].as<int>(_breakOffTime);
 	
 	_stats.load(node);
+
 	if (const YAML::Node &terrain = node["battlescapeTerrainData"])
 	{
 		RuleTerrain *rule = new RuleTerrain(terrain["name"].as<std::string>());
@@ -127,6 +121,7 @@ int RuleUfo::getRadius() const
 	{
 		return 6;
 	}
+	//TODO ADD MORE CRAFTS
 	return 0;
 }
 
@@ -204,7 +199,7 @@ int RuleUfo::getScore() const
  * Gets the terrain data needed to draw the UFO in the battlescape.
  * @return The RuleTerrain.
  */
-RuleTerrain *RuleUfo::getBattlescapeTerrainData()
+RuleTerrain *RuleUfo::getBattlescapeTerrainData()  const
 {
 	return _battlescapeTerrainData;
 }
@@ -270,7 +265,7 @@ int RuleUfo::getWeaponAccuracy() const
 */
 int RuleUfo::getAvoidChance() const
 {
-	return -_stats.avoidBonus + 100 - 40 + getRadius()*10;
+	return + 100 - 40 + getRadius()*10 - _stats.avoidBonus;
 }
 
 /**

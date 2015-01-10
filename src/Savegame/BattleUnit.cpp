@@ -38,8 +38,8 @@
 #include "../Ruleset/RuleSoldier.h"
 #include "../Ruleset/Ruleset.h"
 #include "Tile.h"
-#include "SavedGame.h"
-#include "SavedBattleGame.h"
+#include "../Savegame/SavedGame.h"
+#include "../Savegame/SavedBattleGame.h"
 
 namespace OpenXcom
 {
@@ -90,6 +90,8 @@ BattleUnit::BattleUnit(Soldier *soldier, int depth) :
 	_specab = SPECAB_NONE;
 	_armor = soldier->getArmor();
 	_movementType = _armor->getMovementType();
+	_maxViewDistanceAtDarkSq = _armor->getVisibilityAtDark() ? _armor->getVisibilityAtDark() : 9;
+	_maxViewDistanceAtDarkSq *= _maxViewDistanceAtDarkSq;
 	if (_movementType == MT_FLOAT)
 	{
 		if (depth > 0)
@@ -180,6 +182,8 @@ BattleUnit::BattleUnit(Unit *unit, UnitFaction faction, int id, Armor *armor, in
 	_specab = (SpecialAbility) unit->getSpecialAbility();
 	_spawnUnit = unit->getSpawnUnit();
 	_value = unit->getValue();
+	_maxViewDistanceAtDarkSq = _armor->getVisibilityAtDark() ? _armor->getVisibilityAtDark() : faction==FACTION_HOSTILE ? 20 : 9;
+	_maxViewDistanceAtDarkSq *= _maxViewDistanceAtDarkSq;
 	if (unit->isFemale())
 	{
 		_gender = GENDER_FEMALE;
@@ -258,7 +262,7 @@ BattleUnit::~BattleUnit()
 void BattleUnit::load(const YAML::Node &node)
 {
 	_id = node["id"].as<int>(_id);
-	_faction = _originalFaction = (UnitFaction)node["faction"].as<int>(_faction);
+	_faction = (UnitFaction)node["faction"].as<int>(_faction);
 	_status = (UnitStatus)node["status"].as<int>(_status);
 	_pos = node["position"].as<Position>(_pos);
 	_direction = _toDirection = node["direction"].as<int>(_direction);
@@ -288,7 +292,6 @@ void BattleUnit::load(const YAML::Node &node)
 	_killedBy = (UnitFaction)node["killedBy"].as<int>(_killedBy);
 	_moraleRestored = node["moraleRestored"].as<int>(_moraleRestored);
 	_rankInt = node["rankInt"].as<int>(_rankInt);
-	_originalFaction = (UnitFaction)node["originalFaction"].as<int>(_originalFaction);
 	_kills = node["kills"].as<int>(_kills);
 	_dontReselect = node["dontReselect"].as<bool>(_dontReselect);
 	_charging = 0;
@@ -1134,7 +1137,7 @@ void BattleUnit::keepFalling()
 	if (_fallPhase == _armor->getDeathFrames())
 	{
 		_fallPhase--;
-		if (_health == 0)
+		if (_health <= 0)
 		{
 			_status = STATUS_DEAD;
 		}
@@ -1222,7 +1225,7 @@ int BattleUnit::getActionTUs(BattleActionType actionType, RuleItem *item) const
 	// if it's a percentage, apply it to unit TUs
 	if (!item->getFlatRate() || actionType == BA_THROW || actionType == BA_PRIME)
 	{
-		cost = (int)floor(getStats()->tu * cost / 100.0f);
+		cost = std::max(1, (int)floor(getStats()->tu * cost / 100.0f));
 	}
 
 	return cost;
@@ -1366,7 +1369,7 @@ void BattleUnit::clearVisibleTiles()
  */
 int BattleUnit::getFiringAccuracy(BattleActionType actionType, BattleItem *item)
 {
-
+	const int modifier = getAccuracyModifier(item);
 	int weaponAcc = item->getRules()->getAccuracySnap();
 	if (actionType == BA_AIMEDSHOT || actionType == BA_LAUNCH)
 		weaponAcc = item->getRules()->getAccuracyAimed();
@@ -1376,7 +1379,7 @@ int BattleUnit::getFiringAccuracy(BattleActionType actionType, BattleItem *item)
 	{
 		if (item->getRules()->isSkillApplied())
 		{
-			return (getBaseStats()->melee * item->getRules()->getAccuracyMelee() / 100) * getAccuracyModifier(item) / 100;
+			return (getBaseStats()->melee * item->getRules()->getAccuracyMelee() / 100) * modifier / 100;
 		}
 		return item->getRules()->getAccuracyMelee() * getAccuracyModifier(item) / 100;
 	}
@@ -1397,7 +1400,7 @@ int BattleUnit::getFiringAccuracy(BattleActionType actionType, BattleItem *item)
 		}
 	}
 
-	return result * getAccuracyModifier(item) / 100;
+	return result * modifier / 100;
 }
 
 /**
@@ -1555,7 +1558,7 @@ void BattleUnit::prepareNewTurn()
 		_health = 0;
 
 	// if unit is dead, AI state should be gone
-	if (_health == 0 && _currentAIState)
+	if (_health <= 0 && _currentAIState)
 	{
 		_currentAIState->exit();
 		delete _currentAIState;
@@ -2087,9 +2090,10 @@ bool BattleUnit::postMissionProcedures(SavedGame *geoscape)
  */
 int BattleUnit::improveStat(int exp)
 {
-	if      (exp > 10) return RNG::generate(2, 6);
-	else if (exp > 5)  return RNG::generate(1, 4);
-	else if (exp > 2)  return RNG::generate(1, 3);
+	if      (exp >= 15)  return RNG::generate(2, 5);
+	else if (exp >= 10)  return RNG::generate(2, 4);
+	else if (exp >= 6)  return RNG::generate(1, 3);
+	else if (exp >= 3)  return RNG::generate(1, 2);
 	else if (exp > 0)  return RNG::generate(0, 1);
 	else               return 0;
 }
@@ -2849,22 +2853,22 @@ bool BattleUnit::getFloorAbove()
 }
 
 /**
- * Get the name of any melee weapon we may be carrying, or a built in one.
+ * Get the name of any utility  weapon we may be carrying, or a built in one.
  * @return the name .
  */
-BattleItem *BattleUnit::getMeleeWeapon()
+BattleItem *BattleUnit::getUtilityWeapon(BattleType type)
 {
 	BattleItem *melee = getItem("STR_RIGHT_HAND");
-	if (melee && melee->getRules()->getBattleType() == BT_MELEE)
+	if (melee && melee->getRules()->getBattleType() == type)
 	{
 		return melee;
 	}
 	melee = getItem("STR_LEFT_HAND");
-	if (melee && melee->getRules()->getBattleType() == BT_MELEE)
+	if (melee && melee->getRules()->getBattleType() == type)
 	{
 		return melee;
 	}
-	melee = getSpecialWeapon(BT_MELEE);
+	melee = getSpecialWeapon(type);
 	if (melee)
 	{
 		return melee;
@@ -2904,28 +2908,29 @@ static inline BattleItem *createItem(SavedBattleGame *save, BattleUnit *unit, Ru
  * Set special weapon that is handled outside inventory.
  * @param save
  */
-void BattleUnit::setSpecialWeapon(SavedBattleGame *save, const Ruleset *rule)
+void BattleUnit::setSpecialWeapon(SavedBattleGame *save)
 {
+	const Ruleset *rule = save->getRuleset();
 	RuleItem *item = 0;
 	int i = 0;
 
 	if (getUnitRules())
 	{
 		item = rule->getItem(getUnitRules()->getMeleeWeapon());
-		if (item)
+		if (item && i < SPEC_WEAPON_MAX)
 		{
 			_specWeapon[i++] = createItem(save, this, item);
 		}
 	}
 	item = rule->getItem(getArmor()->getSpecialWeapon());
-	if (item)
+	if (item && i < SPEC_WEAPON_MAX)
 	{
 		_specWeapon[i++] = createItem(save, this, item);
 	}
 	if (getBaseStats()->psiSkill > 0 && getFaction() == FACTION_HOSTILE)
 	{
 		item = rule->getItem("ALIEN_PSI_WEAPON");
-		if (item)
+		if (item && i < SPEC_WEAPON_MAX)
 		{
 			_specWeapon[i++] = createItem(save, this, item);
 		}
@@ -2986,7 +2991,11 @@ BattleItem *BattleUnit::getSpecialWeapon(BattleType type) const
 {
 	for (int i = 0; i < SPEC_WEAPON_MAX; ++i)
 	{
-		if (_specWeapon[i] && _specWeapon[i]->getRules()->getBattleType() == type)
+		if (!_specWeapon[i])
+		{
+			break;
+		}
+		if (_specWeapon[i]->getRules()->getBattleType() == type)
 		{
 			return _specWeapon[i];
 		}

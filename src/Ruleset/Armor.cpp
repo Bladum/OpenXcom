@@ -26,9 +26,13 @@ namespace OpenXcom
  * type of armor.
  * @param type String defining the type.
  */
-Armor::Armor(const std::string &type) : _type(type), _frontArmor(0), _sideArmor(0), _rearArmor(0), _underArmor(0), _drawingRoutine(0), _movementType(MT_WALK), _size(1), _weight(0), _deathFrames(3), _constantAnimation(false), _canHoldWeapon(false), _forcedTorso(TORSO_USE_GENDER), 
-	_personalLightPower(15), _regeneration(0), _fearImmune(-1), _bleedImmune(-1), _painImmune(-1), _zombiImmune(-1),
-	 _builtInWeapons()
+Armor::Armor(const std::string &type) : _type(type), _frontArmor(0), _sideArmor(0), 
+	_rearArmor(0), _underArmor(0), _drawingRoutine(0), _movementType(MT_WALK), 
+	_size(1), _weight(0), _deathFrames(3), _constantAnimation(false), 
+	_canHoldWeapon(false), _forcedTorso(TORSO_USE_GENDER), 
+	_personalLightPower(15), _regeneration(0), 
+	_fearImmune(-1), _bleedImmune(-1), _painImmune(-1), _zombiImmune(-1),
+	 _visibilityAtDark(0),	_builtInWeapons()
 {
 	for (int i=0; i < DAMAGE_TYPES; i++)
 		_damageModifier[i] = 1.0f;
@@ -73,11 +77,12 @@ void Armor::load(const YAML::Node &node)
 	_personalLightPower = node["lightPower"].as<int>(_personalLightPower);
 	_movementType = (MovementType)node["movementType"].as<int>(_movementType);
 	_size = node["size"].as<int>(_size);
+	_visibilityAtDark = node["visibilityAtDark"].as<int>(_visibilityAtDark);
 	_weight = node["weight"].as<int>(_weight);
 	_stats.merge(node["stats"].as<UnitStats>(_stats));
 	if (const YAML::Node &dmg = node["damageModifier"])
 	{
-		for (size_t i = 0; i < dmg.size() && i < DAMAGE_TYPES; ++i)
+		for (int i = 0; i < dmg.size() && i < DAMAGE_TYPES; ++i)
 		{
 			_damageModifier[i] = dmg[i].as<float>();
 		}
@@ -143,6 +148,25 @@ std::string Armor::getType() const
 {
 	return _type;
 }
+
+/**
+ * Gets the armor level of part.
+ * @param side Part of armor.
+ * @return The armor level of part.
+ */
+int Armor::getArmor(UnitSide side) const
+{
+	switch (side)
+	{
+	case SIDE_FRONT:	return _frontArmor;
+	case SIDE_LEFT:		return _sideArmor;
+	case SIDE_RIGHT:	return _sideArmor;
+	case SIDE_REAR:		return _rearArmor;
+	case SIDE_UNDER:	return _underArmor;
+	default: return 0;
+	}
+}
+
 
 /**
  * Gets the unit's sprite sheet.
@@ -407,5 +431,16 @@ const std::vector<std::string> &Armor::getBuiltInWeapons() const
 {
 	return _builtInWeapons;
 }
+
+
+/**
+ * Gets max view distance at dark in BattleScape.
+ * @return The distance to see at dark.
+ */
+int Armor::getVisibilityAtDark() const
+{
+	return _visibilityAtDark;
+}
+
 
 }

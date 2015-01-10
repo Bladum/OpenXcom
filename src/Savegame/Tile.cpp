@@ -995,4 +995,25 @@ std::list<Particle *> *Tile::getParticleCloud()
 	return &_particles;
 }
 
+
+ /**
+ * Gets the tile's shade amount 0-15. It returns the brightest of all light layers except 2th (dynamic) layer.
+ * Shade level is the inverse of light level. So a maximum amount of light (15) returns shade level 0.
+ * @return shade
+ */
+int Tile::getExternalShade() const
+{
+	int light = 0;
+	// 2th layer (dynamic) not taken into account
+	for (int layer = 0; layer < LIGHTLAYERS; layer++)
+	{
+		if (layer == 2) continue;
+
+		if (_light[layer] > light)
+			light = _light[layer];
+	}
+
+	return std::max(0, 15 - light);
+}
+
 }

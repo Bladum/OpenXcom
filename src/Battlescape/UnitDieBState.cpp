@@ -224,29 +224,35 @@ void UnitDieBState::convertUnitToCorpse()
 		_parent->getSave()->removeUnconsciousBodyItem(_unit);
 	}
 	int size = _unit->getArmor()->getSize();
-	BattleItem *itemToKeep = 0;
 	bool dropItems = !Options::weaponSelfDestruction || (_unit->getOriginalFaction() != FACTION_HOSTILE || _unit->getStatus() == STATUS_UNCONSCIOUS);
 	// move inventory from unit to the ground for non-large units
-	if (size == 1 && dropItems)
+	if (size == 1)
 	{
+		const int itemToKeepMax = 2;
+		int itemToKeepPos = 0;
+		BattleItem *itemToKeep[itemToKeepMax] = { };
 		for (std::vector<BattleItem*>::iterator i = _unit->getInventory()->begin(); i != _unit->getInventory()->end(); ++i)
 		{
 			_parent->dropItem(lastPosition, (*i));
 			if (!(*i)->getRules()->isFixed())
 			{
-				(*i)->setOwner(0);
+				if (dropItems)
+				{
+					_parent->dropItem(lastPosition, (*i));
+					(*i)->setOwner(0);
+				}
 			}
-			else
+			else if (itemToKeepPos < itemToKeepMax)
 			{
-				itemToKeep = *i;
+				itemToKeep[itemToKeepPos++] = *i;
 			}
 		}
-	}
-	_unit->getInventory()->clear();
+		_unit->getInventory()->clear();
 
-	if (itemToKeep != 0)
-	{
-		_unit->getInventory()->push_back(itemToKeep);
+		while (itemToKeepPos)
+		{
+			_unit->getInventory()->push_back(itemToKeep[--itemToKeepPos]);
+		}
 	}
 
 	// remove unit-tile link
@@ -275,12 +281,13 @@ void UnitDieBState::convertUnitToCorpse()
 			{
 				BattleItem *corpse = new BattleItem(_parent->getRuleset()->getItem(_unit->getArmor()->getCorpseBattlescape()[i]), _parent->getSave()->getCurrentItemId());
 				corpse->setUnit(_unit);
+				_parent->dropItem(lastPosition + Position(x,y,0), corpse, true);
+				i++;
+
 				if (_parent->getSave()->getTile(lastPosition + Position(x,y,0))->getUnit() == _unit) // check in case unit was displaced by another unit
 				{
 					_parent->getSave()->getTile(lastPosition + Position(x,y,0))->setUnit(0);
 				}
-				_parent->dropItem(lastPosition + Position(x,y,0), corpse, true);
-				i++;
 			}
 		}
 	}

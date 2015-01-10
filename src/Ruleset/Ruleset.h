@@ -109,6 +109,7 @@ protected:
 	std::vector<StatString*> _statStrings;
 	std::vector<RuleDamageType*> _damageTypes;
 	RuleGlobe *_globe;
+	int _maxViewDistance, _maxDarknessToSeeUnits;
 	int _costSoldier, _costEngineer, _costScientist, _timePersonnel, _initialFunding;
 	std::string _alienFuel;
 	YAML::Node _startingBase;
@@ -263,6 +264,10 @@ public:
 	const std::vector<MapScript*> *getMapScript(std::string id) const;
 	/// Gets the list videos for intro/outro etc.
 	const std::map<std::string, RuleVideo *> *getVideos() const;
+	/// Gets max view distance in BattleScape.
+	inline int getMaxViewDistance() const {return _maxViewDistance;}
+	/// Gets threshold of darkness for LoS calculation.
+	inline int getMaxDarknessToSeeUnits() const {return _maxDarknessToSeeUnits;}
 };
 
 }

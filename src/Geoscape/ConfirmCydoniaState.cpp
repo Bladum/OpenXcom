@@ -90,7 +90,7 @@ void ConfirmCydoniaState::btnYesClick(Action *)
 	_game->popState();
 	_game->popState();
 	
-	SavedBattleGame *bgame = new SavedBattleGame();
+	SavedBattleGame *bgame = new SavedBattleGame(_game->getRuleset());
 	_game->getSavedGame()->setBattleGame(bgame);
 	BattlescapeGenerator bgen = BattlescapeGenerator(_game);
 	for (std::vector<std::string>::const_iterator i = _game->getRuleset()->getDeploymentsList().begin(); i != _game->getRuleset()->getDeploymentsList().end(); ++i)

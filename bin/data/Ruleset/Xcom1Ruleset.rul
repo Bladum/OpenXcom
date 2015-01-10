@@ -16,6 +16,8 @@ costScientist: 25000
 timePersonnel: 72
 initialFunding: 6000
 alienFuel: STR_ELERIUM_115
+maxViewDistance: 20
+maxDarknessToSeeUnits: 9    
     
 invs:
   - id: STR_GROUND

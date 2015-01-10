@@ -101,7 +101,7 @@ void BattlescapeGenerator::init()
 	_blocksToDo = (_mapsize_x / 10) * (_mapsize_y / 10);
 	// creates the tile objects
 	_save->initMap(_mapsize_x, _mapsize_y, _mapsize_z);
-	_save->initUtilities(_res);
+	_save->initUtilities(_res, _game->getRuleset());
 }
 /**
  * Sets the XCom craft involved in the battle.
@@ -371,6 +371,9 @@ void BattlescapeGenerator::run()
 	{
 		throw Exception("Map generator encountered an error: " + _terrain->getScript() + " script not found.");
 	}
+
+	_save->initUtilities(_res, _game->getRuleset());
+
 	generateMap(script);
 
 	deployXCOM();
@@ -557,7 +560,6 @@ void BattlescapeGenerator::deployXCOM()
 		placeItemByLayout(*i);
 	}
 	
-
 	// auto-equip soldiers (only soldiers without layout)
 	for (int pass = 0; pass != 4; ++pass)
 	{
@@ -603,7 +605,7 @@ void BattlescapeGenerator::deployXCOM()
 						// if everyone else has had a chance to take a first.
 						bool allowSecondClip = (pass == 3);
 
-						if (addItem(*j, *i, allowSecondClip))
+						if (_save->addItem(*j, *i, allowSecondClip, _allowAutoLoadout))
 						{
 							j = _craftInventoryTile->getInventory()->erase(j);
 							add = false;
@@ -651,7 +653,7 @@ BattleUnit *BattlescapeGenerator::addXCOMVehicle(Vehicle *v)
 		addBuildInWeapons(unit, rule->getBuiltInWeapons());
 
 		BattleItem *item = new BattleItem(_game->getRuleset()->getItem(vehicle), _save->getCurrentItemId());
-		if (!addItem(item, unit))
+		if (!_save->addItem(item, unit))
 		{
 			delete item;
 		}
@@ -659,7 +661,7 @@ BattleUnit *BattlescapeGenerator::addXCOMVehicle(Vehicle *v)
 		{
 			std::string ammo = v->getRules()->getCompatibleAmmo()->front();
 			BattleItem *ammoItem = new BattleItem(_game->getRuleset()->getItem(ammo), _save->getCurrentItemId());
-			addItem(ammoItem, unit);
+			_save->addItem(ammoItem, unit);
 			ammoItem->setAmmoQuantity(v->getAmmo());
 		}
 		unit->setTurretType(v->getRules()->getTurretType());
@@ -689,9 +691,10 @@ BattleUnit *BattlescapeGenerator::addXCOMUnit(BattleUnit *unit)
 			_craftInventoryTile = _save->getTile(node->getPosition());
 			unit->setDirection(RNG::generate(0,7));
 			_save->getUnits()->push_back(unit);
+			_save->initFixedItems(unit);
 			_save->getTileEngine()->calculateFOV(unit);
 			unit->deriveRank();
-			unit->setSpecialWeapon(_save, _game->getRuleset());
+			//unit->setSpecialWeapon(_save, _game->getRuleset());
 			return unit;
 		}
 		else if (_save->getMissionType() != "STR_BASE_DEFENSE")
@@ -701,9 +704,10 @@ BattleUnit *BattlescapeGenerator::addXCOMUnit(BattleUnit *unit)
 				_craftInventoryTile = _save->getTile(unit->getPosition());
 				unit->setDirection(RNG::generate(0,7));
 				_save->getUnits()->push_back(unit);
+				_save->initFixedItems(unit);
 				_save->getTileEngine()->calculateFOV(unit);
 				unit->deriveRank();
-				unit->setSpecialWeapon(_save, _game->getRuleset());
+				//unit->setSpecialWeapon(_save, _game->getRuleset());
 				return unit;
 			}
 		}
@@ -727,9 +731,10 @@ BattleUnit *BattlescapeGenerator::addXCOMUnit(BattleUnit *unit)
 				if (_save->setUnitPosition(unit, pos))
 				{
 					_save->getUnits()->push_back(unit);
+					_save->initFixedItems(unit);
 					unit->setDirection(dir);
 					unit->deriveRank();
-					unit->setSpecialWeapon(_save, _game->getRuleset());
+					//unit->setSpecialWeapon(_save, _game->getRuleset());
 					return unit;
 				}
 			}
@@ -744,8 +749,9 @@ BattleUnit *BattlescapeGenerator::addXCOMUnit(BattleUnit *unit)
 				if (_save->setUnitPosition(unit, _save->getTiles()[i]->getPosition()))
 				{
 					_save->getUnits()->push_back(unit);
+					_save->initFixedItems(unit);
 					unit->deriveRank();
-					unit->setSpecialWeapon(_save, _game->getRuleset());
+					//unit->setSpecialWeapon(_save, _game->getRuleset());
 					return unit;
 				}
 			}
@@ -835,41 +841,23 @@ void BattlescapeGenerator::deployAliens(AlienDeployment *deployment)
 				outside = false;
 			Unit *rule = _game->getRuleset()->getUnit(alienName);
 			BattleUnit *unit = addAlien(rule, (*d).alienRank, outside);
-			int itemLevel = _game->getRuleset()->getAlienItemLevels().at(month).at(RNG::generate(0,9));
+			
 			if (unit)
 			{
 				// Built in weapons: the unit has this weapon regardless of loadout or what have you.
-				addBuildInWeapons(unit, unit->getArmor()->getBuiltInWeapons());
-				addBuildInWeapons(unit, rule->getBuiltInWeapons());
+				_save->initFixedItems(unit);
 
 				// terrorist alien's equipment is a special case - they are fitted with a weapon which is the alien's name with suffix _WEAPON
 				if (rule->isLivingWeapon())
 				{
-					std::string terroristWeapon = rule->getRace().substr(4);
-					terroristWeapon += "_WEAPON";
-					RuleItem *ruleItem = _game->getRuleset()->getItem(terroristWeapon);
-					if (ruleItem)
-					{
-						BattleItem *item = new BattleItem(ruleItem, _save->getCurrentItemId());
-						if (!addItem(item, unit))
-						{
-							delete item;
-						}
-						else
-						{
-							unit->setTurretType(item->getRules()->getTurretType());
-						}
-					}
-				}
-				else
-				{
-					for (std::vector<std::string>::iterator it = (*d).itemSets.at(itemLevel).items.begin(); it != (*d).itemSets.at(itemLevel).items.end(); ++it)
+					std::vector<std::string>& itemLevel = (*d).itemSets.at(_game->getRuleset()->getAlienItemLevels().at(month).at(RNG::generate(0,9))).items;
+					for (std::vector<std::string>::iterator it = itemLevel.begin(); it != itemLevel.end(); ++it)
 					{
 						RuleItem *ruleItem = _game->getRuleset()->getItem((*it));
 						if (ruleItem)
 						{
 							BattleItem *item = new BattleItem(ruleItem, _save->getCurrentItemId());
-							if (!addItem(item, unit))
+							if (!_save->addItem(item, unit))
 							{
 								delete item;
 							}
@@ -911,7 +899,7 @@ BattleUnit *BattlescapeGenerator::addAlien(Unit *rules, int alienRank, bool outs
 	{
 		unit->setAIState(new AlienBAIState(_game->getSavedGame()->getSavedBattle(), unit, node));
 		unit->setRankInt(alienRank);
-		unit->setSpecialWeapon(_save, _game->getRuleset());
+		//unit->setSpecialWeapon(_save, _game->getRuleset());
 		int dir = _save->getTileEngine()->faceWindow(node->getPosition());
 		Position craft = _game->getSavedGame()->getSavedBattle()->getUnits()->at(0)->getPosition();
 		if (_save->getTileEngine()->distance(node->getPosition(), craft) <= 20 && RNG::percent(20 * difficulty))
@@ -938,7 +926,7 @@ BattleUnit *BattlescapeGenerator::addAlien(Unit *rules, int alienRank, bool outs
 		{
 			unit->setAIState(new AlienBAIState(_game->getSavedGame()->getSavedBattle(), unit, 0));
 			unit->setRankInt(alienRank);
-			unit->setSpecialWeapon(_save, _game->getRuleset());
+			//unit->setSpecialWeapon(_save, _game->getRuleset());
 			int dir = _save->getTileEngine()->faceWindow(unit->getPosition());
 			Position craft = _game->getSavedGame()->getSavedBattle()->getUnits()->at(0)->getPosition();
 			if (_save->getTileEngine()->distance(unit->getPosition(), craft) <= 20 && RNG::percent(20 * difficulty))

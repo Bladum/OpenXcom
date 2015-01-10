@@ -25,6 +25,7 @@
 #include "../Battlescape/BattlescapeGame.h"
 #include "../Ruleset/RuleItem.h"
 #include "../Ruleset/Unit.h"
+#include "../Ruleset/Armor.h"
 #include "../Ruleset/MapData.h"
 #include "Soldier.h"
 #include "BattleItem.h"
@@ -41,7 +42,6 @@ class Node;
 class Surface;
 class RuleInventory;
 class Soldier;
-class Armor;
 class SavedGame;
 class Language;
 class AlienBAIState;
@@ -49,7 +49,6 @@ class CivilianBAIState;
 
 enum UnitStatus {STATUS_STANDING, STATUS_WALKING, STATUS_FLYING, STATUS_TURNING, STATUS_AIMING, STATUS_COLLAPSING, STATUS_DEAD, STATUS_UNCONSCIOUS, STATUS_PANICKING, STATUS_BERSERK, STATUS_TIME_OUT};
 enum UnitFaction {FACTION_PLAYER, FACTION_HOSTILE, FACTION_NEUTRAL};
-enum UnitSide {SIDE_FRONT, SIDE_LEFT, SIDE_RIGHT, SIDE_REAR, SIDE_UNDER};
 enum UnitBodyPart {BODYPART_HEAD, BODYPART_TORSO, BODYPART_RIGHTARM, BODYPART_LEFTARM, BODYPART_RIGHTLEG, BODYPART_LEFTLEG};
 
 
@@ -111,6 +110,7 @@ private:
 	int _standHeight, _kneelHeight, _floatHeight;
 	int _value, _deathSound, _aggroSound, _moveSound;
 	int _intelligence, _aggression;
+	int _maxViewDistanceAtDarkSq;
 	SpecialAbility _specab;
 	Armor *_armor;
 	SoldierGender _gender;
@@ -414,7 +414,6 @@ public:
 	void invalidateCache();
 	/// Get alien/HWP unit.
 	Unit *getUnitRules() const { return _unitRules; }
-
 	Position lastCover;
 	/// get the vector of units we've seen this turn.
 	std::vector<BattleUnit *> &getUnitsSpottedThisTurn();
@@ -446,8 +445,8 @@ public:
 	void setFloorAbove(bool floor);
 	/// Get the flag for "floor above me".
 	bool getFloorAbove();
-	/// Get any melee weapon we may be carrying, or a built in one.
-	BattleItem *getMeleeWeapon();
+	/// Get any utility weapon we may be carrying, or a built in one.
+	BattleItem *getUtilityWeapon(BattleType type);
 	/// Use this function to check the unit's movement type.
 	MovementType getMovementType() const;
 	/// Checks if this unit is in hiding for a turn.
@@ -457,7 +456,7 @@ public:
 	/// Puts the unit in the corner to think about what he's done.
 	void goToTimeOut();
 	/// Create special weapon for unit.
-	void setSpecialWeapon(SavedBattleGame *save, const Ruleset *rule);
+	void setSpecialWeapon(SavedBattleGame *save);
 
 	/// Set fire damage form environment.
 	void setEnviFire(int damage);
@@ -471,6 +470,8 @@ public:
 
 	/// Gets the unit's stats.
 	const UnitStats *getStats() const;
+	/// Get square of maximum view distance at dark.
+	inline int getMaxViewDistanceAtDarkSq() const {return _maxViewDistanceAtDarkSq;}
 };
 
 }

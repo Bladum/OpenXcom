@@ -22,14 +22,16 @@
 #include <string>
 #include <vector>
 #include <yaml-cpp/yaml.h>
-#include "MapData.h"
-#include "Unit.h"
-#include "RuleDamageType.h"
+#include "../Ruleset/MapData.h"
+#include "../Ruleset/Unit.h"
+#include "../Ruleset/RuleDamageType.h"
 
 namespace OpenXcom
 {
 	
-enum ForcedTorso{ TORSO_USE_GENDER, TORSO_ALWAYS_MALE, TORSO_ALWAYS_FEMALE };
+enum ForcedTorso { TORSO_USE_GENDER, TORSO_ALWAYS_MALE, TORSO_ALWAYS_FEMALE };
+enum UnitSide {SIDE_FRONT, SIDE_LEFT, SIDE_RIGHT, SIDE_REAR, SIDE_UNDER};
+
 /**
  * Represents a specific type of armor.
  * Not only soldier armor, but also alien armor - some alien races wear Soldier Armor, Leader Armor or Commander Armor
@@ -53,6 +55,7 @@ private:
 	ForcedTorso _forcedTorso;
 	int _personalLightPower;
 	int _regeneration;	
+	int _visibilityAtDark;
 	std::vector<std::string> _builtInWeapons;
 	int _fearImmune, _bleedImmune, _painImmune, _zombiImmune;
 public:
@@ -68,6 +71,8 @@ public:
 	std::string getSpriteSheet() const;
 	/// Gets the unit's inventory sprite.
 	std::string getSpriteInventory() const;
+	/// Gets the armor level of armor side.
+	int getArmor(UnitSide side) const;
 	/// Gets the front armor level.
 	int getFrontArmor() const;
 	/// Gets the side armor level.
@@ -121,6 +126,8 @@ public:
 	bool getZombiImmune(bool def = false) const;
 	/// Gets buildin weapons of armor.
 	const std::vector<std::string> &getBuiltInWeapons() const;
+	/// Gets max view distance at dark in BattleScape.
+	int getVisibilityAtDark() const;
 };
 
 }

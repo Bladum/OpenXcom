@@ -439,10 +439,11 @@ void SavedGame::load(const std::string &filename, Ruleset *rule)
 
 	if (const YAML::Node &battle = doc["battleGame"])
 	{
-		_battleGame = new SavedBattleGame();
+		_battleGame = new SavedBattleGame(rule);
 		_battleGame->load(battle, rule, this);
 	}
 }
+
 
 /**
  * Saves a saved game's contents to a YAML file.

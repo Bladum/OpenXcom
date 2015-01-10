@@ -955,7 +955,7 @@ bool DetectXCOMBase::operator()(const Ufo *ufo) const
 	if ((ufo->getMissionType() != "STR_ALIEN_RETALIATION" && !Options::aggressiveRetaliation) || // only UFOs on retaliation missions actively scan for bases
 		ufo->getTrajectory().getID() == "__RETALIATION_ASSAULT_RUN" || 										// UFOs attacking a base don't detect!
 		ufo->isCrashed() ||																				 // Crashed UFOs don't detect!
-		_base.getDistance(ufo) >= ufo->getRules()->getSightRange() * (1 / 60.0) * (M_PI / 180.0))		 // UFOs have a detection range of 80 XCOM units. - we use a great circle fomrula and nautical miles.
+		_base.getDistance(ufo) >= ufo->getUfoStats().sightRange * (1 / 60.0) * (M_PI / 180.0))		 // UFOs have a detection range of 80 XCOM units. - we use a great circle fomrula and nautical miles.
 	{
 		return false;
 	}
@@ -1234,7 +1234,7 @@ void GeoscapeState::time30Minutes()
 					}
 					for (std::vector<Craft*>::iterator c = (*b)->getCrafts()->begin(); !detected && c != (*b)->getCrafts()->end(); ++c)
 					{
-						if ((*c)->getStatus() == "STR_OUT" && (*c)->detect(*u))
+						if ((*c)->getStatus() == "STR_OUT" && (*c)->insideRadarRange(*u))
 						{
 							detected = true;
 							break;
@@ -2086,7 +2086,7 @@ void GeoscapeState::handleBaseDefense(Base *base, Ufo *ufo)
 
 	if (base->getAvailableSoldiers(true) > 0 || !base->getVehicles()->empty())
 	{
-		SavedBattleGame *bgame = new SavedBattleGame();
+		SavedBattleGame *bgame = new SavedBattleGame(_game->getRuleset());
 		_game->getSavedGame()->setBattleGame(bgame);
 		bgame->setMissionType("STR_BASE_DEFENSE");
 		BattlescapeGenerator bgen = BattlescapeGenerator(_game);

@@ -65,6 +65,14 @@ namespace OpenXcom
 bool BattlescapeGame::_debugPlay = false;
 
 /**
+ * Update value of TU
+*/
+void BattleAction::updateTU()
+{
+	TU = actor ? actor->getActionTUs(type, weapon) : 0;
+}
+
+/**
  * Initializes all the elements in the Battlescape screen.
  * @param save Pointer to the save game.
  * @param parentState Pointer to the parent battlescape state.
@@ -271,26 +279,29 @@ void BattlescapeGame::handleAI(BattleUnit *unit)
 		}
 	}
 
-	if (action.type == BA_SNAPSHOT || action.type == BA_AUTOSHOT || action.type == BA_AIMEDSHOT || action.type == BA_THROW || action.type == BA_HIT || action.type == BA_MINDCONTROL || action.type == BA_PANIC || action.type == BA_LAUNCH)
+	if (action.type == BA_SNAPSHOT || action.type == BA_AUTOSHOT || action.type == BA_AIMEDSHOT || action.type == BA_THROW || action.type == BA_HIT || action.type == BA_MINDCONTROL || action.type == BA_USE || action.type == BA_PANIC || action.type == BA_LAUNCH)
 	{
-		if (action.type == BA_MINDCONTROL || action.type == BA_PANIC)
-		{
-			action.TU = unit->getActionTUs(action.type, action.weapon);
-		}
-		else
+		//TODO MAKE A TEST
+		//if (action.type == BA_MINDCONTROL || action.type == BA_PANIC)
+		//{
+	    //	action.TU = unit->getActionTUs(action.type, action.weapon);
+		//}
+		
+		if (action.type != BA_MINDCONTROL && action.type != BA_PANIC && action.type != BA_USE)
 		{
 			statePushBack(new UnitTurnBState(this, action));
+
 			// special behaviour here: we add and remove the item all at once.
-			if (action.type == BA_HIT && action.weapon != unit->getMeleeWeapon())
-			{
-				action.weapon = unit->getMeleeWeapon();
-				action.TU = unit->getActionTUs(action.type, action.weapon);
-				ss.clear();
-				ss << L"Attack type=" << action.type << " target="<< action.target << " weapon=" << action.weapon->getRules()->getName().c_str();
-				_parentState->debug(ss.str());
-				statePushBack(new ProjectileFlyBState(this, action));
-				return;
-			}
+			//if (action.type == BA_HIT && action.weapon != unit->getMeleeWeapon())
+			//{
+		    //	action.weapon = unit->getMeleeWeapon();
+			//	action.TU = unit->getActionTUs(action.type, action.weapon);
+			//	ss.clear();
+			//	ss << L"Attack type=" << action.type << " target="<< action.target << " weapon=" << action.weapon->getRules()->getName().c_str();
+			//	_parentState->debug(ss.str());
+			//	statePushBack(new ProjectileFlyBState(this, action));
+			//	return;
+			//}
 		}
 
 		ss.clear();
@@ -298,17 +309,18 @@ void BattlescapeGame::handleAI(BattleUnit *unit)
 		_parentState->debug(ss.str());
 
 		statePushBack(new ProjectileFlyBState(this, action));
-		if (action.type == BA_MINDCONTROL || action.type == BA_PANIC)
-		{
-			bool success = _save->getTileEngine()->psiAttack(&action);
-			if (success && action.type == BA_MINDCONTROL)
-			{
-				// show a little infobox with the name of the unit and "... is under alien control"
-				Game *game = _parentState->getGame();
-                BattleUnit *unit = _save->getTile(action.target)->getUnit();
-				game->pushState(new InfoboxState(game->getLanguage()->getString("STR_IS_UNDER_ALIEN_CONTROL", unit->getGender()).arg(unit->getName(game->getLanguage()))));
-			}
-		}
+
+		//if (action.type == BA_MINDCONTROL || action.type == BA_PANIC)
+		//{
+		//	bool success = _save->getTileEngine()->psiAttack(&action);
+		//	if (success && action.type == BA_MINDCONTROL)
+		//	{
+		//		// show a little infobox with the name of the unit and "... is under alien control"
+		//		Game *game = _parentState->getGame();
+        //       BattleUnit *unit = _save->getTile(action.target)->getUnit();
+		//		game->pushState(new InfoboxState(game->getLanguage()->getString("STR_IS_UNDER_ALIEN_CONTROL", unit->getGender()).arg(unit->getName(game->getLanguage()))));
+		//	}
+		//}
 	}
 
 	if (action.type == BA_NONE)
@@ -373,7 +385,6 @@ bool BattlescapeGame::kneel(BattleUnit *bu)
  */
 void BattlescapeGame::endTurn()
 {
-
 	_debugPlay = false;
 	_currentAction.type = BA_NONE;
 	getMap()->getWaypoints()->clear();
@@ -488,7 +499,7 @@ void BattlescapeGame::checkForCasualties(BattleItem *murderweapon, BattleUnit *m
 {
 	for (std::vector<BattleUnit*>::iterator j = _save->getUnits()->begin(); j != _save->getUnits()->end(); ++j)
 	{
-		if ((*j)->getHealth() == 0 && (*j)->getStatus() != STATUS_DEAD && (*j)->getStatus() != STATUS_COLLAPSING)
+		if ((*j)->getHealth() <= 0 && (*j)->getStatus() != STATUS_DEAD && (*j)->getStatus() != STATUS_COLLAPSING)
 		{
 			BattleUnit *victim = (*j);
 
@@ -1280,11 +1291,11 @@ void BattlescapeGame::primaryAction(const Position &pos)
 				}
 			}
 		}
-		else if (_currentAction.type == BA_PANIC || _currentAction.type == BA_MINDCONTROL)
+		else if ((_currentAction.type == BA_PANIC || _currentAction.type == BA_MINDCONTROL || _currentAction.type == BA_USE) && _currentAction.weapon->getRules()->getBattleType() == BT_PSIAMP)
 		{
 			if (_save->selectUnit(pos) && _save->selectUnit(pos)->getFaction() != _save->getSelectedUnit()->getFaction() && _save->selectUnit(pos)->getVisible())
 			{
-				_currentAction.TU = _currentAction.actor->getActionTUs(_currentAction.type, _currentAction.weapon);
+				_currentAction.updateTU();
 				_currentAction.target = pos;
 				if (!_currentAction.weapon->getRules()->isLOSRequired() ||
 					std::find(_currentAction.actor->getVisibleUnits()->begin(), _currentAction.actor->getVisibleUnits()->end(), _save->selectUnit(pos)) != _currentAction.actor->getVisibleUnits()->end())
@@ -1294,19 +1305,19 @@ void BattlescapeGame::primaryAction(const Position &pos)
 					_parentState->getGame()->getCursor()->setVisible(false);
 					_currentAction.cameraPosition = getMap()->getCamera()->getMapOffset();
 					statePushBack(new ProjectileFlyBState(this, _currentAction));
-					if (_currentAction.TU <= _currentAction.actor->getTimeUnits())
-					{
-						if (getTileEngine()->psiAttack(&_currentAction))
-						{
-							// show a little infobox if it's successful
-							Game *game = _parentState->getGame();
-							if (_currentAction.type == BA_PANIC)
-								game->pushState(new InfoboxState(game->getLanguage()->getString("STR_MORALE_ATTACK_SUCCESSFUL")));
-							else if (_currentAction.type == BA_MINDCONTROL)
-								game->pushState(new InfoboxState(game->getLanguage()->getString("STR_MIND_CONTROL_SUCCESSFUL")));
-							_parentState->updateSoldierInfo();
-						}
-					}
+					//if (_currentAction.TU <= _currentAction.actor->getTimeUnits())
+					//{
+					//	if (getTileEngine()->psiAttack(&_currentAction))
+					//	{
+					//		// show a little infobox if it's successful
+					//		Game *game = _parentState->getGame();
+					//		if (_currentAction.type == BA_PANIC)
+					//			game->pushState(new InfoboxState(game->getLanguage()->getString("STR_MORALE_ATTACK_SUCCESSFUL")));
+					//		else if (_currentAction.type == BA_MINDCONTROL)
+					//			game->pushState(new InfoboxState(game->getLanguage()->getString("STR_MIND_CONTROL_SUCCESSFUL")));
+					//		_parentState->updateSoldierInfo();
+					//	}
+					//}
 				}
 				else
 				{
@@ -1424,7 +1435,7 @@ void BattlescapeGame::psiButtonAction()
 	_currentAction.weapon = _save->getSelectedUnit()->getSpecialWeapon(BT_PSIAMP);
 	_currentAction.targeting = true;
 	_currentAction.type = BA_PANIC;
-	_currentAction.TU = 25;
+	_currentAction.updateTU();
 	setupCursor();
 }
 
@@ -1453,6 +1464,35 @@ void BattlescapeGame::moveUpDown(BattleUnit *unit, int dir)
 	}
 	_save->getPathfinding()->calculate(_currentAction.actor, _currentAction.target);
 	statePushBack(new UnitWalkBState(this, _currentAction));
+}
+
+bool BattlescapeGame::psiAttack(BattleAction *action)
+{
+	if (getTileEngine()->psiAttack(action))
+	{
+		Game *game = getSave()->getBattleState()->getGame();
+		if (action->actor->getFaction() == FACTION_HOSTILE)
+		{
+			// show a little infobox with the name of the unit and "... is under alien control"
+			BattleUnit *unit = getSave()->getTile(action->target)->getUnit();
+			if (action->type == BA_MINDCONTROL)
+				game->pushState(new InfoboxState(game->getLanguage()->getString("STR_IS_UNDER_ALIEN_CONTROL", unit->getGender()).arg(unit->getName(game->getLanguage()))));
+		}
+		else
+		{
+			// show a little infobox if it's successful
+			if (action->type == BA_PANIC)
+				game->pushState(new InfoboxState(game->getLanguage()->getString("STR_MORALE_ATTACK_SUCCESSFUL")));
+			else if (action->type == BA_MINDCONTROL)
+				game->pushState(new InfoboxState(game->getLanguage()->getString("STR_MIND_CONTROL_SUCCESSFUL")));
+			getSave()->getBattleState()->updateSoldierInfo();
+		}
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 /**
@@ -1563,34 +1603,38 @@ BattleUnit *BattlescapeGame::convertUnit(BattleUnit *unit, const std::string &ne
 	// remove unit-tile link
 	unit->setTile(0);
 
+	Unit* type = getRuleset()->getUnit(newType);
 	getSave()->getTile(unit->getPosition())->setUnit(0);
-	std::ostringstream newArmor;
-	newArmor << getRuleset()->getUnit(newType)->getArmor();
-	std::string terroristWeapon = getRuleset()->getUnit(newType)->getRace().substr(4);
-	terroristWeapon += "_WEAPON";
-	RuleItem *newItem = getRuleset()->getItem(terroristWeapon);
+	//std::ostringstream newArmor;
+	//newArmor << getRuleset()->getUnit(newType)->getArmor();
+	//std::string terroristWeapon = getRuleset()->getUnit(newType)->getRace().substr(4);
+	//terroristWeapon += "_WEAPON";
+	//RuleItem *newItem = getRuleset()->getItem(terroristWeapon);
 	int difficulty = (int)(_parentState->getGame()->getSavedGame()->getDifficulty());
 
-	BattleUnit *newUnit = new BattleUnit(getRuleset()->getUnit(newType), FACTION_HOSTILE, _save->getUnits()->back()->getId() + 1, getRuleset()->getArmor(newArmor.str()), difficulty, getDepth());
+	BattleUnit *newUnit = new BattleUnit(type, FACTION_HOSTILE, _save->getUnits()->back()->getId() + 1, getRuleset()->getArmor(type->getArmor()), difficulty, getDepth());
 
 	if (!difficulty)
 	{
 		newUnit->halveArmor();
 	}
 
+	getSave()->initFixedItems(newUnit);
 	getSave()->getTile(unit->getPosition())->setUnit(newUnit, _save->getTile(unit->getPosition() + Position(0,0,-1)));
 	newUnit->setPosition(unit->getPosition());
 	newUnit->setDirection(3);
 	newUnit->setCache(0);
 	newUnit->setTimeUnits(0);
-	newUnit->setSpecialWeapon(getSave(), getRuleset());
+	//newUnit->setSpecialWeapon(getSave(), getRuleset());
 	getSave()->getUnits()->push_back(newUnit);
 	getMap()->cacheUnit(newUnit);
 	newUnit->setAIState(new AlienBAIState(getSave(), newUnit, 0));
-	BattleItem *bi = new BattleItem(newItem, getSave()->getCurrentItemId());
-	bi->moveToOwner(newUnit);
-	bi->setSlot(getRuleset()->getInventory("STR_RIGHT_HAND"));
-	getSave()->getItems()->push_back(bi);
+	
+	//BattleItem *bi = new BattleItem(newItem, getSave()->getCurrentItemId());
+	//bi->moveToOwner(newUnit);
+	//bi->setSlot(getRuleset()->getInventory("STR_RIGHT_HAND"));
+	//getSave()->getItems()->push_back(bi);
+	
 	getTileEngine()->calculateFOV(newUnit->getPosition());
 	getTileEngine()->applyGravity(newUnit->getTile());
 	newUnit->setVisible(visible);
