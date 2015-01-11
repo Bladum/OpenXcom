@@ -33,14 +33,14 @@ struct RuleUfoStats
 {
 	int damageMax, speedMax, accel,
 		sightRange, hitChanceBonus, avoidBonus, power, 
-		range, reload ;
+		range, reload, score ;
 
 	/// Default constructor.
 	RuleUfoStats() :
 		damageMax(0), speedMax(0), accel(0),
 		sightRange(0),
 		hitChanceBonus(0), avoidBonus(0), power(0), 
-		range(0), reload(0)
+		range(0), reload(0), score(0)
 	{
 
 	}
@@ -56,6 +56,7 @@ struct RuleUfoStats
 		power += r.power;
 		range += r.range;
 		reload += r.reload;
+		score += r.score;
 		return *this;
 	}
 	/// Subtract different stats.
@@ -70,6 +71,7 @@ struct RuleUfoStats
 		power -= r.power;
 		range -= r.range;
 		reload -= r.reload;
+		score -= r.score;
 		return *this;
 	}
 	/// Gets negative values of stats.
@@ -88,7 +90,8 @@ struct RuleUfoStats
 		power = node["power"].as<int>(power);
 		range = node["range"].as<int>(range);
 		reload = node["reload"].as<int>(reload);
-		
+		score = node["score"].as<int>(score);
+
 		avoidBonus = node["avoidBonus"].as<int>(avoidBonus);
 		hitChanceBonus = node["hitChanceBonus"].as<int>(hitChanceBonus);		
 		sightRange = node["sightRange"].as<int>(sightRange);

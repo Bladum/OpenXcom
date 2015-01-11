@@ -1172,7 +1172,10 @@ void DogfightState::move()
 			}
 			else
 			{
-				_ufo->setSecondsRemaining(RNG::generate(24, 96)*3600);
+				// CRASH SITE IS UFO BASED NOT RANDOM
+				int crashTime =_ufo->getRules()->getCrashSiteTime();
+				crashTime = RNG::generate(crashTime / 2, crashTime * 3 / 2);
+				_ufo->setSecondsRemaining( crashTime * 3600);
 				_ufo->setAltitude("STR_GROUND");
 				if (_ufo->getCrashId() == 0)
 				{

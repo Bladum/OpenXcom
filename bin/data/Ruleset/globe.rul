@@ -1173,10 +1173,3 @@ regions:
       - [70, 90, -5, 10]
       - [55, 105, 10, 60]
     missionRegion: STR_SOUTHERN_AFRICA
-globe:
-  data: GEODATA/WORLD.DAT
-  oceanPalette: 12
-  countryColor: 239
-  cityColor: 138
-  baseColor: 133
-  lineColor: 162

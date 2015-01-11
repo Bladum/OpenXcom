@@ -29,7 +29,7 @@ armors:
     visibilityAtDark: 9
     loftempsSet: [3]
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 1.25 # INC
       - 1.00 # HE
@@ -39,6 +39,7 @@ armors:
       - 1.00 # MELEE
       - 1.25 # ACID
       - 2.00 # SMOKE
+      
   - type: CIVF_ARMOR
     spriteSheet: CIV_FEMALE.PCK
     spriteInv: inventory_FeMale
@@ -52,7 +53,7 @@ armors:
     visibilityAtDark: 9
     loftempsSet: [3]
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 1.25 # INC
       - 1.00 # HE
@@ -76,7 +77,7 @@ armors:
     visibilityAtDark: 9
     loftempsSet: [3]
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 1.25 # INC
       - 1.00 # HE
@@ -86,6 +87,7 @@ armors:
       - 1.00 # MELEE
       - 1.25 # ACID
       - 2.00 # SMOKE      
+      
   - type: CIV_ENGINEER_ARMOR
     spriteSheet: CIV_ENGINEER.PCK
     spriteInv: inventory_Engineer
@@ -99,7 +101,7 @@ armors:
     visibilityAtDark: 9
     loftempsSet: [3]
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 1.25 # INC
       - 1.00 # HE
@@ -108,7 +110,8 @@ armors:
       - 1.00 # STUN
       - 1.00 # MELEE
       - 1.25 # ACID
-      - 2.00 # SMOKE  
+      - 2.00 # SMOKE
+      
   - type: CIV_POLICEMAN_ARMOR
     spriteSheet: CIV_POLICEMAN.PCK
     spriteInv: inventory_Policeman
@@ -122,7 +125,7 @@ armors:
     visibilityAtDark: 9
     loftempsSet: [3]
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 1.25 # INC
       - 1.00 # HE
@@ -132,6 +135,7 @@ armors:
       - 1.00 # MELEE
       - 1.25 # ACID
       - 2.00 # SMOKE       
+      
   - type: CIV_MANAGER_ARMOR
     spriteSheet: CIV_MANAGER.PCK
     spriteInv: inventory_Manager
@@ -145,7 +149,7 @@ armors:
     visibilityAtDark: 9
     loftempsSet: [3]
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 1.25 # INC
       - 1.00 # HE
@@ -156,7 +160,7 @@ armors:
       - 1.25 # ACID
       - 2.00 # SMOKE      
 
-############# XCOM ARMOURS ####### 
+####### XCOM ARMOURS ####### 
 # COVERALS
   - type: STR_NONE_UC
     spriteSheet: XCOM_NONE.PCK
@@ -173,7 +177,7 @@ armors:
     loftempsSet: [3]
     visibilityAtDark: 9
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 1.00 # INC
       - 1.00 # HE
@@ -202,7 +206,7 @@ armors:
     movementType: 1    
     forcedTorso: 2      
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 1.00 # INC
       - 1.00 # HE
@@ -229,7 +233,7 @@ armors:
     loftempsSet: [ 3 ]
     visibilityAtDark: 9
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 1.00 # INC
       - 1.00 # HE
@@ -256,7 +260,7 @@ armors:
     loftempsSet: [ 3 ]    
     visibilityAtDark: 9
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 1.00 # INC
       - 1.00 # HE
@@ -282,7 +286,7 @@ armors:
     loftempsSet: [4]
     visibilityAtDark: 9
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 0.75 # INC
       - 1.00 # HE
@@ -309,7 +313,7 @@ armors:
     loftempsSet: [4]
     visibilityAtDark: 9
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 0.75 # INC
       - 1.00 # HE
@@ -340,7 +344,7 @@ armors:
     movementType: 1    
     forcedTorso: 2    
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 0.75 # INC
       - 1.00 # HE
@@ -368,7 +372,7 @@ armors:
     visibilityAtDark: 9
     forcedTorso: 1
     damageModifier:
-      - 0.25 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 0.50 # INC
       - 1.00 # HE
@@ -399,7 +403,7 @@ armors:
     visibilityAtDark: 9
     forcedTorso: 1
     damageModifier:
-      - 0.25 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 0.50 # INC
       - 1.00 # HE
@@ -431,7 +435,7 @@ armors:
     forcedTorso: 2
     movementType: 1    
     damageModifier:
-      - 0.25 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 0.50 # INC
       - 1.00 # HE
@@ -455,10 +459,11 @@ armors:
     rearArmor: 40
     underArmor: 40
     drawingRoutine: 2
+    visibilityAtDark: 9
     size: 2
     loftempsSet: [ 92, 89, 90, 91 ]
     damageModifier:
-      - 1.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 0.50 # INC
       - 0.75 # HE
@@ -481,10 +486,11 @@ armors:
     rearArmor: 50
     underArmor: 50
     drawingRoutine: 2
+    visibilityAtDark: 9
     size: 2
     loftempsSet: [ 92, 89, 90, 91 ]
     damageModifier:
-      - 1.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 0.50 # INC
       - 0.75 # HE
@@ -507,12 +513,13 @@ armors:
     rearArmor: 90
     underArmor: 30
     drawingRoutine: 2
+    visibilityAtDark: 9
     size: 2
     loftempsSet: [92, 89, 90, 91]
     constantAnimation: true
     movementType: 1      
     damageModifier:
-      - 1.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 0.50 # INC
       - 0.75 # HE
@@ -535,12 +542,13 @@ armors:
     rearArmor: 120
     underArmor: 40
     drawingRoutine: 2
+    visibilityAtDark: 9
     size: 2
     constantAnimation: true    
     movementType: 1      
     loftempsSet: [92, 89, 90, 91]
     damageModifier:
-      - 1.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 0.50 # INC
       - 0.75 # HE
@@ -564,9 +572,10 @@ armors:
     rearArmor: 60
     underArmor: 40
     drawingRoutine: 5
+    visibilityAtDark: 9
     size: 2
     damageModifier:
-      - 1.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 0.75 # INC
       - 1.00 # HE
@@ -591,9 +600,10 @@ armors:
     rearArmor: 60
     underArmor: 40
     drawingRoutine: 5
+    visibilityAtDark: 9
     size: 2
     damageModifier:
-      - 1.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 0.75 # INC
       - 1.00 # HE
@@ -618,9 +628,10 @@ armors:
     rearArmor: 60
     underArmor: 40
     drawingRoutine: 5
+    visibilityAtDark: 9
     size: 2
     damageModifier:
-      - 1.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 0.75 # INC
       - 1.00 # HE
@@ -643,10 +654,11 @@ armors:
     rearArmor: 15
     underArmor: 10
     drawingRoutine: 4
+    visibilityAtDark: 9
     size: 1
     loftempsSet: [ 63 ]    
     damageModifier:
-      - 1.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 0.50 # INC
       - 0.75 # HE
@@ -667,10 +679,11 @@ armors:
     rearArmor: 10
     underArmor: 5
     drawingRoutine: 4
+    visibilityAtDark: 9
     size: 1
     loftempsSet: [ 63 ]    
     damageModifier:
-      - 1.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 0.50 # INC
       - 0.75 # HE
@@ -690,10 +703,11 @@ armors:
     rearArmor: 60
     underArmor: 45
     #weight: 12
+    visibilityAtDark: 9
     size: 1 
     loftempsSet: [ 5 ]    
     damageModifier:
-      - 1.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 0.50 # INC
       - 0.75 # HE
@@ -862,7 +876,7 @@ armors:
     constantAnimation: true
     movementType: 1    
     damageModifier:
-      - 1.00  # EMP 
+      - 0.00  # EMP 
       - 0.75  # AP
       - 1.00  # INC
       - 0.50  # HE
@@ -918,7 +932,7 @@ armors:
     size: 2
     loftempsSet: [92, 89, 90, 91]
     damageModifier:
-      - 1.00  # EMP 
+      - 0.00  # EMP 
       - 1.00  # AP
       - 1.00  # INC
       - 0.75  # HE
@@ -1261,7 +1275,7 @@ armors:
     drawingRoutine: 10
     loftempsSet: [4]
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 1.25 # INC
       - 1.00 # HE
@@ -1283,7 +1297,7 @@ armors:
     drawingRoutine: 10
     loftempsSet: [4]
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 1.25 # INC
       - 1.00 # HE
@@ -1305,7 +1319,7 @@ armors:
     drawingRoutine: 10
     loftempsSet: [4]
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 1.25 # INC
       - 1.00 # HE
@@ -1326,7 +1340,7 @@ armors:
     drawingRoutine: 4
     loftempsSet: [3]
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 1.75 # INC
       - 0.75 # HE
@@ -1348,7 +1362,7 @@ armors:
     drawingRoutine: 4
     loftempsSet: [3]
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 1.75 # INC
       - 0.75 # HE
@@ -1370,7 +1384,7 @@ armors:
     loftempsSet: [3]
     deathFrames: 18
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 1.75 # INC
       - 0.75 # HE
@@ -1391,7 +1405,7 @@ armors:
     drawingRoutine: 4
     loftempsSet: [3]
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 1.75 # INC
       - 0.75 # HE
@@ -1413,7 +1427,7 @@ armors:
     drawingRoutine: 10
     loftempsSet: [3]
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 0.75 # AP
       - 1.00 # INC
       - 1.00 # HE
@@ -1435,7 +1449,7 @@ armors:
     drawingRoutine: 10
     loftempsSet: [3]
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 0.75 # AP
       - 1.00 # INC
       - 1.00 # HE
@@ -1457,7 +1471,7 @@ armors:
     drawingRoutine: 10
     loftempsSet: [3]
     damageModifier:
-      - 0.00 # EMP 
+      - 1.00 # NONE 
       - 0.75 # AP
       - 1.00 # INC
       - 1.00 # HE
@@ -1478,7 +1492,7 @@ armors:
     drawingRoutine: 8
     loftempsSet: [1]
     damageModifier:
-      - 1.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 0.00 # INC
       - 1.00 # HE
@@ -1569,7 +1583,7 @@ armors:
     drawingRoutine: 4
     loftempsSet: [1]
     damageModifier:
-      - 1.00  # EMP 
+      - 0.00  # EMP 
       - 1.00  # AP
       - 0.75  # INC
       - 1.00  # HE
@@ -1589,6 +1603,7 @@ armors:
     sideArmor: 0
     rearArmor: 0
     underArmor: 0 
+    visibilityAtDark: 9
     damageModifier:
       - 0.00  # EMP  
       - 1.00  # AP
@@ -1610,6 +1625,7 @@ armors:
     sideArmor: 15
     rearArmor: 15
     underArmor: 0
+    visibilityAtDark: 9
     damageModifier:
       - 0.00  # EMP  
       - 1.00  # AP
@@ -1631,6 +1647,7 @@ armors:
     sideArmor: 20
     rearArmor: 20
     underArmor: 10
+    visibilityAtDark: 9
     damageModifier:
       - 0.00  # EMP  
       - 1.00  # AP
@@ -1652,6 +1669,7 @@ armors:
     sideArmor: 30
     rearArmor: 30
     underArmor: 20
+    visibilityAtDark: 9
     damageModifier:
       - 0.00  # EMP  
       - 1.00  # AP
@@ -1674,8 +1692,9 @@ armors:
     sideArmor: 60
     rearArmor: 40
     underArmor: 30
+    visibilityAtDark: 9
     damageModifier:
-      - 0.25  # EMP 
+      - 0.00  # EMP 
       - 1.00  # AP
       - 0.50  # INC
       - 1.00  # HE
@@ -1700,9 +1719,10 @@ armors:
     rearArmor: 50
     underArmor: 50
     drawingRoutine: 2
+    visibilityAtDark: 9
     size: 2
     damageModifier:
-      - 1.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 0.50 # INC
       - 0.75 # HE
@@ -1726,9 +1746,10 @@ armors:
     rearArmor: 60
     underArmor: 40
     drawingRoutine: 5
+    visibilityAtDark: 9
     size: 2
     damageModifier:
-      - 1.00 # EMP 
+      - 1.00 # NONE 
       - 1.00 # AP
       - 0.75 # INC
       - 1.00 # HE

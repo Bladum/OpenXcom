@@ -56,7 +56,6 @@ void RuleUfo::load(const YAML::Node &node, Ruleset *ruleset)
 	_type = node["type"].as<std::string>(_type);
 	_size = node["size"].as<std::string>(_size);
 	_sprite = node["sprite"].as<int>(_sprite);	
-	_score = node["score"].as<int>(_score);
 	if( node["sightRange"] ) 
 	{
 		_sightRange = node["sightRange"].as<int>(_sightRange);
@@ -200,7 +199,7 @@ int RuleUfo::getWeaponRange() const
  */
 int RuleUfo::getScore() const
 {
-	return _score;
+	return _stats.score;
 }
 
 /**

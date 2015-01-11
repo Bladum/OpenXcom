@@ -1817,10 +1817,10 @@ void Globe::keyboardPress(Action *action, State *state)
 void Globe::getPolygonTextureAndShade(double lon, double lat, int *texture, int *shade) const
 {
 	///this is shade conversion from 0..31 levels of geoscape to battlescape levels 0..15
-	int worldshades[32] = {  0, 0, 0, 0, 1, 1, 2, 2,
-							 3, 3, 4, 4, 5, 5, 6, 6,
-							 7, 7, 8, 8, 9, 9,10,11,
-							11,12,12,13,13,14,15,15};
+	int worldshades[32] = {  0, 0, 1, 1, 2, 2, 3, 3,
+							 4, 4, 5, 5, 6, 6, 7, 7,
+							 8, 8, 9, 9, 10, 10, 11,11,
+							12,12,13,13,14,14,15,15};
 
 	*texture = -1;
 	*shade = worldshades[ CreateShadow::getShadowValue(0, Cord(0.,0.,1.), getSunDirection(lon, lat), 0) ];

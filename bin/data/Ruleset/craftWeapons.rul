@@ -1,0 +1,249 @@
+craftWeapons:   
+# NON WAR
+  - type: STR_CRAFT_FUEL_TANK_UC     
+    sprite: 111  
+    weaponType: 1
+    stats:
+      fuelMax: 30
+      speedMax: -200  
+    launcher: STR_CRAFT_FUEL_TANK  
+  - type: STR_CRAFT_ARMOR_UC
+    sprite: 111  
+    weaponType: 1
+    stats:
+      armor: 5
+      accel: -1     
+    launcher: STR_CRAFT_ARMOR    
+  - type: STR_CRAFT_COMPUTER_UC
+    sprite: 111  
+    weaponType: 1
+    stats:
+      accuracy: 5
+    launcher: STR_CRAFT_COMPUTER      
+  - type: STR_CRAFT_SHIELD_UC
+    sprite: 111  
+    weaponType: 1
+    stats:
+      avoidBonus: 5      
+    launcher: STR_CRAFT_SHIELD       
+  - type: STR_CRAFT_BOOSTER_UC
+    sprite: 111  
+    weaponType: 1
+    stats:
+      reload: -10       
+    launcher: STR_CRAFT_BOOSTER       
+  - type: STR_CRAFT_POWERUP_UC
+    sprite: 111  
+    weaponType: 1
+    stats:
+      damage: 10  
+    launcher: STR_CRAFT_POWERUP             
+  - type: STR_CRAFT_TURBO_UC
+    sprite: 111  
+    weaponType: 1
+    stats:
+      speedMax: 600
+      accel: 3
+      accuracy: -20  
+    launcher: STR_CRAFT_TURBO      
+      
+# WAR   
+  - type: STR_CANNON_UC
+    sprite: 111
+    weaponType: 0
+    sound: 4
+    damage: 20
+    range: 10
+    accuracy: 20
+    reloadCautious: 3
+    reloadStandard: 3
+    reloadAggressive: 3
+    ammoMax: 200
+    rearmRate: 50  
+    launcher: STR_CANNON
+    clip: STR_CANNON_ROUNDS_X50
+    projectileType: 2
+    projectileSpeed: 12
+  - type: STR_ALLOY_CANNON_UC
+    sprite: 119
+    weaponType: 0
+    sound: 4    
+    damage: 30
+    range: 15
+    accuracy: 25
+    reloadCautious: 2
+    reloadStandard: 2
+    reloadAggressive: 2
+    ammoMax: 100
+    rearmRate: 20  
+    launcher: STR_ALLOY_CANNON
+    clip: STR_ALIEN_ALLOYS
+    projectileType: 2
+    projectileSpeed: 16       
+  - type: STR_STINGRAY
+    sprite: 112
+    weaponType: 0    
+    sound: 5
+    damage: 60
+    range: 30
+    accuracy: 70
+    reloadCautious: 32
+    reloadStandard: 24
+    reloadAggressive: 16
+    ammoMax: 6
+    rearmRate: 2 
+    launcher: STR_STINGRAY_LAUNCHER
+    clip: STR_STINGRAY_MISSILES
+    projectileType: 0
+    projectileSpeed: 6 
+  - type: STR_AVALANCHE
+    sprite: 113
+    weaponType: 0    
+    sound: 5
+    damage: 100
+    range: 50
+    accuracy: 80
+    reloadCautious: 48
+    reloadStandard: 36
+    reloadAggressive: 24
+    ammoMax: 3
+    rearmRate: 1 
+    launcher: STR_AVALANCHE_LAUNCHER
+    clip: STR_AVALANCHE_MISSILES
+    projectileType: 1
+    projectileSpeed: 8
+  - type: STR_CLUSTER
+    sprite: 117
+    weaponType: 0    
+    sound: 5
+    damage: 40
+    range: 35
+    accuracy: 60
+    reloadCautious: 12
+    reloadStandard: 9
+    reloadAggressive: 6
+    ammoMax: 12
+    rearmRate: 4 
+    launcher: STR_CLUSTER_LAUNCHER
+    clip: STR_CLUSTER_MISSILES
+    projectileType: 0
+    projectileSpeed: 7     
+  - type: STR_GAUSS_CANNON_UC
+    sprite: 120
+    weaponType: 0    
+    sound: 4
+    damage: 40
+    range: 20
+    accuracy: 30
+    reloadCautious: 2
+    reloadStandard: 2
+    reloadAggressive: 2
+    ammoMax: 30
+    rearmRate: 10  
+    launcher: STR_GAUSS_CANNON
+    clip: STR_POWERED_ALLOYS
+    projectileType: 2
+    projectileSpeed: 16      
+  - type: STR_STORMLANCE
+    sprite: 118
+    weaponType: 0    
+    sound: 5
+    damage: 160
+    range: 60
+    accuracy: 90
+    reloadCautious: 64
+    reloadStandard: 48
+    reloadAggressive: 32
+    ammoMax: 6
+    rearmRate: 2  
+    launcher: STR_STORMLANCE_LAUNCHER
+    clip: STR_STORMLANCE_MISSILES
+    projectileType: 3
+    projectileSpeed: 5    
+  - type: STR_LASER_CANNON_UC
+    sprite: 114
+    weaponType: 0    
+    sound: 8
+    damage: 80
+    range: 25
+    accuracy: 40
+    reloadCautious: 10
+    reloadStandard: 10
+    reloadAggressive: 10
+    ammoMax: 50
+    rearmRate: 1 
+    launcher: STR_LASER_CANNON
+    projectileType: 4
+  - type: STR_PLASMA_BEAM_UC
+    sprite: 115
+    weaponType: 0    
+    sound: 9
+    damage: 120
+    range: 40
+    accuracy: 50
+    reloadCautious: 16
+    reloadStandard: 16
+    reloadAggressive: 16
+    ammoMax: 25
+    rearmRate: 5
+    launcher: STR_PLASMA_BEAM
+    clip: STR_ELERIUM_115
+    projectileType: 5
+  - type: STR_FUSION_BALL_UC
+    sprite: 116
+    weaponType: 0    
+    sound: 7
+    damage: 240
+    range: 70
+    accuracy: 120
+    reloadCautious: 40
+    reloadStandard: 30
+    reloadAggressive: 20
+    ammoMax: 3
+    rearmRate: 1  
+    launcher: STR_FUSION_BALL_LAUNCHER
+    clip: STR_FUSION_BALL
+    projectileType: 3
+    projectileSpeed: 2
+  - type: STR_FUSION_BEAM_UC
+    sprite: 121
+    weaponType: 0    
+    sound: 9
+    damage: 200
+    range: 50
+    accuracy: 50
+    reloadCautious: 12
+    reloadStandard: 12
+    reloadAggressive: 12
+    ammoMax: 10
+    rearmRate: 10 
+    launcher: STR_FUSION_BEAM
+    projectileType: 5   
+
+extraSprites:
+  - type: BASEBITS.PCK
+    files:
+      159: Resources/basebit/Cannon.gif
+      160: Resources/basebit/Stingray.gif
+      161: Resources/basebit/Avalanche.gif
+      162: Resources/basebit/Laser.gif
+      163: Resources/basebit/Plasma.gif
+      164: Resources/basebit/Fusion.gif
+      165: Resources/basebit/Cluster.gif
+      166: Resources/basebit/Pilum.gif   
+      167: Resources/basebit/AlloyCannon.gif  
+      168: Resources/basebit/Gauss.gif    
+      169: Resources/basebit/Railgun.gif          
+  - type: INTICON.PCK
+    files:
+      116: Resources/craftweapons/Cannon.gif
+      117: Resources/craftweapons/Stingray.gif
+      118: Resources/craftweapons/Avalanche.gif
+      119: Resources/craftweapons/Laser.gif 
+      120: Resources/craftweapons/Plasma.gif 
+      121: Resources/craftweapons/Fusion.gif 
+      122: Resources/craftweapons/Cluster.gif 
+      123: Resources/craftweapons/Pilum.gif 
+      124: Resources/craftweapons/AlloyCannon.gif  
+      125: Resources/craftweapons/Gauss.gif    
+      126: Resources/craftweapons/Railgun.gif    

@@ -324,6 +324,22 @@ void CraftInfoState::init()
 			{
 				ss << tr("STR_CRAFT_ITEM_DAMAGE_").arg( Text::formatPercentage( www.damage) ) << L"\n\x01";
 			}
+			if ( www.radarChance  )
+			{
+				ss << tr("STR_CRAFT_ITEM_RADARCHANCE_").arg( Text::formatPercentage( www.radarChance) ) << L"\n\x01";
+			}
+			if ( www.radarRange  )
+			{
+				ss << tr("STR_CRAFT_ITEM_RADARRANGE_").arg( Text::formatNumber( www.radarRange) ) << L"\n\x01";
+			}
+			if ( www.sightRange  )
+			{
+				ss << tr("STR_CRAFT_ITEM_SIGHTRANGE_").arg( Text::formatNumber( www.sightRange) ) << L"\n\x01";
+			}
+			if ( www.range  )
+			{
+				ss << tr("STR_CRAFT_ITEM_RANGE_").arg( Text::formatPercentage( www.range) ) << L"\n\x01";
+			}
 
 			_txtWAmmo[i]->setText(ss.str());
 		}

@@ -13,7 +13,7 @@ ufos:
     reload: 50 
     sightRange: 250
     breakOffTime: 30
-    crashSiteTime: 30
+    crashSiteTime: 12
     raceBonus: 
       STR_SECTOID: #+100 sight range
         sightRange: 100   
@@ -52,7 +52,7 @@ ufos:
     reload: 60
     sightRange: 250
     breakOffTime: 50
-    crashSiteTime: 50
+    crashSiteTime: 12
     raceBonus: 
       STR_SECTOID: #+100 sight range
         sightRange: 100   
@@ -91,7 +91,7 @@ ufos:
     reload: 8
     sightRange: 250
     breakOffTime: 50
-    crashSiteTime: 50
+    crashSiteTime: 24
     raceBonus: 
       STR_SECTOID: #+100 sight range
         sightRange: 100   
@@ -136,7 +136,7 @@ ufos:
     reload: 32
     sightRange: 250
     breakOffTime: 100
-    crashSiteTime: 100
+    crashSiteTime: 24
     raceBonus: 
       STR_SECTOID: #+100 sight range
         sightRange: 100   
@@ -181,7 +181,7 @@ ufos:
     reload: 32
     sightRange: 250
     breakOffTime: 100
-    crashSiteTime: 100
+    crashSiteTime: 24
     raceBonus: 
       STR_SECTOID: #+100 sight range
         sightRange: 100   
@@ -226,7 +226,7 @@ ufos:
     reload: 6
     sightRange: 250
     breakOffTime: 75
-    crashSiteTime: 75
+    crashSiteTime: 24
     raceBonus: 
       STR_SECTOID: #+100 sight range
         sightRange: 100   
@@ -272,7 +272,7 @@ ufos:
     reload: 40
     sightRange: 250
     breakOffTime: 100
-    crashSiteTime: 100
+    crashSiteTime: 24
     raceBonus: 
       STR_SECTOID: #+100 sight range
         sightRange: 100   
@@ -317,7 +317,7 @@ ufos:
     reload: 24
     sightRange: 250
     breakOffTime: 200
-    crashSiteTime: 200
+    crashSiteTime: 24
     raceBonus: 
       STR_SECTOID: #+100 sight range
         sightRange: 100   
@@ -362,7 +362,7 @@ ufos:
     reload: 24
     sightRange: 250
     breakOffTime: 200
-    crashSiteTime: 200
+    crashSiteTime: 24
     raceBonus: 
       STR_SECTOID: #+100 sight range
         sightRange: 100   
@@ -408,7 +408,7 @@ ufos:
     reload: 24
     sightRange: 250
     breakOffTime: 300
-    crashSiteTime: 300
+    crashSiteTime: 36
     raceBonus: 
       STR_SECTOID: #+100 sight range
         sightRange: 100   
@@ -454,7 +454,7 @@ ufos:
     reload: 30
     sightRange: 250
     breakOffTime: 150
-    crashSiteTime: 150
+    crashSiteTime: 36
     raceBonus: 
       STR_SECTOID: #+100 sight range
         sightRange: 100   
@@ -498,7 +498,7 @@ ufos:
     reload: 16
     sightRange: 250
     breakOffTime: 400
-    crashSiteTime: 400
+    crashSiteTime: 36
     raceBonus: 
       STR_SECTOID: #+100 sight range
         sightRange: 100   
@@ -545,7 +545,7 @@ ufos:
     reload: 20
     sightRange: 250
     breakOffTime: 400
-    crashSiteTime: 400
+    crashSiteTime: 36
     raceBonus: 
       STR_SECTOID: #+100 sight range
         sightRange: 100   
@@ -592,7 +592,7 @@ ufos:
     reload: 10
     sightRange: 250
     breakOffTime: 200
-    crashSiteTime: 200
+    crashSiteTime: 36
     raceBonus: 
       STR_SECTOID: #+100 sight range
         sightRange: 100   
@@ -638,7 +638,7 @@ ufos:
     reload: 16
     sightRange: 250
     breakOffTime: 1000
-    crashSiteTime: 1000
+    crashSiteTime: 48
     raceBonus: 
       STR_SECTOID: #+100 sight range
         sightRange: 100   
@@ -685,7 +685,7 @@ ufos:
     reload: 12
     sightRange: 250
     breakOffTime: 800
-    crashSiteTime: 800
+    crashSiteTime: 48
     raceBonus: 
       STR_SECTOID: #+100 sight range
         sightRange: 100   
@@ -732,7 +732,7 @@ ufos:
     reload: 10
     sightRange: 250
     breakOffTime: 600
-    crashSiteTime: 600
+    crashSiteTime: 48
     raceBonus: 
       STR_SECTOID: #+100 sight range
         sightRange: 100   
@@ -777,7 +777,7 @@ ufos:
     reload: 20
     sightRange: 250
     breakOffTime: 1500
-    crashSiteTime: 1500
+    crashSiteTime: 64
     raceBonus: 
       STR_SECTOID: #+100 sight range
         sightRange: 100   
@@ -820,7 +820,7 @@ ufos:
     reload: 30
     sightRange: 450
     breakOffTime: 100
-    crashSiteTime: 100
+    crashSiteTime: 24
     battlescapeTerrainData:
       name: CRAFT00
       mapDataSets:
@@ -845,7 +845,7 @@ ufos:
     reload: 25
     sightRange: 450
     breakOffTime: 150
-    crashSiteTime: 150
+    crashSiteTime: 36
     battlescapeTerrainData:
       name: CRAFT01
       mapDataSets:
@@ -870,7 +870,7 @@ ufos:
     reload: 20
     sightRange: 450
     breakOffTime: 200
-    crashSiteTime: 200
+    crashSiteTime: 36
     battlescapeTerrainData:
       name: CRAFT02
       mapDataSets:
@@ -895,7 +895,7 @@ ufos:
     reload: 15
     sightRange: 450
     breakOffTime: 250
-    crashSiteTime: 250
+    crashSiteTime: 48
     battlescapeTerrainData:
       name: CRAFT03
       mapDataSets:
@@ -923,7 +923,7 @@ ufos:
     reload: 10
     sightRange: 450
     breakOffTime: 250
-    crashSiteTime: 250
+    crashSiteTime: 64
     battlescapeTerrainData:
       name: CRAFT04
       mapDataSets:
@@ -949,7 +949,7 @@ ufos:
     reload: 10
     sightRange: 450
     breakOffTime: 2500
-    crashSiteTime: 2500
+    crashSiteTime: 64
     battlescapeTerrainData:
       name: MBASE01
       mapDataSets:
