@@ -1614,6 +1614,8 @@ interfaces:
         color2: 213  # gold
       - id: button
         color: 218   # blue
+      - id: button2
+        color: 241   # gold
   - type: craftWeapons
     elements:
       - id: palette

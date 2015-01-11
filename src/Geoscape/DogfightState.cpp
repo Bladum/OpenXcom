@@ -16,6 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with OpenXcom.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include "../Engine/Logger.h"
 #include "DogfightState.h"
 #include <sstream>
 #include "../Engine/Game.h"
@@ -469,7 +470,7 @@ DogfightState::DogfightState(Globe *globe, Craft *craft, Ufo *ufo) :
 		Uint8 color = _game->getRuleset()->getInterface("dogfight")->getElement("background")->color;
 		range->lock();
 
-		int rangeY = range->getHeight() - w->getRules()->getRange() * _craft->getWeaponsRange();
+		int rangeY = range->getHeight() - w->getRules()->getRange() ;
 		int connectY = weapon->getHeight() / 2 + weapon->getY() - range->getY();
 		for (int x = x1; x <= x1 + 20 - x_off; x += 2)		for (int x = x1; x <= x1 + 18; x += 2)
 		{
@@ -802,7 +803,7 @@ void DogfightState::move()
 	}
 	
 	// acceleration difference makes UFO flys slower / faster
-	int accelDif = _craft->getRules()->getAcceleration() - _ufo->getRules()->getAcceleration();
+	int accelDif = _craft->getCraftStats().accel - _ufo->getRules()->getAcceleration();
 	int dogfightSpeed = 4;
 	if(accelDif > 2) accelDif = 5;
 	if(accelDif > 5) accelDif = 6;
@@ -811,7 +812,7 @@ void DogfightState::move()
 
 	if (_minimized && _ufo->getSpeed() > _craft->getSpeed())
 	{
-		_craft->setSpeed( _craft->getRules()->getMaxSpeed() );
+		_craft->setSpeed( _craft->getCraftStats().speedMax );
 		if (_ufo->getSpeed() > _craft->getSpeed())
 		{
 			_ufoBreakingOff = true;
@@ -820,7 +821,7 @@ void DogfightState::move()
 	// Check if UFO is not breaking off.
 	if (_ufo->getSpeed() == _ufo->getRules()->getMaxSpeed() )
 	{ 
-		_craft->setSpeed( _craft->getRules()->getMaxSpeed() );
+		_craft->setSpeed( _craft->getCraftStats().speedMax );
 		// Crappy craft is chasing UFO.
 		if (_ufo->getSpeed() > _craft->getSpeed())
 		{
@@ -888,11 +889,17 @@ void DogfightState::move()
 				{
 					// UFO hit by x-com
 					// WEAPON CHANCE * UFO CHANCE TO AVOID * CRAFT CHANCE TO HIT
-					if (RNG::percent( p->getAccuracy() * _ufo->getRules()->getChanceToHitUfo() * _craft->getWeaponsAccurancy() ) )
+					int chanceToHitUfo = p->getAccuracy() * ( 100 - _ufo->getRules()->getAvoidChance() + _craft->getCraftStats().accuracy ) / 100;
+					Log(LOG_DEBUG) << "Chance to hit UFO " << chanceToHitUfo << ", " << _ufo->getRules()->getAvoidChance() << ", " << _craft->getCraftStats().accuracy;
+					
+					if (RNG::percent( chanceToHitUfo ) )
 					{
 						// WEAPON DAMAGE * CRAFT DAMAGE MULTIPLIER
-						int power = p->getDamage() * _craft->getWeaponsDamage();						
+						int power = p->getDamage() * ( 100 + _craft->getCraftStats().damage ) / 100 ;									
 						int damage = RNG::generate(power / 2, power * 3 / 2);
+
+						Log(LOG_DEBUG) << "Ufo hit on damage " << damage << ", " << power;
+						_ufo->setDamage(_ufo->getDamage() + damage);
 
 						if (_ufo->isCrashed())
 						{
@@ -926,7 +933,7 @@ void DogfightState::move()
 				// Check if projectile passed it's maximum range.
 				if (p->getGlobalType() == CWPGT_MISSILE)
 				{
-					if (p->getPosition() / 8 >= p->getRange() * _craft->getWeaponsRange() )
+					if (p->getPosition() / 8 >= p->getRange() )
 					{
 						p->remove();
 					}
@@ -942,11 +949,19 @@ void DogfightState::move()
 				if (p->getGlobalType() == CWPGT_MISSILE || (p->getGlobalType() == CWPGT_BEAM && p->toBeRemoved()))
 				{
 					// CHANCE TO HIT INTERCEPTOR by UFO
-					if (RNG::percent( p->getAccuracy() * _craft->getAvoidBonus() ) )
+					// INTERCEPTOR AVOID BONUS
+					int chanceToHitCraft = p->getAccuracy() - _craft->getCraftStats().avoidBonus;
+					Log(LOG_DEBUG) << "Craft will be hit by UFO with chance " << chanceToHitCraft;
+					if (RNG::percent( chanceToHitCraft ) )
 					{
 						// UFO POWER 50-150%
-						int power = p->getDamage();						
-						int damage = RNG::generate(power / 2, power * 3 / 2);						
+						// CRAFT ARMOUR FROM BONUS
+						int power = p->getDamage();
+						Log(LOG_DEBUG) << "Craft hit by UFO before armor " << power;
+						power = power * ( 100 - _craft->getCraftStats().armor ) / 100;						
+						Log(LOG_DEBUG) << "Craft hit by UFO after armor " << power;
+						int damage = RNG::generate(power / 2, power * 3 / 2);		
+						Log(LOG_DEBUG) << "Craft hit by UFO after armor + randomized " << damage;
 						if (damage)
 						{
 							_craft->setDamage( _craft->getDamage() + damage);
@@ -990,7 +1005,7 @@ void DogfightState::move()
 			Timer *wTimer = _wTimer[i];
 
 			// Handle weapon firing
-			int weaponRange =  w->getRules()->getRange() * 8 * _craft->getWeaponsRange();
+			int weaponRange =  w->getRules()->getRange() * 8;
 			if (!wTimer->isRunning() && _currentDist <= weaponRange && w->getAmmo() > 0 && _mode != _btnStandoff
 				&& _mode != _btnDisengage && !_ufo->isCrashed() && !_craft->isDestroyed())
 			{
@@ -1285,9 +1300,9 @@ void DogfightState::minimumDistance()
 	{
 		if (*i == 0)
 			continue;
-		if ((*i)->getRules()->getRange() * _craft->getWeaponsRange() > max && (*i)->getAmmo() > 0)
+		if ((*i)->getRules()->getRange() > max && (*i)->getAmmo() > 0)
 		{
-			max = (*i)->getRules()->getRange() * _craft->getWeaponsRange();
+			max = (*i)->getRules()->getRange() ;
 		}
 	}
 	if (max == 0)
@@ -1311,9 +1326,9 @@ void DogfightState::maximumDistance()
 	{
 		if (*i == 0)
 			continue;
-		if ((*i)->getRules()->getRange() * _craft->getWeaponsRange() < min && (*i)->getAmmo() > 0)
+		if ((*i)->getRules()->getRange() < min && (*i)->getAmmo() > 0)
 		{
-			min = (*i)->getRules()->getRange() * _craft->getWeaponsRange();
+			min = (*i)->getRules()->getRange() ;
 		}
 	}
 	if (min == 1000)
@@ -1409,7 +1424,8 @@ void DogfightState::btnCautiousPress(Action *)
 			CraftWeapon* w = _craft->getWeapons()->at(i);
 			if (w != 0)
 			{
-				float timeModifier = _craft->getWeaponsReload();
+				float timeModifier = (100 + _craft->getCraftStats().reload ) / 100.0f;
+				Log(LOG_DEBUG) << "reload time " << timeModifier << "," << w->getRules()->getCautiousReload() * _timeScale * timeModifier;
 				_wTimer[i]->setInterval(w->getRules()->getCautiousReload() * _timeScale * timeModifier);
 			}
 
@@ -1435,7 +1451,8 @@ void DogfightState::btnStandardPress(Action *)
 			CraftWeapon* w = _craft->getWeapons()->at(i);
 			if (w != 0)
 			{
-				float timeModifier = _craft->getWeaponsReload();
+				float timeModifier = (100 + _craft->getCraftStats().reload ) / 100.0f;
+				Log(LOG_DEBUG) << "reload time " << timeModifier << "," << w->getRules()->getStandardReload() * _timeScale * timeModifier;
 				_wTimer[i]->setInterval(w->getRules()->getStandardReload() * _timeScale * timeModifier);
 			}
 
@@ -1461,7 +1478,8 @@ void DogfightState::btnAggressivePress(Action *)
 			CraftWeapon* w = _craft->getWeapons()->at(i);
 			if (w != 0)
 			{
-				float timeModifier = _craft->getWeaponsReload();
+				float timeModifier = (100 + _craft->getCraftStats().reload ) / 100.0f;
+				Log(LOG_DEBUG) << "reload time " << timeModifier << "," << w->getRules()->getAggressiveReload() * _timeScale * timeModifier;
 				_wTimer[i]->setInterval(w->getRules()->getAggressiveReload() * _timeScale * timeModifier);
 			}
 
@@ -1551,7 +1569,7 @@ void DogfightState::drawUfo()
 	{
 		return;
 	}
-	int currentUfoXposition =  _battle->getWidth() / 2 - 6;
+	int currentUfoXposition = _battle->getWidth() / 2 - 6;
 	int currentUfoYposition = _battle->getHeight() - (_currentDist / 8) - 6;
 	for (int y = 0; y < 13; ++y)
 	{

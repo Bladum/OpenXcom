@@ -47,11 +47,11 @@ namespace OpenXcom
  * @param base Pointer to base of origin.
  * @param id ID to assign to the craft (0 to not assign).
  */
-Craft::Craft(RuleCraft *rules, Base *base, int id) : 
-	MovingTarget(), _rules(rules), _base(base), _id(0), 
-		_fuel(0), _damage(0), _interceptionOrder(0), _takeoff(0), 
-		_status("STR_READY"), _lowFuel(false), _mission(false), 
-		_inBattlescape(false), _inDogfight(false), _stats()
+Craft::Craft(RuleCraft *rules, Base *base, int id) : MovingTarget(), 
+	_rules(rules), _base(base), _id(0), _fuel(0), _damageCurrent(0),
+	_interceptionOrder(0), _takeoff(0), _weapons(),
+	_status("STR_READY"), _lowFuel(false), _mission(false),
+	_inBattlescape(false), _inDogfight(false), _name(L""), _stats()
 {
 	_stats = rules->getStats();
 	_items = new ItemContainer();
@@ -96,7 +96,7 @@ void Craft::load(const YAML::Node &node, const Ruleset *rule, SavedGame *save)
 	MovingTarget::load(node);
 	_id = node["id"].as<int>(_id);
 	_fuel = node["fuel"].as<int>(_fuel);
-	_damage = node["damage"].as<int>(_damage);
+	_damageCurrent = node["damage"].as<int>(_damageCurrent);
 
 	int j = 0;
 	for (YAML::const_iterator i = node["weapons"].begin(); i != node["weapons"].end(); ++i)
@@ -219,7 +219,7 @@ YAML::Node Craft::save() const
 	node["type"] = _rules->getType();
 	node["id"] = _id;
 	node["fuel"] = _fuel;
-	node["damage"] = _damage;
+	node["damage"] = _damageCurrent;
 	for (std::vector<CraftWeapon*>::const_iterator i = _weapons.begin(); i != _weapons.end(); ++i)
 	{
 		YAML::Node subnode;
@@ -415,9 +415,9 @@ void Craft::setDestination(Target *dest)
 		_takeoff = 60;
 	}
 	if (dest == 0)
-		setSpeed(_rules->getMaxSpeed()/2);
+		setSpeed(_stats.speedMax / 2);
 	else
-		setSpeed(_rules->getMaxSpeed());
+		setSpeed(_stats.speedMax);
 	MovingTarget::setDestination(dest);
 }
 
@@ -555,12 +555,31 @@ int Craft::getFuelPercentage() const
 }
 
 /**
+ * Gets the maximum fuel the craft can contain.
+ * @return The fuel amount.
+ */
+int Craft::getFuelMax() const
+{
+	return _stats.fuelMax;
+}
+
+/**
+ * Gets the maximum damage (damage the craft can take)
+ * of the craft.
+ * @return The maximum damage.
+ */
+int Craft::getDamageMax() const
+{
+	return _stats.damageMax;
+}
+
+/**
  * Returns the amount of damage this craft has taken.
  * @return Amount of damage.
  */
 int Craft::getDamage() const
 {
-	return (int)floor((double)_damage / _stats.damageMax * 100);
+	return _damageCurrent;
 }
 
 /**
@@ -569,10 +588,14 @@ int Craft::getDamage() const
  */
 void Craft::setDamage(int damage)
 {
-	_damage = damage;
-	if (_damage < 0)
+	_damageCurrent = damage;
+	if (_damageCurrent < 0)
 	{
-		_damage = 0;
+		_damageCurrent = 0;
+	}
+	if (_damageCurrent >= _stats.damageMax )
+	{
+		_damageCurrent = _stats.damageMax;
 	}
 }
 
@@ -584,7 +607,7 @@ void Craft::setDamage(int damage)
  */
 int Craft::getDamagePercentage() const
 {
-	return (int)floor((double)_damage / _stats.damageMax * 100);
+	return (int)floor((double)_damageCurrent / _stats.damageMax * 100);
 }
 
 /**
@@ -725,7 +748,7 @@ void Craft::checkup()
 		}
 	}
 
-	if (_damage > 0)
+	if (_damageCurrent > 0)
 	{
 		_status = "STR_REPAIRS";
 	}
@@ -751,15 +774,15 @@ void Craft::checkup()
  */
 bool Craft::detect(Target *target) const
 {
-	if (_rules->getRadarRange() == 0 || !insideRadarRange(target))
+	if (_stats.radarRange == 0 || !insideRadarRange(target))
 		return false;
 	
 	// backward compatibility with vanilla
-	if (_rules->getRadarChance() == 100)
+	if (_stats.radarChance == 100)
 		return true;
 
 	Ufo *u = dynamic_cast<Ufo*>(target);
-	int chance = _rules->getRadarChance() * (100 + u->getVisibility()) / 100;
+	int chance = _stats.radarChance * (100 + u->getVisibility()) / 100;
 	return RNG::percent(chance);
 }
 
@@ -771,7 +794,7 @@ bool Craft::detect(Target *target) const
  */
 bool Craft::insideRadarRange(Target *target) const
 {
-	double range = _rules->getRadarRange() * (1 / 60.0) * (M_PI / 180);
+	double range = _stats.radarRange * (1 / 60.0) * (M_PI / 180);
 	return (getDistance(target) <= range);
 }
 
@@ -790,8 +813,8 @@ void Craft::consumeFuel()
  */
 void Craft::repair()
 {
-	setDamage(_damage - _rules->getRepairRate());
-	if (_damage <= 0)
+	setDamage(_damageCurrent - _rules->getRepairRate());
+	if (_damageCurrent <= 0)
 	{
 		_status = "STR_REARMING";
 	}
@@ -805,6 +828,7 @@ void Craft::refuel()
 {
 	setFuel(_fuel + _rules->getRefuelRate());
 	if (_fuel >= _stats.fuelMax)
+		
 	{
 		_status = "STR_READY";
 		for (std::vector<CraftWeapon*>::iterator i = _weapons.begin(); i != _weapons.end(); ++i)
@@ -894,7 +918,7 @@ void Craft::setInBattlescape(bool inbattle)
  */
 bool Craft::isDestroyed() const
 {
-	return (_damage >= _rules->getMaxDamage());
+	return (_damageCurrent >= _stats.damageMax );
 }
 
 /**
@@ -992,10 +1016,9 @@ CraftId Craft::getUniqueId() const
  */
 void Craft::addCraftStats(const RuleCraftStats& s)
 {
-	//setDamage(_damage + s.damageMax); //you need "fix" new damage capability first before use.
+	setDamage(_damageCurrent + s.damageMax); //you need "fix" new damage capability first before use.
 	_stats += s;
 	setFuel(_fuel); //it will split some fuel if you have to much.
-	setDamage(_damage); //it will need repair if needed
 }
 
 /**
@@ -1008,69 +1031,5 @@ const RuleCraftStats& Craft::getCraftStats() const
 }
 
 
-/**
- * Gets the maximum fuel the craft can contain.
- * @return The fuel amount.
- */
-int Craft::getFuelMax() const
-{
-	return _stats.fuelMax;
-}
-
-/**
- * Gets the maximum damage (damage the craft can take)
- * of the craft.
- * @return The maximum damage.
- */
-int Craft::getDamageMax() const
-{
-	return _stats.damageMax;
-}
-
-
-/**
- * Gets the craft's avoid chance
- * @return Base chance for craft to be hit
- */
-float Craft::getAvoidBonus() const
-{
-	return _stats.avoidBonus;
-}
-
-/**
- * Gets the craft's accurancy modifier
- * @return Base chance for craft to hit Ufo
- */
-float Craft::getWeaponsAccurancy() const
-{
-	return _stats.accuracy;
-}
-
-/**
- * Gets the craft's range of weapons modifier
- * @return Modifier for range of all weapons
- */
-float Craft::getWeaponsRange() const
-{
-	return _stats.range;
-}
-
-/**
- * Gets the craft's damage of weapons 
- * @return Modifier for damage of all weapons
- */
-float Craft::getWeaponsDamage() const
-{
-	return _stats.damage;
-}
-
-/**
- * Gets the craft's reload time of weapons 
- * @return Modifier for reload time of all weapons
- */
-float Craft::getWeaponsReload() const
-{
-	return _stats.reload;
-}
 
 }

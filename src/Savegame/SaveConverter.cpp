@@ -556,7 +556,8 @@ void SaveConverter::loadDatMissions()
 		char *mdata = (data + i * 8);
 		int wave = load<Uint16>(mdata + 0x00);
 		if (wave != 0xFFFF)
-		{			int ufoCounter = load<Uint16>(mdata + 0x02);
+		{
+			int ufoCounter = load<Uint16>(mdata + 0x02);
 			int spawn = load<Uint16>(mdata + 0x04);
 			int race = load<Uint16>(mdata + 0x06);
 			int mission = i % nMissions;

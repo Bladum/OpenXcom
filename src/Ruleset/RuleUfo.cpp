@@ -272,9 +272,9 @@ int RuleUfo::getWeaponAccuracy() const
  * Gets the UFO's avoid chance
  * @return The chance to hit in percantage.
 */
-int RuleUfo::getChanceToHitUfo() const
+int RuleUfo::getAvoidChance() const
 {
-	return 60 + getRadius() * 10 - _stats.avoidBonus;
+	return 30 - getRadius() * 10 + _stats.avoidBonus;
 }
 
 /**

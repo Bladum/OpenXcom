@@ -11,7 +11,8 @@ crafts:
     radarChance: 100
     speedMax: 800
     accel: 1
-    weapons: 0 
+    weapons: 1
+    weaponTypes: [1,2,2,2]
     soldiers: 10
     vehicles: 1
     costBuy: 600000
@@ -52,7 +53,8 @@ crafts:
     radarChance: 100
     speedMax: 200
     accel: 1
-    weapons: 0 
+    weapons: 0
+    weaponTypes: [2,2,2,2]
     soldiers: 15
     vehicles: 3
     costBuy: 200000
@@ -98,6 +100,7 @@ crafts:
     radarChance: 100
     accel: 10
     weapons: 2 
+    weaponTypes: [0, 0, 2, 2]    
     costBuy: 400000
     costRent: 40000
     costSell: 200000    
@@ -117,7 +120,8 @@ crafts:
     radarRange: 800
     radarChance: 100    
     accel: 3
-    weapons: 1 
+    weapons: 2 
+    weaponTypes: [0,1]    
     costBuy: 0  
     soldiers: 4
     vehicles: 0       
@@ -153,7 +157,8 @@ crafts:
     radarRange: 800
     radarChance: 100     
     accel: 5
-    weapons: 2 
+    weapons: 3
+    weaponTypes: [0,0,1,2]    
     costBuy: 0    
     costRent: 80000    
     costSell: 400000    
@@ -173,7 +178,8 @@ crafts:
     radarRange: 1000
     radarChance: 100
     accel: 10
-    weapons: 2 
+    weapons: 4
+    weaponTypes: [0,0,0,1]    
     costBuy: 0    
     costRent: 120000    
     costSell: 600000  
@@ -207,7 +213,8 @@ crafts:
     radarRange: 1000
     radarChance: 100
     accel: 8
-    weapons: 1 
+    weapons: 3 
+    weaponTypes: [0,1,1,2]    
     soldiers: 12
     vehicles: 2    
     costBuy: 0    
@@ -250,6 +257,8 @@ crafts:
     speedMax: 3200
     accel: 7
     soldiers: 24
+    weapons: 3
+    weaponTypes: [1,1,1,2]
     vehicles: 5
     costBuy: 0    
     costRent: 120000    
@@ -283,7 +292,8 @@ crafts:
     radarRange: 1000
     radarChance: 100
     accel: 9
-    weapons: 2
+    weapons: 4
+    weaponTypes: [0,0,1,1]
     soldiers: 18
     vehicles: 4    
     costBuy: 0    
@@ -335,7 +345,8 @@ crafts:
     radarRange: 1400
     radarChance: 100
     accel: 7
-    weapons: 2
+    weapons: 4
+    weaponTypes: [1,1,1,1]    
     soldiers: 30
     vehicles: 6    
     costBuy: 0    
@@ -388,25 +399,57 @@ crafts:
       
 craftWeapons:   
 # NON WAR
-  - type: STR_CANNON_UC
-    sprite: 111
-    sound: 4
-    damage: 20
-    range: 10
-    accuracy: 20
-    reloadCautious: 3
-    reloadStandard: 3
-    reloadAggressive: 3
-    ammoMax: 200
-    rearmRate: 50  
-    launcher: STR_CANNON
-    clip: STR_CANNON_ROUNDS_X50
-    projectileType: 2
-    projectileSpeed: 12
-
+  - type: STR_CRAFT_FUEL_TANK_UC     
+    sprite: 111  
+    weaponType: 1
+    stats:
+      fuelMax: 30
+      speedMax: -200  
+    launcher: STR_CRAFT_FUEL_TANK  
+  - type: STR_CRAFT_ARMOR_UC
+    sprite: 111  
+    weaponType: 1
+    stats:
+      armor: 5
+      accel: -1     
+    launcher: STR_CRAFT_ARMOR    
+  - type: STR_CRAFT_COMPUTER_UC
+    sprite: 111  
+    weaponType: 1
+    stats:
+      accuracy: 5
+    launcher: STR_CRAFT_COMPUTER      
+  - type: STR_CRAFT_SHIELD_UC
+    sprite: 111  
+    weaponType: 1
+    stats:
+      avoidBonus: 5      
+    launcher: STR_CRAFT_SHIELD       
+  - type: STR_CRAFT_BOOSTER_UC
+    sprite: 111  
+    weaponType: 1
+    stats:
+      reload: -10       
+    launcher: STR_CRAFT_BOOSTER       
+  - type: STR_CRAFT_POWERUP_UC
+    sprite: 111  
+    weaponType: 1
+    stats:
+      damage: 10  
+    launcher: STR_CRAFT_POWERUP             
+  - type: STR_CRAFT_TURBO_UC
+    sprite: 111  
+    weaponType: 1
+    stats:
+      speedMax: 600
+      accel: 3
+      accuracy: -20  
+    launcher: STR_CRAFT_TURBO      
+      
 # WAR   
   - type: STR_CANNON_UC
     sprite: 111
+    weaponType: 0
     sound: 4
     damage: 20
     range: 10
@@ -422,7 +465,8 @@ craftWeapons:
     projectileSpeed: 12
   - type: STR_ALLOY_CANNON_UC
     sprite: 119
-    sound: 4
+    weaponType: 0
+    sound: 4    
     damage: 30
     range: 15
     accuracy: 25
@@ -437,6 +481,7 @@ craftWeapons:
     projectileSpeed: 16       
   - type: STR_STINGRAY
     sprite: 112
+    weaponType: 0    
     sound: 5
     damage: 60
     range: 30
@@ -452,6 +497,7 @@ craftWeapons:
     projectileSpeed: 6 
   - type: STR_AVALANCHE
     sprite: 113
+    weaponType: 0    
     sound: 5
     damage: 100
     range: 50
@@ -467,6 +513,7 @@ craftWeapons:
     projectileSpeed: 8
   - type: STR_CLUSTER
     sprite: 117
+    weaponType: 0    
     sound: 5
     damage: 40
     range: 35
@@ -482,6 +529,7 @@ craftWeapons:
     projectileSpeed: 7     
   - type: STR_GAUSS_CANNON_UC
     sprite: 120
+    weaponType: 0    
     sound: 4
     damage: 40
     range: 20
@@ -497,6 +545,7 @@ craftWeapons:
     projectileSpeed: 16      
   - type: STR_STORMLANCE
     sprite: 118
+    weaponType: 0    
     sound: 5
     damage: 160
     range: 60
@@ -512,6 +561,7 @@ craftWeapons:
     projectileSpeed: 5    
   - type: STR_LASER_CANNON_UC
     sprite: 114
+    weaponType: 0    
     sound: 8
     damage: 80
     range: 25
@@ -525,6 +575,7 @@ craftWeapons:
     projectileType: 4
   - type: STR_PLASMA_BEAM_UC
     sprite: 115
+    weaponType: 0    
     sound: 9
     damage: 120
     range: 40
@@ -539,6 +590,7 @@ craftWeapons:
     projectileType: 5
   - type: STR_FUSION_BALL_UC
     sprite: 116
+    weaponType: 0    
     sound: 7
     damage: 240
     range: 70
@@ -554,6 +606,7 @@ craftWeapons:
     projectileSpeed: 2
   - type: STR_FUSION_BEAM_UC
     sprite: 121
+    weaponType: 0    
     sound: 9
     damage: 200
     range: 50

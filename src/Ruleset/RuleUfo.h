@@ -160,7 +160,7 @@ public:
 	/// Get race bonus of statistic of UFO.
 	const RuleUfoStats& getRaceBonus(const std::string& s) const;
 	/// Get avoid chance of UFO
-	int getChanceToHitUfo() const;
+	int getAvoidChance() const;
 	/// Get max time ufo is on the crashsite
 	int getCrashSiteTime() const;
 };

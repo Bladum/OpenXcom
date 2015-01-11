@@ -34,17 +34,15 @@ class Ruleset;
  */
 struct RuleCraftStats
 {
-	int fuelMax, damageMax, speedMax, accel, 
-		radarRange, radarChance, sightRange; 
-
-	float accuracy, avoidBonus, damage, reload, range;
+	int fuelMax, damageMax, speedMax, accel, radarRange, 
+		radarChance, sightRange, armor, accuracy, 
+		avoidBonus, damage, reload, range;
 
 	/// Default constructor.
 	RuleCraftStats() :
 		fuelMax(0), damageMax(0), speedMax(0), accel(0),
-		radarRange(600), radarChance(100), sightRange(1800),
-		// percenage values
-		accuracy(1.0f), avoidBonus(1.0f), damage(1.0f), reload(1.0f), range(1.0f)
+		radarRange(0), radarChance(0), sightRange(0),
+		accuracy(0), avoidBonus(0), damage(0), reload(0), range(0), armor(0)
 	{
 
 	}
@@ -64,6 +62,7 @@ struct RuleCraftStats
 		damage += r.damage;
 		reload += r.reload;
 		range += r.range;
+		armor += r.armor;
 		return *this;
 	}
 	/// Subtract different stats.
@@ -82,6 +81,7 @@ struct RuleCraftStats
 		damage -= r.damage;
 		reload -= r.reload;
 		range -= r.range;
+		armor -= r.armor;
 		return *this;
 	}
 	/// Gets negative values of stats.
@@ -104,11 +104,12 @@ struct RuleCraftStats
 		sightRange = node["sightRange"].as<int>(sightRange);
 
 		// bonus for other weapons
-		avoidBonus = node["avoidBonus"].as<float>(avoidBonus);		
-		accuracy = node["accuracy"].as<float>(accuracy);		
-		damage = node["damage"].as<float>(damage);
-		reload = node["reload"].as<float>(reload);
-		range = node["range"].as<float>(range);
+		avoidBonus = node["avoidBonus"].as<int>(avoidBonus);		
+		accuracy = node["accuracy"].as<int>(accuracy);		
+		damage = node["damage"].as<int>(damage);
+		reload = node["reload"].as<int>(reload);
+		range = node["range"].as<int>(range);
+		armor  = node["armor"].as<int>(armor);
 	}
 };
 
@@ -199,17 +200,20 @@ public:
 	bool isValidWeaponSlot(int slot, int weaponType) const;
 	/// Get basic statistic of craft.
 	const RuleCraftStats& getStats() const;
-
 	/// Gets the craft's avoid chance
-	float getAvoidBonus() const;
+	int getAvoidBonus() const;
 	/// Gets the craft's accurancy modifier
-	float getWeaponsAccurancy() const;
+	int getWeaponsAccurancy() const;
 	/// Gets the craft's range of weapons modifier
-	float getWeaponsRange() const;
+	int getWeaponsRange() const;
 	/// Gets the craft's damage of weapons 
-	float getWeaponsDamage() const;
+	int getWeaponsDamage() const;
 	/// Gets the craft's reload time of weapons 
-	float getWeaponsReload() const;
+	int getWeaponsReload() const;
+	/// Gets the craft's armour
+	int getArmor() const;
+	/// Get Weapon Type
+	int getWeaponTypes(int slot) const;
 };
 
 }

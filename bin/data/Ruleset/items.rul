@@ -73,6 +73,20 @@ items:
     costSell: 5000
     transferTime: 24      
 # CRAFT STUFF    
+  - type: STR_CRAFT_FUEL_TANK  
+    size: 0.25  
+  - type: STR_CRAFT_ARMOR
+    size: 0.25    
+  - type: STR_CRAFT_COMPUTER
+    size: 0.25      
+  - type: STR_CRAFT_SHIELD
+    size: 0.25      
+  - type: STR_CRAFT_BOOSTER
+    size: 0.25      
+  - type: STR_CRAFT_POWERUP
+    size: 0.25      
+  - type: STR_CRAFT_TURBO
+    size: 0.25      
   - type: STR_CRAFT_FUEL
     size: 0.25
     costBuy: 8000

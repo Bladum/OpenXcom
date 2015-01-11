@@ -151,7 +151,7 @@ void CraftWeaponsState::lstWeaponsClick(Action *)
 		_base->getItems()->addItem(current->getRules()->getLauncherItem());
 		_base->getItems()->addItem(current->getRules()->getClipItem(), current->getClipsLoaded(_game->getRuleset()));
 		_craft->addCraftStats(-current->getRules()->getBonusStats());
- 		delete current;
+		delete current;
 		_craft->getWeapons()->at(_weapon) = 0;
 	}
 

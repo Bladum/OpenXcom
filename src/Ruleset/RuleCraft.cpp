@@ -29,12 +29,15 @@ namespace OpenXcom
  */
 RuleCraft::RuleCraft(const std::string &type) :
     _type(type), _sprite(-1), _weapons(0), _soldiers(0), _vehicles(0),
-    _costBuy(0), _costRent(0), _costSell(0), _repairRate(1), _refuelRate(1),
+    _costBuy(0), _costRent(0), _costSell(0), _refuelItem(""), _repairRate(1), _refuelRate(1),
 	_transferTime(0), _score(0), _battlescapeTerrainData(0),
 	_spacecraft(false), _listOrder(0), _maxItems(0), _stats()
 {
 	for (int i = 0; i < WeaponMax; ++ i)
 		_weaponTypes[i] = 0;
+	_stats.radarRange = 600;
+	_stats.radarChance = 100;
+	_stats.sightRange = 1200;
 }
 
 /**
@@ -295,7 +298,7 @@ int RuleCraft::getSightRange() const
  * Gets the craft's avoid chance
  * @return Base chance for craft to be hit
  */
-float RuleCraft::getAvoidBonus() const
+int RuleCraft::getAvoidBonus() const
 {
 	return _stats.avoidBonus;
 }
@@ -304,16 +307,25 @@ float RuleCraft::getAvoidBonus() const
  * Gets the craft's accurancy modifier
  * @return Base chance for craft to hit Ufo
  */
-float RuleCraft::getWeaponsAccurancy() const
+int RuleCraft::getWeaponsAccurancy() const
 {
 	return _stats.accuracy;
+}
+
+/**
+ * Gets the craft's armour
+ * @return Base chance for craft to hit Ufo
+ */
+int RuleCraft::getArmor() const
+{
+	return _stats.armor;
 }
 
 /**
  * Gets the craft's range of weapons modifier
  * @return Modifier for range of all weapons
  */
-float RuleCraft::getWeaponsRange() const
+int RuleCraft::getWeaponsRange() const
 {
 	return _stats.range;
 }
@@ -322,7 +334,7 @@ float RuleCraft::getWeaponsRange() const
  * Gets the craft's damage of weapons 
  * @return Modifier for damage of all weapons
  */
-float RuleCraft::getWeaponsDamage() const
+int RuleCraft::getWeaponsDamage() const
 {
 	return _stats.damage;
 }
@@ -331,7 +343,7 @@ float RuleCraft::getWeaponsDamage() const
  * Gets the craft's reload time of weapons 
  * @return Modifier for reload time of all weapons
  */
-float RuleCraft::getWeaponsReload() const
+int RuleCraft::getWeaponsReload() const
 {
 	return _stats.reload;
 }
@@ -408,6 +420,15 @@ int RuleCraft::getMaxItems() const
 bool RuleCraft::isValidWeaponSlot(int slot, int weaponType) const
 {
 	return _weaponTypes[slot] == weaponType;
+}
+
+/**
+ * Return weaponType
+ * @return the item limit.
+ */
+int RuleCraft::getWeaponTypes(int slot) const
+{
+	return _weaponTypes[slot];
 }
 
 /**
