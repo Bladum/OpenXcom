@@ -1100,7 +1100,7 @@ interfaces:
         color: 24
         color2: 28
         border: 15
-- type: inventory
+  - type: inventory
     elements:
       - id: textName
         color: 64

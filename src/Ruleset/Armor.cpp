@@ -55,6 +55,7 @@ void Armor::load(const YAML::Node &node)
 	_type = node["type"].as<std::string>(_type);
 	_spriteSheet = node["spriteSheet"].as<std::string>(_spriteSheet);
 	_spriteInv = node["spriteInv"].as<std::string>(_spriteInv);
+	_kneelTUCost = node["kneelTUCost"].as<int>(_kneelTUCost);
 	if (node["corpseItem"])
 	{
 		_corpseBattle.clear();
@@ -432,7 +433,6 @@ const std::vector<std::string> &Armor::getBuiltInWeapons() const
 	return _builtInWeapons;
 }
 
-
 /**
  * Gets max view distance at dark in BattleScape.
  * @return The distance to see at dark.
@@ -442,5 +442,13 @@ int Armor::getVisibilityAtDark() const
 	return _visibilityAtDark;
 }
 
+/**
+ *Get time to kneel when holding thin weapon
+ * @return The throw TU percentage.
+ */
+int Armor::getKneelTUCost() const
+{
+	return _kneelTUCost;
+}
 
 }

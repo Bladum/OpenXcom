@@ -29,14 +29,24 @@ namespace OpenXcom
  * Creates a blank ruleset for a certain type of item.
  * @param type String defining the type.
  */
-RuleItem::RuleItem(const std::string &type) : _type(type), _name(type), _size(0.0), _costBuy(0), _costSell(0), _transferTime(24), _weight(3), _bigSprite(0), _bigSpriteAlt(0), _floorSprite(-1), _floorSpriteAlt(-1), _handSprite(120), _bulletSprite(-1), _fireSound(-1), _hitSound(-1), _hitAnimation(0), _power(0), _damageType(),
-			_accuracyAuto(0), _accuracySnap(0), _accuracyAimed(0), _tuAuto(0), _tuSnap(0), _tuAimed(0), _clipSize(0), _accuracyMelee(0), _tuMelee(0), _battleType(BT_NONE), _twoHanded(false), _waypoint(false), _fixedWeapon(false), _invWidth(1), _invHeight(1),
-			_painKiller(0), _heal(0), _stimulant(0), _woundRecovery(0), _healthRecovery(0), _stunRecovery(0), _energyRecovery(0), _tuUse(0), _recoveryPoints(0), _armor(20), _turretType(-1), _recover(true), _liveAlien(false), _attraction(0),
-			_flatRate(false), _arcingShot(false), _listOrder(0), _maxRange(200), _aimRange(200), _snapRange(15), _autoRange(7), _minRange(0), _dropoff(2), _bulletSpeed(0), _explosionSpeed(0), _autoShots(3), _shotgunPellets(0),  _tuLoad(15), _tuUnload(8),
-			_strengthApplied(false), _skillApplied(true), _LOSRequired(false), _underwaterOnly(false), _meleeSound(39), _meleePower(0), _meleeAnimation(0), _meleeHitSound(-1), _specialType(-1), _vaporColor(-1), _vaporDensity(0), _vaporProbability(15),
-			_tuPrime(50), _tuThrow(25), _throwBonus(0.0f),
-			_strengthBonus(0.0f), _psiBonus(0.0f), _psiSkillBonus(0.0f), _psiStrengthBonus(0.0f)
+RuleItem::RuleItem(const std::string &type) : _type(type), _name(type), _size(0.0), _costBuy(0), _costSell(0), _transferTime(24), _weight(3), 
+	_bigSprite(0), _bigSpriteAlt(0), _floorSprite(-1), _floorSpriteAlt(-1), _handSprite(120), _bulletSprite(-1), _fireSound(-1), _hitSound(-1), 
+	_hitAnimation(0), _power(0), _damageType(), _accuracyAuto(0), _accuracySnap(0), _accuracyAimed(0), 
+	_tuAuto(0), _tuSnap(0), _tuAimed(0), _clipSize(0), _accuracyMelee(0), _tuMelee(0), _battleType(BT_NONE), 
+	_twoHanded(false), _waypoint(false), _fixedWeapon(false), _invWidth(1), _invHeight(1),
+	_painKiller(0), _heal(0), _stimulant(0), _woundRecovery(0), _healthRecovery(0), 
+	_stunRecovery(0), _energyRecovery(0), _tuUse(0), _recoveryPoints(0), _armor(20), 
+	_turretType(-1), _recover(true), _liveAlien(false), _attraction(0),
+	_flatRate(false), _arcingShot(false), _listOrder(0), _maxRange(200), _aimRange(200), 
+	_snapRange(15), _autoRange(7), _minRange(0), _dropoff(2), _bulletSpeed(0), _explosionSpeed(0), 
+	_autoShots(3), _shotgunPellets(0),  _tuLoad(15), _tuUnload(8),
+	_strengthApplied(false), _skillApplied(true), _LOSRequired(false), _underwaterOnly(false),
+	_meleeSound(39), _meleePower(0), _meleeAnimation(0), _meleeHitSound(-1), _specialType(-1), 
+	_vaporColor(-1), _vaporDensity(0), _vaporProbability(15), _twoHandsAccuracyHandicap(-20),
+	_tuPrime(50), _tuThrow(25), _throwBonus(0.0f), _kneelTUCost(4), _kneelAccuracyBonus(15),
+	_designForThrow(false), _strengthBonus(0.0f), _psiBonus(0.0f), _psiSkillBonus(0.0f), _psiStrengthBonus(0.0f)
 {
+
 }
 
 /**
@@ -63,6 +73,10 @@ void RuleItem::load(const YAML::Node &node, int modIndex, int listOrder, const s
 	_requiresBuy = node["requiresBuy"].as< std::vector<std::string> >(_requiresBuy);
 	_transferTime = node["transferTime"].as<int>(_transferTime);
 	_weight = node["weight"].as<int>(_weight);
+	_designForThrow = node["designForThrow"].as<bool>(_designForThrow); 
+	 
+	_kneelAccuracyBonus = node["kneelAccuracyBonus"].as<int>(_kneelAccuracyBonus); 
+	_twoHandsAccuracyHandicap = node["twoHandsAccuracyHandicap"].as<int>(_twoHandsAccuracyHandicap); 
 	if (node["bigSprite"])
 	{
 		_bigSprite = node["bigSprite"].as<int>(_bigSprite);
@@ -1073,6 +1087,34 @@ float RuleItem::getPowerRangeReduction() const
 std::string RuleItem::getPsiAttackName() const
 {
 	return _psiAttackName;
+}
+
+
+/**
+ * Get time to kneel when holding thin weapon
+ * @return The throw TU percentage.
+ */
+int RuleItem::getKneelAccuracyBonus() const
+{
+	return _kneelAccuracyBonus;
+}
+
+/**
+ * get handicap for use of two hands weapon
+ * @return The throw TU percentage.
+ */
+int RuleItem::getTwoHandsAccuracyHandicap() const
+{
+	return _twoHandsAccuracyHandicap;
+}
+
+/**
+ * get if weapon is designed for throwing
+ * @return The throw TU percentage.
+ */
+bool RuleItem::isDesignForThrow() const
+{
+	return _designForThrow;
 }
 
 }

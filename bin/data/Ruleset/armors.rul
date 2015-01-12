@@ -28,6 +28,7 @@ armors:
     drawingRoutine: 4
     visibilityAtDark: 9
     loftempsSet: [3]
+    armorClass: 0
     damageModifier:
       - 1.00 # NONE 
       - 1.00 # AP
@@ -52,6 +53,7 @@ armors:
     drawingRoutine: 4
     visibilityAtDark: 9
     loftempsSet: [3]
+    armorClass: 0
     damageModifier:
       - 1.00 # NONE 
       - 1.00 # AP
@@ -76,6 +78,7 @@ armors:
     drawingRoutine: 0
     visibilityAtDark: 9
     loftempsSet: [3]
+    armorClass: 0
     damageModifier:
       - 1.00 # NONE 
       - 1.00 # AP
@@ -100,6 +103,7 @@ armors:
     drawingRoutine: 0
     visibilityAtDark: 9
     loftempsSet: [3]
+    armorClass: 0
     damageModifier:
       - 1.00 # NONE 
       - 1.00 # AP
@@ -124,6 +128,7 @@ armors:
     drawingRoutine: 0
     visibilityAtDark: 9
     loftempsSet: [3]
+    armorClass: 0
     damageModifier:
       - 1.00 # NONE 
       - 1.00 # AP
@@ -148,6 +153,7 @@ armors:
     drawingRoutine: 0
     visibilityAtDark: 9
     loftempsSet: [3]
+    armorClass: 0
     damageModifier:
       - 1.00 # NONE 
       - 1.00 # AP
@@ -175,6 +181,7 @@ armors:
     weight: 1
     lightPower: 15
     loftempsSet: [3]
+    armorClass: 0
     visibilityAtDark: 9
     damageModifier:
       - 1.00 # NONE 
@@ -187,6 +194,7 @@ armors:
       - 1.00 # MELEE
       - 1.00 # ACID
       - 1.50 # SMOKE
+      
 # JETPACK      
   - type: STR_JETPACK_UC
     spriteSheet: XCOM_JETPACK.PCK
@@ -202,6 +210,7 @@ armors:
     stats: 
       reactions: -20     
     loftempsSet: [3]
+    armorClass: 0
     visibilityAtDark: 9
     movementType: 1    
     forcedTorso: 2      
@@ -231,6 +240,7 @@ armors:
     weight: 6    
     movementType: 0
     loftempsSet: [ 3 ]
+    armorClass: 0
     visibilityAtDark: 9
     damageModifier:
       - 1.00 # NONE 
@@ -257,7 +267,8 @@ armors:
     underArmor: 0
     weight: 4    
     movementType: 0
-    loftempsSet: [ 3 ]    
+    loftempsSet: [ 3 ]  
+    armorClass: 0    
     visibilityAtDark: 9
     damageModifier:
       - 1.00 # NONE 
@@ -284,6 +295,7 @@ armors:
     underArmor: 0
     weight: 10  
     loftempsSet: [4]
+    armorClass: -10
     visibilityAtDark: 9
     damageModifier:
       - 1.00 # NONE 
@@ -311,6 +323,7 @@ armors:
     stats: 
       melee: 10    
     loftempsSet: [4]
+    armorClass: -10
     visibilityAtDark: 9
     damageModifier:
       - 1.00 # NONE 
@@ -340,6 +353,7 @@ armors:
       reactions: -20  
       melee: 10 
     loftempsSet: [4]
+    armorClass: -10
     visibilityAtDark: 9
     movementType: 1    
     forcedTorso: 2    
@@ -369,6 +383,7 @@ armors:
     stats: 
       throwing: -20 
     loftempsSet: [5]
+    armorClass: -10
     visibilityAtDark: 9
     forcedTorso: 1
     damageModifier:
@@ -1762,7 +1777,6 @@ armors:
     loftempsSet: [ 92, 89, 90, 91 ]
     
 extraSprites:
-
 ################ X-COM VEHICLES #################    
 # X-COM SECTOTANK 
   - type: SECTOTANK_1.PCK

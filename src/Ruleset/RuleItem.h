@@ -49,11 +49,13 @@ private:
 	std::vector<std::string> _requiresBuy;
 	double _size;
 	int _costBuy, _costSell, _transferTime, _weight;
+	bool _designForThrow;
 	int _bigSprite, _bigSpriteAlt;
 	int _floorSprite, _floorSpriteAlt;
 	int _handSprite, _bulletSprite;
 	int _fireSound, _hitSound, _hitAnimation;
-	int _power;
+	int _power,  _kneelAccuracyBonus;
+	int _twoHandsAccuracyHandicap;
 	std::vector<std::string> _compatibleAmmo;
 	RuleDamageType _damageType;
 	int _accuracyAuto, _accuracySnap, _accuracyAimed, _tuAuto, _tuSnap, _tuAimed;
@@ -262,6 +264,14 @@ public:
 
 	/// Get name of psi attack for action menu.
 	std::string getPsiAttackName() const;
+
+
+	/// Get time to kneel when holding thin weapon
+	int getKneelAccuracyBonus() const;
+	/// get handicap for use of two hands weapon
+	int getTwoHandsAccuracyHandicap() const;
+	/// get if weapon is designed for throwing
+	bool isDesignForThrow() const;
 };
 
 }

@@ -1371,6 +1371,7 @@ int BattleUnit::getFiringAccuracy(BattleActionType actionType, BattleItem *item)
 {
 	const int modifier = getAccuracyModifier(item);
 	int weaponAcc = item->getRules()->getAccuracySnap();
+
 	if (actionType == BA_AIMEDSHOT || actionType == BA_LAUNCH)
 		weaponAcc = item->getRules()->getAccuracyAimed();
 	else if (actionType == BA_AUTOSHOT)
@@ -1386,17 +1387,25 @@ int BattleUnit::getFiringAccuracy(BattleActionType actionType, BattleItem *item)
 
 	int result = getBaseStats()->firing * weaponAcc / 100;
 
+	// bonus when kneeled
 	if (_kneeled)
-	{
-		result = result * 115 / 100;
+	{	
+		// kneeling bonus from active item
+		int baseKneelBonus = item->getRules()->getKneelAccuracyBonus();
+
+		result = result * baseKneelBonus / 100;
 	}
 
+	// handicap when two hands
 	if (item->getRules()->isTwoHanded())
 	{
 		// two handed weapon, means one hand should be empty
 		if (getItem("STR_RIGHT_HAND") != 0 && getItem("STR_LEFT_HAND") != 0)
 		{
-			result = result * 80 / 100;
+			// 2 hands handicap for this weapon
+			int twoHandsHandicap = 100 + item->getRules()->getTwoHandsAccuracyHandicap();
+			
+			result = result * twoHandsHandicap / 100;
 		}
 	}
 
@@ -1440,7 +1449,9 @@ int BattleUnit::getAccuracyModifier(BattleItem *item)
  */
 double BattleUnit::getThrowingAccuracy()
 {
-	return (double)(getBaseStats()->throwing * getAccuracyModifier()) / 100.0;
+	int baseChance = getBaseStats()->throwing * getAccuracyModifier();
+
+	return (double) baseChance / 100.0;
 }
 
 /**

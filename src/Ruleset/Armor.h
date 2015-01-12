@@ -52,6 +52,7 @@ private:
 	int _deathFrames;
 	bool _constantAnimation;
 	bool _canHoldWeapon;
+	int _kneelTUCost;
 	ForcedTorso _forcedTorso;
 	int _personalLightPower;
 	int _regeneration;	
@@ -128,6 +129,9 @@ public:
 	const std::vector<std::string> &getBuiltInWeapons() const;
 	/// Gets max view distance at dark in BattleScape.
 	int getVisibilityAtDark() const;
+
+	/// Get time to kneel when holding thin weapon
+	int getKneelTUCost() const;
 };
 
 }

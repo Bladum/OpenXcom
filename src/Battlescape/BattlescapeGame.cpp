@@ -359,7 +359,15 @@ void BattlescapeGame::handleAI(BattleUnit *unit)
  */
 bool BattlescapeGame::kneel(BattleUnit *bu)
 {
-	int tu = bu->isKneeled()?8:4;
+	// base cost to kneel
+	int baseCostToKneel = 4;
+
+	// additional cost of kneeling from ARMOR
+	baseCostToKneel += bu->getArmor()->getKneelTUCost();
+
+	// proceed kneeling as usual 
+	int tu = bu->isKneeled() ? baseCostToKneel*2 : baseCostToKneel;
+
 	if (bu->getType() == "SOLDIER" && !bu->isFloating() && ((!bu->isKneeled() && _save->getKneelReserved()) || checkReservedTU(bu, tu)))
 	{
 		if (bu->spendTimeUnits(tu))
@@ -995,7 +1003,15 @@ bool BattlescapeGame::checkReservedTU(BattleUnit *bu, int tu, bool justChecking)
 	{
 		effectiveTuReserved = BA_AIMEDSHOT;
 	}
-	const int tuKneel = (_save->getKneelReserved() && !bu->isKneeled()  && bu->getType() == "SOLDIER") ? 4 : 0;
+
+	// base cost to kneel
+	int baseCostToKneel = 4;
+
+	// additional cost of kneeling from weapon
+	baseCostToKneel += bu->getArmor()->getKneelTUCost();
+
+	const int tuKneel = (_save->getKneelReserved() && !bu->isKneeled()  && bu->getType() == "SOLDIER") ? baseCostToKneel : 0;
+
 	// no aimed shot available? revert to none.
 	if (bu->getActionTUs(effectiveTuReserved, slowestWeapon) == 0 && effectiveTuReserved == BA_AIMEDSHOT)
 	{

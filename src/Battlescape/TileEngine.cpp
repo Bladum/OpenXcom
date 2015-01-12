@@ -2813,7 +2813,14 @@ bool TileEngine::validateThrow(BattleAction &action, Position originVoxel, Posit
 	double curvature = 0.5;
 	if (action.type == BA_THROW)
 	{
-		curvature = std::max(0.48, 1.73 / sqrt(sqrt((double)(action.actor->getBaseStats()->strength) / (double)(action.weapon->getRules()->getWeight()))) + (action.actor->isKneeled()? 0.1 : 0.0));
+		double str = (double)action.actor->getBaseStats()->strength;
+		double wgh = (double)action.weapon->getRules()->getWeight();
+
+		// items are not design to be thrown has 50% mass
+		if(!action.weapon->getRules()->isDesignForThrow())
+			wgh = wgh * 3 / 2;
+	
+		curvature = std::max( 0.48,  1.73 / sqrt(sqrt(str / wgh)) + (action.actor->isKneeled()? 0.1 : 0.0) );
 	}
 	else
 	{
@@ -2835,7 +2842,7 @@ bool TileEngine::validateThrow(BattleAction &action, Position originVoxel, Posit
 
 	// we try 8 different curvatures to try and reach our goal.
 	int test = V_OUTOFBOUNDS;
-	while (!foundCurve && curvature < 5.0)
+	while (!foundCurve && curvature < 8.0)
 	{
 		std::vector<Position> trajectory;
 		test = calculateParabola(originVoxel, targetVoxel, false, &trajectory, action.actor, curvature, Position(0,0,0));
@@ -2852,7 +2859,7 @@ bool TileEngine::validateThrow(BattleAction &action, Position originVoxel, Posit
 			curvature += 0.5;
 		}
 	}
-	if (curvature >= 5.0)
+	if (curvature >= 8.0)
 	{
 		return false;
 	}
