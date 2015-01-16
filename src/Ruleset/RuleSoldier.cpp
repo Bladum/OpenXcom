@@ -26,7 +26,9 @@ namespace OpenXcom
  * type of soldier.
  * @param type String defining the type.
  */
-RuleSoldier::RuleSoldier(const std::string &type) : _type(type), _standHeight(0), _kneelHeight(0), _floatHeight(0), _femaleFrequency(50)
+RuleSoldier::RuleSoldier(const std::string &type) : 
+	_type(type), _standHeight(0), _kneelHeight(0), 
+		_floatHeight(0), _femaleFrequency(50), _energyPerTu(2)
 {
 }
 
@@ -50,6 +52,7 @@ void RuleSoldier::load(const YAML::Node &node)
 	_statCaps.merge(node["statCaps"].as<UnitStats>(_statCaps));
 	_armor = node["armor"].as<std::string>(_armor);
 	_standHeight = node["standHeight"].as<int>(_standHeight);
+	_energyPerTu = node["energyPerTu"].as<int>(_energyPerTu);
 	_kneelHeight = node["kneelHeight"].as<int>(_kneelHeight);
 	_floatHeight = node["floatHeight"].as<int>(_floatHeight);
 	_femaleFrequency = node["femaleFrequency"].as<int>(_femaleFrequency);
@@ -134,6 +137,16 @@ std::string RuleSoldier::getArmor() const
 int RuleSoldier::getFemaleFrequency() const
 {
 	return _femaleFrequency;
+}
+
+/**
+ * Get the number of energy per time cost
+ * @param tu
+ * @return energy per tu
+ */
+int RuleSoldier::getEnergyPerTu() 
+{
+	return _energyPerTu;
 }
 
 }

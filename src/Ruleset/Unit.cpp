@@ -26,7 +26,9 @@ namespace OpenXcom
  * Creates a certain type of unit.
  * @param type String defining the type.
  */
-Unit::Unit(const std::string &type) : _type(type), _standHeight(0), _kneelHeight(0), _floatHeight(0), _value(0), _deathSound(0), _aggroSound(-1), _moveSound(-1), _intelligence(0), _aggression(0), _energyRecovery(30), _specab(SPECAB_NONE), _livingWeapon(false), _female(false)
+Unit::Unit(const std::string &type) : _type(type), _standHeight(0), _kneelHeight(0), _floatHeight(0), 
+	_value(0), _deathSound(0), _aggroSound(-1), _moveSound(-1), _intelligence(0), _energyPerTu(2),
+	_aggression(0), _energyRecovery(30), _specab(SPECAB_NONE), _livingWeapon(false), _female(false)
 {
 }
 
@@ -44,7 +46,7 @@ Unit::~Unit()
  * @param node YAML node.
  */
 void Unit::load(const YAML::Node &node, int modIndex)
-{
+{	
 	_type = node["type"].as<std::string>(_type);
 	_race = node["race"].as<std::string>(_race);
 	_rank = node["rank"].as<std::string>(_rank);
@@ -67,7 +69,8 @@ void Unit::load(const YAML::Node &node, int modIndex)
 	_meleeWeapon = node["meleeWeapon"].as<std::string>(_meleeWeapon);
 	_builtInWeapons = node["builtInWeapons"].as<std::vector<std::string> >(_builtInWeapons);
 	_female = node["female"].as<bool>(_female);
-	
+	_energyPerTu = node["energyPerTu"].as<int>(_energyPerTu);
+
 	if (node["deathSound"])
 	{
 		_deathSound = node["deathSound"].as<int>(_deathSound);
@@ -287,4 +290,15 @@ const bool Unit::isFemale() const
 {
 	return _female;
 }
+
+/**
+ * Get the number of energy per time cost
+ * @param tu
+ * @return energy per tu
+ */
+int Unit::getEnergyPerTu() 
+{
+	return _energyPerTu;
+}
+
 }

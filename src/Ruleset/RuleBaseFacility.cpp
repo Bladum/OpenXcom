@@ -26,7 +26,10 @@ namespace OpenXcom
  * type of base facility.
  * @param type String defining the type.
  */
-RuleBaseFacility::RuleBaseFacility(const std::string &type) : _type(type), _spriteShape(-1), _spriteFacility(-1), _lift(false), _hyper(false), _mind(false), _grav(false), _size(1), _buildCost(0), _buildTime(0), _monthlyCost(0), _storage(0), _personnel(0), _aliens(0), _crafts(0), _labs(0), _workshops(0), _psiLabs(0), _radarRange(0), _radarChance(0), _defense(0), _hitRatio(0), _fireSound(0), _hitSound(0), _listOrder(0)
+RuleBaseFacility::RuleBaseFacility(const std::string &type) : _type(type), _spriteShape(-1), _spriteFacility(-1), _lift(false), 
+		_hyper(false), _mind(false), _grav(false), _size(1), _buildCost(0), _buildTime(0), _monthlyCost(0), _storage(0), _personnel(0), 
+		_aliens(0), _crafts(0), _labs(0), _workshops(0), _psiLabs(0), _radarRange(0), _radarChance(0), _defense(0), _hitRatio(0), 
+		_fireSound(0), _hitSound(0), _listOrder(0), _fireCount(1), _fireInterval(250)
 {
 }
 
@@ -61,6 +64,7 @@ void RuleBaseFacility::load(const YAML::Node &node, int modIndex, int listOrder)
 		if (_spriteFacility > 33)
 			_spriteFacility += modIndex;
 	}
+	_fireInterval = node["fireInterval"].as<int>(_fireInterval);
 	_lift = node["lift"].as<bool>(_lift);
 	_hyper = node["hyper"].as<bool>(_hyper);
 	_mind = node["mind"].as<bool>(_mind);
@@ -74,6 +78,8 @@ void RuleBaseFacility::load(const YAML::Node &node, int modIndex, int listOrder)
 	_aliens = node["aliens"].as<int>(_aliens);
 	_crafts = node["crafts"].as<int>(_crafts);
 	_labs = node["labs"].as<int>(_labs);
+	_clip = node["clip"].as<std::string>(_clip);
+	_fireCount = node["fireCount"].as<int>(_fireCount);
 	_workshops = node["workshops"].as<int>(_workshops);
 	_psiLabs = node["psiLabs"].as<int>(_psiLabs);
 	_radarRange = node["radarRange"].as<int>(_radarRange);
@@ -368,4 +374,32 @@ int RuleBaseFacility::getListOrder() const
 {
 	return _listOrder;
 }
+
+/**
+ * Gets the facility's list weight.
+ * @return The list weight for this research item.
+ */
+int RuleBaseFacility::getFireCount() const
+{
+	return _fireCount;
+}
+
+/**
+ * Gets the facility's fire interval during battle
+ * @return The list weight for this research item.
+ */
+int RuleBaseFacility::getFireInterval() const
+{
+	return _fireInterval;
+}
+
+/**
+ * Gets the facility's fire interval during battle
+ * @return The list weight for this research item.
+ */
+std::string RuleBaseFacility::getClipUsed() const
+{
+	return _clip;
+}
+
 }

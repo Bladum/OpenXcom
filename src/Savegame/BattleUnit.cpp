@@ -87,6 +87,7 @@ BattleUnit::BattleUnit(Soldier *soldier, int depth) :
 	_moveSound = -1;  // this one is hardcoded
 	_intelligence = 2;
 	_aggression = 1;
+	_energyPerTu = soldier->getRules()->getEnergyPerTu();
 	_specab = SPECAB_NONE;
 	_armor = soldier->getArmor();
 	_movementType = _armor->getMovementType();
@@ -177,6 +178,7 @@ BattleUnit::BattleUnit(Unit *unit, UnitFaction faction, int id, Armor *armor, in
 	_deathSound = unit->getDeathSound();
 	_aggroSound = unit->getAggroSound();
 	_moveSound = unit->getMoveSound();
+	_energyPerTu = unit->getEnergyPerTu();
 	_intelligence = unit->getIntelligence();
 	_aggression = unit->getAggression();
 	_specab = (SpecialAbility) unit->getSpecialAbility();
@@ -1257,7 +1259,10 @@ bool BattleUnit::spendTimeUnits(int tu)
  */
 bool BattleUnit::spendEnergy(int tu)
 {
-	int eu = tu / 2;
+	int eu = getEnergyPerTuCost( tu );
+
+	if(eu)
+		eu = tu / eu;
 
 	if (eu <= _energy)
 	{
@@ -1378,9 +1383,10 @@ int BattleUnit::getFiringAccuracy(BattleActionType actionType, BattleItem *item)
 		weaponAcc = item->getRules()->getAccuracyAuto();
 	else if (actionType == BA_HIT || actionType == BA_STUN)
 	{
-		if (item->getRules()->isSkillApplied())
+		if ( item->getRules()->getSkillMeleeAccuracy() )
 		{
-			return (getBaseStats()->melee * item->getRules()->getAccuracyMelee() / 100) * modifier / 100;
+			weaponAcc = weaponAcc * getBaseStats()->melee * item->getRules()->getSkillMeleeAccuracy() / 10000;
+ 			return (weaponAcc * item->getRules()->getAccuracyMelee() / 100) * modifier / 100;
 		}
 		return item->getRules()->getAccuracyMelee() * getAccuracyModifier(item) / 100;
 	}
@@ -3023,7 +3029,15 @@ const UnitStats *BattleUnit::getStats() const
 	return &_stats;
 }
 
-
+/**
+ * Get the number of energy per time cost
+ * @param tu
+ * @return energy per tu
+ */
+int BattleUnit::getEnergyPerTuCost(int tu) 
+{
+	return tu / _energyPerTu;
+}
 
 
 }

@@ -2815,11 +2815,7 @@ bool TileEngine::validateThrow(BattleAction &action, Position originVoxel, Posit
 	{
 		double str = (double)action.actor->getBaseStats()->strength;
 		double wgh = (double)action.weapon->getRules()->getWeight();
-
-		// items are not design to be thrown has 50% mass
-		if(!action.weapon->getRules()->isDesignForThrow())
-			wgh = wgh * 3 / 2;
-	
+			
 		curvature = std::max( 0.48,  1.73 / sqrt(sqrt(str / wgh)) + (action.actor->isKneeled()? 0.1 : 0.0) );
 	}
 	else

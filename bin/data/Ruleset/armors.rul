@@ -383,7 +383,7 @@ armors:
     stats: 
       throwing: -20 
     loftempsSet: [5]
-    armorClass: -10
+    armorClass: -20
     visibilityAtDark: 9
     forcedTorso: 1
     damageModifier:
@@ -415,6 +415,7 @@ armors:
       throwing: -20
       strength: 10
     loftempsSet: [5]
+    armorClass: -20
     visibilityAtDark: 9
     forcedTorso: 1
     damageModifier:
@@ -446,6 +447,7 @@ armors:
       throwing: -20
       strength: 10
     loftempsSet: [5]
+    armorClass: -20
     visibilityAtDark: 9
     forcedTorso: 2
     movementType: 1    
@@ -475,6 +477,7 @@ armors:
     underArmor: 40
     drawingRoutine: 2
     visibilityAtDark: 9
+    armorClass: -30
     size: 2
     loftempsSet: [ 92, 89, 90, 91 ]
     damageModifier:
@@ -502,6 +505,7 @@ armors:
     underArmor: 50
     drawingRoutine: 2
     visibilityAtDark: 9
+    armorClass: -30
     size: 2
     loftempsSet: [ 92, 89, 90, 91 ]
     damageModifier:
@@ -529,6 +533,7 @@ armors:
     underArmor: 30
     drawingRoutine: 2
     visibilityAtDark: 9
+    armorClass: -20
     size: 2
     loftempsSet: [92, 89, 90, 91]
     constantAnimation: true
@@ -558,6 +563,7 @@ armors:
     underArmor: 40
     drawingRoutine: 2
     visibilityAtDark: 9
+    armorClass: -20
     size: 2
     constantAnimation: true    
     movementType: 1      
@@ -588,6 +594,7 @@ armors:
     underArmor: 40
     drawingRoutine: 5
     visibilityAtDark: 9
+    armorClass: -20
     size: 2
     damageModifier:
       - 1.00 # NONE 
@@ -616,6 +623,7 @@ armors:
     underArmor: 40
     drawingRoutine: 5
     visibilityAtDark: 9
+    armorClass: -30
     size: 2
     damageModifier:
       - 1.00 # NONE 
@@ -644,6 +652,7 @@ armors:
     underArmor: 40
     drawingRoutine: 5
     visibilityAtDark: 9
+    armorClass: -30
     size: 2
     damageModifier:
       - 1.00 # NONE 
@@ -671,7 +680,8 @@ armors:
     drawingRoutine: 4
     visibilityAtDark: 9
     size: 1
-    loftempsSet: [ 63 ]    
+    loftempsSet: [ 63 ]
+    armorClass: 10    
     damageModifier:
       - 1.00 # NONE 
       - 1.00 # AP
@@ -696,7 +706,8 @@ armors:
     drawingRoutine: 4
     visibilityAtDark: 9
     size: 1
-    loftempsSet: [ 63 ]    
+    loftempsSet: [ 63 ] 
+    armorClass: 10    
     damageModifier:
       - 1.00 # NONE 
       - 1.00 # AP
@@ -721,6 +732,7 @@ armors:
     visibilityAtDark: 9
     size: 1 
     loftempsSet: [ 5 ]    
+    armorClass: -30
     damageModifier:
       - 1.00 # NONE 
       - 1.00 # AP
@@ -767,6 +779,7 @@ armors:
     rearArmor: 0
     underArmor: 0
     loftempsSet: [2]
+    armorClass: 10
     damageModifier:
       - 0.00  # EMP  
       - 1.00  # AP
@@ -787,7 +800,8 @@ armors:
     sideArmor: 5
     rearArmor: 5
     underArmor: 5
-    loftempsSet: [ 2 ]     
+    loftempsSet: [ 2 ]
+    armorClass: 10    
     damageModifier:
       - 0.00  # EMP  
       - 1.00  # AP
@@ -812,6 +826,7 @@ armors:
     drawingRoutine: 1
     loftempsSet: [4]
     movementType: 1    
+    armorClass: -10
     damageModifier:
       - 0.00  # EMP  
       - 1.00  # AP
@@ -835,6 +850,7 @@ armors:
     underArmor: 15
     drawingRoutine: 1
     loftempsSet: [4]
+    armorClass: -10
     movementType: 1    
     damageModifier:
       - 0.00  # EMP  
@@ -859,6 +875,7 @@ armors:
     underArmor: 15
     drawingRoutine: 1
     loftempsSet: [4]
+    armorClass: -10
     movementType: 1    
     damageModifier:
       - 0.00  # EMP  
@@ -889,6 +906,7 @@ armors:
     size: 2
     loftempsSet: [92, 89, 90, 91]
     constantAnimation: true
+    armorClass: -20
     movementType: 1    
     damageModifier:
       - 0.00  # EMP 
@@ -916,6 +934,7 @@ armors:
     rearArmor: 20
     underArmor: 20
     drawingRoutine: 5
+    armorClass: -30
     size: 2
     loftempsSet: [92, 89, 90, 91]
     damageModifier:
@@ -944,6 +963,7 @@ armors:
     rearArmor: 60
     underArmor: 40
     drawingRoutine: 5
+    armorClass: -30
     size: 2
     loftempsSet: [92, 89, 90, 91]
     damageModifier:
@@ -968,6 +988,7 @@ armors:
     rearArmor: 15
     underArmor: 10
     drawingRoutine: 6
+    armorClass: 10
     loftempsSet: [3]
     damageModifier:
       - 0.00  # EMP  
@@ -991,6 +1012,7 @@ armors:
     rearArmor: 20
     underArmor: 15
     drawingRoutine: 6
+    armorClass: 10
     loftempsSet: [3]
     damageModifier:
       - 0.00  # EMP  
@@ -1013,6 +1035,7 @@ armors:
     rearArmor: 25
     underArmor: 20
     drawingRoutine: 6
+    armorClass: 10
     loftempsSet: [3]
     damageModifier:
       - 0.00  # EMP  
@@ -1124,6 +1147,7 @@ armors:
     rearArmor: 35
     underArmor: 35
     drawingRoutine: 4
+    armorClass: -10
     loftempsSet: [5]
     damageModifier:
       - 0.00  # EMP  
@@ -1148,6 +1172,7 @@ armors:
     underArmor: 40
     drawingRoutine: 4
     loftempsSet: [5]
+    armorClass: -10
     damageModifier:
       - 0.00  # EMP  
       - 1.00  # AP
@@ -1171,6 +1196,7 @@ armors:
     underArmor: 45
     drawingRoutine: 4
     loftempsSet: [5]
+    armorClass: -10
     damageModifier:
       - 0.00  # EMP  
       - 1.00  # AP
@@ -1241,6 +1267,7 @@ armors:
     underArmor: 10
     drawingRoutine: 8
     loftempsSet: [5]
+    armorClass: -40
     constantAnimation: true
     damageModifier:
       - 0.00  # EMP  
@@ -1441,6 +1468,7 @@ armors:
     underArmor: 25
     drawingRoutine: 10
     loftempsSet: [3]
+    armorClass: -10
     damageModifier:
       - 1.00 # NONE 
       - 0.75 # AP
@@ -1463,6 +1491,7 @@ armors:
     underArmor: 30
     drawingRoutine: 10
     loftempsSet: [3]
+    armorClass: -10
     damageModifier:
       - 1.00 # NONE 
       - 0.75 # AP
@@ -1485,6 +1514,7 @@ armors:
     underArmor: 35
     drawingRoutine: 10
     loftempsSet: [3]
+    armorClass: -10
     damageModifier:
       - 1.00 # NONE 
       - 0.75 # AP
@@ -1529,6 +1559,7 @@ armors:
     underArmor: 20
     drawingRoutine: 1
     loftempsSet: [2]
+    armorClass: 10
     damageModifier:
       - 0.00  # EMP  
       - 1.00  # AP
@@ -1552,6 +1583,7 @@ armors:
     underArmor: 25
     drawingRoutine: 1
     loftempsSet: [2]
+    armorClass: 10
     damageModifier:
       - 0.00  # EMP  
       - 1.00  # AP
@@ -1575,6 +1607,7 @@ armors:
     underArmor: 30
     drawingRoutine: 1
     loftempsSet: [2]
+    armorClass: 10
     damageModifier:
       - 0.00  # EMP  
       - 1.00  # AP
@@ -1697,6 +1730,7 @@ armors:
       - 1.25  # ACID
       - 1.50  # SMOKE
     loftempsSet: [ 4 ]
+    armorClass: -10
   - type: MIB_ARMOR5
     spriteSheet: MIB_5.PCK
     spriteInv: inventory_MIB_5
@@ -1720,7 +1754,7 @@ armors:
       - 1.50  # ACID
       - 1.50  # SMOKE
     loftempsSet: [ 5 ]
-    
+    armorClass: -20
   - type: MIB_TANK_ARMOR
     spriteSheet: MIB_TANK.PCK
     corpseBattle:
@@ -1735,6 +1769,7 @@ armors:
     underArmor: 50
     drawingRoutine: 2
     visibilityAtDark: 9
+    armorClass: -30
     size: 2
     damageModifier:
       - 1.00 # NONE 
@@ -1762,6 +1797,7 @@ armors:
     underArmor: 40
     drawingRoutine: 5
     visibilityAtDark: 9
+    armorClass: -30
     size: 2
     damageModifier:
       - 1.00 # NONE 

@@ -67,6 +67,7 @@ private:
 	Position _pos;
 	Tile *_tile;
 	Position _lastPos;
+	int _energyPerTu;
 	int _direction, _toDirection;
 	int _directionTurret, _toDirectionTurret;
 	int _verticalDirection;
@@ -467,6 +468,9 @@ public:
 
 	/// Get special weapon.
 	BattleItem *getSpecialWeapon(BattleType type) const;
+
+	/// Get the number of energy per time cost
+	int getEnergyPerTuCost(int tu) ;
 
 	/// Gets the unit's stats.
 	const UnitStats *getStats() const;

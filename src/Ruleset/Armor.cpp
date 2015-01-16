@@ -32,7 +32,7 @@ Armor::Armor(const std::string &type) : _type(type), _frontArmor(0), _sideArmor(
 	_canHoldWeapon(false), _forcedTorso(TORSO_USE_GENDER), 
 	_personalLightPower(15), _regeneration(0), 
 	_fearImmune(-1), _bleedImmune(-1), _painImmune(-1), _zombiImmune(-1),
-	 _visibilityAtDark(0),	_builtInWeapons()
+	 _visibilityAtDark(0),	_builtInWeapons(), _kneelTUCost(4), _armorClass(0)
 {
 	for (int i=0; i < DAMAGE_TYPES; i++)
 		_damageModifier[i] = 1.0f;
@@ -67,6 +67,8 @@ void Armor::load(const YAML::Node &node)
 		_corpseBattle = node["corpseBattle"].as< std::vector<std::string> >();
 		_corpseGeo = _corpseBattle[0];
 	}
+	 
+	_armorClass = node["armorClass"].as<int>(_armorClass); 
 	_corpseGeo = node["corpseGeo"].as<std::string>(_corpseGeo);
 	_storeItem = node["storeItem"].as<std::string>(_storeItem);
 	_specWeapon = node["specialWeapon"].as<std::string>(_specWeapon);
@@ -449,6 +451,15 @@ int Armor::getVisibilityAtDark() const
 int Armor::getKneelTUCost() const
 {
 	return _kneelTUCost;
+}
+
+/**
+ * Get armor class, it modifies chance to hit unit
+ * @return The throw TU percentage.
+ */
+int Armor::getArmorClass() const
+{
+	return _armorClass;
 }
 
 }

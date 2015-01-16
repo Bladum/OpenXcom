@@ -2,6 +2,18 @@ extraStrings:
   - type: en-US
     strings:
     
+      STR_FACILITY: FACILITY
+      STR_STATUS: STATUS
+      STR_DAMAGE: POWER
+      STR_SHOTS: SHOTS
+      STR_RESULT: RESULT
+      STR_UFO_LIFE: UFO LIFE      
+      STR_NO_AMMO: NO AMMO
+      
+      STR_CANNON_ROUNDS_X25: Craft Cannon Ammo (x25)
+      STR_CANNON_DEFENSES: Cannon Defences
+      STR_CANNON_DEFENSES_UFOPEDIA: Cannon defences are standard flak cannons mounted on the top of the facality. They are very effective in shooting down UFO but use large number of ammunition. 
+      
       STR_CRAFT_ITEM_DAMAGEMAX_: "DAMAGE>{ALT}{0}"
       STR_CRAFT_ITEM_SPEEDMAX_: "SPEED>{ALT}{0}"
       STR_CRAFT_ITEM_ACCURACY_: "TO HIT>{ALT}{0}"
@@ -17,6 +29,9 @@ extraStrings:
       STR_CRAFT_ITEM_RANGE_: "FIRE RANGE>{ALT}{0}"
       STR_SPEED_: "SPEED>{ALT}{0}"
       STR_STATUS_: "STATUS>{ALT}{0}"
+      
+      STR_HIT_COUNT: Number of shots
+      STR_CLIP_USED: Ammunition
       
       STR_CRAFT_FUEL_TANK_UC: FUEL TANK      
       STR_CRAFT_ARMOR_UC: PLATES

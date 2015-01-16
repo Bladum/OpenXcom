@@ -40,11 +40,12 @@ RuleItem::RuleItem(const std::string &type) : _type(type), _name(type), _size(0.
 	_flatRate(false), _arcingShot(false), _listOrder(0), _maxRange(200), _aimRange(200), 
 	_snapRange(15), _autoRange(7), _minRange(0), _dropoff(2), _bulletSpeed(0), _explosionSpeed(0), 
 	_autoShots(3), _shotgunPellets(0),  _tuLoad(15), _tuUnload(8),
-	_strengthApplied(false), _skillApplied(true), _LOSRequired(false), _underwaterOnly(false),
+	_LOSRequired(false), _underwaterOnly(false),
 	_meleeSound(39), _meleePower(0), _meleeAnimation(0), _meleeHitSound(-1), _specialType(-1), 
 	_vaporColor(-1), _vaporDensity(0), _vaporProbability(15), _twoHandsAccuracyHandicap(-20),
-	_tuPrime(50), _tuThrow(25), _throwBonus(0.0f), _kneelTUCost(4), _kneelAccuracyBonus(15),
-	_designForThrow(false), _strengthBonus(0.0f), _psiBonus(0.0f), _psiSkillBonus(0.0f), _psiStrengthBonus(0.0f)
+	_tuPrime(50), _tuThrow(25), _kneelAccuracyBonus(15),
+	_meleeAccuracy(100), _reactions(100), _strenght(0), _psiStrenght(0),
+	_fireAccuracy(100), _throwAccuracy(50), _psiSkill(0)
 {
 
 }
@@ -73,7 +74,6 @@ void RuleItem::load(const YAML::Node &node, int modIndex, int listOrder, const s
 	_requiresBuy = node["requiresBuy"].as< std::vector<std::string> >(_requiresBuy);
 	_transferTime = node["transferTime"].as<int>(_transferTime);
 	_weight = node["weight"].as<int>(_weight);
-	_designForThrow = node["designForThrow"].as<bool>(_designForThrow); 
 	 
 	_kneelAccuracyBonus = node["kneelAccuracyBonus"].as<int>(_kneelAccuracyBonus); 
 	_twoHandsAccuracyHandicap = node["twoHandsAccuracyHandicap"].as<int>(_twoHandsAccuracyHandicap); 
@@ -84,20 +84,16 @@ void RuleItem::load(const YAML::Node &node, int modIndex, int listOrder, const s
 		if (_bigSprite > 56)
 			_bigSprite += modIndex;
 	}
-		
-	_skillApplied = node["skillApplied"].as<bool>(_skillApplied);
-	if (node["strengthApplied"].as<bool>(false))
-	{
-		_strengthBonus = 1.0f;		
-	}
 
-	if (const YAML::Node &d = node["damageBonus"])
+	if (const YAML::Node &d = node["skillApplied"])
  	{
-		_strengthBonus = d["strength"].as<float>(_strengthBonus);
-		_psiBonus = d["psi"].as<float>(_psiBonus);
-		_psiSkillBonus = d["psiSkill"].as<float>(_psiSkillBonus);
-		_psiStrengthBonus = d["psiStrength"].as<float>(_psiStrengthBonus);
-		_throwBonus = d["throw"].as<float>(_throwBonus);
+		_fireAccuracy = d["fireAccuracySkill"].as<int>(_fireAccuracy);
+		_throwAccuracy = d["throwAccuracySkill"].as<int>(_throwAccuracy);
+		_meleeAccuracy = d["meleeAccuracySkill"].as<int>(_meleeAccuracy);
+		_reactions = d["reactionsSkill"].as<int>(_reactions);
+		_strenght = d["strenghtSkill"].as<int>(_strenght);
+		_psiStrenght = d["psiStrenghtSkill"].as<int>(_psiStrenght);
+		_psiSkill = d["psiSkill"].as<int>(_psiSkill);
  	}
 	if (node["damageType"])
 	{
@@ -107,10 +103,6 @@ void RuleItem::load(const YAML::Node &node, int modIndex, int listOrder, const s
 		_damageType = *damageTypes.at(node["damageType"].as<int>(type));
 	}
 	_damageType.FixRadius = node["blastRadius"].as<int>(_damageType.FixRadius);
-	if (node["damageAlter"])
-	{
-		_damageType.load(node["damageAlter"]);
-	}
 	if (node["bigSpriteAlt"])
 	{
 		_bigSpriteAlt = node["bigSpriteAlt"].as<int>(_bigSpriteAlt);
@@ -903,38 +895,6 @@ std::string RuleItem::getZombieUnit() const
 }
 
 /**
- * Is strength applied to the damage of this weapon?
- * @return If we should apply strength.
- */
-bool RuleItem::isStrengthApplied() const
-{
-	return _strengthApplied;
-}
-
-
-//int RuleItem::getBonusPower(UnitStats* stats) const
-//{
-//	int power = 0;
-//	power += stats->strength * _strengthBonus;
-//	power += stats->psiSkill * stats->psiStrength * _psiBonus;
-//	power += stats->psiSkill * _psiSkillBonus;
-//	power += stats->psiStrength * _psiStrengthBonus;
-//	power += stats->throwing * _throwBonus;
-//	return power;
-//}
-
-
-/**
- * Is skill applied to the accuracy of this weapon?
- * this only applies to melee weapons.
- * @return If we should apply skill.
- */
-bool RuleItem::isSkillApplied() const
-{
-	return _skillApplied;
-}
-
-/**
  * What sound does this weapon make when you swing this at someone?
  * @return The weapon's melee attack sound.
  */
@@ -1109,12 +1069,60 @@ int RuleItem::getTwoHandsAccuracyHandicap() const
 }
 
 /**
- * get if weapon is designed for throwing
+ * get handicap for use of two hands weapon
  * @return The throw TU percentage.
  */
-bool RuleItem::isDesignForThrow() const
+int RuleItem::getSkillFireAccuracy() const
 {
-	return _designForThrow;
+	return _fireAccuracy;
+}
+/**
+ * get handicap for use of two hands weapon
+ * @return The throw TU percentage.
+ */
+int RuleItem::getSkillThrowAccuracy() const
+{
+	return _throwAccuracy;
+}
+/**
+ * get handicap for use of two hands weapon
+ * @return The throw TU percentage.
+ */
+int RuleItem::getSkillReactions() const
+{
+	return _reactions;
+}
+/**
+ * get handicap for use of two hands weapon
+ * @return The throw TU percentage.
+ */
+int RuleItem::getSkillMeleeAccuracy() const
+{
+	return _meleeAccuracy;
+}
+/**
+ * get handicap for use of two hands weapon
+ * @return The throw TU percentage.
+ */
+int RuleItem::getSkillStrenght() const
+{
+	return _strenght;
+}
+/**
+ * get handicap for use of two hands weapon
+ * @return The throw TU percentage.
+ */
+int RuleItem::getSkillPsiStrenght() const
+{
+	return _psiStrenght;
+}
+/**
+ * get handicap for use of two hands weapon
+ * @return The throw TU percentage.
+ */
+int RuleItem::getSkillPsiSkill() const
+{
+	return _psiSkill;
 }
 
 }

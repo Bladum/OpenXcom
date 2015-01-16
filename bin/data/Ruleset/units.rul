@@ -180,7 +180,8 @@ units:
     kneelHeight: 16
     value: 20
     specab: 1    
-    energyRecovery: 5
+    energyRecovery: 0
+    energyPerTu: 1
     deathSound: 23
     moveSound: 14
     builtInWeapons:
@@ -206,7 +207,8 @@ units:
     kneelHeight: 16
     value: 20
     specab: 1    
-    energyRecovery: 5
+    energyRecovery: 0
+    energyPerTu: 1
     deathSound: 23
     moveSound: 14
     
@@ -229,7 +231,8 @@ units:
     kneelHeight: 16
     value: 20
     specab: 1     
-    energyRecovery: 5    
+    energyRecovery: 0
+    energyPerTu: 1 
     deathSound: 23
     moveSound: 14
     
@@ -252,7 +255,8 @@ units:
     kneelHeight: 20
     value: 20
     specab: 1    
-    energyRecovery: 5
+    energyRecovery: 0
+    energyPerTu: 1
     deathSound: 23
     moveSound: 14
     
@@ -275,7 +279,8 @@ units:
     kneelHeight: 18
     value: 30
     specab: 1
-    energyRecovery: 5
+    energyRecovery: 0
+    energyPerTu: 1
     deathSound: 23
     moveSound: 14
     builtInWeapons:
@@ -301,7 +306,8 @@ units:
     kneelHeight: 18
     value: 30
     specab: 1    
-    energyRecovery: 5
+    energyRecovery: 0
+    energyPerTu: 1
     deathSound: 23
     moveSound: 14
     
@@ -324,7 +330,8 @@ units:
     kneelHeight: 18
     value: 30
     specab: 1    
-    energyRecovery: 5
+    energyRecovery: 0
+    energyPerTu: 1
     deathSound: 23
     moveSound: 14    
     
@@ -350,6 +357,7 @@ units:
     value: 40
     specab: 1    
     energyRecovery: 10
+    energyPerTu: 1
     deathSound: 23
     moveSound: 40         
   - type: STR_HOVERTANK_PLASMA
@@ -373,6 +381,7 @@ units:
     value: 40
     specab: 1    
     energyRecovery: 10
+    energyPerTu: 1
     deathSound: 23
     moveSound: 40     
   - type: STR_HOVERTANK_LAUNCHER
@@ -396,6 +405,7 @@ units:
     value: 40
     specab: 1    
     energyRecovery: 10
+    energyPerTu: 1
     deathSound: 23
     moveSound: 40 
 
@@ -420,6 +430,7 @@ units:
     value: 40
     specab: 1    
     energyRecovery: 10
+    energyPerTu: 1
     deathSound: 23
     moveSound: 40         
   - type: STR_POWER_HOVERTANK_PLASMA
@@ -443,6 +454,7 @@ units:
     value: 40
     specab: 1    
     energyRecovery: 10
+    energyPerTu: 1
     deathSound: 23
     moveSound: 40     
   - type: STR_POWER_HOVERTANK_LAUNCHER
@@ -466,6 +478,7 @@ units:
     value: 40
     specab: 1    
     energyRecovery: 10
+    energyPerTu: 1
     deathSound: 23
     moveSound: 40 
     
@@ -489,6 +502,7 @@ units:
     value: 50
     specab: 1   
     energyRecovery: 20    
+    energyPerTu: 2
     deathSound: 23
     moveSound: 14
 
@@ -512,6 +526,7 @@ units:
     value: 50
     specab: 1     
     energyRecovery: 20    
+    energyPerTu: 2
     deathSound: 23
     moveSound: 14
   - type: STR_SECTOTANK_ROCKET
@@ -534,6 +549,7 @@ units:
     value: 50
     specab: 1    
     energyRecovery: 20
+    energyPerTu: 2
     deathSound: 23
     moveSound: 14
     

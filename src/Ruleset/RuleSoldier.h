@@ -36,6 +36,7 @@ private:
 	std::string _type;
 	UnitStats _minStats, _maxStats, _statCaps;
 	std::string _armor;
+	int _energyPerTu;
 	int _standHeight, _kneelHeight, _floatHeight, _femaleFrequency;
 public:
 	/// Creates a blank unit ruleset.
@@ -62,6 +63,9 @@ public:
 	std::string getArmor() const;
 	/// Gets the female appearance ratio.
 	int getFemaleFrequency() const;
+
+	/// Get the number of energy per time cost
+	int getEnergyPerTu() ;
 
 };
 

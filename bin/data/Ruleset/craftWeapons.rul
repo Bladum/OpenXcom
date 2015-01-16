@@ -61,7 +61,7 @@ craftWeapons:
     ammoMax: 200
     rearmRate: 50  
     launcher: STR_CANNON
-    clip: STR_CANNON_ROUNDS_X50
+    clip: STR_CANNON_ROUNDS_X25
     projectileType: 2
     projectileSpeed: 12
   - type: STR_ALLOY_CANNON_UC

@@ -1086,6 +1086,11 @@ ufopaedia:
     requires:
       - STR_ALIEN_CONTAINMENT
     text: STR_ALIEN_CONTAINMENT_UFOPEDIA    
+    
+  - id: STR_CANNON_DEFENSES
+    type_id: 6
+    section: STR_BASE_FACILITIES
+    text: STR_CANNON_DEFENSES_UFOPEDIA    
   - id: STR_MISSILE_DEFENSES
     type_id: 6
     section: STR_BASE_FACILITIES

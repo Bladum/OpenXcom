@@ -832,8 +832,8 @@ void AlienBAIState::setupEscape()
 				if (unitsSpottingMe > 0)
 				{
 					// maybe don't stay in the same spot? move or something if there's any point to it?
-					_escapeAction->target.x += RNG::generate(-20,20);
-					_escapeAction->target.y += RNG::generate(-20,20);
+					_escapeAction->target.x += RNG::generate(-24,24);
+					_escapeAction->target.y += RNG::generate(-24,24);
 				}
 				else
 				{
@@ -854,8 +854,8 @@ void AlienBAIState::setupEscape()
 						
 			score = BASE_DESPERATE_SUCCESS; // ruuuuuuun
 			_escapeAction->target = _unit->getPosition();
-			_escapeAction->target.x += RNG::generate(-10,10);
-			_escapeAction->target.y += RNG::generate(-10,10);
+			_escapeAction->target.x += RNG::generate(-12,12);
+			_escapeAction->target.y += RNG::generate(-12,12);
 			_escapeAction->target.z = _unit->getPosition().z + RNG::generate(-1,1);
 			if (_escapeAction->target.z < 0)
 			{
@@ -2015,9 +2015,10 @@ void AlienBAIState::selectMeleeOrRanged()
 	int meleeOdds = 10;
 
 	int dmg = meleeWeapon->getPower();
-	if (meleeWeapon->isStrengthApplied())
+	// bonus from strenght
+	if (meleeWeapon->getSkillStrenght())
 	{
-		dmg += _unit->getBaseStats()->strength;
+		dmg += _unit->getBaseStats()->strength * meleeWeapon->getSkillStrenght() / 100;
 	}
 	dmg *= _aggroTarget->getArmor()->getDamageModifier(meleeWeapon->getDamageType()->ResistType);
 

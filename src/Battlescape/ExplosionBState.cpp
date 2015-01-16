@@ -94,10 +94,10 @@ void ExplosionBState::init()
 			_damageType = _parent->getRuleset()->getDamageType(DT_MELEE);
 			_radius = 0;
 		}
-		if (_item->getRules()->isStrengthApplied())
+		if ( _item->getRules()->getSkillStrenght() )
  		{
 			// since melee aliens don't use a conventional weapon type, we use their strength instead.
-			_power += _unit->getBaseStats()->strength;		
+			_power += _unit->getBaseStats()->strength * _item->getRules()->getSkillStrenght() / 100;		
  		}
 		//TODO
 		_power -= _item->getRules()->getPowerRangeReduction() * _range;

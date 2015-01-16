@@ -60,6 +60,7 @@ private:
 	SpecialAbility _specab;
 	std::string _spawnUnit;
 	bool _livingWeapon;
+	int _energyPerTu;
 	std::string _meleeWeapon;
 	std::vector<std::string> _builtInWeapons;
 	bool _female;
@@ -112,6 +113,8 @@ public:
 	const std::vector<std::string> &getBuiltInWeapons() const;
 	/// Is this unit a female?
 	const bool isFemale() const;
+	/// Get the number of energy per time cost
+	int getEnergyPerTu() ;
 };
 
 }
@@ -158,5 +161,6 @@ namespace YAML
 		}
 	};
 }
+
 
 #endif

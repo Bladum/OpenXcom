@@ -36,12 +36,13 @@ class RuleBaseFacility
 {
 private:
 	std::string _type;
+	std::string _clip;
 	std::vector<std::string> _requires;
 	int _spriteShape, _spriteFacility;
 	bool _lift, _hyper, _mind, _grav;
 	int _size, _buildCost, _buildTime, _monthlyCost;
 	int _storage, _personnel, _aliens, _crafts, _labs, _workshops, _psiLabs;
-	int _radarRange, _radarChance, _defense, _hitRatio, _fireSound, _hitSound;
+	int _radarRange, _radarChance, _defense, _hitRatio, _fireSound, _hitSound, _fireCount, _fireInterval;
 	std::string _mapName;
 	int _listOrder;
 public:
@@ -105,6 +106,12 @@ public:
 	int getHitSound() const;
 	/// Gets the facility's list weight.
 	int getListOrder() const;
+	/// Gets the facility's fire count during battle
+	int getFireCount() const;
+	/// Gets the facility's fire interval during battle
+	int getFireInterval() const;
+	/// Gets the facility's clip used to fire during battle
+	std::string getClipUsed() const;
 };
 
 }

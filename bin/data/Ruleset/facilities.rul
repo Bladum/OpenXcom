@@ -135,15 +135,33 @@ facilities:
     monthlyCost: 150000
     radarRange: 3600
     radarChance: 100
-    mapName: XOPSXBASE16       
+    mapName: XOPSXBASE16    
+    
+  - type: STR_CANNON_DEFENSES
+    spriteShape: 2
+    spriteFacility: 23
+    buildCost: 150000
+    buildTime: 12
+    monthlyCost: 5000
+    defense: 25
+    hitRatio: 25
+    fireCount: 20
+    fireInterval: 50
+    fireSound: 4
+    clip: STR_CANNON_ROUNDS_X25
+    hitSound: 10
+    mapName: XBASE_06    
   - type: STR_MISSILE_DEFENSES
     spriteShape: 2
     spriteFacility: 23
     buildCost: 200000
     buildTime: 18
     monthlyCost: 5000
-    defense: 200
+    defense: 75
     hitRatio: 75
+    fireCount: 3
+    clip: STR_STINGRAY_MISSILES
+    fireInterval: 200
     fireSound: 5
     hitSound: 10
     mapName: XBASE_06
@@ -155,8 +173,10 @@ facilities:
     buildCost: 400000
     buildTime: 24
     monthlyCost: 10000
-    defense: 600
+    defense: 200
     hitRatio: 50
+    fireCount: 3
+    fireInterval: 200
     fireSound: 8
     hitSound: 10
     mapName: XBASE_09
@@ -170,7 +190,9 @@ facilities:
     monthlyCost: 15000
     defense: 1200
     hitRatio: 50
+    fireInterval: 200
     fireSound: 9
+    clip: STR_ELERIUM_115
     hitSound: 10
     mapName: XBASE_10
   - type: STR_GAUSS_DEFENSES
@@ -183,8 +205,10 @@ facilities:
     monthlyCost: 20000
     defense: 1800
     hitRatio: 25
+    fireInterval: 200
     fireSound: 5
     hitSound: 10
+    clip: STR_POWERED_ALLOYS
     mapName: XBASE_11    
   - type: STR_FUSION_BALL_DEFENSES
     requires:
@@ -196,9 +220,12 @@ facilities:
     monthlyCost: 20000
     defense: 900
     hitRatio: 100
+    fireInterval: 200
     fireSound: 7
+    clip: STR_FUSION_BALL
     hitSound: 10
     mapName: XBASE_11
+    
   - type: STR_ALIEN_CONTAINMENT
     requires:
       - STR_ALIEN_CONTAINMENT

@@ -49,13 +49,13 @@ private:
 	std::vector<std::string> _requiresBuy;
 	double _size;
 	int _costBuy, _costSell, _transferTime, _weight;
-	bool _designForThrow;
 	int _bigSprite, _bigSpriteAlt;
 	int _floorSprite, _floorSpriteAlt;
 	int _handSprite, _bulletSprite;
 	int _fireSound, _hitSound, _hitAnimation;
 	int _power,  _kneelAccuracyBonus;
 	int _twoHandsAccuracyHandicap;
+	int _fireAccuracy, _throwAccuracy, _meleeAccuracy, _reactions, _strenght, _psiStrenght, _psiSkill;
 	std::vector<std::string> _compatibleAmmo;
 	RuleDamageType _damageType;
 	int _accuracyAuto, _accuracySnap, _accuracyAimed, _tuAuto, _tuSnap, _tuAimed;
@@ -78,9 +78,8 @@ private:
 	bool _flatRate, _arcingShot;
 	int _listOrder, _maxRange, _aimRange, _snapRange, _autoRange, _minRange, _dropoff, _bulletSpeed, _explosionSpeed, _autoShots, _shotgunPellets;
 	std::string _zombieUnit;
-	bool _strengthApplied, _skillApplied, _LOSRequired, _underwaterOnly;
+	bool _LOSRequired, _underwaterOnly;
 	int _meleeSound, _meleePower, _meleeAnimation, _meleeHitSound, _specialType, _vaporColor, _vaporDensity, _vaporProbability;
-	float _strengthBonus, _psiBonus, _psiSkillBonus, _psiStrengthBonus, _throwBonus;
 	
 public:
 	/// Creates a blank item ruleset.
@@ -225,10 +224,6 @@ public:
 	int getShotgunPellets() const;
 	/// Gets the weapon's zombie unit.
 	std::string getZombieUnit() const;
-	/// Is strength applied to the damage of this weapon?
-	bool isStrengthApplied() const;
-	/// Is skill applied to the accuracy of this weapon?
-	bool isSkillApplied() const;
 	/// What sound does this weapon make when you swing this at someone?
 	int getMeleeAttackSound() const;
 	/// What sound does this weapon make when you punch someone in the face with it?
@@ -270,8 +265,21 @@ public:
 	int getKneelAccuracyBonus() const;
 	/// get handicap for use of two hands weapon
 	int getTwoHandsAccuracyHandicap() const;
-	/// get if weapon is designed for throwing
-	bool isDesignForThrow() const;
+
+	/// Gets the item's load TU cost.
+	int getSkillFireAccuracy() const;
+	/// Gets the item's unload TU cost.
+	int getSkillThrowAccuracy() const;
+	/// Gets the item's prime TU cost.
+	int getSkillMeleeAccuracy() const;
+	/// Gets the item's throw TU cost.
+	int getSkillStrenght() const;
+	/// Gets the item's throw TU cost.
+	int getSkillReactions() const;
+	/// Gets the item's throw TU cost.
+	int getSkillPsiStrenght() const;
+	/// Gets the item's throw TU cost.
+	int getSkillPsiSkill() const;
 };
 
 }

@@ -57,6 +57,7 @@ private:
 	int _personalLightPower;
 	int _regeneration;	
 	int _visibilityAtDark;
+	int _armorClass;
 	std::vector<std::string> _builtInWeapons;
 	int _fearImmune, _bleedImmune, _painImmune, _zombiImmune;
 public:
@@ -132,6 +133,9 @@ public:
 
 	/// Get time to kneel when holding thin weapon
 	int getKneelTUCost() const;
+	/// Get armor class, it modifies chance to hit unit
+	int getArmorClass() const;
+
 };
 
 }
