@@ -91,7 +91,7 @@ private:
 	/// Places an item on a soldier based on equipment layout.
 	bool placeItemByLayout(BattleItem *item);
 	/// Adds an item to a unit and the game.
-	bool addItem(BattleItem *item, BattleUnit *unit, bool allowSecondClip = false);
+	bool addItem(BattleItem *item, BattleUnit *unit);
 	/// Loads an XCom MAP file.
 	int loadMAP(MapBlock *mapblock, int xoff, int yoff, RuleTerrain *terrain, int objectIDOffset, bool discovered = false, bool craft = false);
 	/// Loads an XCom RMP file.

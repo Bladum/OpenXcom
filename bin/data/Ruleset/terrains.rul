@@ -1571,6 +1571,9 @@ terrains:
       - name: XBASE_00
         width: 10
         length: 10
+        items:
+          STR_LANDMINE:
+            - [5, 5, 1]         
       - name: XBASE_01
         width: 10
         length: 10

@@ -69,8 +69,11 @@ namespace OpenXcom
  * Sets up a BattlescapeGenerator.
  * @param game pointer to Game object.
  */
-BattlescapeGenerator::BattlescapeGenerator(Game *game) : _game(game), _save(game->getSavedGame()->getSavedBattle()), _res(_game->getResourcePack()), _craft(0), _ufo(0), _base(0), _terror(0), _alienBase(0), _terrain(0),
-														 _mapsize_x(0), _mapsize_y(0), _mapsize_z(0), _worldTexture(0), _worldShade(0), _unitSequence(0), _craftInventoryTile(0), _alienItemLevel(0), _baseInventory(false), _generateFuel(true), _craftDeployed(false), _craftZ(0)
+BattlescapeGenerator::BattlescapeGenerator(Game *game) :
+_game(game), _save(game->getSavedGame()->getSavedBattle()), _res(_game->getResourcePack()), 
+	_craft(0), _ufo(0), _base(0), _terror(0), _alienBase(0), _terrain(0),
+	 _mapsize_x(0), _mapsize_y(0), _mapsize_z(0), _worldTexture(0), _worldShade(0), _unitSequence(0), 
+	_craftInventoryTile(0), _alienItemLevel(0), _baseInventory(false), _generateFuel(true), _craftDeployed(false), _craftZ(0)
 {
 	_allowAutoLoadout = !Options::disableAutoEquip;
 }
@@ -869,8 +872,6 @@ void BattlescapeGenerator::deployAliens(AlienDeployment *deployment)
 	}
 }
 
-
-
 /**
  * Adds an alien to the game and places him on a free spawnpoint.
  * @param rules Pointer to the Unit which holds info about the alien .
@@ -1216,6 +1217,7 @@ bool BattlescapeGenerator::addItem(BattleItem *item, BattleUnit *unit, bool allo
 	}
 	item->setXCOMProperty(unit->getFaction() == FACTION_PLAYER);
 
+
 	return placed;
 }
 
@@ -1344,7 +1346,10 @@ int BattlescapeGenerator::loadMAP(MapBlock *mapblock, int xoff, int yoff, RuleTe
 		{
 			BattleItem *item = new BattleItem(rule, _save->getCurrentItemId());
 			_save->getItems()->push_back(item);
-			_save->getTile((*j) + Position(xoff, yoff, 0))->addItem(item, _game->getRuleset()->getInventory("STR_GROUND"));
+			if(rule->getBattleType() == BT_PROXIMITYGRENADE) 
+				_save->getTile((*j) + Position(xoff, yoff, 0))->addItem(item, _game->getRuleset()->getInventory("STR_GROUND"), true);
+			else
+				_save->getTile((*j) + Position(xoff, yoff, 0))->addItem(item, _game->getRuleset()->getInventory("STR_GROUND"), false);
 		}
 	}
 	return sizez;
@@ -1430,7 +1435,6 @@ void BattlescapeGenerator::fuelPowerSources()
 		}
 	}
 }
-
 
 /**
  * When a UFO crashes, there is a 75% chance for each powersource to explode.

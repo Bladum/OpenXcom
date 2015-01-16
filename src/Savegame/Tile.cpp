@@ -769,11 +769,17 @@ int Tile::getAnimationOffset() const
  * @param item
  * @param ground
  */
-void Tile::addItem(BattleItem *item, RuleInventory *ground)
+void Tile::addItem(BattleItem *item, RuleInventory *ground, bool primedGrenade = false)
 {
 	item->setSlot(ground);
 	_inventory.push_back(item);
 	item->setTile(this);
+	
+	// prime proximity grenades on the map  :)
+	if(item->getRules()->getBattleType() == BT_PROXIMITYGRENADE && primedGrenade)
+	{
+		item->setFuseTimer(1);
+	}
 }
 
 /**
