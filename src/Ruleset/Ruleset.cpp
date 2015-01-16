@@ -105,22 +105,52 @@ Ruleset::Ruleset() : _costSoldier(0), _costEngineer(0), _costScientist(0),
  
  	dmg = new RuleDamageType();
  	dmg->ResistType = DT_AP;
+	dmg->ToHealth = 0.7f;
+	dmg->ToArmor = 0.2f;
+	dmg->ToStun = 0.1f;
+	dmg->ToWound = 0.0f;
+	dmg->ToItem = 0.0f;
+	dmg->ToTile = 0.5f;	
  	_damageTypes[dmg->ResistType] = dmg;
  
  	dmg = new RuleDamageType();
  	dmg->ResistType = DT_ACID;
+	dmg->ToHealth = 0.5f;
+	dmg->ToArmor = 0.2f;
+	dmg->ToStun = 0.3f;
+	dmg->ToWound = 0.0f;
+	dmg->ToItem = 0.0f;
+	dmg->ToTile = 0.5f;	
  	_damageTypes[dmg->ResistType] = dmg;
  
  	dmg = new RuleDamageType();
  	dmg->ResistType = DT_LASER;
+	dmg->ToHealth = 0.9f;
+	dmg->ToArmor = 0.1f;
+	dmg->ToStun = 0.0f;
+	dmg->ToWound = 0.0f;
+	dmg->ToItem = 0.0f;
+	dmg->ToTile = 0.5f;	
  	_damageTypes[dmg->ResistType] = dmg;
  
  	dmg = new RuleDamageType();
  	dmg->ResistType = DT_PLASMA;
+	dmg->ToHealth = 0.7f;
+	dmg->ToArmor = 0.1f;
+	dmg->ToStun = 0.2f;
+	dmg->ToWound = 0.0f;
+	dmg->ToItem = 0.0f;
+	dmg->ToTile = 0.5f;	
  	_damageTypes[dmg->ResistType] = dmg;
  
  	dmg = new RuleDamageType();
  	dmg->ResistType = DT_MELEE;
+	dmg->ToHealth = 0.4f;
+	dmg->ToArmor = 0.3f;
+	dmg->ToStun = 0.3f;
+	dmg->ToWound = 0.0f;
+	dmg->ToItem = 0.0f;
+	dmg->ToTile = 0.5f;	
  	_damageTypes[dmg->ResistType] = dmg;
  
  	dmg = new RuleDamageType();
@@ -131,19 +161,24 @@ Ruleset::Ruleset() : _costSoldier(0), _costEngineer(0), _costScientist(0),
 	dmg->RadiusEffectiveness = 0.05f;
 	dmg->ToHealth = 0.0f;
 	dmg->ToArmor = 0.0f;
+	dmg->ToStun = 1.0f;
 	dmg->ToWound = 0.0f;
 	dmg->ToItem = 0.0f;
-	dmg->ToTile = 0.0f;
-	dmg->ToStun = 1.0f;
+	dmg->ToTile = 0.0f;	
  	_damageTypes[dmg->ResistType] = dmg;
  
  	dmg = new RuleDamageType();
  	dmg->ResistType = DT_HE;
  	dmg->FixRadius = -1;
 	dmg->IgnoreSelfDestruct = true;
-	dmg->RadiusEffectiveness = 0.05f;
+	dmg->RadiusEffectiveness = 0.05f;	
+	dmg->ToHealth = 0.8f;
+	dmg->ToArmor = 0.0f;
+	dmg->ToStun = 0.2f;
+	dmg->ToWound = 0.0f;
 	dmg->ToItem = 1.0f;
-	dmg->ToTile = 0.5f;
+	dmg->ToTile = 0.5f;	
+
  	_damageTypes[dmg->ResistType] = dmg;
  
  	dmg = new RuleDamageType();
@@ -167,14 +202,14 @@ Ruleset::Ruleset() : _costSoldier(0), _costEngineer(0), _costScientist(0),
  	dmg->FireBlastCalc = true;
 	dmg->IgnoreDirection = true;
 	dmg->ArmorEffectiveness = 0.0f;
-	dmg->RadiusEffectiveness = 0.03f;
-	dmg->ToHealth = 1.0f;
-	dmg->ToArmor = 0.0f;
+	dmg->RadiusEffectiveness = 0.05f;
+	dmg->ToHealth = 0.6f;
+	dmg->ToArmor = 0.1f;
 	dmg->FireThreshold = 0;
 	dmg->ToWound = 0.0f;
 	dmg->ToItem = 0.0f;
 	dmg->ToTile = 0.0f;
-	dmg->ToStun = 0.0f;
+	dmg->ToStun = 0.3f;
  	_damageTypes[dmg->ResistType] = dmg;
 
 
@@ -740,7 +775,7 @@ void Ruleset::loadFile(const std::string &filename)
 		}
 	}
 
-	_modIndex += 1000;
+	_modIndex += 10000;
 	
 	for (YAML::const_iterator i = doc["cutscenes"].begin(); i != doc["cutscenes"].end(); ++i)
 	{

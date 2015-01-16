@@ -964,7 +964,7 @@ int BattleUnit::damage(const Position &relative, int power, const RuleDamageType
 	}
 
 	power = (int)floor(power * _armor->getDamageModifier(type->ResistType));
-
+	
 	if (!type->IgnoreDirection)
 	{
 		if (relative == Position(0, 0, 0))
@@ -1033,30 +1033,47 @@ int BattleUnit::damage(const Position &relative, int power, const RuleDamageType
 				}
 			}
 		}
-		power -= getArmor(side);
 	}
-
+	
+	// first armour effectivnes regardless of other stuff
 	if (type->ArmorEffectiveness > 0.0f)
 	{
-		power -= getArmor(side) * type->ArmorEffectiveness;
+		 power *= type->ArmorEffectiveness;
 	}
 
+	// then amount of power reduced by armour
+	int powerReductionByArmor = getArmor(side);	
+	
+	// amount of armour reduced by AP ammo
+	int damageToArmor = int(power * type->ToArmor);
+	if( damageToArmor > 0) 
+	{
+		setArmor( powerReductionByArmor - damageToArmor, side);
+	}
+	
+	// the rest of damage
 	if (power > 0)
 	{
+		// stun damage
 		if (!_armor->getPainImmune() || type->IgnorePainImmunity)
 		{
-			// conventional weapons can cause additional stun damage
-			_stunlevel += int(RNG::generate(0, power) * type->ToStun);
+			_stunlevel += int( power * type->ToStun );
 			if(_stunlevel < 0)
 			{
 				_stunlevel = 0;
 			}
 		}
 
-		moraleChange(-(110 - _stats.bravery) * power * type->ToMorale / 100);
+		// damage to morale
+		moraleChange( -(110 - _stats.bravery) * power * type->ToMorale / 100);
 
+		// damage to TU
 		setValueMax(_tu, _stats.tu, - power * type->ToTime);
+
+		// damage to health
 		setValueMax(_health, _stats.health, - power * type->ToHealth);
+
+		// damage to energy
 		setValueMax(_energy, _stats.stamina, - power * type->ToEnergy);
 
 		// fatal wounds
@@ -1070,11 +1087,6 @@ int BattleUnit::damage(const Position &relative, int power, const RuleDamageType
 			}
 		}
 
-		// armor damage
-		if(type->ToArmor > 0.0f)
-		{
-			setArmor(getArmor(side) - int(power * type->ToArmor) - 1, side);
-		}
 	}
 //	}
 
