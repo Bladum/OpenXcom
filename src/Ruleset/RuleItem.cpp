@@ -39,13 +39,13 @@ RuleItem::RuleItem(const std::string &type) : _type(type), _name(type), _size(0.
 	_turretType(-1), _recover(true), _liveAlien(false), _attraction(0),
 	_flatRate(false), _arcingShot(false), _listOrder(0), _maxRange(200), _aimRange(200), 
 	_snapRange(15), _autoRange(7), _minRange(0), _dropoff(2), _bulletSpeed(0), _explosionSpeed(0), 
-	_autoShots(3), _shotgunPellets(0),  _tuLoad(15), _tuUnload(8),
+	_autoShots(3), _shotgunPellets(0),  _tuLoad(25), _tuUnload(20),
 	_LOSRequired(false), _underwaterOnly(false),
 	_meleeSound(39), _meleePower(0), _meleeAnimation(0), _meleeHitSound(-1), _specialType(-1), 
 	_vaporColor(-1), _vaporDensity(0), _vaporProbability(15), _twoHandsAccuracyHandicap(-20),
-	_tuPrime(50), _tuThrow(25), _kneelAccuracyBonus(15),
+	_tuPrime(50), _tuThrow(30), _kneelAccuracyBonus(15),
 	_meleeAccuracy(100), _reactions(100), _strenght(0), _psiStrenght(0),
-	_fireAccuracy(100), _throwAccuracy(50), _psiSkill(0), _reloadCost(15)
+	_fireAccuracy(100), _throwAccuracy(50), _psiSkill(0)
 {
 
 }
@@ -188,7 +188,6 @@ void RuleItem::load(const YAML::Node &node, int modIndex, int listOrder, const s
 		if (_meleeHitSound > 54)
 			_meleeHitSound += modIndex;
 	}
-	_reloadCost = node["reloadCost"].as<int>(_reloadCost);
 	_power = node["power"].as<int>(_power);
 	_psiAttackName = node["psiAttackName"].as<std::string>(_psiAttackName);
 	_compatibleAmmo = node["compatibleAmmo"].as< std::vector<std::string> >(_compatibleAmmo);
@@ -1068,16 +1067,6 @@ int RuleItem::getTwoHandsAccuracyHandicap() const
 {
 	return _twoHandsAccuracyHandicap;
 }
-
-/**
- * Get the reload cost 
- * @return Pointer to item.
- */ 
-int RuleItem::getTUReload() const
-{
-	return _reloadCost;
-}
-
 
 /**
  * get handicap for use of two hands weapon

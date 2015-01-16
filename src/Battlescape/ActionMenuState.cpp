@@ -84,14 +84,10 @@ ActionMenuState::ActionMenuState(BattleAction *action, int x, int y) : _action(a
 	{
 		addItem(BA_PRIME, "STR_PRIME_GRENADE", &id);
 	}
-
+	
+	// standard firearms
 	if (weapon->getBattleType() == BT_FIREARM)
 	{
-		if( battleWeapon->needsAmmo() && ( battleWeapon->getAmmoItem() == 0 || ( battleWeapon->getAmmoItem()->getAmmoQuantity() < battleWeapon->getAmmoItem()->getRules()->getClipSize() )))
-		{
-			addItem(BA_RELOAD, "STR_RELOAD", &id);
-		}
-
 		if (weapon->isWaypoint() || (_action->weapon->getAmmoItem() && _action->weapon->getAmmoItem()->getRules()->isWaypoint()))
 		{
 			addItem(BA_LAUNCH, "STR_LAUNCH_MISSILE", &id);
@@ -110,6 +106,11 @@ ActionMenuState::ActionMenuState(BattleAction *action, int x, int y) : _action(a
 			{
 				addItem(BA_AIMEDSHOT, "STR_AIMED_SHOT", &id);
 			}
+		}
+
+		if( battleWeapon->needsAmmo() && ( battleWeapon->getAmmoItem() == 0 || ( battleWeapon->getAmmoItem()->getAmmoQuantity() < battleWeapon->getAmmoItem()->getRules()->getClipSize() )))
+		{
+			addItem(BA_RELOAD, "STR_RELOAD", &id);
 		}
 	}
 
@@ -139,6 +140,7 @@ ActionMenuState::ActionMenuState(BattleAction *action, int x, int y) : _action(a
 	{
 		addItem(BA_MINDCONTROL, "STR_MIND_CONTROL", &id);
 		addItem(BA_PANIC, "STR_PANIC_UNIT", &id);
+
 		if (!weapon->getPsiAttackName().empty())
 		{
 			addItem(BA_USE, weapon->getPsiAttackName(), &id);
@@ -169,44 +171,41 @@ void ActionMenuState::addItem(BattleActionType ba, const std::string &name, int 
 {
 	std::wstring s1, s2;
 	int acc = _action->actor->getFiringAccuracy(ba, _action->weapon);
-	if (ba == BA_THROW)
+	
+	if ( ba == BA_THROW )
+	{
 		acc = (int)(_action->actor->getThrowingAccuracy());
+	}
+
 	int tu = _action->actor->getActionTUs(ba, _action->weapon);
+	int shots = _action->weapon->getRules()->getAutoShots();
 
 	if (ba == BA_THROW || ba == BA_AIMEDSHOT || ba == BA_SNAPSHOT || ba == BA_AUTOSHOT || ba == BA_LAUNCH || ba == BA_HIT)
-		s1 = tr("STR_ACCURACY_SHORT").arg(Text::formatPercentage(acc));
+	{
+		if(shots > 1)
+		{
+			s1 = tr("STR_ACCURACY_SHORT").arg(Text::formatPercentage(acc).append(L"x").append(Text::formatNumber(shots)));
+		}
+		else
+		{
+			s1 = tr("STR_ACCURACY_SHORT").arg(Text::formatPercentage(acc));
+		}
+	}
+
+	if ( ba == BA_RELOAD )
+	{
+		if( _action->weapon->getAmmoItem() )
+		{
+			tu += _action->weapon->getSlot()->getCost( _game->getRuleset()->getInventory("STR_GROUND") );
+		}
+	}
+
 	s2 = tr("STR_TIME_UNITS_SHORT").arg(tu);
 
 	_actionMenu[*id]->setAction(ba, tr(name), s1, s2, tu);
 	_actionMenu[*id]->setVisible(true);
 	(*id)++;
 
-	if(ba == BA_RELOAD)
-	{
-		if(_action->weapon->getAmmoItem())
-		{
-			tu += _action->weapon->getSlot()->getCost(_game->getRuleset()->getInventory("STR_GROUND"));
-		}
-
-	}
-
-//		case BA_RELOAD:
-//			shots = 0;
-//			ammoError = !_action->actor->findQuickAmmo(_action->weapon);
-//
-//			/*tu = _action->actor->getActionTUs(this->_game->getSavedGame()->getSavedBattle()
- 
-//			if(_action->weapon->getAmmoItem())
-//			{
-//				tu += _action->weapon->getSlot()->getCost(_game->getRuleset()->getInventory("STR_GROUND"));
-//			}
-//
-//			if(_action->actor->isVehicle())
-//			{
-//				tu = 0;
-//			}*/
-//
-//			break;
 }
 
 /**
@@ -356,14 +355,12 @@ void ActionMenuState::btnActionMenuItemClick(Action *action)
 		else if(_action->type == BA_RELOAD)
 		{
 			BattleItem *quickAmmo = _action->actor->findQuickAmmo(_action->weapon);
-
 			RuleInventory *ground = _game->getRuleset()->getInventory("STR_GROUND");
 
-			int tu = _action->actor->getActionTUs(BA_RELOAD, _action->weapon);
-			
-			if(_action->weapon->getAmmoItem())
+			int tu = _action->actor->getActionTUs(BA_RELOAD, _action->weapon);		
+			if( _action->weapon->getAmmoItem() )
 			{
-				tu += _action->weapon->getSlot()->getCost(ground);
+				tu += _action->weapon->getSlot()->getCost( ground );
 			}			
 
 			if(!quickAmmo)

@@ -280,8 +280,6 @@ public:
 	int getSkillPsiStrenght() const;
 	/// Gets the item's throw TU cost.
 	int getSkillPsiSkill() const;
-	/// Get the reload cost 
-	int getTUReload() const;
 };
 
 }

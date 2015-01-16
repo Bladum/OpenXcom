@@ -1224,7 +1224,7 @@ int BattleUnit::getActionTUs(BattleActionType actionType, RuleItem *item) const
 			cost = item->getTUMelee();
 			break;
 		case BA_RELOAD:
-			cost = item->getTUReload();
+			cost = item->getTULoad();
 			break;
 		case BA_LAUNCH:
 		case BA_AIMEDSHOT:
@@ -1240,7 +1240,7 @@ int BattleUnit::getActionTUs(BattleActionType actionType, RuleItem *item) const
 	}
 
 	// if it's a percentage, apply it to unit TUs
-	if (!item->getFlatRate() || actionType == BA_THROW || actionType == BA_PRIME)
+	if ( !item->getFlatRate() )
 	{
 		cost = std::max(1, (int)floor(getStats()->tu * cost / 100.0f));
 	}
@@ -1979,7 +1979,7 @@ BattleItem *BattleUnit::findQuickAmmo(BattleItem *weapon, int* reloadCost) const
 	{
 		int cost = 100000;
 		BattleItem *ammo = findQuickItem(*ii, weapon->getSlot(), &cost);
-		cost = weapon->getRules()->getTUReload();
+		cost = weapon->getRules()->getTULoad();
 		if (ammo && (cost < bestCost) )
 		{
 			bestAmmo = ammo;
@@ -2002,36 +2002,42 @@ BattleItem *BattleUnit::findQuickAmmo(BattleItem *weapon, int* reloadCost) const
 bool BattleUnit::checkAmmo()
 {
 	BattleItem *weapon = getItem("STR_RIGHT_HAND");
-	if (!weapon || weapon->getAmmoItem() != 0 || weapon->getRules()->getBattleType() == BT_MELEE || getTimeUnits() < 15)
+	BattleItem *ammo = 0;
+	int tu = 0;
+	if (!weapon || weapon->getAmmoItem() != 0 || weapon->getRules()->getBattleType() == BT_MELEE || !(ammo = findQuickAmmo(weapon, &tu)) || !spendTimeUnits(tu))
 	{
 		weapon = getItem("STR_LEFT_HAND");
-		if (!weapon || weapon->getAmmoItem() != 0 || weapon->getRules()->getBattleType() == BT_MELEE || getTimeUnits() < 15)
+		if (!weapon || weapon->getAmmoItem() != 0 || weapon->getRules()->getBattleType() == BT_MELEE || !(ammo = findQuickAmmo(weapon, &tu)) || !spendTimeUnits(tu))
 		{
 			return false;
 		}
 	}
-	// we have a non-melee weapon with no ammo and 15 or more TUs - we might need to look for ammo then
-	BattleItem *ammo = 0;
-	bool wrong = true;
-	for (std::vector<BattleItem*>::iterator i = getInventory()->begin(); i != getInventory()->end(); ++i)
-	{
-		ammo = (*i);
-		for (std::vector<std::string>::iterator c = weapon->getRules()->getCompatibleAmmo()->begin(); c != weapon->getRules()->getCompatibleAmmo()->end(); ++c)
-		{
-			if ((*c) == ammo->getRules()->getType())
-			{
-				wrong = false;
-				break;
-			}
-		}
-		if (!wrong) break;
-	}
-
-	if (wrong) return false; // didn't find any compatible ammo in inventory
-
-	spendTimeUnits(15);
+	
 	weapon->setAmmoItem(ammo);
 	ammo->moveToOwner(0);
+
+	// we have a non-melee weapon with no ammo and 15 or more TUs - we might need to look for ammo then
+//	BattleItem *ammo = 0;
+//	bool wrong = true;
+//	for (std::vector<BattleItem*>::iterator i = getInventory()->begin(); i != getInventory()->end(); ++i)
+//	{
+//		ammo = (*i);
+//		for (std::vector<std::string>::iterator c = weapon->getRules()->getCompatibleAmmo()->begin(); c != weapon->getRules()->getCompatibleAmmo()->end(); ++c)
+//		{
+//			if ((*c) == ammo->getRules()->getType())
+//			{
+//				wrong = false;
+//				break;
+//			}
+//		}
+//		if (!wrong) break;
+//	}
+//
+//	if (wrong) return false; // didn't find any compatible ammo in inventory
+//
+//	spendTimeUnits(15);
+//	weapon->setAmmoItem(ammo);
+//	ammo->moveToOwner(0);
 
 	return true;
 }
