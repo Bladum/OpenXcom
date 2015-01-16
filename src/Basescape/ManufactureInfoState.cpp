@@ -35,6 +35,9 @@
 #include "../Engine/Timer.h"
 #include "../Menu/ErrorMessageState.h"
 #include <limits>
+#include "../Ruleset/Ruleset.h"
+#include "../Ruleset/RuleCraft.h"
+#include "../Ruleset/RuleItem.h"
 
 namespace OpenXcom
 {
@@ -72,7 +75,8 @@ void ManufactureInfoState::buildUi()
 	_txtTitle = new Text(320, 17, 0, 35);
 	_btnOk = new TextButton(136, 16, 168, 150);
 	_btnStop = new TextButton(136, 16, 16, 150);
-	_btnSell = new ToggleTextButton(60, 16, 244, 56);
+	//_btnSell = new ToggleTextButton(60, 16, 244, 56);
+	_btnSell = new ToggleTextButton(136, 16, 168, 56);
 	_txtAvailableEngineer = new Text(200, 9, 16, 55);
 	_txtAvailableSpace = new Text(200, 9, 16, 65);
 	_txtAllocatedEngineer = new Text(112, 32, 16, 75);
@@ -165,7 +169,23 @@ void ManufactureInfoState::buildUi()
 
 	_txtUnitDown->setText(tr("STR_DECREASE_UC"));
 
-	_btnSell->setText(tr("STR_SELL_PRODUCTION"));
+	int sellPrice = 0;
+
+	Ruleset* rules = _game->getRuleset();
+
+	const std::map<std::string, int> &producedItems = _item ? _item->getProducedItems() : _production->getRules()->getProducedItems();
+	for(std::map<std::string, int>::const_iterator ii = producedItems.begin(); ii != producedItems.end(); ++ii)
+	{
+		RuleItem* item = rules->getItem(ii->first);
+		if(item)
+		{
+			sellPrice += item->getSellCost() * ii->second;
+		}
+	}
+
+	std::wostringstream sellText;
+	sellText << tr("STR_SELL_PRODUCTION") << ": " << Text::formatFunding(sellPrice);
+	_btnSell->setText(sellText.str());
 
 	_btnOk->setText(tr("STR_OK"));
 	_btnOk->onMouseClick((ActionHandler)&ManufactureInfoState::btnOkClick);

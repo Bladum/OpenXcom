@@ -36,6 +36,7 @@
 #include "ManufactureInfoState.h"
 #include <limits>
 
+
 namespace OpenXcom
 {
 
