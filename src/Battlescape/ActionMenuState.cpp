@@ -25,6 +25,7 @@
 #include "../Engine/Language.h"
 #include "../Engine/Palette.h"
 #include "../Engine/Action.h"
+#include "../Engine/Sound.h"
 #include "../Savegame/BattleUnit.h"
 #include "../Savegame/BattleItem.h"
 #include "../Ruleset/RuleItem.h"
@@ -38,6 +39,8 @@
 #include "Pathfinding.h"
 #include "TileEngine.h"
 #include "../Interface/Text.h"
+#include "../Ruleset/RuleInventory.h"
+#include "../Ruleset/Ruleset.h"
 
 namespace OpenXcom
 {
@@ -66,7 +69,8 @@ ActionMenuState::ActionMenuState(BattleAction *action, int x, int y) : _action(a
 
 	// Build up the popup menu
 	int id = 0;
-	RuleItem *weapon = _action->weapon->getRules();
+	BattleItem *battleWeapon = _action->weapon;
+	RuleItem *weapon = battleWeapon->getRules();
 
 	// throwing (if not a fixed weapon)
 	if (!weapon->isFixed())
@@ -83,6 +87,11 @@ ActionMenuState::ActionMenuState(BattleAction *action, int x, int y) : _action(a
 
 	if (weapon->getBattleType() == BT_FIREARM)
 	{
+		if( battleWeapon->needsAmmo() && ( battleWeapon->getAmmoItem() == 0 || ( battleWeapon->getAmmoItem()->getAmmoQuantity() < battleWeapon->getAmmoItem()->getRules()->getClipSize() )))
+		{
+			addItem(BA_RELOAD, "STR_RELOAD", &id);
+		}
+
 		if (weapon->isWaypoint() || (_action->weapon->getAmmoItem() && _action->weapon->getAmmoItem()->getRules()->isWaypoint()))
 		{
 			addItem(BA_LAUNCH, "STR_LAUNCH_MISSILE", &id);
@@ -167,9 +176,37 @@ void ActionMenuState::addItem(BattleActionType ba, const std::string &name, int 
 	if (ba == BA_THROW || ba == BA_AIMEDSHOT || ba == BA_SNAPSHOT || ba == BA_AUTOSHOT || ba == BA_LAUNCH || ba == BA_HIT)
 		s1 = tr("STR_ACCURACY_SHORT").arg(Text::formatPercentage(acc));
 	s2 = tr("STR_TIME_UNITS_SHORT").arg(tu);
+
 	_actionMenu[*id]->setAction(ba, tr(name), s1, s2, tu);
 	_actionMenu[*id]->setVisible(true);
 	(*id)++;
+
+	if(ba == BA_RELOAD)
+	{
+		if(_action->weapon->getAmmoItem())
+		{
+			tu += _action->weapon->getSlot()->getCost(_game->getRuleset()->getInventory("STR_GROUND"));
+		}
+
+	}
+
+//		case BA_RELOAD:
+//			shots = 0;
+//			ammoError = !_action->actor->findQuickAmmo(_action->weapon);
+//
+//			/*tu = _action->actor->getActionTUs(this->_game->getSavedGame()->getSavedBattle()
+ 
+//			if(_action->weapon->getAmmoItem())
+//			{
+//				tu += _action->weapon->getSlot()->getCost(_game->getRuleset()->getInventory("STR_GROUND"));
+//			}
+//
+//			if(_action->actor->isVehicle())
+//			{
+//				tu = 0;
+//			}*/
+//
+//			break;
 }
 
 /**
@@ -314,6 +351,35 @@ void ActionMenuState::btnActionMenuItemClick(Action *action)
 			{
 				_action->result = "STR_THERE_IS_NO_ONE_THERE";
 			}
+			_game->popState();
+		}
+		else if(_action->type == BA_RELOAD)
+		{
+			BattleItem *quickAmmo = _action->actor->findQuickAmmo(_action->weapon);
+
+			RuleInventory *ground = _game->getRuleset()->getInventory("STR_GROUND");
+
+			int tu = _action->actor->getActionTUs(BA_RELOAD, _action->weapon);
+			
+			if(_action->weapon->getAmmoItem())
+			{
+				tu += _action->weapon->getSlot()->getCost(ground);
+			}			
+
+			if(!quickAmmo)
+			{
+				// Temporary mesage.
+				_action->result = "STR_NO_ROUNDS_LEFT";
+			}
+			else if(!_action->actor->spendTimeUnits(tu))
+			{
+				_action->result = "STR_NOT_ENOUGH_TIME_UNITS";
+			}
+			else
+			{
+				_action->TU = tu;
+			}
+
 			_game->popState();
 		}
 		else

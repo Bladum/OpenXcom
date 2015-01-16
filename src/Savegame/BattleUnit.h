@@ -295,6 +295,10 @@ public:
 	BattleItem *getItem(const std::string &slot, int x = 0, int y = 0) const;
 	/// Gets the item in the main hand.
 	BattleItem *getMainHandWeapon(bool quickest = true) const;
+	/// Finds the quickest item to grab, if any.
+	BattleItem *findQuickItem(const std::string &item, RuleInventory* destSlot, int *moveCost = 0) const;
+	/// Finds the quickest ammo to reload a weapon.
+	BattleItem *findQuickAmmo(BattleItem *weapon, int *reloadCost = 0) const;
 	/// Gets a grenade from the belt, if any.
 	BattleItem *getGrenadeFromBelt() const;
 	/// Reloads righthand weapon if needed.

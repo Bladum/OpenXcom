@@ -62,6 +62,7 @@ private:
 	InteractiveSurface *_btnVisibleUnit[VISIBLE_MAX];
 	NumberText *_numVisibleUnit[VISIBLE_MAX];
 	BattleUnit *_visibleUnit[VISIBLE_MAX];
+	std::string _rightHandSlot, _leftHandSlot;
 	WarningMessage *_warning;
 	Text *_txtName;
 	NumberText *_numTimeUnits, *_numEnergy, *_numHealth, *_numMorale, *_numLayers, *_numAmmoLeft, *_numAmmoRight;
@@ -213,6 +214,8 @@ public:
 	void resize(int &dX, int &dY);
 	/// Move the mouse back to where it started after we finish drag scrolling.
 	void stopScrolling(Action *action);
+    /// Animates grenade primer indicators.
+	void drawPrimers();
 };
 
 }

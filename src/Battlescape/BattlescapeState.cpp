@@ -87,6 +87,7 @@
 #include "../Savegame/BattleItem.h"
 #include "../Savegame/TerrorSite.h"
 #include "../Savegame/AlienBase.h"
+#include "../Ruleset/RuleInventory.h"
 
 namespace OpenXcom
 {
@@ -1305,7 +1306,11 @@ void BattlescapeState::updateSoldierInfo()
 	_barMorale->setMax(100);
 	_barMorale->setValue(battleUnit->getMorale());
 
-	BattleItem *leftHandItem = battleUnit->getItem("STR_LEFT_HAND");
+	_rightHandSlot = "STR_RIGHT_HAND";
+	_leftHandSlot = "STR_LEFT_HAND";
+
+	BattleItem *leftHandItem = battleUnit->getItem(_leftHandSlot);
+
 	_btnLeftHandItem->clear();
 	_numAmmoLeft->setVisible(false);
 	if (leftHandItem)
@@ -1401,6 +1406,8 @@ void BattlescapeState::animate()
 	_map->animate(!_battleGame->isBusy());
 
 	blinkVisibleUnitButtons();
+
+	drawPrimers();
 }
 
 /**
@@ -1436,6 +1443,52 @@ Game *BattlescapeState::getGame() const
 Map *BattlescapeState::getMap() const
 {
 	return _map;
+}
+
+ /**
+ * Animates grenade primer indicators.
+ */
+void BattlescapeState::drawPrimers()
+{
+	BattleUnit *battleUnit = _save->getSelectedUnit();
+
+	if(playableUnitSelected())
+	{
+		const int pulsate[8] = { 0, 1, 2, 3, 4, 3, 2, 1 };
+		static int frame = 0;
+
+		BattleItem *leftHandItem = battleUnit->getItem(_leftHandSlot);
+		BattleItem *rightHandItem = battleUnit->getItem(_rightHandSlot);
+
+		static Surface *indicator = _game->getResourcePack()->getSurfaceSet("SCANG.DAT")->getFrame(6);
+
+		bool grenades = false;
+
+		if(leftHandItem && leftHandItem->getGrenadeLive())
+		{
+			grenades = true;
+
+			int x = _btnLeftHandItem->getX() + ((RuleInventory::HAND_W - leftHandItem->getRules()->getInventoryWidth()) * RuleInventory::SLOT_W/2);
+			int y = _btnLeftHandItem->getY() + ((RuleInventory::HAND_H - leftHandItem->getRules()->getInventoryHeight()) * RuleInventory::SLOT_H/2);
+
+			indicator->blitNShade(_btnLeftHandItem, x, y, pulsate[frame]);
+		}
+
+		if(rightHandItem && rightHandItem->getGrenadeLive())
+		{
+			grenades = true;
+
+			int x = _btnRightHandItem->getX() + ((RuleInventory::HAND_W - rightHandItem->getRules()->getInventoryWidth()) * RuleInventory::SLOT_W/2);
+			int y = _btnRightHandItem->getY() + ((RuleInventory::HAND_H - rightHandItem->getRules()->getInventoryHeight()) * RuleInventory::SLOT_H/2);
+
+			indicator->blitNShade(_btnRightHandItem, x, y, pulsate[frame]);
+		}
+
+		if(grenades)
+		{
+			frame = (frame + 1) % 8;
+		}
+	}
 }
 
 /**

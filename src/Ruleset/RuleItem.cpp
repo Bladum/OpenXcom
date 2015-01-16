@@ -45,7 +45,7 @@ RuleItem::RuleItem(const std::string &type) : _type(type), _name(type), _size(0.
 	_vaporColor(-1), _vaporDensity(0), _vaporProbability(15), _twoHandsAccuracyHandicap(-20),
 	_tuPrime(50), _tuThrow(25), _kneelAccuracyBonus(15),
 	_meleeAccuracy(100), _reactions(100), _strenght(0), _psiStrenght(0),
-	_fireAccuracy(100), _throwAccuracy(50), _psiSkill(0)
+	_fireAccuracy(100), _throwAccuracy(50), _psiSkill(0), _reloadCost(15)
 {
 
 }
@@ -188,6 +188,7 @@ void RuleItem::load(const YAML::Node &node, int modIndex, int listOrder, const s
 		if (_meleeHitSound > 54)
 			_meleeHitSound += modIndex;
 	}
+	_reloadCost = node["reloadCost"].as<int>(_reloadCost);
 	_power = node["power"].as<int>(_power);
 	_psiAttackName = node["psiAttackName"].as<std::string>(_psiAttackName);
 	_compatibleAmmo = node["compatibleAmmo"].as< std::vector<std::string> >(_compatibleAmmo);
@@ -1067,6 +1068,16 @@ int RuleItem::getTwoHandsAccuracyHandicap() const
 {
 	return _twoHandsAccuracyHandicap;
 }
+
+/**
+ * Get the reload cost 
+ * @return Pointer to item.
+ */ 
+int RuleItem::getTUReload() const
+{
+	return _reloadCost;
+}
+
 
 /**
  * get handicap for use of two hands weapon

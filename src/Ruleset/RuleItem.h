@@ -67,7 +67,7 @@ private:
 	int _woundRecovery, _healthRecovery, _stunRecovery, _energyRecovery;
 	int _tuUse;
 	int _recoveryPoints;
-	int _armor;
+	int _armor, _reloadCost;
 	int _turretType;
 	float _powerRangeReduction;
 	int  _tuPrime, _tuThrow;
@@ -280,6 +280,8 @@ public:
 	int getSkillPsiStrenght() const;
 	/// Gets the item's throw TU cost.
 	int getSkillPsiSkill() const;
+	/// Get the reload cost 
+	int getTUReload() const;
 };
 
 }

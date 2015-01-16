@@ -583,4 +583,32 @@ int BattleItem::getBigSprite() const
 }
 
 
+/**
+ * Checks if the grenade is currently live (the fuse is active).
+ * @return True if the fuse is active.
+ */
+bool BattleItem::getGrenadeLive() const
+{
+	return _fuseTimer != GRENADE_INACTIVE;
+}
+
+/**
+ * Checks if the grenade is ready to explode immediately.
+ * @return True if the grenade should explode immediately.
+ */
+bool BattleItem::getFuseDone() const
+{
+	return _fuseTimer == 0 || _fuseTimer == GRENADE_INSTANT_FUSE;
+}
+
+/**
+ * Checks if the grenade is set to explode instantly.
+ * @return True if the grenade fuse is set to explode immediately.
+ */
+bool BattleItem::getFuseInstant() const
+{
+	return _fuseTimer == GRENADE_INSTANT_FUSE;
+}
+
+
 }

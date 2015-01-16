@@ -1223,6 +1223,9 @@ int BattleUnit::getActionTUs(BattleActionType actionType, RuleItem *item) const
 		case BA_HIT:
 			cost = item->getTUMelee();
 			break;
+		case BA_RELOAD:
+			cost = item->getTUReload();
+			break;
 		case BA_LAUNCH:
 		case BA_AIMEDSHOT:
 			cost = item->getTUAimed();
@@ -1915,6 +1918,81 @@ BattleItem *BattleUnit::getGrenadeFromBelt() const
 		}
 	}
 	return 0;
+}
+
+/**
+ * Find the cheapest to grab item from the inventory
+ * @return Pointer to item.
+ */
+BattleItem *BattleUnit::findQuickItem(const std::string &item, RuleInventory* destSlot, int* moveCost) const
+{
+	BattleItem *quickItem = 0;
+	int quickCost = 1000000;
+	for (std::vector<BattleItem*>::const_iterator ii = _inventory.begin(); ii != _inventory.end(); ++ii)
+	{
+		BattleItem *bi = (*ii);
+
+		int cost;
+		if(bi->getRules()->getType() == item && bi->getSlot() != destSlot && ((cost = bi->getSlot()->getCost(destSlot)) < quickCost))
+		{
+			quickItem = bi;
+			quickCost = cost; 
+		}
+	}
+
+	Tile* tile = getTile();
+
+	if(tile && tile->getInventory())
+	{
+		for(auto ii = tile->getInventory()->begin(); ii != tile->getInventory()->end(); ++ii)
+		{
+			BattleItem *bi = (*ii);
+
+			int cost;
+			if(bi->getRules()->getType() == item && ((cost = bi->getSlot()->getCost(destSlot)) < quickCost))
+			{
+				quickItem = bi;
+				quickCost = cost;
+			}
+		}
+	}
+
+	if(quickItem && moveCost) { (*moveCost) = quickCost; }
+
+	return quickItem;
+}
+
+
+/**
+ * Find the cheapest to ammo item for the specified weapon.
+ * @param weapon The weapon to find ammo for.
+ * @return Pointer to item.
+ */
+BattleItem *BattleUnit::findQuickAmmo(BattleItem *weapon, int* reloadCost) const
+{
+	BattleItem *bestAmmo = 0;
+	int bestCost = 100000;
+
+	auto ammoItems = weapon->getRules()->getCompatibleAmmo();
+
+	for(auto ii = ammoItems->begin(); ii != ammoItems->end(); ++ii)
+	{
+		int cost = 100000;
+		BattleItem *ammo = findQuickItem(*ii, weapon->getSlot(), &cost);
+		cost = weapon->getRules()->getTUReload();
+		if (ammo && (cost < bestCost) )
+		{
+			bestAmmo = ammo;
+			bestCost = cost;
+		}
+	}
+
+	if(bestAmmo && reloadCost)
+	{
+		*reloadCost = bestCost;
+	}
+
+	return bestAmmo;
 }
 
 /**
