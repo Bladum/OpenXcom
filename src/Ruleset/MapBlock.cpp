@@ -80,6 +80,7 @@ void MapBlock::load(const YAML::Node &node)
 		}
 	}
 	_items = node["items"].as<std::map<std::string, std::vector<Position> > >(_items);
+	_aliens = node["aliens"].as<std::map<std::string, std::vector<Position> > >(_aliens);
 }
 
 /**
@@ -151,6 +152,15 @@ bool MapBlock::isFloorRevealed(int floor)
 std::map<std::string, std::vector<Position> > *MapBlock::getItems()
 {
 	return &_items;
+}
+
+/**
+ * Gets the items and their positioning for any items associated with this block.
+ * @return the items and their positions.
+ */
+std::map<std::string, std::vector<Position> > *MapBlock::getAliens()
+{
+	return &_aliens;
 }
 
 }

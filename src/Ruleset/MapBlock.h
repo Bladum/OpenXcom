@@ -42,7 +42,7 @@ private:
 	std::string _name;
 	int _size_x, _size_y, _size_z;
 	std::vector<int> _groups, _revealedFloors;
-	std::map<std::string, std::vector<Position> > _items;
+	std::map<std::string, std::vector<Position> > _items, _aliens;
 public:
 	MapBlock(const std::string &name);
 	~MapBlock();
@@ -64,6 +64,9 @@ public:
 	bool isFloorRevealed(int floor);
 	/// Gets the layout for any items that belong in this map block.
 	std::map<std::string, std::vector<Position> > *getItems();
+	/// Gets the layout for any items that belong in this map block.
+	std::map<std::string, std::vector<Position> > *getAliens();
+
 
 };
 

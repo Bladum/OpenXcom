@@ -1573,7 +1573,10 @@ terrains:
         length: 10
         items:
           STR_LANDMINE:
-            - [5, 5, 1]         
+            - [4, 4, 0]       
+        aliens:
+          STR_SECTOID_ENGINEER:
+            - [7, 3, 1]       
       - name: XBASE_01
         width: 10
         length: 10
