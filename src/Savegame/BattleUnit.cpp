@@ -1400,10 +1400,10 @@ int BattleUnit::getFiringAccuracy(BattleActionType actionType, BattleItem *item)
 	{
 		if ( item->getRules()->getSkillMeleeAccuracy() )
 		{
-			weaponAcc = weaponAcc * getBaseStats()->melee * item->getRules()->getSkillMeleeAccuracy() / 10000;
+			weaponAcc = getBaseStats()->melee * item->getRules()->getSkillMeleeAccuracy() / 100;
  			return (weaponAcc * item->getRules()->getAccuracyMelee() / 100) * modifier / 100;
 		}
-		return item->getRules()->getAccuracyMelee() * getAccuracyModifier(item) / 100;
+		return item->getRules()->getAccuracyMelee() * modifier / 100;
 	}
 
 	int result = getBaseStats()->firing * weaponAcc / 100;

@@ -14,6 +14,9 @@ extraStrings:
       STR_CANNON_DEFENSES: Cannon Defences
       STR_CANNON_DEFENSES_UFOPEDIA: Cannon defences are standard flak cannons mounted on the top of the facality. They are very effective in shooting down UFO but use large number of ammunition. 
       
+      STR_RANGE_SHORT: "RNG>{ALT}{0}" 
+      STR_TIME_UNITS_SHORT: "TU>{ALT}{0}"
+      
       STR_CRAFT_ITEM_DAMAGEMAX_: "DAMAGE>{ALT}{0}"
       STR_CRAFT_ITEM_SPEEDMAX_: "SPEED>{ALT}{0}"
       STR_CRAFT_ITEM_ACCURACY_: "TO HIT>{ALT}{0}"

@@ -169,22 +169,32 @@ ActionMenuState::~ActionMenuState()
  */
 void ActionMenuState::addItem(BattleActionType ba, const std::string &name, int *id)
 {
-	std::wstring s1, s2;
+	std::wstring s1, s2, s3;
 	int acc = _action->actor->getFiringAccuracy(ba, _action->weapon);
-	
+	int rng = 1;
+	int rngMin = _action->weapon->getRules()->getMinRange();
+
 	if ( ba == BA_THROW )
 	{
 		acc = (int)(_action->actor->getThrowingAccuracy());
+		rng = -1;
 	}
 
 	int tu = _action->actor->getActionTUs(ba, _action->weapon);
 	int shots = _action->weapon->getRules()->getAutoShots();
+	
+	if( ba == BA_AIMEDSHOT || ba == BA_LAUNCH)
+		rng = _action->weapon->getRules()->getAimRange();
+	if( ba == BA_AUTOSHOT)
+		rng = _action->weapon->getRules()->getAutoRange();
+	if( ba == BA_SNAPSHOT)
+		rng = _action->weapon->getRules()->getSnapRange();
 
 	if (ba == BA_THROW || ba == BA_AIMEDSHOT || ba == BA_SNAPSHOT || ba == BA_AUTOSHOT || ba == BA_LAUNCH || ba == BA_HIT)
 	{
-		if(shots > 1)
+		if(shots > 1 && ( ba == BA_AUTOSHOT) )
 		{
-			s1 = tr("STR_ACCURACY_SHORT").arg(Text::formatPercentage(acc).append(L"x").append(Text::formatNumber(shots)));
+			s1 = tr("STR_ACCURACY_SHORT").arg( Text::formatPercentage(acc).append(L"x").append(Text::formatNumber(shots)));
 		}
 		else
 		{
@@ -194,15 +204,21 @@ void ActionMenuState::addItem(BattleActionType ba, const std::string &name, int 
 
 	if ( ba == BA_RELOAD )
 	{
+		rng = -1;
 		if( _action->weapon->getAmmoItem() )
 		{
 			tu += _action->weapon->getSlot()->getCost( _game->getRuleset()->getInventory("STR_GROUND") );
 		}
 	}
 
-	s2 = tr("STR_TIME_UNITS_SHORT").arg(tu);
+	if( rng > 0) 
+	{
+		s3 = tr("STR_RANGE_SHORT").arg( Text::formatNumber( rngMin ).append(L"-").append( Text::formatNumber( rng ) ) );	
+	}
 
-	_actionMenu[*id]->setAction(ba, tr(name), s1, s2, tu);
+	s2 = tr("STR_TIME_UNITS_SHORT").arg( Text::formatNumber( tu ) );
+	
+	_actionMenu[*id]->setAction(ba, tr(name), s1, s2, s3, tu);
 	_actionMenu[*id]->setVisible(true);
 	(*id)++;
 

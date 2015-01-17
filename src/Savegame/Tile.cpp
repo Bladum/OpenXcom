@@ -769,7 +769,7 @@ int Tile::getAnimationOffset() const
  * @param item
  * @param ground
  */
-void Tile::addItem(BattleItem *item, RuleInventory *ground, bool primedGrenade = false)
+void Tile::addItem(BattleItem *item, RuleInventory *ground, bool primedGrenade)
 {
 	item->setSlot(ground);
 	_inventory.push_back(item);

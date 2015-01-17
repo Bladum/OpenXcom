@@ -33,7 +33,9 @@ namespace OpenXcom
  * @param x Position on the x-axis.
  * @param y Position on the y-asis.
  */
-ActionMenuItem::ActionMenuItem(int id, Game *game, int x, int y) : InteractiveSurface(272, 40, x + 24, y - (id*40)), _highlighted(false), _action(BA_NONE), _tu(0)
+ActionMenuItem::ActionMenuItem(int id, Game *game, int x, int y) : 
+	InteractiveSurface(270, 20, x + 25, y - (id*25)), _highlighted(false),
+		_action(BA_NONE), _tu(0)
 {
 	Font *big = game->getResourcePack()->getFont("FONT_BIG"), *small = game->getResourcePack()->getFont("FONT_SMALL");
 	Language *lang = game->getLanguage();
@@ -46,24 +48,26 @@ ActionMenuItem::ActionMenuItem(int id, Game *game, int x, int y) : InteractiveSu
 	_frame->setHighContrast(true);
 	_frame->setColor(actionMenu->border);
 	_frame->setSecondaryColor(actionMenu->color2);
-	_frame->setThickness(8);
+	_frame->setThickness(3);
 
-	_txtDescription = new Text(200, 20, 10, 13);
+	_txtDescription = new Text(110, 9, 10, 6);
 	_txtDescription->initText(big, small, lang);
-	_txtDescription->setBig();
 	_txtDescription->setHighContrast(true);
 	_txtDescription->setColor(actionMenu->color);
 	_txtDescription->setVisible(true);
 
-	_txtAcc = new Text(100, 20, 140, 13);
+	_txtRange = new Text(55, 9, 110, 6);
+	_txtRange->initText(big, small, lang);
+	_txtRange->setHighContrast(true);
+	_txtRange->setColor(actionMenu->color);
+
+	_txtAcc = new Text(55, 9, 160, 6);
 	_txtAcc->initText(big, small, lang);
-	_txtAcc->setBig();
 	_txtAcc->setHighContrast(true);
 	_txtAcc->setColor(actionMenu->color);
 
-	_txtTU = new Text(80, 20, 210, 13);
+	_txtTU = new Text(55, 9, 215, 6);
 	_txtTU->initText(big, small, lang);
-	_txtTU->setBig();
 	_txtTU->setHighContrast(true);
 	_txtTU->setColor(actionMenu->color);
 }
@@ -75,8 +79,10 @@ ActionMenuItem::~ActionMenuItem()
 {
 	delete _frame;
 	delete _txtDescription;
+	delete _txtRange;
 	delete _txtAcc;
 	delete _txtTU;
+	
 }
 
 /**
@@ -87,10 +93,13 @@ ActionMenuItem::~ActionMenuItem()
  * @param timeunits The timeunits string, including the TUs> prefix.
  * @param tu The timeunits value.
  */
-void ActionMenuItem::setAction(BattleActionType action, const std::wstring &description, const std::wstring &accuracy, const std::wstring &timeunits, int tu)
+void ActionMenuItem::setAction(BattleActionType action, const std::wstring &description, 
+		const std::wstring &accuracy, const std::wstring &timeunits, const std::wstring &range, 
+		int tu)
 {
 	_action = action;
 	_txtDescription->setText(description);
+	_txtRange->setText(range);
 	_txtAcc->setText(accuracy);
 	_txtTU->setText(timeunits);
 	_tu = tu;
@@ -126,6 +135,7 @@ void ActionMenuItem::setPalette(SDL_Color *colors, int firstcolor, int ncolors)
 	Surface::setPalette(colors, firstcolor, ncolors);
 	_frame->setPalette(colors, firstcolor, ncolors);
 	_txtDescription->setPalette(colors, firstcolor, ncolors);
+	_txtRange->setPalette(colors, firstcolor, ncolors);
 	_txtAcc->setPalette(colors, firstcolor, ncolors);
 	_txtTU->setPalette(colors, firstcolor, ncolors);
 }
@@ -137,8 +147,9 @@ void ActionMenuItem::draw()
 {
 	_frame->blit(this);
 	_txtDescription->blit(this);
+	_txtRange->blit(this);
 	_txtAcc->blit(this);
-	_txtTU->blit(this);
+	_txtTU->blit(this);	
 }
 
 /**
