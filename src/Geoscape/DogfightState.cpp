@@ -47,7 +47,7 @@
 #include "../Savegame/Region.h"
 #include "../Ruleset/RuleRegion.h"
 #include "../Savegame/AlienMission.h"
-
+#include "../Ruleset/AlienRace.h"
 #include "../Savegame/AlienStrategy.h"
 #include "../Engine/Options.h"
 #include "../Engine/Action.h"
@@ -1088,8 +1088,12 @@ void DogfightState::move()
 	{
 		AlienMission *mission = _ufo->getMission();
 		mission->ufoShotDown(*_ufo, *_game, *_globe);
+		std::string _raceString = _ufo->getAlienRace();
+		AlienRace *_race = _game->getRuleset()->getAlienRace( _raceString );
+		int chanceToRetaliation = _race->canRetaliate();
+
 		// Check for retaliation trigger.
-		//if (!RNG::percent(4 * (24 - (int)(_game->getSavedGame()->getDifficulty()))))
+		if ( RNG::percent( chanceToRetaliation + 2 * _game->getSavedGame()->getDifficulty() ))
 		{
 			// Spawn retaliation mission.
 			std::string targetRegion;

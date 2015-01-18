@@ -356,11 +356,13 @@ Ruleset::~Ruleset()
  */
 void Ruleset::load(const std::string &source)
 {
-	std::string dirname = CrossPlatform::getDataFolder("Ruleset/" + source + '/');
-	if (!CrossPlatform::folderExists(dirname))
-		loadFile(CrossPlatform::getDataFile("Ruleset/" + source + ".rul"));
-	else
-		loadFiles(dirname);
+ 	std::string dirname = CrossPlatform::getDataFolder("Ruleset/" + source + '/');
+ 	if (!CrossPlatform::folderExists(dirname))
+ 		loadFile(CrossPlatform::getDataFile("Ruleset/" + source + ".rul"));
+ 	else
+ 		loadFiles(dirname);
+
+	_modIndex += 1000;
 }
 
 /**
@@ -774,9 +776,7 @@ void Ruleset::loadFile(const std::string &filename)
 			break;
 		}
 	}
-
-	_modIndex += 10000;
-	
+		
 	for (YAML::const_iterator i = doc["cutscenes"].begin(); i != doc["cutscenes"].end(); ++i)
 	{
 		RuleVideo *rule = loadRule(*i, &_videos);

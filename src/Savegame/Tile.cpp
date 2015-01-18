@@ -778,7 +778,7 @@ void Tile::addItem(BattleItem *item, RuleInventory *ground, bool primedGrenade)
 	// prime proximity grenades on the map  :)
 	if(item->getRules()->getBattleType() == BT_PROXIMITYGRENADE && primedGrenade)
 	{
-		item->setFuseTimer(1);
+		item->setFuseTimer(0);
 	}
 }
 

@@ -3,6 +3,7 @@ alienRaces:
 #       CLASIC ALIEN RACES
 ################################
   - id: STR_SECTOID
+    retaliation: 10
     members:
       - STR_SECTOID_COMMANDER
       - STR_SECTOID_LEADER
@@ -13,6 +14,7 @@ alienRaces:
       - STR_CYBERDISC_TERRORIST
       - STR_CYBERDISC_TERRORIST
   - id: STR_FLOATER
+    retaliation: 10
     members:
       - STR_FLOATER_COMMANDER
       - STR_FLOATER_LEADER
@@ -23,6 +25,7 @@ alienRaces:
       - STR_REAPER_TERRORIST
       - STR_REAPER_TERRORIST
   - id: STR_SNAKEMAN
+    retaliation: 10
     members:
       - STR_SNAKEMAN_COMMANDER
       - STR_SNAKEMAN_LEADER
@@ -33,6 +36,7 @@ alienRaces:
       - STR_CHRYSSALID_TERRORIST
       - STR_CHRYSSALID_TERRORIST
   - id: STR_MUTON
+    retaliation: 10
     members:
       - STR_MUTON_COMMANDER
       - STR_MUTON_LEADER
@@ -43,6 +47,7 @@ alienRaces:
       - STR_SILACOID_TERRORIST
       - STR_CELATID_TERRORIST
   - id: STR_ETHEREAL
+    retaliation: 10
     members:
       - STR_ETHEREAL_COMMANDER
       - STR_ETHEREAL_LEADER
@@ -57,6 +62,7 @@ alienRaces:
 #      NEW ALIEN RACES
 ################################      
   - id: STR_ANTHROPOD
+    retaliation: 10
     members:
       - STR_ANTHROPOD_ENGINEER
       - STR_ANTHROPOD_NAVIGATOR
@@ -67,6 +73,7 @@ alienRaces:
       - STR_SPITTER_TERRORIST
       - STR_SPITTER_RETRACT_TERRORIST
   - id: STR_GAZER
+    retaliation: 10
     members:
       - STR_GAZER_COMMANDER
       - STR_GAZER_LEADER
@@ -77,6 +84,7 @@ alienRaces:
       - STR_HOLODRONE_TERRORIST
       - STR_HOLODRONE_TERRORIST
   - id: STR_WASPITE
+    retaliation: 10 
     members:
       - STR_WASPITE_COMMANDER
       - STR_WASPITE_LEADER
@@ -92,7 +100,7 @@ alienRaces:
 #       MAN IN BLACK      
 ################################
   - id: STR_MIB
-    retaliation: false  
+    retaliation: 0  
     members:
       - STR_MIB_COMMANDER
       - STR_MIB_LEADER
@@ -107,7 +115,7 @@ alienRaces:
 #       SPECIAL MIXED RACE
 ################################
   - id: STR_MIXED
-    retaliation: false
+    retaliation: 0
     members:
       - STR_ETHEREAL_COMMANDER 
       - STR_ETHEREAL_LEADER

@@ -1048,9 +1048,12 @@ void Map::drawTerrain(Surface *surface)
 									accuracy = 0;
 									_txtAccuracy->setColor(Palette::blockOffset(2)-1);
 								}
+
+								//TODO add more information here like damage delivered to field ETC
+
 								ss << accuracy;
 								ss << "%";
-								_txtAccuracy->setText(Language::utf8ToWstr(ss.str().c_str()).c_str());
+								_txtAccuracy->setText( Language::utf8ToWstr(ss.str().c_str()).c_str() );
 								_txtAccuracy->draw();
 								_txtAccuracy->blitNShade(surface, screenPosition.x, screenPosition.y, 0);
 							}

@@ -1081,14 +1081,14 @@ bool GeoscapeState::processTerrorSite(TerrorSite *ts) const
 	Region *region = _game->getSavedGame()->locateRegion(*ts);
 	if (region)
 	{
-		region->addActivityAlien(_game->getRuleset()->getAlienMission("STR_ALIEN_TERROR")->getPoints() * 100);
+		region->addActivityAlien(_game->getRuleset()->getAlienMission("STR_ALIEN_TERROR")->getPointsIgnore() );
 		//kids, tell your folks... don't ignore terror sites.
 	}
 	for (std::vector<Country*>::iterator k = _game->getSavedGame()->getCountries()->begin(); k != _game->getSavedGame()->getCountries()->end(); ++k)
 	{
 		if ((*k)->getRules()->insideCountry(ts->getLongitude(), ts->getLatitude()))
 		{
-			(*k)->addActivityAlien(_game->getRuleset()->getAlienMission("STR_ALIEN_TERROR")->getPoints() * 100);
+			(*k)->addActivityAlien(_game->getRuleset()->getAlienMission("STR_ALIEN_TERROR")->getPointsIgnore() );
 			break;
 		}
 	}
@@ -1193,12 +1193,16 @@ void GeoscapeState::time30Minutes()
 	for (std::vector<Ufo*>::iterator u = _game->getSavedGame()->getUfos()->begin(); u != _game->getSavedGame()->getUfos()->end(); ++u)
 	{
 		int points = 0;
+		const RuleAlienMission *aaa = (*u)->getMission()->getRules();
+		int pointsWhenLanded = aaa->getPointsOnGround();
+		int pointsWhenOnAir = aaa->getPointsFlying();
+
 		switch ((*u)->getStatus())
 		{
 		case Ufo::LANDED:
-			points++;
+			points += pointsWhenLanded;
 		case Ufo::FLYING:
-			points++;
+			points += pointsWhenOnAir;
 			// Get area
 			for (std::vector<Region*>::iterator k = _game->getSavedGame()->getRegions()->begin(); k != _game->getSavedGame()->getRegions()->end(); ++k)
 			{
@@ -1570,7 +1574,7 @@ void GeoscapeState::time1Day()
 		{
 			if ((*k)->getRules()->insideRegion((*b)->getLongitude(), (*b)->getLatitude()))
 			{
-				(*k)->addActivityAlien(_game->getRuleset()->getAlienMission("STR_ALIEN_BASE")->getPoints() / 10);
+				(*k)->addActivityAlien( _game->getRuleset()->getAlienMission("STR_ALIEN_BASE")->getPointsPerDay() );
 				break;
 			}
 		}
@@ -1578,7 +1582,7 @@ void GeoscapeState::time1Day()
 		{
 			if ((*k)->getRules()->insideCountry((*b)->getLongitude(), (*b)->getLatitude()))
 			{
-				(*k)->addActivityAlien(_game->getRuleset()->getAlienMission("STR_ALIEN_BASE")->getPoints() / 10);
+				(*k)->addActivityAlien( _game->getRuleset()->getAlienMission("STR_ALIEN_BASE")->getPointsPerDay() );
 				break;
 			}
 		}
@@ -1647,7 +1651,7 @@ void GeoscapeState::time1Month()
 						std::vector<std::string> races = _game->getRuleset()->getAlienRacesList();
 						for (std::vector<std::string>::iterator i = races.begin(); i != races.end();)
 						{
-							if (_game->getRuleset()->getAlienRace(*i)->canRetaliate())
+							if ( _game->getRuleset()->getAlienRace(*i)->canRetaliate() > 0 )
 							{
 								i++;
 							}

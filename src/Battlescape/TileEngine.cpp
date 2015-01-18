@@ -50,6 +50,9 @@
 #include "ProjectileFlyBState.h"
 #include "../Engine/Logger.h"
 #include "../fmath.h"
+#include "../Battlescape/ExplosionBState.h"
+#include "../Battlescape/BattlescapeState.h"
+#include "../Battlescape/Explosion.h"
 
 namespace OpenXcom
 {

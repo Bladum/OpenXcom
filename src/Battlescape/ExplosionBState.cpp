@@ -213,7 +213,7 @@ void ExplosionBState::init()
 		Explosion *explosion = new Explosion(_center, anim, 0, false, (_hit || psi)); // Don't burn the tile
 		_parent->getMap()->getExplosions()->push_back(explosion);
 		_parent->getMap()->getCamera()->setViewLevel(_center.z / 24);
-
+		
 		BattleUnit *target = t->getUnit();
 		if ((_hit || psi) && _parent->getSave()->getSide() == FACTION_HOSTILE && target && target->getFaction() == FACTION_PLAYER)
 		{

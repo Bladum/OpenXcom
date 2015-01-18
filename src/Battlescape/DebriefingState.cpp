@@ -889,10 +889,10 @@ void DebriefingState::prepareDebriefing()
 	// recover all our goodies
 	if (playersSurvived > 0)
 	{
-		int aadivider = battle->getMissionType()=="STR_ALIEN_BASE_ASSAULT"?150:10;
+		int aadivider = battle->getMissionType()=="STR_ALIEN_BASE_ASSAULT"?100:10;
 		for (std::vector<DebriefingStat*>::iterator i = _stats.begin(); i != _stats.end(); ++i)
 		{
-			// alien alloys recovery values are divided by 10 or divided by 150 in case of an alien base
+			// alien alloys recovery values are divided by 10 or divided by 100 in case of an alien base
 			if ((*i)->item == _recoveryStats[ALIEN_ALLOYS]->name)
 			{
 				(*i)->qty = (*i)->qty / aadivider;

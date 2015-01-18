@@ -23,6 +23,10 @@
 #include <string>
 #include <yaml-cpp/yaml.h>
 
+enum TrajectoryAction{TA_NONE = 0, TA_TERROR = 1, TA_BASE = 2, TA_ASSAULT = 3, 
+	TA_INFILTRATION = 4, TA_ABDUCTION = 5, TA_HARVEST = 6, TA_RAID = 7, 
+	TA_TERRAFORM = 8, TA_RETALIATION = 9};
+
 namespace OpenXcom
 {
 
@@ -37,6 +41,8 @@ struct TrajectoryWaypoint
 	size_t altitude;
 	/// The speed percentage ([0..100])
 	size_t speed;
+	/// Special action 
+	size_t action;
 };
 
 YAML::Emitter &operator<<(YAML::Emitter &emitter, const TrajectoryWaypoint &wp);
@@ -71,6 +77,13 @@ public:
 	 * @return The zone index.
 	 */
 	size_t getZone(size_t wp) const { return _waypoints[wp].zone; }
+
+	/**
+	 * Gets the action index at a waypoint.
+	 * @param wp The waypoint.
+	 * @return The action index.
+	 */
+	size_t getAction(size_t wp) const { return _waypoints[wp].action; }
 
 	/// Gets the altitude at a waypoint.
 	std::string getAltitude(size_t wp) const;

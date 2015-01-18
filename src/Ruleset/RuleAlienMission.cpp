@@ -51,7 +51,9 @@ namespace YAML
 namespace OpenXcom
 {
 
-RuleAlienMission::RuleAlienMission(const std::string &type) : _type(type), _points(0)
+RuleAlienMission::RuleAlienMission(const std::string &type) : _type(type), 
+	_points(0), _pointsLifting(10), _pointsLanding(0), _pointsFlying(1), 
+	_pointsOnGround(2),  _pointsPerDay(5), _pointsIgnore(1000)
 {
 }
 
@@ -63,6 +65,13 @@ void RuleAlienMission::load(const YAML::Node &node)
 {
 	_type = node["type"].as<std::string>(_type);
 	_points = node["points"].as<int>(_points);
+	_pointsLifting = node["pointsLifting"].as<int>(_pointsLifting);
+	_pointsLanding = node["pointsLanding"].as<int>(_pointsLanding);
+	_pointsFlying = node["pointsFlying"].as<int>(_pointsFlying);
+	_pointsOnGround = node["pointsOnGround"].as<int>(_pointsOnGround);
+	_pointsIgnore = node["pointsIgnore"].as<int>(_pointsIgnore);
+	_pointsPerDay = node["pointsPerDay"].as<int>(_pointsPerDay);
+
 	_waves = node["waves"].as< std::vector<MissionWave> >(_waves);
 	//Only allow full replacement of mission racial distribution.
 	if (const YAML::Node &weights = node["raceWeights"])
@@ -154,6 +163,30 @@ RuleAlienMission::~RuleAlienMission()
 int RuleAlienMission::getPoints() const
 {
 	return _points;
+}
+int RuleAlienMission::getPointsLifting() const
+{
+	return _pointsLifting;
+}
+int RuleAlienMission::getPointsLanding() const
+{
+	return _pointsLanding;
+}
+int RuleAlienMission::getPointsFlying() const
+{
+	return _pointsFlying;
+}
+int RuleAlienMission::getPointsOnGround() const
+{
+	return _pointsOnGround;
+}
+int RuleAlienMission::getPointsIgnore() const
+{
+	return _pointsIgnore;
+}
+int RuleAlienMission::getPointsPerDay() const
+{
+	return _pointsPerDay;
 }
 
 }

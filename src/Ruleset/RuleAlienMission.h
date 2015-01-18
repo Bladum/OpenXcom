@@ -78,6 +78,13 @@ public:
 	const MissionWave &getWave(size_t index) const { return _waves[index]; }
 	/// Gets the score for this mission.
 	int getPoints() const;
+	int getPointsLifting() const;
+	int getPointsLanding() const;
+	int getPointsFlying() const;
+	int getPointsOnGround() const;
+	int getPointsIgnore() const;
+	int getPointsPerDay() const;
+
 private:
 	/// The mission's type ID.
 	std::string _type;
@@ -86,7 +93,7 @@ private:
 	/// The mission's waves.
 	std::vector<MissionWave> _waves;
 	/// The mission's points
-	int _points;
+	int _points, _pointsLifting, _pointsLanding, _pointsFlying, _pointsOnGround, _pointsPerDay, _pointsIgnore;
 
 };
 

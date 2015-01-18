@@ -39,17 +39,19 @@ namespace YAML
 			node.push_back(rhs.zone);
 			node.push_back(rhs.altitude);
 			node.push_back(rhs.speed);
+			node.push_back(rhs.action);
 			return node;
 		}
 
 		static bool decode(const Node& node, OpenXcom::TrajectoryWaypoint& rhs)
 		{
-			if (!node.IsSequence() || node.size() != 3)
+			if (!node.IsSequence() || node.size() != 4)
 				return false;
 
 			rhs.zone = node[0].as<int>();
 			rhs.altitude = node[1].as<int>();
 			rhs.speed = node[2].as<int>();
+			rhs.action = node[3].as<int>();
 			return true;
 		}
 	};

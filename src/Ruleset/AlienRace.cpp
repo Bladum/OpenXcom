@@ -25,7 +25,7 @@ namespace OpenXcom
  * Creates a blank alien race.
  * @param id String defining the id.
  */
-AlienRace::AlienRace(const std::string &id) : _id(id), _retaliation(true)
+AlienRace::AlienRace(const std::string &id) : _id(id), _retaliation(100)
 {
 }
 
@@ -41,7 +41,7 @@ void AlienRace::load(const YAML::Node &node)
 {
 	_id = node["id"].as<std::string>(_id);
 	_members = node["members"].as< std::vector<std::string> >(_members);
-	_retaliation = node["retaliation"].as<bool>(_retaliation);
+	_retaliation = node["retaliation"].as<int>(_retaliation);
 }
 
 /**
@@ -68,7 +68,7 @@ std::string AlienRace::getMember(int id) const
  * Returns if the race can participate in retaliation missions.
  * @return True if it can retaliate.
  */
-bool AlienRace::canRetaliate() const
+int AlienRace::canRetaliate() const
 {
 	return _retaliation;
 }

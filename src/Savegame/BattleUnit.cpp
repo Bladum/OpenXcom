@@ -41,6 +41,7 @@
 #include "../Savegame/SavedGame.h"
 #include "../Savegame/SavedBattleGame.h"
 
+
 namespace OpenXcom
 {
 
@@ -1054,6 +1055,7 @@ int BattleUnit::damage(const Position &relative, int power, const RuleDamageType
 	// the rest of damage
 	if (power > 0)
 	{
+
 		// stun damage
 		if (!_armor->getPainImmune() || type->IgnorePainImmunity)
 		{
@@ -3080,7 +3082,7 @@ void BattleUnit::calculateEnviDamage(Ruleset *ruleset)
 		// try to set the unit on fire.
 		if (RNG::percent(40 * getArmor()->getDamageModifier(DT_IN)))
 		{
-			int burnTime = RNG::generate(0, int(5 * getArmor()->getDamageModifier(DT_IN)));
+			int burnTime = RNG::generate(0, int(6 * getArmor()->getDamageModifier(DT_IN)));
 			if (getFire() < burnTime)
 			{
 				setFire(burnTime);

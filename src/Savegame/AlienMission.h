@@ -106,7 +106,9 @@ public:
 	/// Handle UFO shot down.
 	void ufoShotDown(Ufo &ufo, Game &engine, const Globe &globe);
 	/// Handle Points for mission successes.
-	void addScore(const double lon, const double lat, Game &engine);
+	void addScore(const double lon, const double lat, Game &engine, int score );
+	/// Get rules from this mission
+	const RuleAlienMission *getRules() const;
 private:
 	/// Spawns a UFO, based on mission rules.
 	Ufo *spawnUfo(const SavedGame &game, const Ruleset &ruleset, const Globe &globe, const RuleUfo &ufoRule, const UfoTrajectory &trajectory);

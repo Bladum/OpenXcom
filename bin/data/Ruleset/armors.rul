@@ -29,6 +29,7 @@ armors:
     visibilityAtDark: 9
     loftempsSet: [3]
     armorClass: 0
+    hitAnimation: 10
     damageModifier:
       - 1.00 # NONE 
       - 1.00 # AP

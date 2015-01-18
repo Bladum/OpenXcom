@@ -37,7 +37,7 @@ class AlienRace
 private:
 	std::string _id;
 	std::vector<std::string> _members;
-	bool _retaliation;
+	int _retaliation;
 public:
 	/// Creates a blank alien race ruleset.
 	AlienRace(const std::string &id);
@@ -50,7 +50,7 @@ public:
 	/// Gets a certain member of this alien race family.
 	std::string getMember(int id) const;
 	/// Gets if the race can retaliate.
-	bool canRetaliate() const;
+	int canRetaliate() const;
 };
 
 }
